@@ -1,0 +1,68 @@
+.apartment-form-wrap
+  form
+    .af-header
+      .row
+        .columns
+          .columns
+            .af-search-input
+              label
+                |Знайти квартиру
+                input type="text" placeholder="Пошук квартир..."
+              button type="submit"
+      .row
+        .columns
+          .columns
+            strong Наприклад:
+            ul
+              li
+                a Квартира у Львові
+              li
+                a Квартира у Києві
+              li
+                a ЖК «Сігма Апартментс»
+
+    .af-body
+      .row
+        .large-6.medium-6.columns
+          .columns
+            - count= 5
+            - i = 0
+            label
+              |К-сть кімнат
+              select
+                - count.times
+                  - i = i+1
+                  option value="#{i}" =i
+
+          .columns
+            - count= 14
+            - i = 0
+            label
+              |Поверх
+              select
+                - count.times
+                  - i = i+1
+                  option value="#{i}" =i
+
+
+
+        .large-6.medium-6.columns
+          .columns
+            label
+              |Місто
+              select
+                option value="Львів" Львів
+                option value="Київ" Київ
+                option value="Одеса" Одеса
+                option value="Ялта" Ялта
+          .columns
+            label
+              |Район
+              select
+                option value="Шевченківський" Шевченківський
+                option value="Залізничний" Залізничний
+                option value="Личаківський" Личаківський
+                option value="Галицький" Галицький
+          .columns
+            button.right type="submit" Знайти
+

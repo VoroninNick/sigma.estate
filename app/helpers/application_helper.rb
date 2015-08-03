@@ -30,4 +30,7 @@ module ApplicationHelper
    end
    doc.to_html.html_safe
   end
+  def cp(path)
+    "current" if current_page?(path)
+  end
 end

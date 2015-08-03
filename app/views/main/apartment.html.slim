@@ -1,0 +1,13 @@
+.apartment-page-wrap
+  .main-banner-wrap
+    .image style="background: url('#{asset_path("SE-banner.jpg")}')no-repeat center center;"
+    .mb-apartment-form
+      .row
+        .large-8.large-centered.medium-8.medium-centered.columns
+          =render partial: "partials/forms/apartmen_search"
+  .best-apartment
+    .row
+      .columns
+        h3
+          =embedded_svg "ic_photo_size_select_small_24px.svg"
+          |Кращі квартири

@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1, h2, h3, h4, h5, p, b, span, a
+h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea
   font-family: 'Roboto', sans-serif
 .image
   max-width: 100%
   width: 100%
-  height: 0
-  padding-bottom: 100%
+  //height: 0
+  //padding-bottom: 100%
   overflow: hidden
   -webkit-background-size: cover !important
   -moz-background-size: cover !important
@@ -69,14 +69,14 @@ body
         weight: 400
       line-height: rem-calc(21)
       margin-bottom: 0
-    .image
-      max-width: 100%
-      width: 100%
-      height: 0
-      padding-bottom: 66%
     .one-building
       border-radius: 5px
       overflow:  hidden
+      .image
+        max-width: 100%
+        width: 100%
+        height: 0
+        padding-bottom: 66%
       .ob-label
         background-color: #FFFFFF
         min-height: 50px
@@ -108,4 +108,117 @@ body
           position: relative
           top: 3px
 
+header
+  overflow: hidden
+  height: 200px
+  .navigation-wrap
+    height: 60px
+    background-color: #fff
+    nav
+      list-style: none
+      li
+        display: inline-block
+        float: left
+        a
+          color: #36464E
+          //path
+          //  fill: #36464E
+        &.disable-link
+          a
+            color: #AFBDC4
+            //path
+            //  fill: #AFBDC4
+        &.current
+          a
+            color: #E55000
 
+  .h-filter-wrap
+    height: 140px
+    background-color: #36464E
+    .h-filter-list
+      height: 105px
+    .h-sub-filter-list
+      height: 35px
+      background-color: rgba(0, 0, 0, .1)
+    .hsf
+      float: left
+.apartment-page-wrap
+  .main-banner-wrap
+    height: 550px
+    position: relative
+    .image
+      max-width: 100%
+      width: 100%
+      height: 100%
+      overflow: hidden
+      -webkit-background-size: cover !important
+      -moz-background-size: cover !important
+      -o-background-size: cover !important
+      background-size: cover !important
+      margin: 0 auto
+    .mb-apartment-form
+      position: absolute
+      top: 80px
+      left: 0
+      right: 0
+
+.apartment-form-wrap
+  form
+    .af-header
+      background-color: #E55000
+      height: 105px
+      .af-search-input
+        position: relative
+        label
+          color: #FFF
+          font:
+            size: rem-calc(12)
+            weight: 400
+          line-height: rem-calc(14.4)
+        input
+          background-color: transparent
+          border: 0
+          border-bottom: 2px solid #FFB64C
+          height: 26px
+          box-shadow: none!important
+          outline: none!important
+        button
+          position: absolute
+          top: 0
+          right: 0
+          margin: 0
+      strong
+        color: #FB8B00
+        font:
+          size: rem-calc(12)
+          weight: 400
+        line-height: rem-calc(14.4)
+        display: inline-block
+        float: left
+      ul
+        list-style: none
+        margin-left: 0
+        li
+          display: inline-block
+          float: left
+          a
+            color: #FFF
+            font:
+              size: rem-calc(12)
+              weight: 300
+            line-height: rem-calc(14.4)
+    .af-body
+      background-color: #fff
+      button
+        background-color: #E55000
+
+.best-apartment
+  background-color: #E3E3E3
+  h3
+    color: #36464E
+    font:
+      size: rem-calc(24)
+      weight: 400
+    line-height: rem-calc(28)
+    path
+      fill: #36464E
