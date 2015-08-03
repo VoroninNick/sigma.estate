@@ -1,0 +1,35 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title
+      = content_for?(:title) ? yield(:title) : "Sigma Estate - stub page"
+
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body.stub-body
+    .stub-page
+
+      = yield
+    .row.stub-footer
+      .large-9.large-centered.medium-12.medium-centered.columns
+        .row
+          .large-8.medium-8.columns
+            ul
+              li
+                a
+                  =embedded_svg "ic_phone_24px.svg"
+                  |+38 (032) 253 55 05
+              li
+                a +38 (068) 228 88 88
+              li
+                a +38 (093) 839 99 99
+          .large-4.medium-4.small-12.columns
+            a.right
+              =embedded_svg "ic_mail_24px.svg"
+              |sales@pr-group.in

@@ -1,0 +1,109 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1, h2, h3, h4, h5, p, b, span, a
+  font-family: 'Roboto', sans-serif
+.image
+  max-width: 100%
+  width: 100%
+  height: 0
+  padding-bottom: 100%
+  overflow: hidden
+  -webkit-background-size: cover !important
+  -moz-background-size: cover !important
+  -o-background-size: cover !important
+  background-size: cover !important
+  margin: 0 auto
+
+body
+  &.stub-body
+    background-color: #36464E
+    .stub-page
+      min-height: 100%
+      margin-bottom: -65px
+      &:after
+        content: ""
+        display: block
+    .stub-footer, .stub-page:after
+      height: 65px
+    .stub-header
+      padding-top: 130px
+      padding-bottom: 20px
+      svg
+        width: 80%
+        display: block
+        margin: 0 auto
+    .stub-buildings-title
+      padding-top: 50px
+    .stub-buildings-list
+      padding-top: 10px
+      padding-bottom: 40px
+    .large-centered
+      svg
+        height: 100%
+        path
+          fill: #EBEEF0
+    a
+      color: #FFF
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: rem-calc(14)
+    h3, h5
+      color: #EBEEF0
+    h3
+      font:
+        size: rem-calc(24)
+        weight: 700
+      line-height: rem-calc(28.8)
+    h5
+      font:
+        size: rem-calc(16)
+        weight: 700
+      line-height: rem-calc(19.2)
+    p
+      color: #8FA3AD
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: rem-calc(21)
+      margin-bottom: 0
+    .image
+      max-width: 100%
+      width: 100%
+      height: 0
+      padding-bottom: 66%
+    .one-building
+      border-radius: 5px
+      overflow:  hidden
+      .ob-label
+        background-color: #FFFFFF
+        min-height: 50px
+        padding: 9px
+      b
+        color: #36464E
+        font:
+          size: rem-calc(14)
+          weight: 500
+        line-height: rem-calc(16)
+        display: inline-block
+        float: left
+
+
+    .stub-footer
+      ul
+        margin-left: 0
+        list-style: none
+        li
+          width: 32%
+          display: inline-block
+          float: left
+          &:first-of-type
+            width: 34%
+      a
+        svg
+          width: 16px
+          height: 16px
+          position: relative
+          top: 3px
