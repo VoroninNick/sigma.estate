@@ -11,3 +11,56 @@
         h3
           =embedded_svg "ic_photo_size_select_small_24px.svg"
           |Кращі квартири
+    .row
+      -5.times
+        .large-4.medium-4.small-6.columns.end
+          .a-one-item.se-box-shadow
+            .columns
+              .a-oi-avatar
+                .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+              .a-oi-information-wrap
+                .a-oi-information
+                  b вул. Генерала Чупринки, 119
+                  p ЖК «Сігма апартментс»
+                  hr
+                  .row
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_view_quilt_24px.svg"
+                      .a-oi-info-label К-сть кімнат
+                      .a-oi-info-value 3
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_account_balance_wallet_24px.svg"
+                      .a-oi-info-label
+                        |Ціна
+                        span
+                          |(грн/м2)
+                      .a-oi-info-value 12 770
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_select_all_24px.svg"
+                      .a-oi-info-label
+                        |Площа
+                        span
+                          |(м2)
+                      .a-oi-info-value 72
+            .clearfix
+            ul.a-oi-actions
+              li
+                a
+                  =embedded_svg "ic_favorite_48px.svg"
+              li
+                a
+                  =embedded_svg "ic_done_all_24px.svg"
+              li
+                a
+                  =embedded_svg "ic_phone_24px.svg"
+
+              .clearfix
+  .apartment-complexes
+    .row
+      .columns
+        h3
+          =embedded_svg "ic_domain_24px.svg"
+          |Житлові комплекси

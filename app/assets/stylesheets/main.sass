@@ -1,6 +1,7 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins"
 
 h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea
   font-family: 'Roboto', sans-serif
@@ -222,3 +223,95 @@ header
     line-height: rem-calc(28)
     path
       fill: #36464E
+
+.se-box-shadow
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+  -moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+.a-one-item
+  background-color: #fff
+  margin-bottom: 30px
+  overflow: hidden
+  border-radius: 5px
+
+  .a-oi-avatar
+    margin: 9px 0
+    margin-bottom: -40px
+    .image
+      padding-bottom: 66%
+  .a-oi-information-wrap, ul.a-oi-actions
+    -moz-transform: translateY(40px) /* Для Firefox */
+    -ms-transform: translateY(40px) /* Для IE */
+    -webkit-transform: translateY(40px) /* Для Safari, Chrome, iOS */
+    -o-transform: translateY(40px) /* Для Opera */
+    transform: translateY(40px)
+
+  .a-oi-information-wrap
+    background-color: #fff
+    .a-oi-information
+      b
+        color: #36464E
+        font:
+          size: rem-calc(18)
+          weight: 500
+        line-height: rem-calc(21.6)
+      p
+        color: #AFBDC4
+        font:
+          size: rem-calc(14)
+          weight: 400
+        line-height: rem-calc(16.8)
+      hr
+        border-color: #AFBDC4
+      .a-oi-info-ico
+        svg
+          margin: 0 auto
+          display: inherit
+          path
+            fill: #778F9B
+      .a-oi-info-label
+        color: #778F9B
+        font:
+          size: rem-calc(12)
+          weight: 400
+          family: 'Roboto', sans-serif
+        line-height: rem-calc(24)
+        white-space: nowrap
+        span
+          color: #AFBDC4
+      .a-oi-info-value
+        color: #E55000
+        font:
+          size: rem-calc(24)
+          weight: 500
+          family: 'Roboto', sans-serif
+        line-height: rem-calc(28.8)
+        display: inherit
+        white-space: nowrap
+        text-align: center
+  ul.a-oi-actions
+    margin: 0
+    background-color: #E55000
+    list-style: none
+    height: 40px
+    margin-top: 22px
+    li
+      width: 33.33%
+      height: inherit
+      float: left
+      a
+        display: block
+        height: inherit
+        svg
+          height: 100%
+          padding: 8px 0px
+          width: 100%
+          path
+            fill: #fff
+  &:hover
+    .a-oi-information-wrap, ul.a-oi-actions
+      -moz-transform: translateY(0) /* Для Firefox */
+      -ms-transform: translateY(0) /* Для IE */
+      -webkit-transform: translateY(0) /* Для Safari, Chrome, iOS */
+      -o-transform: translateY(0) /* Для Opera */
+      transform: translateY(0)
