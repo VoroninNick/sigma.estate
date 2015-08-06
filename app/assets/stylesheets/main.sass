@@ -113,36 +113,190 @@ header
   overflow: hidden
   height: 200px
   .navigation-wrap
-    height: 60px
     background-color: #fff
+    position: relative
+    .nav-logo-wrap, .nav-catalogs, .nav-popup-action-wrap, .nav-wrap
+      float: left
+    .nav-pages, .nav-popup-action-wrap nav
+      float: right
+    .nav-popup-action-wrap
+      nav
+        li
+          a
+            svg
+              width: 32px
+              height: 100%
+              margin-top: 10px
+              path
+                fill: #36464E
+    .nav-logo-wrap
+      a
+        color: #36464E
+        font:
+          size: rem-calc(20)
+          weight: 600
+        text-transform: uppercase
+        line-height: rem-calc(60)
+        padding: 0 20px
+    .nav-side
+      width: 20%
+      height: 60px
+    .nav-wrap
+      width: 60%
     nav
       list-style: none
+      height: 60px
       li
         display: inline-block
         float: left
+        height: inherit
+        padding-right: 30px
         a
           color: #36464E
-          //path
-          //  fill: #36464E
-        &.disable-link
+          display: inline-block
+          line-height: rem-calc(60)
+      &.nav-catalogs
+        li
           a
-            color: #AFBDC4
-            //path
-            //  fill: #AFBDC4
-        &.current
+            position: relative
+            svg
+              position: relative
+              top: 6px
+              margin-right: 12px
+            path
+              fill: #36464E
+          &.disable-link
+            a
+              color: #AFBDC4
+              path
+                fill: #AFBDC4
+          &.current
+            a
+              color: #E55000
+              &:before
+                display: block
+                position: absolute
+                content: ''
+                background-color: #E55000
+                left: 0
+                bottom: 0
+                right: 0
+                height: 3px
+              path
+                fill: #E55000
+      &.nav-pages
+        li
           a
-            color: #E55000
+            font:
+              size: rem-calc(12)
+              weight: 400
+
+
 
   .h-filter-wrap
     height: 140px
     background-color: #36464E
     .h-filter-list
       height: 105px
+      position: relative
+      a
+        color: #FB8B00
+        font:
+          weight: 500
+          size: rem-calc(40)
+        line-height: rem-calc(105)
+        display: inline-block
+        sup
+          font:
+            size: rem-calc(12)
+            weight: 400
+          line-height: rem-calc(14.4)
+          position: relative
+          top: -7px
+          margin-left: 10px
+        &:hover
+          color: #fff
+      .a-nav-search-button
+        position: absolute
+        top: 0
+        right: 20px
+        a
+          svg
+            width: 34px
+            height: 100%
+            position: relative
+            top: 10px
+            path
+              fill: #778F9B
     .h-sub-filter-list
       height: 35px
       background-color: rgba(0, 0, 0, .1)
     .hsf
       float: left
+
+footer
+  background-color: #36464E
+  min-height: 450px
+  .footer-nav
+    background-color: rgba(0, 0, 0, .1)
+    a
+      color: #536D79
+      font:
+        size: rem-calc(14)
+        weight: 500
+      line-height: rem-calc(16.8)
+      text-transform: uppercase
+      display: inline-block
+      height: 60px
+      line-height: rem-calc(60)
+      span
+        @media screen and ( max-width: 840px)
+          display: none
+      svg
+        position: relative
+        top: 6px
+        margin-right: 10px
+        path
+          fill: #536D79
+      &.current
+        color: #FB8B00
+        path
+          fill: #FB8B00
+  form
+    margin-bottom: 25px
+  h4
+    color: #FFF
+    font:
+      size: rem-calc(21)
+      weight: 500
+    line-height: rem-calc(36)
+  p
+    color: #AFBDC4
+    font:
+      size: rem-calc(14)
+      weight: 400
+    line-height: rem-calc(21)
+
+  address
+    p, a
+      color: #AFBDC4
+      font:
+        size: rem-calc(16)
+        weight: 400
+        style: normal
+      line-height: rem-calc(19.2)
+    p
+      svg
+        width: 20px
+        height: 20px
+        position: relative
+        top: 6px
+        margin-right: 8px
+        path
+          fill: #AFBDC4
+
+
+
 .apartment-page-wrap
   .main-banner-wrap
     height: 550px
@@ -184,10 +338,18 @@ header
           box-shadow: none!important
           outline: none!important
         button
+          width: 30px
+          height: 30px
+          padding: 0
           position: absolute
           top: 0
           right: 0
           margin: 0
+          background-color: transparent
+          background-image: asset-url("ic_search_24px.svg")
+          background-size: 100%
+          background-repeat: no-repeat
+          cursor: pointer
       strong
         color: #FB8B00
         font:
@@ -315,3 +477,58 @@ header
       -webkit-transform: translateY(0) /* Для Safari, Chrome, iOS */
       -o-transform: translateY(0) /* Для Opera */
       transform: translateY(0)
+
+form
+  .input
+    label
+      color: #AFBDC4
+      font:
+        size: rem-calc(14)
+      line-height: rem-calc(30)
+    &:not(.animate-input)
+      label
+        opacity: .5
+    input, textarea
+      font:
+        size: rem-calc(16)
+        weight: 400
+      color: #fff
+      background: transparent !important
+    &.animate-input
+      position: relative
+      label
+        display: block
+        transform: translateY(35px)
+        transition: all 0.5s
+
+        color: #AFBDC4
+        font:
+          size: rem-calc(14)
+        line-height: rem-calc(35)
+        opacity: .5
+
+      input
+        position: relative
+        width: 100%
+        height: 30px
+        border: 0 solid #AFBDC4
+        border-width: 0 0 1px 0
+        box-shadow: none
+        outline: none
+        margin: 0
+
+      &.is-active
+        &::after
+          transform: scaleX(1)
+        label
+          opacity: 1
+          color: #FB8B00
+          font:
+            size: rem-calc(12)
+        input
+          border-bottom: 2px solid #FB8B00
+
+      &.is-completed
+        label
+          font-size: rem-calc(12)
+          transform: translateY(0)
