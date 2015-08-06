@@ -16,7 +16,9 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea
   -o-background-size: cover !important
   background-size: cover !important
   margin: 0 auto
-
+.row.full-width
+  width: 100%
+  max-width: 100%
 body
   &.stub-body
     background-color: #36464E
@@ -277,25 +279,35 @@ footer
       weight: 400
     line-height: rem-calc(21)
 
+
+address
+  p, a
+    color: #AFBDC4
+    font:
+      size: rem-calc(16)
+      weight: 400
+      style: normal
+    line-height: rem-calc(19.2)
+  p
+    svg
+      width: 20px
+      height: 20px
+      position: relative
+      top: 6px
+      margin-right: 8px
+      path
+        fill: #AFBDC4
+
+.feedback-wrap
   address
     p, a
-      color: #AFBDC4
-      font:
-        size: rem-calc(16)
-        weight: 400
-        style: normal
-      line-height: rem-calc(19.2)
+      color: #4C4C4C
     p
       svg
-        width: 20px
-        height: 20px
-        position: relative
-        top: 6px
-        margin-right: 8px
         path
-          fill: #AFBDC4
-
-
+          fill: #4C4C4C
+  form
+    background-color: #36464E
 
 .apartment-page-wrap
   .main-banner-wrap
@@ -477,7 +489,21 @@ footer
       -webkit-transform: translateY(0) /* Для Safari, Chrome, iOS */
       -o-transform: translateY(0) /* Для Opera */
       transform: translateY(0)
-
+.apartment-complexes
+  .ac-one
+    height: 445px
+    padding: 1px
+    .image
+      height: 100%
+.calculators-wrap
+  .calculator-one
+    height: 300px
+    &.co-credit
+      background-color: #36464E
+      margin-right: 1px
+    &.co-insurance
+      background-color: #E55000
+      margin-left: 1px
 form
   .input
     label
