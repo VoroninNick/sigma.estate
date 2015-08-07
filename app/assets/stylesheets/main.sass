@@ -112,7 +112,7 @@ body
           top: 3px
 
 header
-  overflow: hidden
+  //overflow: hidden
   height: 200px
   .navigation-wrap
     background-color: #fff
@@ -152,13 +152,15 @@ header
         display: inline-block
         float: left
         height: inherit
-        padding-right: 30px
+        padding: 0 15px
         a
           color: #36464E
           display: inline-block
           line-height: rem-calc(60)
       &.nav-catalogs
         li
+          .ink
+            background: hsl(21.13, 100%, 90.2%)
           a
             position: relative
             svg
@@ -233,6 +235,32 @@ header
     .h-sub-filter-list
       height: 35px
       background-color: rgba(0, 0, 0, .1)
+      .h-sf-cities
+        position: relative
+        strong, a
+          color: #fff
+          font:
+            size: rem-calc(12)
+            weight: 400
+        strong
+          line-height: rem-calc(35)
+          display: inline-block
+        ul
+          display: inline-block
+          margin-left: 0
+          position: absolute
+          width: 120px
+          list-style: none
+          z-index: 111
+          margin-top: 8px
+          margin-left: 10px
+          height: 20px
+          overflow: hidden
+          li
+            a
+              display: block
+          &:hover
+            height: auto
     .hsf
       float: left
 
@@ -330,12 +358,16 @@ address
       right: 0
 
 .apartment-form-wrap
+  overflow: hidden
+  border-radius: 4px
   form
     .af-header
       background-color: #E55000
       height: 105px
+      padding-top: 20px
       .af-search-input
         position: relative
+        margin-bottom: 10px
         label
           color: #FFF
           font:
@@ -345,16 +377,22 @@ address
         input
           background-color: transparent
           border: 0
-          border-bottom: 2px solid #FFB64C
+          border-bottom: 2px solid #FB8B00
           height: 26px
           box-shadow: none!important
           outline: none!important
+          +placeholder(#FB8B00, 18px, normal)
+            font:
+              weight: 500
+          margin: 0
+          padding: 0
+          line-height: rem-calc(26)
         button
-          width: 30px
-          height: 30px
+          width: 26px
+          height: 26px
           padding: 0
           position: absolute
-          top: 0
+          bottom: 2px
           right: 0
           margin: 0
           background-color: transparent
@@ -362,28 +400,31 @@ address
           background-size: 100%
           background-repeat: no-repeat
           cursor: pointer
-      strong
-        color: #FB8B00
+      strong, a
         font:
           size: rem-calc(12)
-          weight: 400
         line-height: rem-calc(14.4)
         display: inline-block
         float: left
-      ul
-        list-style: none
-        margin-left: 0
-        li
-          display: inline-block
-          float: left
-          a
-            color: #FFF
-            font:
-              size: rem-calc(12)
-              weight: 300
-            line-height: rem-calc(14.4)
+      strong
+        color: #FB8B00
+        font:
+          weight: 400
+      a
+        color: #FFF
+        font:
+          weight: 300
+        margin-left: 12px
+
     .af-body
       background-color: #fff
+      label
+        color: #E55000
+        display: inline-block
+        width: 90px
+      select
+        width: calc(100% - 90px)
+        border-bottom: 1px solid #BCBCBC !important
       button
         background-color: #E55000
 
@@ -492,18 +533,123 @@ address
 .apartment-complexes
   .ac-one
     height: 445px
-    padding: 1px
+    margin: 1px
+    position: relative
     .image
       height: 100%
+    .ac-information
+      min-height: 70px
+      background-color: rgba(0, 0, 0, .7)
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      padding-bottom: 8px
+      h3, p
+        color: #fff
+      h3
+        font:
+          size: rem-calc(24)
+          weight: 500
+        line-height: rem-calc(28.8)
+      p
+        font:
+          size: rem-calc(14)
+          weight: 400
+        line-height: rem-calc(21)
+      .rating-ico-wrap
+        float: right
+      .aci-header
+        padding-top: 8px
+        padding-bottom: 8px
+        path
+          fill: #FFFF00
+        p, a
+          display: inline-block
+          margin-bottom: 0
+        p
+          padding-left: 10px
+        a.se-region
+          color: #FFB64C
+          background-color: #E65100
+          font:
+            size: rem-calc(12)
+          padding: 5px 10px
+      .aci-body
+        overflow: hidden
+        max-height: 0
+        +transition(max-height, .5s, ease)
+    &:hover
+      .aci-body
+        max-height: 200px
+.se-read-more
+  a
+    color: #FFA625
+    text-transform: uppercase
+    font:
+      size: rem-calc(14)
+      weight: 500
+    padding: 12px 28px
+    display: inline-block
+    position: relative
+.se-external-link
+  a
+    color: #AFBDC4
+    text-transform: uppercase
+    font:
+      size: rem-calc(14)
+      weight: 500
+    padding: 12px 28px
+    display: inline-block
+    position: relative
+    svg
+      width: 26px
+      height: 26px
+      position: relative
+      top: 6px
+    path
+      fill: #AFBDC4
+
 .calculators-wrap
   .calculator-one
     height: 300px
+    .ink
+      background: hsl(21.13, 100%, 90.2%)
     &.co-credit
       background-color: #36464E
       margin-right: 1px
     &.co-insurance
       background-color: #E55000
       margin-left: 1px
+    h3, p
+      color: #fff
+    h3
+      font:
+        size: rem-calc(24)
+        weight: 500
+      line-height: rem-calc(24)
+      margin-top: 50px
+    p
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: rem-calc(29)
+
+.se-link-button
+  background-color: #fff
+  overflow: hidden
+  border-radius: 4px
+  a
+    color: #E55000
+    font:
+      size: rem-calc(14)
+      weight: 500
+    text-transform: uppercase
+    padding: 12px 28px
+    display: inline-block
+    position: relative
+
+
 form
   .input
     label

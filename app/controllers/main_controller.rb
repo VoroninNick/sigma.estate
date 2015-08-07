@@ -6,4 +6,17 @@ class MainController < ApplicationController
   def apartment
 
   end
+  def about
+
+  end
+  def calculators
+
+  end
+  def contacts
+
+  end
+
+  def comparison
+
+  end
 end

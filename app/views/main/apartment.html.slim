@@ -68,23 +68,23 @@
       .large-8.medium-8.small-12.columns
         .ac-one
           .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-
+          =render partial: "partials/complex_info"
       .large-4.medium-4.small-12.columns
         .ac-one
           .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-
+          =render partial: "partials/complex_info"
       .large-4.medium-4.small-12.columns
         .ac-one
           .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
-
+          =render partial: "partials/complex_info"
       .large-4.medium-4.small-12.columns
         .ac-one
           .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
-
+          =render partial: "partials/complex_info"
       .large-4.medium-4.small-12.columns.end
         .ac-one
           .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
-
+          =render partial: "partials/complex_info"
   .calculators-wrap
     .row.collapse.full-width
       .small-12.medium-6.columns
@@ -95,7 +95,8 @@
             .small-8.columns
               h3 Бажаєте порахувати вартість кредиту?
               p Скористайтесь безплатним та зручним калькулятором на нашому сайті.
-              a.se-link-button Порахувати
+              .se-link-button.material-component.ripple.se-box-shadow
+                a Порахувати
       .small-12.medium-6.columns
         .calculator-one.co-insurance
           .row
@@ -104,7 +105,10 @@
             .small-8.columns
               h3 Можливо, Вас цікавить вартість страхівки?
               p Скористайтесь калькулятором вартості страхівки.
-              a.se-link-button Порахувати
+              .se-link-button.material-component.ripple.se-box-shadow
+                a Порахувати
+
+
 
   .feedback-wrap
     .row

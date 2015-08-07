@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get 'apartment' => 'main#apartment'
+
+  get 'about' => 'main#about'
+  get 'calculators' => 'main#calculators'
+  get 'contacts' => 'main#contacts'
+
+  get 'comparison' => 'main#comparison'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

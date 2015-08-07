@@ -1,4 +1,4 @@
-.apartment-form-wrap
+.apartment-form-wrap.se-box-shadow
   form
     .af-header
       .row
@@ -13,13 +13,9 @@
         .columns
           .columns
             strong Наприклад:
-            ul
-              li
-                a Квартира у Львові
-              li
-                a Квартира у Києві
-              li
-                a ЖК «Сігма Апартментс»
+            a Квартира у Львові
+            a Квартира у Києві
+            a ЖК «Сігма Апартментс»
 
     .af-body
       .row
@@ -29,20 +25,20 @@
             - i = 0
             label
               |К-сть кімнат
-              select
-                - count.times
-                  - i = i+1
-                  option value="#{i}" =i
+            select
+              - count.times
+                - i = i+1
+                option value="#{i}" =i
 
           .columns
             - count= 14
             - i = 0
             label
               |Поверх
-              select
-                - count.times
-                  - i = i+1
-                  option value="#{i}" =i
+            select
+              - count.times
+                - i = i+1
+                option value="#{i}" =i
 
 
 
@@ -50,19 +46,19 @@
           .columns
             label
               |Місто
-              select
-                option value="Львів" Львів
-                option value="Київ" Київ
-                option value="Одеса" Одеса
-                option value="Ялта" Ялта
+            select
+              option value="Львів" Львів
+              option value="Київ" Київ
+              option value="Одеса" Одеса
+              option value="Ялта" Ялта
           .columns
             label
               |Район
-              select
-                option value="Шевченківський" Шевченківський
-                option value="Залізничний" Залізничний
-                option value="Личаківський" Личаківський
-                option value="Галицький" Галицький
+            select
+              option value="Шевченківський" Шевченківський
+              option value="Залізничний" Залізничний
+              option value="Личаківський" Личаківський
+              option value="Галицький" Галицький
           .columns
             button.right type="submit" Знайти
 

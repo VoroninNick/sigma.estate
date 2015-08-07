@@ -1,33 +1,33 @@
 .navigation-wrap
   .nav-logo-wrap.nav-side
-    =link_to "Sigma Estate", root_path
+    =link_to "Sigma Estate", apartment_path
 
   .nav-wrap
     nav.nav-catalogs
-      li class=cp(apartment_path)
+      li.material-component.ripple class=cp(apartment_path)
         a href=apartment_path
           =embedded_svg "ic_photo_size_select_small_24px.svg"
           |Квартири
-      li.disable-link
+      li.material-component.ripple.disable-link
         a
           =embedded_svg "ic_home_24px.svg"
           |Будинки
-      li.disable-link
+      li.material-component.ripple.disable-link
         a
           =embedded_svg "ic_location_city_24px.svg"
           |Ком. нерухомість
-      li
+      li.material-component.ripple
         a
           =embedded_svg "ic_domain_24px.svg"
           |Житл. Комплекси
       .clearfix
     nav.nav-pages
-      li
-        a Про компанію
-      li
-        a Калькулятори
-      li
-        a Контакти
+      li.material-component.ripple class=cp(about_path)
+        = link_to "Про компанію", about_path
+      li.material-component.ripple class=cp(calculators_path)
+        = link_to "Калькулятори", calculators_path
+      li.material-component.ripple class=cp(contacts_path)
+        = link_to "Контакти", contacts_path
       .clearfix
     .clearfix
   .nav-popup-action-wrap.nav-side
@@ -36,7 +36,7 @@
         a
           =embedded_svg "ic_phone_24px.svg"
       li
-        a
+        a href=comparison_path
           =embedded_svg "ic_done_all_24px.svg"
       li
         a
