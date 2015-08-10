@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
   width: 100%
   max-width: 100%
 body
+  background-color: #E1E1E1
   &.stub-body
     background-color: #36464E
     .stub-page
@@ -113,7 +114,7 @@ body
 
 header
   //overflow: hidden
-  height: 165px
+  height: 60px
   .navigation-wrap
     background-color: #fff
     position: relative
@@ -199,76 +200,76 @@ header
 
 
 
-  .h-filter-wrap
-    height: 105px
-    background-color: #36464E
-    .h-filter-list
-      height: 70px
-      position: relative
-      overflow: hidden
-      a
-        color: #FB8B00
+.h-filter-wrap
+  height: 105px
+  background-color: #36464E
+  .h-filter-list
+    height: 70px
+    position: relative
+    overflow: hidden
+    a
+      color: #FB8B00
+      font:
+        weight: 500
+        size: rem-calc(40)
+      line-height: 4.9rem
+      display: inline-block
+      span
+        font-weight: 300
+      sup
         font:
-          weight: 500
-          size: rem-calc(40)
-        line-height: 4.9rem
-        display: inline-block
-        span
-          font-weight: 300
-        sup
-          font:
-            size: rem-calc(12)
-            weight: 400
-          line-height: rem-calc(14.4)
-          position: relative
-          top: -7px
-          margin-left: 10px
-        &:hover
-          color: #fff
-      .a-nav-search-button
-        position: absolute
-        top: 0
-        right: 20px
-        a
-          svg
-            width: 34px
-            height: 100%
-            position: relative
-            top: 3px
-            right: -6px
-            path
-              fill: #778F9B
-    .h-sub-filter-list
-      height: 35px
-      background-color: rgba(0, 0, 0, .1)
-      .h-sf-cities
+          size: rem-calc(12)
+          weight: 400
+        line-height: rem-calc(14.4)
         position: relative
-        strong, a
-          color: #fff
-          font:
-            size: rem-calc(12)
-            weight: 400
-        strong
-          line-height: rem-calc(35)
-          display: inline-block
-        ul
-          display: inline-block
-          margin-left: 0
-          position: absolute
-          width: 120px
-          list-style: none
-          z-index: 111
-          margin-top: 8px
-          margin-left: 10px
-          height: 20px
-          overflow: hidden
-          li
-            a
-              display: block
-          &:hover
-            height: auto
-    .hsf
-      float: left
+        top: -7px
+        margin-left: 10px
+      &:hover
+        color: #fff
+    .a-nav-search-button
+      position: absolute
+      top: 0
+      right: 20px
+      a
+        svg
+          width: 34px
+          height: 100%
+          position: relative
+          top: 3px
+          right: -6px
+          path
+            fill: #778F9B
+  .h-sub-filter-list
+    height: 35px
+    background-color: rgba(0, 0, 0, .1)
+    .h-sf-cities
+      position: relative
+      strong, a
+        color: #fff
+        font:
+          size: rem-calc(12)
+          weight: 400
+      strong
+        line-height: rem-calc(35)
+        display: inline-block
+      ul
+        display: inline-block
+        margin-left: 0
+        position: absolute
+        width: 120px
+        list-style: none
+        z-index: 111
+        margin-top: 8px
+        margin-left: 10px
+        height: 20px
+        overflow: hidden
+        li
+          a
+            display: block
+        &:hover
+          height: auto
+  .hsf
+    float: left
 
 footer
   background-color: #36464E
@@ -389,7 +390,9 @@ h3.a-title
   path
     fill: #36464E
 .feedback-wrap
+  padding-top: 45px
   padding-bottom: 75px
+  background-color: #fff
   h3.a-title
     svg
       width: 24px
@@ -425,6 +428,10 @@ h3.a-title
     border-radius: 4px
     margin-top: 25px
     padding-top: 20px
+
+
+form
+  &.default-animation-form
     .animate-input
       padding-left: 58px
       margin-bottom: 16px
@@ -458,7 +465,6 @@ h3.a-title
         text-transform: uppercase
         margin: 0
         padding: 11px 35px
-
 
 .apartment-page-wrap
   .main-banner-wrap
@@ -774,7 +780,6 @@ h3.a-title
       fill: #AFBDC4
 
 .calculators-wrap
-  padding-bottom: 45px
   .calculator-one
     height: 300px
     .a-calculator-avatar

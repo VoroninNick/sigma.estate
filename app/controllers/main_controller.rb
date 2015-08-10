@@ -1,10 +1,12 @@
 class MainController < ApplicationController
   layout "stub", only: [:index]
+
+  add_breadcrumb "Sigma Estate", :root_path
   def index
   end
 
   def apartment
-
+    add_breadcrumb "Apartment", apartment_path
   end
   def about
 
@@ -13,7 +15,7 @@ class MainController < ApplicationController
 
   end
   def contacts
-
+    add_breadcrumb "Контакти", contacts_path
   end
 
   def comparison
