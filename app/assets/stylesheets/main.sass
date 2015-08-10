@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "mixins"
 
-h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea
+h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body
   font-family: 'Roboto', sans-serif
 .image
   max-width: 100%
@@ -327,6 +327,7 @@ address
         fill: #AFBDC4
 
 .feedback-wrap
+  padding-bottom: 75px
   address
     p, a
       color: #4C4C4C
@@ -336,6 +337,39 @@ address
           fill: #4C4C4C
   form
     background-color: #36464E
+    padding-bottom: 35px
+    overflow: hidden
+    border-radius: 4px
+    .animate-input
+      padding-left: 55px
+      .input-ico
+        width: 32px
+        height: 32px
+        position: absolute
+        bottom: 0
+        left: 0
+        path
+          fill: #778F9B
+      &.is-completed
+        path
+          fill: #fff
+      &.is-active
+        path
+          fill: #FB8B00
+      &.animate-textarea
+        .input-ico
+          bottom: inherit
+          top: 50px
+    .button-wrap
+      background-color: #fff
+      margin-top: 23px
+      button
+        background-color: transparent
+        color: #E55000
+        text-transform: uppercase
+        margin: 0
+        padding: 11px 35px
+
 
 .apartment-page-wrap
   .main-banner-wrap
@@ -418,6 +452,7 @@ address
 
     .af-body
       background-color: #fff
+      padding-bottom: 25px
       label
         color: #E55000
         display: inline-block
@@ -425,17 +460,29 @@ address
       select
         width: calc(100% - 90px)
         border-bottom: 1px solid #BCBCBC !important
-      button
+      .button-wrap
         background-color: #E55000
+      button
+        background-color: transparent
+        background-image: asset-url('ic_search_24px_white.svg')
+        padding: 11px 35px 11px 53px
+        background-repeat: no-repeat
+        background-position-y: 50%
+        background-position-x: 12%
+        margin: 0
+        text-transform: uppercase
+
 
 .best-apartment
   background-color: #E3E3E3
+  padding-top: 25px
   h3
     color: #36464E
     font:
       size: rem-calc(24)
       weight: 400
     line-height: rem-calc(28)
+    margin-bottom: 25px
     path
       fill: #36464E
 
@@ -531,6 +578,9 @@ address
       -o-transform: translateY(0) /* Для Opera */
       transform: translateY(0)
 .apartment-complexes
+  padding-top: 25px
+  h3.a-title
+    margin-bottom: 25px
   .ac-one
     height: 445px
     margin: 1px
@@ -680,14 +730,16 @@ form
         opacity: .5
 
       input
+        height: 30px
+      input, textarea
         position: relative
         width: 100%
-        height: 30px
         border: 0 solid #AFBDC4
         border-width: 0 0 1px 0
         box-shadow: none
         outline: none
         margin: 0
+
 
       &.is-active
         &::after
@@ -697,7 +749,7 @@ form
           color: #FB8B00
           font:
             size: rem-calc(12)
-        input
+        input, textarea
           border-bottom: 2px solid #FB8B00
 
       &.is-completed

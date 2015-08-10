@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $('.animate-input input').focus ->
+  $('.animate-input input, .animate-input textarea').focus ->
     $(this).parent().addClass 'is-active is-completed'
     return
-  $('.animate-input input').focusout ->
+  $('.animate-input input, .animate-input textarea').focusout ->
     if $(this).val() == ''
       $(this).parent().removeClass 'is-completed'
     $(this).parent().removeClass 'is-active'

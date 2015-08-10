@@ -61,7 +61,7 @@
   .apartment-complexes
     .row
       .columns
-        h3
+        h3.a-title
           =embedded_svg "ic_domain_24px.svg"
           |Житлові комплекси
     .row.collapse.full-width
@@ -135,35 +135,39 @@
               |sigmaestate@gmail.com
 
       .small-12.medium-6.columns
-        form
+        form.se-box-shadow
           .columns
             .row
-              .medium-1.columns
-                =embedded_svg "ic_perm_identity_24px.svg"
-              .medium-11.columns
+              .columns
                 .input.animate-input
+                  .input-ico
+                    =embedded_svg "ic_perm_identity_24px.svg"
                   label Ваше ім’я
                   input name="name" type="text"
             .row
-              .medium-1.columns
-                =embedded_svg "ic_phone_24px.svg"
-              .medium-11.columns
+              .columns
                 .input.animate-input
+                  .input-ico
+                    =embedded_svg "ic_phone_24px.svg"
                   label Контактний телефон
                   input name="phone" type="text"
             .row
-              .medium-1.columns
-                =embedded_svg "ic_mail_24px.svg"
-              .medium-11.columns
+              .columns
                 .input.animate-input
+                  .input-ico
+                    =embedded_svg "ic_mail_24px.svg"
                   label Електронна скринька
                   input name="email" type="email"
             .row
-              .medium-1.columns
-                =embedded_svg "ic_insert_comment_24px.svg"
-              .medium-11.columns
-                .input.animate-input
+              .columns
+                .input.animate-input.animate-textarea
+                  .input-ico
+                    =embedded_svg "ic_insert_comment_24px.svg"
                   label Текст повідомлення...
-                  textarea name="message" row="7"
+                  textarea name="message" rows="6"
+            .row
+              .columns
+                .button-wrap.material-component.ripple.right.se-box-shadow
+                  button.right type="submit" Надіслати
 
           .clearfix

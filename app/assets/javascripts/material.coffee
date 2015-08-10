@@ -35,7 +35,7 @@ $(document).ready ->
   d = undefined
   x = undefined
   y = undefined
-  $('body').on 'click', '.ripple a', (e) ->
+  $('body').on 'click', '.ripple a, .ripple button', (e) ->
   #  parent = $(@).parent()
     parent = $(@).closest('.material-component')
     #create .ink element if it doesn't exist
