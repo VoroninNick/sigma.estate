@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "mixins"
 
-h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body
+h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
   font-family: 'Roboto', sans-serif
 .image
   max-width: 100%
@@ -301,6 +301,22 @@ footer
           fill: #FB8B00
   form
     margin-bottom: 25px
+    .input.animate-input
+      button
+        width: 26px
+        height: 26px
+        padding: 0
+        position: absolute
+        bottom: 2px
+        right: 0
+        margin: 0
+        background-color: transparent
+        cursor: pointer
+        path
+          fill: #778F9B
+      &.is-active
+        path
+          fill: #FB8B00
   h4
     color: #FFF
     font:
@@ -310,7 +326,7 @@ footer
   p
     color: #AFBDC4
     font:
-      size: rem-calc(14)
+      size: rem-calc(12)
       weight: 400
     line-height: rem-calc(21)
   .footer-down
@@ -324,6 +340,14 @@ footer
         width: 100%
         +my_vertical_align()
           position: absolute
+    .nav-pages
+      li
+        padding-left: 12px
+        a
+          color: #AFBDC4
+          font:
+            size: rem-calc(12)
+            weight: 400
 
 
 ul.se-socials
@@ -400,8 +424,10 @@ h3.a-title
     overflow: hidden
     border-radius: 4px
     margin-top: 25px
+    padding-top: 20px
     .animate-input
       padding-left: 58px
+      margin-bottom: 16px
       .input-ico
         width: 32px
         height: 32px
@@ -816,13 +842,13 @@ form
       position: relative
       label
         display: block
-        transform: translateY(35px)
+        transform: translateY(25px)
         transition: all 0.5s
 
         color: #AFBDC4
         font:
           size: rem-calc(14)
-        line-height: rem-calc(35)
+        line-height: rem-calc(20)
         opacity: .5
 
       input
@@ -851,4 +877,4 @@ form
       &.is-completed
         label
           font-size: rem-calc(12)
-          transform: translateY(8px)
+          transform: translateY(0px)
