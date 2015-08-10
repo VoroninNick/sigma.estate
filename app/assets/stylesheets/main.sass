@@ -113,7 +113,7 @@ body
 
 header
   //overflow: hidden
-  height: 200px
+  height: 165px
   .navigation-wrap
     background-color: #fff
     position: relative
@@ -125,10 +125,11 @@ header
       nav
         li
           a
+            display: block
+            height: 100%
             svg
               width: 32px
               height: 100%
-              margin-top: 10px
               path
                 fill: #36464E
     .nav-logo-wrap
@@ -163,6 +164,7 @@ header
             background: hsl(21.13, 100%, 90.2%)
           a
             position: relative
+            text-transform: uppercase
             svg
               position: relative
               top: 6px
@@ -198,18 +200,21 @@ header
 
 
   .h-filter-wrap
-    height: 140px
+    height: 105px
     background-color: #36464E
     .h-filter-list
-      height: 105px
+      height: 70px
       position: relative
+      overflow: hidden
       a
         color: #FB8B00
         font:
           weight: 500
           size: rem-calc(40)
-        line-height: rem-calc(105)
+        line-height: 4.9rem
         display: inline-block
+        span
+          font-weight: 300
         sup
           font:
             size: rem-calc(12)
@@ -229,7 +234,8 @@ header
             width: 34px
             height: 100%
             position: relative
-            top: 10px
+            top: 3px
+            right: -6px
             path
               fill: #778F9B
     .h-sub-filter-list
@@ -269,6 +275,7 @@ footer
   min-height: 450px
   .footer-nav
     background-color: rgba(0, 0, 0, .1)
+    margin-bottom: 40px
     a
       color: #536D79
       font:
@@ -306,7 +313,26 @@ footer
       size: rem-calc(14)
       weight: 400
     line-height: rem-calc(21)
+  .footer-down
+    border-top: 1px solid rgba(0, 0, 0, .1)
+    p
+      margin-bottom: 0
+    .fd-one-wrap
+      position: relative
+      height: 60px
+      .fd-one-inner
+        width: 100%
+        +my_vertical_align()
+          position: absolute
 
+
+ul.se-socials
+  list-style: none
+  margin-left: 0
+  margin-top: 15px
+  li
+    display: inline-block
+    margin-right: 15px
 
 address
   p, a
@@ -352,7 +378,7 @@ h3.a-title
       size: rem-calc(36)
       weight: 500
     line-height: rem-calc(36)
-    margin-top: 20px
+    margin-top: 30px
     margin-bottom: 20px
   p
     color: #36464E
@@ -375,13 +401,15 @@ h3.a-title
     border-radius: 4px
     margin-top: 25px
     .animate-input
-      padding-left: 55px
+      padding-left: 58px
       .input-ico
         width: 32px
         height: 32px
         position: absolute
-        bottom: 0
+        bottom: -8px
         left: 0
+        svg
+          width: 100%
         path
           fill: #778F9B
       &.is-completed
@@ -393,7 +421,8 @@ h3.a-title
       &.animate-textarea
         .input-ico
           bottom: inherit
-          top: 50px
+          top: 41px
+          left: 0
     .button-wrap
       background-color: #fff
       margin-top: 23px
@@ -449,6 +478,7 @@ h3.a-title
           height: 26px
           box-shadow: none!important
           outline: none!important
+          margin-top: 5px
           +placeholder(#FB8B00, 18px, normal)
             font:
               weight: 500
@@ -465,7 +495,7 @@ h3.a-title
           margin: 0
           background-color: transparent
           background-image: asset-url("ic_search_24px.svg")
-          background-size: 100%
+          background-size: 90%
           background-repeat: no-repeat
           cursor: pointer
       strong, a
@@ -531,7 +561,7 @@ h3.a-title
   border-radius: 5px
 
   .a-oi-avatar
-    margin: 9px 0
+    margin: 13px 0
     margin-bottom: -40px
     .image
       padding-bottom: 66%
@@ -545,6 +575,7 @@ h3.a-title
   .a-oi-information-wrap
     background-color: #fff
     .a-oi-information
+      padding-top: 10px
       b
         color: #36464E
         font:
@@ -557,8 +588,10 @@ h3.a-title
           size: rem-calc(14)
           weight: 400
         line-height: rem-calc(16.8)
+        margin-bottom: 1rem
       hr
         border-color: #AFBDC4
+        margin-top: 0
       .a-oi-info-ico
         svg
           margin: 0 auto
@@ -575,6 +608,7 @@ h3.a-title
         white-space: nowrap
         span
           color: #AFBDC4
+          padding-left: 2px
       .a-oi-info-value
         color: #E55000
         font:
@@ -602,8 +636,16 @@ h3.a-title
           height: 100%
           padding: 8px 0px
           width: 100%
+          position: relative
+          top: -1px
           path
             fill: #fff
+      &.comparison-ico
+        svg
+          padding: 4px 0
+      &.call-ico
+        svg
+          padding: 6px 0
   &:hover
     .a-oi-information-wrap, ul.a-oi-actions
       -moz-transform: translateY(0) /* Для Firefox */
@@ -628,7 +670,7 @@ h3.a-title
       left: 0
       right: 0
       bottom: 0
-      padding-bottom: 8px
+      //padding-bottom: 8px
       h3, p
         color: #fff
       h3
@@ -636,6 +678,7 @@ h3.a-title
           size: rem-calc(24)
           weight: 500
         line-height: rem-calc(28.8)
+        margin-bottom: 2px
       p
         font:
           size: rem-calc(14)
@@ -643,9 +686,13 @@ h3.a-title
         line-height: rem-calc(21)
       .rating-ico-wrap
         float: right
+        margin-top: 6px
+        svg
+          width: 20px
+          height: 20px
       .aci-header
         padding-top: 8px
-        padding-bottom: 8px
+        padding-bottom: 16px
         path
           fill: #FFFF00
         p, a
@@ -654,18 +701,24 @@ h3.a-title
         p
           padding-left: 10px
         a.se-region
-          color: #FFB64C
-          background-color: #E65100
+          color: #AFBDC4
+          background-color: #445963
           font:
             size: rem-calc(12)
-          padding: 5px 10px
+          padding: 1px 10px
       .aci-body
         overflow: hidden
         max-height: 0
         +transition(max-height, .5s, ease)
+        hr
+          margin-top: 0
     &:hover
       .aci-body
         max-height: 200px
+      .aci-header
+        a.se-region
+          color: #FFB64C
+          background-color: #E65100
 .se-read-more
   a
     color: #FFA625
@@ -798,4 +851,4 @@ form
       &.is-completed
         label
           font-size: rem-calc(12)
-          transform: translateY(0)
+          transform: translateY(8px)

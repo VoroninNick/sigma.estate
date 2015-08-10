@@ -50,10 +50,10 @@
               li
                 a
                   =embedded_svg "ic_favorite_48px.svg"
-              li
+              li.comparison-ico
                 a
                   =embedded_svg "ic_done_all_24px.svg"
-              li
+              li.call-ico
                 a
                   =embedded_svg "ic_phone_24px.svg"
 
@@ -139,37 +139,38 @@
       .small-12.medium-6.columns
         form.se-box-shadow
           .columns
-            .row
-              .columns
-                .input.animate-input
-                  .input-ico
-                    =embedded_svg "ic_perm_identity_24px.svg"
-                  label Ваше ім’я
-                  input name="name" type="text"
-            .row
-              .columns
-                .input.animate-input
-                  .input-ico
-                    =embedded_svg "ic_phone_24px.svg"
-                  label Контактний телефон
-                  input name="phone" type="text"
-            .row
-              .columns
-                .input.animate-input
-                  .input-ico
-                    =embedded_svg "ic_mail_24px.svg"
-                  label Електронна скринька
-                  input name="email" type="email"
-            .row
-              .columns
-                .input.animate-input.animate-textarea
-                  .input-ico
-                    =embedded_svg "ic_insert_comment_24px.svg"
-                  label Текст повідомлення...
-                  textarea name="message" rows="6"
-            .row
-              .columns
-                .button-wrap.material-component.ripple.right.se-box-shadow
-                  button.right type="submit" Надіслати
-
+            .columns
+              .row
+                .columns
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_person_48px.svg"
+                    label Ваше ім’я
+                    input name="name" type="text"
+              .row
+                .columns
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_phone_24px.svg"
+                    label Контактний телефон
+                    input name="phone" type="text"
+              .row
+                .columns
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_mail_24px.svg"
+                    label Електронна скринька
+                    input name="email" type="email"
+              .row
+                .columns
+                  .input.animate-input.animate-textarea
+                    .input-ico
+                      =embedded_svg "ic_insert_comment_24px.svg"
+                    label Текст повідомлення...
+                    textarea name="message" rows="6"
+              .row
+                .columns
+                  .button-wrap.material-component.ripple.right.se-box-shadow
+                    button.right type="submit" Надіслати
+            .clearfix
           .clearfix
