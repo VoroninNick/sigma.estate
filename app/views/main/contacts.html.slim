@@ -1,12 +1,60 @@
-.page-wrap
 .row
   .columns
-    = render_breadcrumbs
+    .se-breadcrumbs-wrap
+      = render_breadcrumbs
 .row
   .medium-5.columns
+    .contacts-data-wrap.se-box-shadow
+      .columns
+        h4 Sigma Estate
+      .row
+        .columns
+          .address-block-wrap
+            .ab-ico
+              =embedded_svg "ic_room_48px.svg"
+            .address-block-inner
+              p м. Львів, Україна
+              b Головний офіс
+              p вул. Могильницького, 16
+              b Офіс відділу продажу
+              p вул. Чорновола (навпроти Арсену)
+          .address-block-wrap
+            .ab-ico
+              =embedded_svg "ic_phone_24px.svg"
+            .address-block-inner
+              a +38 (032) 253 55 05
+              a +38 (068) 228 88 88
+              a +38 (093) 839 99 99
+          .address-block-wrap
+            .ab-ico
+              =embedded_svg "ic_mail_24px.svg"
+            .address-block-inner
+              a sales@pr-group.in
+              a office@pr-group.in
+          .address-block-wrap
+            .ab-ico
+              =embedded_svg "ic_link_48px.svg"
+            .address-block-inner
+              a  www.sigma.estate
+          .address-block-wrap
+            ul.se-socials
+              li
+                a
+                  =image_tag "SE-icons-social-facebook.png"
+              li
+                a
+                  =image_tag "SE-icons-social-twitter.png"
+              li
+                a
+                  =image_tag "SE-icons-social-gpluse.png"
+              li
+                a
+                  =image_tag "SE-icons-social-skype.png"
+
+      .clearfix
   .medium-7.columns
     #g-map
-    .subscribe-wrap
+    .subscribe-wrap.se-box-shadow
       .columns
         h4 Будьте на зв’язку!
         p Підпишіться на інтернет розсилку і будьте вкурсі самих свіжих пропозицій.
