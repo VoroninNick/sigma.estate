@@ -52,3 +52,5 @@ gem "breadcrumbs_on_rails"
 
 gem 'mailchimp-api', require: 'mailchimp'
 
+gem 'devise'
+

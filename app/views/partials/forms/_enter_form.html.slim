@@ -1,0 +1,49 @@
+#EnterFormModal.reveal-modal.small data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog"
+  .modal-header.text-center
+    |Увійти
+  .modal-body
+    .row.text-center
+      .columns
+        ul.se-socials
+          li
+            a
+              =image_tag "SE-icons-social-facebook.png"
+          li
+            a
+              =image_tag "SE-icons-social-twitter.png"
+          li
+            a
+              =image_tag "SE-icons-social-gpluse.png"
+          li
+            a
+              =image_tag "SE-icons-social-skype.png"
+    form.default-animation-form
+      .columns
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_mail_24px.svg"
+              label Електронна скринька
+              input name="email" type="email"
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_lock_black_24px.svg"
+              label Пароль
+              input name="password" type="password"
+        .row
+          .columns
+            .se-read-more.material-component.ripple.right
+              a Забули пароль?
+        .row
+          .columns
+            .button-wrap.material-component.ripple.right.se-box-shadow.b-turn-off
+              button.right type="submit" Увійти
+            .se-read-more.material-component.ripple.modal-registration-link.right
+              =link_to "Зареєструватись", new_user_registration_path
+      .clearfix
+
+  /a.close-reveal-modal aria-label="Close"
+  /  |&#215;

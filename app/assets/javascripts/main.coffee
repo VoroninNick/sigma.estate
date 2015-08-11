@@ -16,3 +16,5 @@ $(document).ready ->
 # turn off all animated buttons
   $('.b-turn-off.material-component.ripple button').click (e)->
     e.preventDefault()
+
+#  $('#EnterFormModal').foundation('reveal', 'open')
