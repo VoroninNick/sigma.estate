@@ -19,6 +19,9 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
 .row.full-width
   width: 100%
   max-width: 100%
+.input.animate-input
+  button
+    outline: none!important
 body
   background-color: #E1E1E1
   &.stub-body
@@ -29,6 +32,41 @@ body
       &:after
         content: ""
         display: block
+      #response
+        color: #FB8B00
+        font:
+          size: rem-calc(12)
+          family: 'Roboto', sans-serif
+      form#mcsubscribe
+        padding-bottom: 50px
+        .input.animate-input
+          input
+            border: 0 solid #778F9B
+            border-width: 0 0 1px 0
+            color: #fff
+          button
+            position: absolute
+            bottom: 0
+            right: 0
+            background-color: transparent
+            padding: 0
+            margin: 0
+            height: 30px
+            width: 40px
+            path
+              fill: #778F9B
+            &:hover
+              path
+                fill: #FB8B00
+          &.is-completed
+            input
+              border: 0 solid #fff
+              border-width: 0 0 1px 0
+          &.is-active
+            input
+              border: 0 solid #FB8B00
+              border-width: 0 0 1px 0
+
     .stub-footer, .stub-page:after
       height: 65px
     .stub-header

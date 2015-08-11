@@ -31,5 +31,21 @@
             .image style="background: url('#{asset_path("stub-o-3.jpg")}')no-repeat center center;"
             .ob-label
               b ЖК Форест
+.row.text-center
+  .columns
+    h5 Хочете знати коли ми відкриємось?
+.row
+  .columns
+    #response
+.row
+  .columns
+= form_tag('/mcsubscribe/subscribe', method: "post", id: "mcsubscribe", class: " ", remote: "true") do
+  .row
+    .columns
+      .input.animate-input
+        label Введіть електронну скриньку, на яку прийде сповіщення про запуск сайту
+        = email_field(:email, :address, {id: "email", placeholder: ""})
+        button.right type="submit"
+          =embedded_svg "ic_send_black_24px.svg"
 
 
