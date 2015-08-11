@@ -35,7 +35,7 @@
             .ab-ico
               =embedded_svg "ic_link_48px.svg"
             .address-block-inner
-              a  www.sigma.estate
+              a.orange-link  www.sigma.estate
           .address-block-wrap
             .columns
               ul.se-socials
@@ -59,56 +59,78 @@
       .columns
         h4 Будьте на зв’язку!
         p Підпишіться на інтернет розсилку і будьте вкурсі самих свіжих пропозицій.
-        form.default-animation-form
+
+        /form.default-animation-form
+        /  .row
+        /    .columns
+        /      .input.animate-input
+        /        .input-ico
+        /          =embedded_svg "ic_mail_24px.svg"
+        /        label Електронна скринька
+        /        input name="email" type="email"
+        /  .row
+        /    .columns
+        /      .button-wrap.material-component.ripple.right
+        /        button.right type="submit" Надіслати
+        .row
+          .columns
+            #response
+        .row
+          .columns
+        = form_tag('/mcsubscribe/subscribe', method: "post", id: "mcsubscribe", class: "default-animation-form", remote: "true") do
           .row
             .columns
               .input.animate-input
                 .input-ico
                   =embedded_svg "ic_mail_24px.svg"
                 label Електронна скринька
-                input name="email" type="email"
+                = email_field(:email, :address, {id: "email"})
+
           .row
             .columns
               .button-wrap.material-component.ripple.right
+                /= submit_tag("Надіслати")
                 button.right type="submit" Надіслати
       .clearfix
-.row
-  .medium-6.columns.end
-    h4 Виникли питання?
-    p Зв’яжіться з нами, або напишіть нам, і ми максимально швидко дамо відповіді на всі ваші питання.
-.row
-  form.default-animation-form
-    .medium-6.columns
-      .row
-        .columns
-          .input.animate-input
-            .input-ico
-              =embedded_svg "ic_person_48px.svg"
-            label Ваше ім’я
-            input name="name" type="text"
-      .row
-        .columns
-          .input.animate-input
-            .input-ico
-              =embedded_svg "ic_phone_24px.svg"
-            label Контактний телефон
-            input name="phone" type="text"
-      .row
-        .columns
-          .input.animate-input
-            .input-ico
-              =embedded_svg "ic_mail_24px.svg"
-            label Електронна скринька
-            input name="email" type="email"
-    .medium-6.columns
-      .row
-        .columns
-          .input.animate-input.animate-textarea
-            .input-ico
-              =embedded_svg "ic_insert_comment_24px.svg"
-            label Текст повідомлення...
-            textarea name="message" rows="6"
-      .row
-        .columns
-          .button-wrap.material-component.ripple.right.se-box-shadow
-            button.right type="submit" Надіслати
+
+.contacts-feedback-form-wrap
+  .row
+    .medium-6.columns.end
+      h4 Виникли питання?
+      p Зв’яжіться з нами, або напишіть нам, і ми максимально швидко дамо відповіді на всі ваші питання.
+  .row
+    form.default-animation-form
+      .medium-6.columns
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_person_48px.svg"
+              label Ваше ім’я
+              input name="name" type="text"
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_phone_24px.svg"
+              label Контактний телефон
+              input name="phone" type="text"
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_mail_24px.svg"
+              label Електронна скринька
+              input name="email" type="email"
+      .medium-6.columns
+        .row
+          .columns
+            .input.animate-input.animate-textarea
+              .input-ico
+                =embedded_svg "ic_insert_comment_24px.svg"
+              label Текст повідомлення...
+              textarea name="message" rows="6"
+        .row
+          .columns
+            .button-wrap.material-component.ripple.right.se-box-shadow.b-turn-off
+              button.right type="submit" Надіслати

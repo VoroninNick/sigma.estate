@@ -11,3 +11,8 @@ $(document).ready ->
       $(this).parent().removeClass 'is-completed'
     $(this).parent().removeClass 'is-active'
     return
+
+
+# turn off all animated buttons
+  $('.b-turn-off.material-component.ripple button').click (e)->
+    e.preventDefault()

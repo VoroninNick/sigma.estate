@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'contacts' => 'main#contacts'
 
   get 'comparison' => 'main#comparison'
+  post '/mcsubscribe/subscribe' => 'mcsubscribe#subscribe'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -50,3 +50,5 @@ gem 'foundation-rails', '5.5.1.0'
 
 gem "breadcrumbs_on_rails"
 
+gem 'mailchimp-api', require: 'mailchimp'
+
