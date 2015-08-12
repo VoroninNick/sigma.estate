@@ -17,33 +17,65 @@
           li
             a
               =image_tag "SE-icons-social-skype.png"
-    form.default-animation-form
+
+    /form.default-animation-form
+    /  .columns
+    /    .row
+    /      .columns
+    /        .input.animate-input
+    /          .input-ico
+    /            =embedded_svg "ic_mail_24px.svg"
+    /          label Електронна скринька
+    /          input name="email" type="email"
+    /    .row
+    /      .columns
+    /        .input.animate-input
+    /          .input-ico
+    /            =embedded_svg "ic_lock_black_24px.svg"
+    /          label Пароль
+    /          input name="password" type="password"
+    /    .row
+    /      .columns
+    /        .se-read-more.material-component.ripple.right
+    /          a Забули пароль?
+    /    .row
+    /      .columns
+    /        .button-wrap.material-component.ripple.right.se-box-shadow
+    /          button.right type="submit" Увійти
+    /        .se-read-more.material-component.ripple.modal-registration-link.right
+    /          =link_to "Зареєструватись", new_user_registration_path
+    /  .clearfix
+
+    = form_for(User.new, as: :user, url: session_path(:user), html: {class: 'default-animation-form'}) do |f|
       .columns
         .row
           .columns
             .input.animate-input
               .input-ico
                 =embedded_svg "ic_mail_24px.svg"
-              label Електронна скринька
-              input name="email" type="email"
+              = f.label :email
+              = f.email_field :email, autofocus: true
+
+
         .row
           .columns
             .input.animate-input
               .input-ico
                 =embedded_svg "ic_lock_black_24px.svg"
-              label Пароль
-              input name="password" type="password"
+              = f.label :password
+              = f.password_field :password, autocomplete: "off"
         .row
           .columns
             .se-read-more.material-component.ripple.right
               a Забули пароль?
         .row
           .columns
-            .button-wrap.material-component.ripple.right.se-box-shadow.b-turn-off
+            .button-wrap.material-component.ripple.right.se-box-shadow
               button.right type="submit" Увійти
             .se-read-more.material-component.ripple.modal-registration-link.right
               =link_to "Зареєструватись", new_user_registration_path
       .clearfix
 
-  /a.close-reveal-modal aria-label="Close"
-  /  |&#215;
+      /.actions
+      /  = f.submit "Log in"
+

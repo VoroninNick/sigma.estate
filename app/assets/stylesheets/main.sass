@@ -152,41 +152,82 @@ body
 
 .reveal-modal
   padding: 0
-  .modal-header
-    color: #fff
-    font:
-      size: rem-calc(21)
-      weight: 500
-    background-color: #36464E
-    line-height: rem-calc(92)
-  .modal-body
-    background-color: #fff
-    padding-bottom: 35px
-    form
-      a
+.modal-header, .se-form-header
+  color: #fff
+  font:
+    size: rem-calc(21)
+    weight: 500
+  background-color: #36464E
+  line-height: rem-calc(92)
+.modal-body, .se-form-body
+  background-color: #fff
+  padding-bottom: 35px
+  form
+    a
+      color: #36464E
+      font:
+        size: rem-calc(14)
+        weight: 500
+      line-height: rem-calc(16.8)
+      text-transform: uppercase
+    .animate-input
+      input
         color: #36464E
-        font:
-          size: rem-calc(14)
-          weight: 500
-        line-height: rem-calc(16.8)
-        text-transform: uppercase
-      .animate-input
-        input
-          color: #36464E
-        &.is-completed
-          path
-            fill: #36464E
-      .ink
-        background: #ffdfcd
-      .modal-registration-link
-        margin-top: 23px
-        a
-          color: #E55000
-      .button-wrap
-        background-color: #E55000
-        button
-          color: #fff
+      &.is-completed
+        path
+          fill: #36464E
+    .ink
+      background: #ffdfcd
+    .modal-registration-link
+      margin-top: 23px
+      a
+        color: #E55000
+    .button-wrap
+      background-color: #E55000 !important
+      button
+        color: #fff !important
 
+.notification-wrap
+  position: relative
+.notification-container
+  position: absolute
+  top: 72px
+  right: 20px
+  background-color: #fff
+  min-width: 200px
+  min-height: 160px
+  z-index: 11
+  border: 1px solid #BEC3C7
+
+  //display: none
+  cursor: default
+  &:after
+    display: block
+    content: ""
+    position: absolute
+    top: -11px
+    right: 7px
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 0 11px 11px 11px
+    border-color: transparent transparent #edf0f1 transparent
+
+.notification-form
+  .nf-header
+    background-color: #EBEEF0
+    color: #36464E
+    line-height: rem-calc(40)
+  .nf-body
+    color: #36464E
+    font:
+      size: rem-calc(14)
+      weight: 500
+    line-height: rem-calc(16.8)
+    a
+      svg
+        position: relative
+        top: 10px
 
 .se-breadcrumbs-wrap
   min-height: 60px

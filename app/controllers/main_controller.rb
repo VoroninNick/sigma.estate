@@ -21,4 +21,9 @@ class MainController < ApplicationController
   def comparison
 
   end
+
+  def cabinet
+
+  end
+
 end

@@ -1,0 +1,84 @@
+.cabinet-page-wrap
+  h4
+    color: #36464E
+    font:
+      size: rem-calc(21)
+      weight: 500
+    line-height: rem-calc(36)
+  .profile-avatar
+    width: 100%
+    background-color: #CED7DB
+    overflow: hidden
+    border-radius: 50%
+    padding: 15%
+    border: 1px solid #36464E
+    margin-bottom: 14px
+    .image
+      max-width: 100%
+      width: 100%
+      height: 0
+      padding-bottom: 100%
+      overflow: hidden
+      -webkit-background-size: cover !important
+      -moz-background-size: cover !important
+      -o-background-size: cover !important
+      background-size: cover !important
+      margin: 0 auto
+  .cabinet-header-wrap
+    height: 300px
+    background-color: #36464E
+    padding-top: 45px
+    margin-bottom: 45px
+
+    h3
+      color: #fff
+      font:
+        size: rem-calc(21)
+        weight: 500
+      line-height: rem-calc(36)
+    .ch-link-wrap
+      position: relative
+      .ch-link-inner
+        width: 100%
+        a
+          color: #AFBDC4
+          display: block
+          text-align: center
+          padding-top: 5px
+          padding-bottom: 5px
+          margin-top: 11px
+          svg
+            width: 22px
+            height: 22px
+            fill: #AFBDC4
+            position: relative
+            top: 3px
+            margin-right: 10px
+      &.current
+        a
+          color: #FB8B00
+          path
+            fill: #FB8B00
+        &:before
+          display: block
+          content: ''
+          background-color: #FB8B00
+          height: 3px
+          width: 100%
+          position: absolute
+          left: 0
+          right: 0
+          bottom: 0
+
+  .personal-avatar-wrap
+    padding-bottom: 60px
+    label
+      color: #E55000
+      font:
+        size: rem-calc(14)
+        weight: 500
+      line-height: rem-calc(16.8)
+      text-transform: uppercase
+
+  .personal-information-wrap
+    background-color: #fff

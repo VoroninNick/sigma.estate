@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
+
+
+  # devise_for :users, controllers: {
+  #  sessions: 'sessions',
+  #  registration: 'registration'
+  # }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'comparison' => 'main#comparison'
   post '/mcsubscribe/subscribe' => 'mcsubscribe#subscribe'
+
+  get 'cabinet' => 'main#cabinet', as: :cabinet_profile
   # get  'profile/registration' => 'profile#'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

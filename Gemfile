@@ -54,3 +54,10 @@ gem 'mailchimp-api', require: 'mailchimp'
 
 gem 'devise'
 
+gem 'protected_attributes'
+
+gem 'quiet_assets'
+
+gem 'ckeditor'
+gem 'paperclip', '~> 3.5.3'
+gem 'paperclip-compression'

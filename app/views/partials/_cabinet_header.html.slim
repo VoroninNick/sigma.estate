@@ -1,0 +1,24 @@
+.cabinet-header-wrap
+  .row
+    .medium-2.medium-centered.columns
+      .profile-avatar
+        .image style="background: url('#{asset_path("default_avatar.svg")}')no-repeat center center;"
+  .row.text-center
+    .medium-6.medium-centered.columns
+      h3 =current_user.username
+  .row.collapse
+    .small-4.columns.ch-link-wrap class=cp(cabinet_profile_path)
+      .ch-link-inner.material-component.ripple
+        a
+          =embedded_svg "ic_person_48px.svg"
+          |Профайл користувача
+    .small-4.columns.ch-link-wrap
+      .ch-link-inner.material-component.ripple
+        a
+          =embedded_svg "ic_favorite_48px.svg"
+          |Обрана нерухомість
+    .small-4.columns.ch-link-wrap
+      .ch-link-inner.material-component.ripple
+        a
+          =embedded_svg "ic_work_black_24px.svg"
+          |Калькулятори

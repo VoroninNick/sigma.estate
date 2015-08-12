@@ -1,0 +1,25 @@
+.cabinet-page-wrap
+  = render partial: "partials/cabinet_header"
+  .row
+    /=current_user
+    = form_for(current_user, as: :user, url: registration_path(:user)) do |f|
+      /= devise_error_messages!
+      .medium-4.columns.text-center
+        .personal-avatar-wrap
+          h4 Ваша фотографія
+          .row
+            .medium-6.medium-centered.columns
+              .profile-avatar
+                .image style="background: url('#{asset_path("default_avatar.svg")}')no-repeat center center;"
+
+          = f.label :avatar
+            |Змінити фотографію
+            = f.file_field :avatar, class: 'hide'
+          /= f.submit "Update"
+      .medium-8.columns
+        .personal-information-wrap.se-box-shadow
+          .columns
+            h4 Персональні дані
+            /=link_to "edit", edit_user_registration_path
+
+          .clearfix

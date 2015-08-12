@@ -38,9 +38,28 @@
       li
         a href=comparison_path
           =embedded_svg "ic_done_all_24px.svg"
-      li
-        a href="#" data-reveal-id="EnterFormModal"
-          =embedded_svg "ic_perm_identity_24px.svg"
+      - if user_signed_in?
+        li.notification-wrap
+          a.notification-link href="#"
+            =embedded_svg "ic_perm_identity_24px.svg"
+          .notification-container
+            .notification-form
+              .nf-header.text-center
+                =current_user.username
+              .nf-body
+                .row
+                  .columns
+                    = content_tag(:a, href: cabinet_profile_path) do
+                      =embedded_svg "ic_settings_black_24px.svg"
+                      |Особистий кабінет
+                .row
+                  .columns
+                    = link_to(destroy_user_session_path, :method => :delete, class: "") do
+                      =embedded_svg "ic_exit_to_app_black_24px.svg"
+                      |Вийти
+      - else
+        li
+          a href="#" data-reveal-id="EnterFormModal"
+            =embedded_svg "ic_perm_identity_24px.svg"
   .clearfix
-
 
