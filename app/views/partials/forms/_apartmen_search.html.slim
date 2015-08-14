@@ -19,6 +19,48 @@
 
     .af-body
       .row
+        .medium-6.columns
+          .columns
+            .se-range-input.price-range-slider
+              - min = 7600
+              - max = 25000
+              .rs-input
+                input.rs-min type="text" placeholder=min
+              .rs-slider
+                .row
+                  .column
+                    label
+                      |Ціна
+                      span
+                        |(грн/м2)
+                .row
+                  .columns
+                    .range-slide data-min-val=min data-max-val=max
+              .rs-input
+                input.rs-max type="text" placeholder=max
+
+        .medium-6.columns
+          .columns
+            .se-range-input.square-range-slider
+              - min = 32
+              - max =160
+              .rs-input
+                input.rs-min type="text" placeholder=min
+              .rs-slider
+                .row
+                  .column
+                    label
+                      |Площа
+                      span
+                        |(м2)
+                .row
+                  .columns
+                    .range-slide data-min-val=min data-max-val=max
+              .rs-input
+                input.rs-max type="text" placeholder=max
+
+
+      .row
         .large-6.medium-6.columns
           .columns
             - count= 5

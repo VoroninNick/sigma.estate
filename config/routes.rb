@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get 'apartment' => 'main#apartment'
+  get 'apartment/catalog' => 'main#apartment_catalog'
 
   get 'about' => 'main#about'
   get 'calculators' => 'main#calculators'

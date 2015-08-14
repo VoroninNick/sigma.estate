@@ -1,0 +1,123 @@
+=render "application/catalog_header"
+.catalog-page
+  .row
+    .columns
+  .row
+    .medium-6.columns
+      p За запитом «квартира у Львові» знайдено 9 квартир
+    .medium-6.columns
+
+  .row
+    .medium-3.columns
+      .selected-filters-wrap.se-box-shadow
+        .columns
+          h5 Вибрані фільтри
+        .columns
+          .row.one-sel-filter
+            .small-9.columns
+              p Кількість кімнат
+            .small-3.columns
+              a
+                =embedded_svg "ic_clear_black_24px.svg"
+          .row.one-sel-filter
+            .small-9.columns
+              p Поверх
+            .small-3.columns
+              a
+                =embedded_svg "ic_clear_black_24px.svg"
+          .row.clear-filters
+            .small-3.columns
+              =embedded_svg "ic_cached_black_24px.svg"
+            .small-9.columns.no-pad-left
+              a Очистити фільтри
+        .clearfix
+
+      .filters-wrap.se-box-shadow
+        .se-range-input.price-range-slider.filter-block
+          .columns
+            - min = 7600
+            - max = 25000
+            .row
+              .columns
+                h5
+                  |Ціна
+                  span
+                    |(грн/м2)
+            .row
+              .columns
+                .rs-slider
+                  .row
+                    .columns
+                      .range-slide data-min-val=min data-max-val=max
+            .row
+              .medium-5.columns
+                .rs-input
+                  input.rs-min type="text" placeholder=min
+              .medium-5.columns.right
+                .rs-input
+                  input.rs-max type="text" placeholder=max
+          .clearfix
+
+
+        .se-range-input.square-range-slider.filter-block
+          .columns
+            - min = 32
+            - max =160
+            .row
+              .columns
+                h5
+                  |Житлова площа
+                  span
+                    |(м2)
+            .row
+              .columns
+                .rs-slider
+                  .row
+                    .columns
+                      .range-slide data-min-val=min data-max-val=max
+            .row
+              .medium-5.columns
+                .rs-input
+                  input.rs-min type="text" placeholder=min
+              .medium-5.columns.right
+                .rs-input
+                  input.rs-max type="text" placeholder=max
+          .clearfix
+
+        .filter-block
+          .columns
+            h5 Кількість кімнат
+            .row
+              .small-4.columns
+                .checkbox-input
+                  .squared
+                    input#flat_1 type="checkbox" value="1" name="count_flat[1]"
+                    label for="flat_1"
+                  label for="flat_1" 1
+              .small-4.columns
+                .checkbox-input
+                  .squared
+                    input#flat_2 type="checkbox" value="2" name="count_flat[2]"
+                    label for="flat_2"
+                  label for="flat_2" 2
+              .small-4.columns
+                .checkbox-input
+                  .squared
+                    input#flat_3 type="checkbox" value="3" name="count_flat[3]"
+                    label for="flat_3"
+                  label for="flat_3" 3
+              .small-4.columns
+                .checkbox-input
+                  .squared
+                    input#flat_4 type="checkbox" value="4" name="count_flat[4]"
+                    label for="flat_4"
+                  label for="flat_4" 4
+              .small-4.columns.end
+                .checkbox-input
+                  .squared
+                    input#flat_5 type="checkbox" value="5" name="count_flat[5]"
+                    label for="flat_5"
+                  label for="flat_5" 5+
+          .clearfix
+    .medium-9.columns
+

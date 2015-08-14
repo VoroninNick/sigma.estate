@@ -8,6 +8,10 @@ class MainController < ApplicationController
   def apartment
     add_breadcrumb "Apartment", apartment_path
   end
+  def apartment_catalog
+  end
+
+
   def about
 
   end
