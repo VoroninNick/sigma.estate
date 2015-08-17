@@ -2,7 +2,8 @@
   .a-one-item.se-box-shadow
     .columns
       .a-oi-avatar
-        .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+        =link_to apartment_catalog_item_path do
+          .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
       .a-oi-information-wrap
         .a-oi-information
           b вул. Генерала Чупринки, 119

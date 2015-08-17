@@ -10,6 +10,9 @@ class MainController < ApplicationController
   end
   def apartment_catalog
   end
+  def apartment_item
+
+  end
 
 
   def about

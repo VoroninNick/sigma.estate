@@ -128,5 +128,8 @@ $(document).ready ->
     if $(@).is(':checked')
       console.log "top value ", $(@).closest('.filter-block').offset().top
 
+# apartment one item
+  $(".apartment-item-page ul.image-carousel").bxSlider()
+
 
 

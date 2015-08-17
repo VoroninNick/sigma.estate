@@ -1,0 +1,34 @@
+.apartment-item-page-wrap
+
+  .a_other_item
+    display: block
+    width: 55px
+    background-color: #fff
+    height: 70px
+    position: absolute
+    top: 160px
+    svg
+      width: 28px
+      height: 48px
+      +my_center_align()
+      path
+        fill: #AFBDC4
+    &.a_prev_item
+      left: 0
+      border-top-right-radius: 3px
+      border-bottom-right-radius: 3px
+    &.a_next_item
+      right: 0
+      border-top-left-radius: 3px
+      border-bottom-left-radius: 3px
+
+  .apartment-item-page
+    min-height: 650px
+    background-color: #fff
+    .apartment-item-head
+      ul.image-carousel
+        height: 400px
+        margin-left: 0
+        list-style: none
+        li, .image
+          height: 100%
