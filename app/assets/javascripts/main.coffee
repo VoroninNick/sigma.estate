@@ -2,6 +2,29 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+$.fn.observeMouseOut = (options)->
+  $object = $(this)
+
+  $(document).on 'mouseup', (event)->
+    $containers = $object.filter(":visible")
+
+    out_of_container = true
+    in_container = !out_of_container
+    $context_container = null
+    $containers.each (index, element)->
+      $element = $(element)
+      cond1 = !$element.is(event.target)
+      cond2 = $element.has(event.target).length is 0
+      out_of_container = cond1 && cond2
+      in_container = !out_of_container
+
+      if out_of_container
+        $context_container = $element
+      else
+        return false
+    if out_of_container
+      $containers.trigger('mouseUpOut')
+
 $(document).ready ->
   $('.animate-input input, .animate-input textarea').focus ->
     $(this).parent().addClass 'is-active is-completed'
@@ -69,3 +92,17 @@ $(document).ready ->
 
     $(".square-range-slider").se_range_slider()
     $(".square-range-slider").val_onkey_up()
+
+#===========================================================
+#notification popup
+#===========================================================
+  $('body').on 'click', '.notification-link', (event)->
+    $wrap = $(this).closest('.notification-wrap')
+    $container = $wrap.find('.notification-container').filter(":not(:visible)")
+    $container.fadeIn 300
+
+  $notification_containers = $("div.notification-container")
+  $('body').on "mouseUpOut", '.notification-container', ()->
+    $containers = $(this)
+    $containers.fadeOut duration: 300
+  $notification_containers.observeMouseOut()

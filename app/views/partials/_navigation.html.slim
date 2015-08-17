@@ -36,9 +36,39 @@
     .clearfix
   .nav-popup-action-wrap.nav-side
     nav
-      li
-        a
+      li.se-call-order.notification-wrap
+        a.notification-link href="#"
           =embedded_svg "ic_phone_24px.svg"
+        .notification-container
+          .notification-form
+            .nf-header.text-center
+              a
+                =embedded_svg "ic_phone_24px.svg"
+                |+38 (032) 294 10 12
+            .nf-body
+              .row
+                .columns
+                  h4 Замовите дзвінок
+              form.default-animation-form
+                .row
+                  .columns
+                    - if user_signed_in?
+                      .input.animate-input.is-completed
+                        label Ім’я користувача
+                        input name="username" type="text"  value=current_user.username
+                    - else
+                      .input.animate-input
+                        label Ім’я користувача
+                        input name="username" type="text"
+                .row
+                  .columns
+                    .input.animate-input
+                      label Контактний телефон
+                      input name="username" type="text"
+                .row
+                  .columns
+                    .button-wrap.material-component.ripple.right.b-turn-off
+                      button type="submit" Замовити дзвінок
       li
         a href=comparison_path
           =embedded_svg "ic_done_all_24px.svg"

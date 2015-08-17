@@ -199,7 +199,7 @@ body
   z-index: 11
   border: 1px solid #BEC3C7
 
-  //display: none
+  display: none
   cursor: default
   &:after
     display: block
@@ -294,6 +294,27 @@ header
           color: #36464E
           display: inline-block
           line-height: rem-calc(60)
+        &.se-call-order
+          .notification-container
+            min-width: 330px
+            display: block
+            .nf-header
+              a
+                font:
+                  size: inherit
+                  weight: inherit
+                line-height: inherit
+                color: inherit
+                svg
+                  position: relative
+                  top: 9px
+            .nf-body
+              padding-top: 15px
+            form
+              padding-bottom: 25px
+              &.default-animation-form
+                .animate-input
+                  padding-left: 0
       &.nav-catalogs
         li
           .ink
@@ -570,6 +591,8 @@ h3.a-title
 
 
 form
+  button
+    outline: none !important
   &.default-animation-form
     .animate-input
       padding-left: 58px
