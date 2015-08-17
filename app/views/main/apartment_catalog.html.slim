@@ -84,7 +84,16 @@
                   input.rs-max type="text" placeholder=max
           .clearfix
 
-        .filter-block
+        .filter-block.notification-wrap
+          .notification-container
+            .notification-form
+              - count = 123
+              .nf-body
+                .nf-close
+                  =embedded_svg "ic_clear_black_24px.svg"
+                p Знайдено #{count} квартир
+                .button-wrap.material-component.ripple.b-turn-off
+                  button.right type="submit" Показати
           .columns
             h5
               |Кількість кімнат
@@ -155,6 +164,7 @@
                     input id="floor_20" type="checkbox" value="20" name="count_floor[20]"
                     label for="floor_20"
                   label for="floor_20" 20+
+
         .filter-block.filter-block-expand
           .columns
             h5

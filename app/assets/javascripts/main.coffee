@@ -96,7 +96,7 @@ $(document).ready ->
 #===========================================================
 #notification popup
 #===========================================================
-  $('body').on 'click', '.notification-link', (event)->
+  $('body').on 'click', '.notification-link, .filter-block h5', (event)->
     $wrap = $(this).closest('.notification-wrap')
     $container = $wrap.find('.notification-container').filter(":not(:visible)")
     $container.fadeIn 300
@@ -123,3 +123,10 @@ $(document).ready ->
         $this.addClass('filter-block-expanded')
       else
         $this.removeClass('filter-block-expanded')
+
+  $('.filter-block input[type="checkbox"]').click ->
+    if $(@).is(':checked')
+      console.log "top value ", $(@).closest('.filter-block').offset().top
+
+
+

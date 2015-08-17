@@ -40,8 +40,56 @@
       padding-top: 15px
       padding-bottom: 20px
       border-bottom: 1px solid #CED7DB
+      position: relative
       &:hover
         background-color: #EBEEF0
+
+      .notification-container
+        display: block
+        min-height: 80px
+        background-color: #E55000
+        border-color: #E55000
+        right: -212px
+        top: 0
+        &:after
+          top: 13px
+          left: -6px
+          border-width: 6px 6px 6px 0
+          border-color: transparent #E55000 transparent transparent
+        .notification-form
+          .nf-body
+            padding: 15px
+            position: relative
+            .nf-close
+              width: 30px
+              height: 30px
+              position: absolute
+              right: 0
+              top: 9px
+              cursor: pointer
+              padding: 2px
+              svg
+                width: 100%
+                height: 100%
+                path
+                  fill: #FB8B00
+            p
+              color: #fff
+              font:
+                size: rem-calc(14)
+                weight: 400
+              line-height: rem-calc(16.8)
+            button
+              color: #FB8B00
+              background-color: transparent
+              text-transform: uppercase
+              font:
+                size: rem-calc(14)
+                weight: 500
+              line-height: rem-calc(16.8)
+              margin: 0
+              padding: 11px 22px
+
       &.filter-block-expand
         overflow: hidden
         height: 48px
