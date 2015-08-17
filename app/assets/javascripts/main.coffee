@@ -106,3 +106,20 @@ $(document).ready ->
     $containers = $(this)
     $containers.fadeOut duration: 300
   $notification_containers.observeMouseOut()
+
+#===========================================================
+# clear filters
+#===========================================================
+#  $('.catalog-page').on 'click', '.clear-filters a', () ->
+#    alert 'clearf?'
+
+#===========================================================
+# expand filter block
+#===========================================================
+  $('.expand-filter-button').click ->
+    $this = $(@).closest('.filter-block')
+    if $this.hasClass('filter-block-expand')
+      if !$this.hasClass('filter-block-expanded')
+        $this.addClass('filter-block-expanded')
+      else
+        $this.removeClass('filter-block-expanded')

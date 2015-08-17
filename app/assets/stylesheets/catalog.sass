@@ -34,18 +34,52 @@
     margin-bottom: 20px
     .se-range-input
       height: auto
-      border-bottom: 1px solid #CED7DB
       .rs-slider, .rs-input
         width: 100%
     .filter-block
       padding-top: 15px
       padding-bottom: 20px
+      border-bottom: 1px solid #CED7DB
+      &:hover
+        background-color: #EBEEF0
+      &.filter-block-expand
+        overflow: hidden
+        height: 48px
+        .expand-filter-button
+          &:before
+            display: block
+            content: ''
+            position: absolute
+            right: 0
+            top: 6px
+
+            width: 0
+            height: 0
+            border-style: solid
+
+            border-width: 3px 3px 0 3px
+            border-color: #778f9b transparent transparent transparent
+        &.filter-block-expanded
+          height: auto
+          .expand-filter-button
+            &:before
+              border-width: 0 3px 3px 3px
+              border-color: transparent transparent #778f9b transparent
       h5
         color: #36464E
         font:
           size: rem-calc(14)
           weight: 400
         line-height: rem-calc(16.8)
+        position: relative
+        .expand-filter-button
+          position: absolute
+          top: 0
+          right: 0
+          width: 40px
+          bottom: 0
+          cursor: pointer
+
         span
           color: #BCBCBC
           padding-left: 4px
@@ -53,7 +87,13 @@
         padding-top: 5px
         padding-bottom: 15px
 
-
+  .filter-block-auto-update
+    padding: 25px 0 20px 0
+    p
+      color: #606060
+      font:
+        size: rem-calc(12)
+      display: inline-block
   .a-one-item
     .a-oi-information-wrap
       .a-oi-information

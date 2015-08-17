@@ -1,0 +1,26 @@
+#CallOrderFormModal.reveal-modal.small data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog"
+  .modal-header.text-center
+    |Замовити ...
+  .modal-body
+    .row
+      .columns
+        form.default-animation-form
+          - if user_signed_in?
+            .input.animate-input.is-completed
+              label Ім’я користувача
+              input name="username" type="text"  value=current_user.username
+          - else
+            .input.animate-input
+              label Ім’я користувача
+              input name="username" type="text"
+
+          .input.animate-input
+            label Контактний телефон
+            input name="username" type="text"
+
+          .input.animate-input.animate-textarea
+            label Текст повідомлення...
+            textarea name="message" rows="6"
+
+          .button-wrap.material-component.ripple.right.b-turn-off
+            button type="submit" Замовити дзвінок

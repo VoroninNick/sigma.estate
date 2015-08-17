@@ -171,7 +171,7 @@ body
       line-height: rem-calc(16.8)
       text-transform: uppercase
     .animate-input
-      input
+      input, textarea
         color: #36464E
       &.is-completed
         path
@@ -228,6 +228,52 @@ body
       svg
         position: relative
         top: 10px
+
+.checkbox-switch
+  width: 20px
+  height: 8px
+  position: relative
+  cursor: pointer
+  display: inline-block
+  margin-left: 6px
+  input
+    position: absolute
+    top: -50px
+    left: -100px
+    height: 0
+    width: 0
+    overflow: hidden
+    opacity: 0
+  label
+    width: 100%
+    height: 100%
+    display: block !important
+    margin: 0 !important
+  input[type=checkbox] + label
+    background-image: asset-url("switch-passive-background.png")
+    &:after
+      display: block
+      content: ''
+      position: absolute
+      top: -3px
+      left: -6px
+      bottom: 0
+      background-color: #778F9B
+      transition: right .2s
+      width: 14px
+      height: 14px
+      border-radius: 50%
+  input[type=checkbox]:checked + label
+    background-image: asset-url("switch-active-background.png")
+    &:after
+      display: block
+      content: ''
+      position: absolute
+      top: -3px
+      left: 13px
+      bottom: 0
+      background-color: #E55000
+
 
 .se-breadcrumbs-wrap
   min-height: 60px
@@ -297,7 +343,7 @@ header
         &.se-call-order
           .notification-container
             min-width: 330px
-            display: block
+            //display: block
             .nf-header
               a
                 font:
@@ -1144,3 +1190,9 @@ form
         border-style: solid
         border-width: 7px 0 0 7px
         border-color: transparent transparent transparent #E55000
+
+#CallOrderFormModal
+  form
+    &.default-animation-form
+      .animate-input
+        padding-left: 0

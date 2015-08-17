@@ -86,7 +86,8 @@
 
         .filter-block
           .columns
-            h5 Кількість кімнат
+            h5
+              |Кількість кімнат
             .row
               .small-4.columns
                 .checkbox-input
@@ -119,7 +120,107 @@
                     label for="flat_5"
                   label for="flat_5" 5+
           .clearfix
+
+
+        .filter-block.filter-block-expand
+          .columns
+            h5
+              |Поверх
+              .expand-filter-button
+            .row
+              - i = 0
+              -9.times
+                - i = i+1
+                .small-4.columns
+                  .checkbox-input
+                    .squared
+                      input id="floor_#{i}" type="checkbox" value=i name="count_floor[#{i}]"
+                      label for="floor_#{i}"
+                    label for="floor_#{i}" =i
+              .small-6.columns
+                .checkbox-input
+                  .squared
+                    input id="floor_10" type="checkbox" value="10-14" name="count_floor[10]"
+                    label for="floor_10"
+                  label for="floor_10" 10-14
+              .small-6.columns
+                .checkbox-input
+                  .squared
+                    input id="floor_15" type="checkbox" value="15-19" name="count_floor[15]"
+                    label for="floor_15"
+                  label for="floor_15" 15-19
+              .small-5.columns.end
+                .checkbox-input
+                  .squared
+                    input id="floor_20" type="checkbox" value="20" name="count_floor[20]"
+                    label for="floor_20"
+                  label for="floor_20" 20+
+        .filter-block.filter-block-expand
+          .columns
+            h5
+              |Адреса
+              .expand-filter-button
+
+            .input
+              label Область
+              select
+                option selected="" disabled="" Виберіть область
+                option Львівська
+                option Київська
+                option Таврійська
+
+            .input
+              label Місто
+              select
+                option selected="" disabled="" Виберіть місто
+                option Львів
+                option Стрий
+                option Городок
+            .input
+              label Район
+              select
+                option selected="" disabled="" Виберіть район
+                option Залізничний
+                option Франківський
+                option Сихівський
+            .input
+              label Вулиця
+              select
+                option selected="" disabled="" Виберіть вулицю
+                option Шевченка
+                option Городоцька
+                option Лукяновича
+
+        .filter-block.filter-block-expand
+          .columns
+            h5
+              |Житловий комплекс
+              .expand-filter-button
+        .filter-block.filter-block-expand
+          .columns
+            h5
+              |Інфраструктура
+              .expand-filter-button
+        .filter-block.filter-block-expand
+          .columns
+            h5
+              |Додаткові опції
+              .expand-filter-button
+
+        .filter-block-auto-update
+          .columns
+            p Автообновлення фільтру
+            .checkbox-switch
+              input id="turn-notification" name="tur-notification" type="checkbox"
+              label for="turn-notification"
+          .clearfix
+
+
+
+
+
     .medium-9.columns
       -12.times
         =render partial: "main/apartment_catalog"
+  =render partial: "partials/forms/call_order"
 

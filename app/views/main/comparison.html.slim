@@ -1,0 +1,11 @@
+.row
+  .columns
+    .container
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          .alert.alert-'#{flash_class_name(name)}' role="alert"
+            button.close type="button" data-dismiss="alert"
+            span aria-hidden="true" &times;
+            span.sr-only Close
+
+            = content_tag :div, msg, :id => "flash_#{name}"
