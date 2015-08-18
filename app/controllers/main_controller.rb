@@ -10,6 +10,7 @@ class MainController < ApplicationController
     @apartments = Apartment.limit(18)
   end
   def apartment_catalog
+    @apartments = Apartment.limit(18)
   end
   def apartment_item
     @apartment = Apartment.find(params[:id])

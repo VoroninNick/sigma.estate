@@ -230,7 +230,7 @@
 
 
     .medium-9.columns
-      -12.times
-        =render partial: "main/apartment_catalog"
+      - @apartments.each do |a|
+        =render partial: "main/apartment_catalog", locals: {a: a}
   =render partial: "partials/forms/call_order"
 
