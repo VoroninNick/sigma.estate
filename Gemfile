@@ -63,3 +63,5 @@ gem 'paperclip', '~> 3.5.3'
 gem 'paperclip-compression'
 
 gem 'bxslider-rails'
+
+gem "enumerize"

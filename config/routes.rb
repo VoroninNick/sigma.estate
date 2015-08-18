@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'apartment' => 'main#apartment'
   get 'apartment/catalog' => 'main#apartment_catalog'
-  get 'apartment/catalog/item' => 'main#apartment_item'
+  get 'apartment/catalog/:id' => 'main#apartment_item', as: :apartment_item
 
   get 'about' => 'main#about'
   get 'calculators' => 'main#calculators'

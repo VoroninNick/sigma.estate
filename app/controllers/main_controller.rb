@@ -7,11 +7,12 @@ class MainController < ApplicationController
 
   def apartment
     add_breadcrumb "Apartment", apartment_path
+    @apartments = Apartment.limit(18)
   end
   def apartment_catalog
   end
   def apartment_item
-
+    @apartment = Apartment.find(params[:id])
   end
 
 

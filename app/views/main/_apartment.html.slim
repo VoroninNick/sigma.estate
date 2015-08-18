@@ -2,11 +2,12 @@
   .a-one-item.se-box-shadow
     .columns
       .a-oi-avatar
-        =link_to apartment_catalog_item_path do
+        =link_to apartment_item_path(a.id) do
           .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
       .a-oi-information-wrap
         .a-oi-information
-          b вул. Генерала Чупринки, 119
+          /b = a.address.try(&:street)
+          b = a.id
           p ЖК «Сігма апартментс»
           hr
           .row.collapse
@@ -30,7 +31,7 @@
                 |Площа
                 span
                   |(м2)
-              .a-oi-info-value 72
+              .a-oi-info-value = a.apartment_technical_info.try(&:live_square)
     .clearfix
     ul.a-oi-actions
       li

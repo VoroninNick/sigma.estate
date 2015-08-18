@@ -1,9 +1,21 @@
 =render "application/catalog_header"
 .apartment-item-page-wrap
-  = link_to apartment_catalog_item_path, class: 'a_other_item a_prev_item se-box-shadow' do
-    = embedded_svg "ic_keyboard_arrow_left_24px.svg"
-  = link_to apartment_catalog_item_path, class: 'a_other_item a_next_item se-box-shadow' do
-    = embedded_svg "ic_keyboard_arrow_right_24px.svg"
+  - if @apartment.prev
+    = link_to apartment_item_path(@apartment.prev.id), class: 'a_other_item a_prev_item se-box-shadow' do
+      .a_other_item_ico
+        = embedded_svg "ic_keyboard_arrow_left_24px.svg"
+      .a_other_item_label
+        b =@apartment.prev.id
+        p ЖК «Сігма апартментс»
+
+  - if @apartment.next
+    = link_to apartment_item_path(@apartment.next.id), class: 'a_other_item a_next_item se-box-shadow' do
+      .a_other_item_label
+        b =@apartment.next.id
+        p ЖК «Сігма апартментс»
+      .a_other_item_ico
+        = embedded_svg "ic_keyboard_arrow_right_24px.svg"
+
   .row
     .columns
       .se-breadcrumbs-wrap
@@ -19,6 +31,52 @@
               .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
             li
               .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
+          .apartment-item-head-title
+            .medium-7.columns
+              h3 вул. Генерала Чупринки, 119
+              p ЖК «Сігма апартментс»
+            .medium-5.columns
+              .apartment-item-head-title-actions
+                .se-link-button.material-component.ripple.se-box-shadow
+                  a Замовити огляд
+                a.aiht-action
+                  = embedded_svg "ic_done_all_24px.svg"
+                a.aiht-action
+                  = embedded_svg "ic_favorite_48px.svg"
 
-
+            .clearfix
         .apartment-item-body
+          .columns
+            .row
+              .medium-4.columns
+                = embed("https://www.youtube.com/watch?v=63fY-fBsu1c")
+              .medium-5.columns
+                .ai-main-information
+                  .row.collapse
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_view_quilt_24px.svg"
+                      .a-oi-info-label К-сть кімнат
+                      .a-oi-info-value 3
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_account_balance_wallet_24px.svg"
+                      .a-oi-info-label
+                        |Ціна
+                        span
+                          |(грн/м2)
+                      .a-oi-info-value 12 770
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_select_all_24px.svg"
+                      .a-oi-info-label
+                        |Площа
+                        span
+                          |(м2)
+                      .a-oi-info-value 89
+              .medium-3.columns
+            .row
+              .medium-5.columns
+                = @apartment.tech_info.apartment_type
+              .medium-7.columns
+          .clearfix

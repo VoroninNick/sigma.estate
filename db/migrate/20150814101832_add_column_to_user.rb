@@ -1,5 +1,5 @@
 class AddColumnToUser < ActiveRecord::Migration
   def change
-    add_column :users, :subscribe, :boolean
+    add_column :site_users, :subscribe, :boolean
   end
 end
