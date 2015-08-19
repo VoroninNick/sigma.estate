@@ -132,4 +132,10 @@ $(document).ready ->
   $(".apartment-item-page ul.image-carousel").bxSlider()
 
 
+  $(".best-apartment ul.ba-carousel").bxSlider()
+
+
+
+
+
 

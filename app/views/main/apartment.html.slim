@@ -13,8 +13,11 @@
           =embedded_svg "ic_photo_size_select_small_24px.svg"
           |Кращі квартири
     .row
-      - @apartments.each do |a|
-        =render partial: "main/apartment", locals: {a: a}
+      ul.ba-carousel
+        - @apartments.in_groups_of(6).each do |apartments|
+          li
+            - apartments.each do |a|
+              =render partial: "main/apartment", locals: {a: a}
 
   .apartment-complexes
     .row

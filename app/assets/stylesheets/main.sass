@@ -789,6 +789,40 @@ form
     margin-bottom: 25px
     path
       //fill: #36464E
+  .bx-wrapper
+    margin: 0
+    .bx-viewport
+      background-color: transparent
+      -moz-box-shadow: none
+      -webkit-box-shadow: none
+      box-shadow: none
+      border: none
+      left: 0
+    .bx-controls-direction
+      a
+        background-position: inherit
+        margin-top: -29px
+        &.bx-prev
+          background-image: asset-url("banner-left-arrow.png")
+          left: -30px
+        &.bx-next
+          background-image: asset-url("banner-right-arrow.png")
+          right: -30px
+    .bx-pager
+      &.bx-default-pager
+        a
+          background: #AFBDC4
+          width: 14px
+          height: 14px
+          margin: 0 17px
+          -moz-border-radius: 50%
+          -webkit-border-radius: 50%
+          border-radius: 50%
+          &.active
+            background-color: #36464E
+  ul.ba-carousel
+    margin-left: 0
+
 
 .se-box-shadow
   -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)

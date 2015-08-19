@@ -2,6 +2,7 @@ class MainController < ApplicationController
   layout "stub", only: [:index]
 
   add_breadcrumb "Sigma Estate", :root_path
+
   def index
   end
 
