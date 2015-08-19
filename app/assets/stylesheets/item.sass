@@ -165,3 +165,91 @@
             size: rem-calc(14)
             weight: 400
           line-height: rem-calc(16.8)
+      .apartment-item-more-information
+        border-top: 1px solid #EBEEF0
+        margin-top: 60px
+        padding-top: 35px
+        padding-bottom: 100px
+        h3, h4, p
+          color: #36464E
+
+        h3
+          font:
+            size: rem-calc(24)
+            weight: 500
+          line-height: rem-calc(28.8)
+
+        h4
+          font:
+            size: rem-calc(16)
+            weight: 500
+          line-height: rem-calc(19.2)
+
+        p
+          font:
+            size: rem-calc(14)
+            weight: 400
+          line-height: rem-calc(24)
+      .apartment-item-one-characteristic
+        height: 60px
+        border-bottom: 1px solid #AFBDC4
+        .aio-char-key
+          color: #36464E
+          font:
+            size: rem-calc(14)
+            weight: 500
+          line-height: rem-calc(60)
+          text-transform: uppercase
+        .aio-char-value
+          color: #E55000
+          font:
+            size: rem-calc(14)
+            weight: 400
+          line-height: rem-calc(60)
+          a
+            svg
+              position: relative
+              top: 8px
+              width: 30px
+              height: 30px
+              path
+                fill: #AFBDC4
+
+  .similar-apartments
+    padding-top: 50px
+    padding-bottom: 100px
+    .bx-wrapper
+      margin: 0
+      .bx-viewport
+        background-color: transparent
+        -moz-box-shadow: none
+        -webkit-box-shadow: none
+        box-shadow: none
+        border: none
+        left: 0
+      .bx-controls-direction
+        a
+          background-position: inherit
+          margin-top: -29px
+          &.bx-prev
+            background-image: asset-url("banner-left-arrow.png")
+            left: -30px
+          &.bx-next
+            background-image: asset-url("banner-right-arrow.png")
+            right: -30px
+      .bx-pager
+        &.bx-default-pager
+          a
+            background: #AFBDC4
+            width: 14px
+            height: 14px
+            margin: 0 17px
+            -moz-border-radius: 50%
+            -webkit-border-radius: 50%
+            border-radius: 50%
+            &.active
+              background-color: #36464E
+
+    ul.similar-apartments-carousel
+      margin: 0
+      margin-top: 30px

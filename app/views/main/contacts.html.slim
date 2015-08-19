@@ -54,7 +54,34 @@
             .clearfix
       .clearfix
   .medium-7.columns
-    #g-map
+    #map_canvas data-lng="24.020744" data-lat="49.832623" data-name="" data-complex=""
+    coffee:
+
+      map = undefined
+      mgr = undefined
+      lat = $('#map_canvas').attr('data-lat')
+      lng = $('#map_canvas').attr('data-lng')
+
+      myOptions =
+        zoom: 17
+        center: new (google.maps.LatLng)(lat, lng)
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
+      mgr = new MarkerManager(map)
+
+
+      google.maps.event.addListener mgr, 'loaded', ->
+        i = 0
+        while i < 1000
+          marker = new (google.maps.Marker)(
+            position: new (google.maps.LatLng)(Math.random() * 180 - 90, Math.random() * 360 - 180)
+            title: 'Random marker #' + i)
+          mgr.addMarker marker, 0
+          i++
+        mgr.refresh()
+        return
+     return
+
     .subscribe-wrap.se-box-shadow
       .columns
         h4 Будьте на зв’язку!

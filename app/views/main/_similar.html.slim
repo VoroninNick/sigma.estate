@@ -1,0 +1,47 @@
+.large-4.medium-4.small-6.columns.end
+  .a-one-item.se-box-shadow
+    .columns
+      .a-oi-avatar
+        =link_to apartment_item_path(a.id) do
+          .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+      .a-oi-information-wrap
+        .a-oi-information
+          /b = a.address.try(&:street)
+          b = a.id
+          p ЖК «Сігма апартментс»
+          hr
+          .row.collapse
+            .large-4.medium-4.small-4.columns
+              .a-oi-info-ico
+                =embedded_svg "ic_view_quilt_24px.svg"
+              .a-oi-info-label К-сть кімнат
+              .a-oi-info-value 3
+            .large-4.medium-4.small-4.columns
+              .a-oi-info-ico
+                =embedded_svg "ic_account_balance_wallet_24px.svg"
+              .a-oi-info-label
+                |Ціна
+                span
+                  |(грн/м2)
+              .a-oi-info-value 12 770
+            .large-4.medium-4.small-4.columns
+              .a-oi-info-ico
+                =embedded_svg "ic_select_all_24px.svg"
+              .a-oi-info-label
+                |Площа
+                span
+                  |(м2)
+              .a-oi-info-value = a.apartment_technical_info.try(&:live_square)
+    .clearfix
+    ul.a-oi-actions
+      li
+        a
+          =embedded_svg "ic_favorite_48px.svg"
+      li.comparison-ico
+        a
+          =embedded_svg "ic_done_all_24px.svg"
+      li.call-ico
+        a
+          =embedded_svg "ic_phone_24px.svg"
+
+      .clearfix

@@ -2,6 +2,35 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+#map = undefined
+#mgr = undefined
+#lat = $('#map_canvas').attr('data-lat')
+#lng = $('#map_canvas').attr('data-lng')
+#
+#initialize = ->
+#  myOptions =
+#    zoom: 8
+#    center: new (google.maps.LatLng)(lat, lng)
+#    mapTypeId: google.maps.MapTypeId.ROADMAP
+#  map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
+#  mgr = new MarkerManager(map)
+#  google.maps.event.addListener mgr, 'loaded', ->
+#    i = 0
+#    while i < 1000
+#      marker = new (google.maps.Marker)(
+#        position: new (google.maps.LatLng)(Math.random() * 180 - 90, Math.random() * 360 - 180)
+#        title: 'Random marker #' + i)
+#      mgr.addMarker marker, 0
+#      i++
+#    mgr.refresh()
+#    return
+#  return
+#
+#google.maps.event.addDomListener window, 'load', initialize
+
+
+
+
 $.fn.observeMouseOut = (options)->
   $object = $(this)
 
@@ -26,6 +55,7 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+#
   $('.animate-input input, .animate-input textarea').focus ->
     $(this).parent().addClass 'is-active is-completed'
     return
@@ -135,7 +165,24 @@ $(document).ready ->
   $(".best-apartment ul.ba-carousel").bxSlider()
 
 
+  $(".similar-apartments ul.similar-apartments-carousel").bxSlider()
 
 
+#module A
+#  class << self
+#    attr_accessor :name
+#    def test
+#       @name = :test
+#    end
+#  end
+#end
+#
+#class Book
+#  class << self
+#  def self.read_all
+#end
+#
+#Book.read_all
+#book.read
 
 

@@ -15,6 +15,7 @@ class MainController < ApplicationController
   end
   def apartment_item
     @apartment = Apartment.find(params[:id])
+    @similar = Apartment.where.not(id: @apartment.id).limit(9)
   end
 
 

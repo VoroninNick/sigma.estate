@@ -76,7 +76,194 @@
                       .a-oi-info-value 89
               .medium-3.columns
             .row
-              .medium-5.columns
-                = @apartment.tech_info.apartment_type
-              .medium-7.columns
+              .columns
+                .row.apartment-item-more-information
+                  .medium-5.columns
+                    h3 Характеристика
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Клас
+                        .small-7.columns
+                          .aio-char-value
+                            |Економ
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Тип
+                        .small-7.columns
+                          .aio-char-value
+                            |Квартира
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Ціна
+                        .small-7.columns
+                          .aio-char-value
+                            |12 000 грн/м2
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Площа
+                        .small-7.columns
+                          .aio-char-value
+                            |89 м2
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |к-сть Кімнат
+                        .small-7.columns
+                          .aio-char-value
+                            |3
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Поверх
+                        .small-7.columns
+                          .aio-char-value
+                            |7
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Житл. Комплекс
+                        .small-7.columns
+                          .aio-char-value
+                            |Сігма аппартментс
+                            a
+                              =embedded_svg "ic_arrow_forward_black_24px.svg"
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Місто
+                        .small-7.columns
+                          .aio-char-value
+                            |Львів
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Район
+                        .small-7.columns
+                          .aio-char-value
+                            |Залізничний
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Вулиця
+                        .small-7.columns
+                          .aio-char-value
+                            |вул. Генерала Чупринки, 119
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Опалення
+                        .small-7.columns
+                          .aio-char-value
+                            |Індувідуальне
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Стіни
+                        .small-7.columns
+                          .aio-char-value
+                            |Цегла
+
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Забудовник
+                        .small-7.columns
+                          .aio-char-value
+                            |Sigma Estate Bud
+                            a
+                              =embedded_svg "ic_link_48px.svg"
+
+                    = link_to "Калькулятор кредиту", calculators_path
+                    = link_to "Калькулятор Страхівки", calculators_path
+                    /= @apartment.tech_info.apartment_type
+                  .medium-7.columns
+                    h3 Детальна інформація
+                    h4 Інформація про помешкання
+                    p
+                      |Жилой комплекс "Сказка" - это уютное место для жизни в одном из самых зеленых районов столицы.
+                        Рядом расположены парки, что позволит Вам прогуливаться вместе с семьей.
+                        До центра можно добраться машиной в течении 15 минут, а в скором времени рядом откроется новая станция метро,
+                        "Теремки", и те, кто предпочитают общественный транспорт смогут без пробок добираться в любую точку города.
+                    h4 Інфраструктура
+                    p
+                      |В жилом комплексе "Сонячна брама" реализована концепция "город в городе" с замкнутой инфраструктурой,
+                        которая предусматривает размещение на территории комплекса всего необходимого для максимально комфортного проживания.
+                    p
+                      |На территории комплекса расположены: супермаркет Novus, отделение государственного банка "Ощадбанк",  детские и спортивные площадки.
+                        В скором времени запланировано открытие небольшого ландшафтного парка, салона красоты и приемных пунктов бытового обслуживания.
+                        В шаговой доступности от комплекса расположен фитнес-центр Sport Llife.
+                    hr
+                    h4 Розташування будинку на Google maps
+
+
+                    #map_canvas data-lng="24.020744" data-lat="49.832623" data-name="" data-complex=""
+                    coffee:
+
+                      map = undefined
+                      mgr = undefined
+                      lat = $('#map_canvas').attr('data-lat')
+                      lng = $('#map_canvas').attr('data-lng')
+
+                      myOptions =
+                        zoom: 17
+                        center: new (google.maps.LatLng)(lat, lng)
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                      map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
+                      mgr = new MarkerManager(map)
+
+
+                      google.maps.event.addListener mgr, 'loaded', ->
+                        i = 0
+                        while i < 1000
+                          marker = new (google.maps.Marker)(
+                            position: new (google.maps.LatLng)(Math.random() * 180 - 90, Math.random() * 360 - 180)
+                            title: 'Random marker #' + i)
+                          mgr.addMarker marker, 0
+                          i++
+                        mgr.refresh()
+                        return
+                     return
+
           .clearfix
+
+      .similar-apartments
+        .row
+          .columns
+            h3.a-title
+              =embedded_svg "ic_photo_size_select_small_24px.svg"
+              |Схожі квартири
+        .row
+          ul.similar-apartments-carousel
+            - @similar.in_groups_of(3).each do |similar|
+              li
+                - similar.each do |a|
+                  =render partial: "main/similar", locals: {a: a}

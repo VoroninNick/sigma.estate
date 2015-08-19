@@ -9,9 +9,15 @@ html lang="en"
 
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
+
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
+    = javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markermanager/src/markermanager.js"
+
     = javascript_include_tag "application"
+
     = stylesheet_link_tag    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css'
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
+
     = csrf_meta_tags
 
   body
