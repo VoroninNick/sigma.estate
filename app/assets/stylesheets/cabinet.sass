@@ -1,6 +1,22 @@
 .cabinet-page-wrap
   padding-bottom: 80px
   form.default-animation-form
+    .se-ajax-submit
+      height: 30px
+      width: 30px
+      position: absolute
+      right: -2px
+      bottom: -1px
+      display: none
+      button
+        padding: 0 2px
+        margin: 0
+        background-color: #E55000
+        svg
+          position: relative
+          top: 2px
+          path
+            fill: #fff !important
     .animate-input
       &.is-completed
         path
@@ -21,7 +37,7 @@
     background-color: #CED7DB
     overflow: hidden
     border-radius: 50%
-    padding: 15%
+    //padding: 15%
     border: 1px solid #36464E
     margin-bottom: 14px
     .image

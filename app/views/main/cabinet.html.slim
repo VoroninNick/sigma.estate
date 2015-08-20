@@ -2,7 +2,7 @@
   = render partial: "partials/cabinet_header"
   .row
 
-    = form_for(current_user, as: :user, url: registration_path(:user), html: {class: 'default-animation-form'}) do |f|
+    = form_for(current_user, as: :user, url: registration_path(:user), html: {class: 'default-animation-form se-ajax-form'}) do |f|
       /= devise_error_messages!
       .medium-4.columns.text-center
         .personal-avatar-wrap
@@ -10,12 +10,12 @@
           .row
             .medium-6.medium-centered.columns
               .profile-avatar
-                .image style="background: url('#{asset_path("default_avatar.svg")}')no-repeat center center;"
+                /= image_tag(current_user.avatar.url(:thumb))
+                .image style="background: url('#{current_user.avatar.url(:medium)}')no-repeat center center;"
 
           = f.label :avatar
             |Змінити фотографію
             = f.file_field :avatar, class: 'hide'
-          /= f.submit "Update"
       .medium-8.columns
         .personal-information-wrap.se-box-shadow
           .columns
@@ -26,7 +26,10 @@
                   .input-ico
                     =embedded_svg "ic_person_48px.svg"
                   = f.label :username, 'Ім’я користувача'
-                  = f.email_field :username,  :value => current_user.username
+                  = f.text_field :username,  :value => current_user.username
+                  .se-ajax-submit
+                    button
+                      =embedded_svg "ic_check_black_24px.svg"
             .row
               .columns
                 .input.animate-input.is-completed
@@ -34,11 +37,16 @@
                     =embedded_svg "ic_mail_24px.svg"
                   = f.label :email, 'Електронна скринька'
                   = f.email_field :email,  :value => current_user.email
-
+                  .se-ajax-submit
+                    button
+                      =embedded_svg "ic_check_black_24px.svg"
             .row
               .columns
                 .se-read-more.material-component.ripple.right
                   a Змінити пароль
+            /.row
+              .columns
+                =link_to "Редагувати", edit_user_registration_path(current_user)
           .clearfix
 
         .personal-subscribe-wrap.se-box-shadow

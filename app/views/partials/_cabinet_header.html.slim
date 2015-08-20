@@ -2,7 +2,7 @@
   .row
     .medium-2.medium-centered.columns
       .profile-avatar
-        .image style="background: url('#{asset_path("default_avatar.svg")}')no-repeat center center;"
+        .image style="background: url('#{current_user.avatar.url(:medium)}')no-repeat center center;"
   .row.text-center
     .medium-6.medium-centered.columns
       h3 =current_user.username

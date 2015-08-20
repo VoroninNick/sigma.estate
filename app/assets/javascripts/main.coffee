@@ -169,6 +169,21 @@ $(document).ready ->
   $(".similar-apartments ul.similar-apartments-carousel").bxSlider()
 
 
+
+#
+  $('.se-ajax-form input').focus ->
+    $('.se-ajax-submit').hide()
+    $this = $(@)
+    $submit = $this.closest('.input').find('.se-ajax-submit')
+    $submit.show()
+
+
+#  $('.se-ajax-form input').focusout ->
+#    $('.se-ajax-submit').hide()
+
+  $('.se-ajax-form input[type=file]').change ->
+    $(@).closest('form').submit()
+
 #module A
 #  class << self
 #    attr_accessor :name

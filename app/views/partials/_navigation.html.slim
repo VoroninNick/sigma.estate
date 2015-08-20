@@ -75,7 +75,9 @@
       - if user_signed_in?
         li.notification-wrap
           a.notification-link href="#"
-            =embedded_svg "ic_perm_identity_24px.svg"
+            .se-user-avatar
+              .image style="background: url('#{current_user.avatar.url(:thumb)}')no-repeat center center;"
+
           .notification-container
             .notification-form
               .nf-header.text-center
