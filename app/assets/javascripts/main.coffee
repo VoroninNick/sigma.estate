@@ -72,7 +72,7 @@ $(document).ready ->
     e.preventDefault()
 
 #  $('#EnterFormModal').foundation('reveal', 'open')
-  $('#ResetPasswordFormModal').foundation('reveal', 'open')
+#  $('#ResetPasswordFormModal').foundation('reveal', 'open')
 
 #===========================================================
 #  range slide initialize
