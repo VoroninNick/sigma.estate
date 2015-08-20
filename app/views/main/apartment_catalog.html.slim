@@ -1,7 +1,19 @@
 =render "application/catalog_header"
 .catalog-page
-  .row
+  /.row
     .columns
+      .se-breadcrumbs-wrap
+        ul.breadcrumbs
+          li
+            =link_to "Sigma Estate", root_path
+          li.current
+            a href="#" Про компанію
+          /li
+          /  a href="#" Features
+          /li.unavailable
+          /  a href="#" Gene Splicing
+          /li.current
+          /  a href="#" Cloning
   .row
     .medium-6.columns
       p За запитом «квартира у Львові» знайдено 9 квартир

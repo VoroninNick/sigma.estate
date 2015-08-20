@@ -1,7 +1,17 @@
 .row
   .columns
     .se-breadcrumbs-wrap
-      = render_breadcrumbs
+      ul.breadcrumbs
+        li
+          =link_to "Sigma Estate", root_path
+        li.current
+          a href="#" Контакти
+        /li
+        /  a href="#" Features
+        /li.unavailable
+        /  a href="#" Gene Splicing
+        /li.current
+        /  a href="#" Cloning
 .row
   .medium-5.columns
     .contacts-data-wrap.se-box-shadow

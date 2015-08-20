@@ -1,57 +1,81 @@
 .row
-  .medium-6.medium-centered.columns
-    .se-form-header.text-center
-      |Реєстрація нового користувача
-    .se-form-body
-      .row.text-center
-        .columns
-          ul.se-socials
-            li
-              a
-                =image_tag "SE-icons-white-social-facebook.png"
-            li
-              a
-                =image_tag "SE-icons-white-social-twitter.png"
-            li
-              a
-                =image_tag "SE-icons-white-social-gpluse.png"
-            li
-              a
-                =image_tag "SE-icons-white-social-skype.png"
-      .row
-        .columns
-          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-            = devise_error_messages!
+  .columns
+    .se-breadcrumbs-wrap
+      ul.breadcrumbs
+        li
+          =link_to "Sigma Estate", root_path
+        li.current
+          a href="#" Реєстрація нового користувача
 
-            .field
-              = f.label :username
-              br
-              = f.text_field :username, autofocus: true
+.se-registration-wrap
+  .row
+    .medium-6.medium-centered.columns
+      .se-box-shadow
+        .se-form-header.text-center
+          |Реєстрація нового користувача
+        .se-form-body
+          .row.text-center
+            .columns
+              ul.se-socials
+                li
+                  a
+                    =image_tag "SE-icons-white-social-facebook.png"
+                li
+                  a
+                    =image_tag "SE-icons-white-social-twitter.png"
+                li
+                  a
+                    =image_tag "SE-icons-white-social-gpluse.png"
+                li
+                  a
+                    =image_tag "SE-icons-white-social-skype.png"
+          .row
+            .columns
+              .columns
+                = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "default-animation-form"}) do |f|
+                  = devise_error_messages!
 
-            .field
-              = f.label :email
-              br
-              = f.email_field :email
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_person_48px.svg"
+                    = f.label :username, "Ваше ім’я"
+                    = f.text_field :username, autofocus: true
 
-
-            .field
-              = f.label :password
-              - if @validatable
-              em
-                |(
-                = @minimum_password_length
-                |characters minimum)
-              br
-              = f.password_field :password, autocomplete: "off"
-
-            .field
-              = f.label :password_confirmation
-              br
-              = f.password_field :password_confirmation, autocomplete: "off"
-
-            .actions
-              = f.submit "Sign up"
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_mail_24px.svg"
+                    = f.label :email, "Електронна скринька"
+                    = f.email_field :email
 
 
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_lock_black_24px.svg"
+                    = f.label :password, "Пароль"
+                    = f.password_field :password, autocomplete: "off"
+                    - if @validatable
+                    em
+                      |(
+                      = @minimum_password_length
+                      |символів мінімум)
 
-          = render "devise/shared/links"
+                  .input.animate-input
+                    .input-ico
+                      =embedded_svg "ic_lock_black_24px.svg"
+                    = f.label :password_confirmation, "Підтвердження паролю"
+                    = f.password_field :password_confirmation, autocomplete: "off"
+
+                  .button-wrap.material-component.ripple.right.se-box-shadow.b-turn-off
+                    button.right type="submit" Зареєструватись
+                  .se-read-more.material-component.ripple.modal-registration-link.right
+                    a href="#" data-reveal-id="EnterFormModal" в мене є аккаунт
+              .clearfix
+
+  .row.text-center
+    .medium-6.medium-centered.columns
+      p
+        |Зареєструвавшись, ви погоджуєтесь з
+        a
+          |умовами використання сайту
+        |.
+
