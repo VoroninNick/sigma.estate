@@ -1,0 +1,62 @@
+.feedback-wrap
+  .row
+    .columns
+      h3.a-title
+        =embedded_svg "ic_contact_phone_48px.svg"
+        |Зворотній зв’язок
+      hr
+  .row
+    .small-12.medium-6.columns
+      h2 Виникли питання?
+      p Зв’яжіться з нами, або напишіть нам, і ми максимально швидко дамо відповіді на всі ваші питання.
+      address
+        p
+          =embedded_svg "ic_room_48px.svg"
+          |вул. Театральна 11, м. Львів
+        p
+          a
+            =embedded_svg "ic_phone_24px.svg"
+            |+38 (032) 294 10 12
+        p
+          a
+            =embedded_svg "ic_mail_24px.svg"
+            |sigmaestate@gmail.com
+
+    .small-12.medium-6.columns
+      form.default-animation-form.se-box-shadow
+        .columns
+          .columns
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =embedded_svg "ic_person_48px.svg"
+                  label Ваше ім’я
+                  input name="name" type="text"
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =embedded_svg "ic_phone_24px.svg"
+                  label Контактний телефон
+                  input name="phone" type="text"
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =embedded_svg "ic_mail_24px.svg"
+                  label Електронна скринька
+                  input name="email" type="email"
+            .row
+              .columns
+                .input.animate-input.animate-textarea
+                  .input-ico
+                    =embedded_svg "ic_insert_comment_24px.svg"
+                  label Текст повідомлення...
+                  textarea name="message" rows="6"
+            .row
+              .columns
+                .button-wrap.material-component.ripple.right.se-box-shadow
+                  button.right type="submit" Надіслати
+          .clearfix
+        .clearfix

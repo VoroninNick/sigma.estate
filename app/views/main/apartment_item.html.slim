@@ -75,6 +75,16 @@
                           |(м2)
                       .a-oi-info-value 89
               .medium-3.columns
+                .a-oi-print-version
+                  a
+                    .a-oi-print-version-icon
+                      =embedded_svg "ic_local_printshop_black_24px.svg"
+                    .a-oi-print-version-title
+                      p
+                        =embedded_svg "ic_file_download_black_24px.svg"
+                        |Принт-версія квартири
+                        span
+                          |1,23 MB (.pdf)
             .row
               .columns
                 .row.apartment-item-more-information
@@ -201,9 +211,10 @@
                             |Sigma Estate Bud
                             a
                               =embedded_svg "ic_link_48px.svg"
-
-                    = link_to "Калькулятор кредиту", calculators_path
-                    = link_to "Калькулятор Страхівки", calculators_path
+                    .se-link-button.material-component.ripple
+                      = link_to "Калькулятор кредиту", calculators_path
+                    .se-link-button.material-component.ripple
+                      = link_to "Калькулятор Страхівки", calculators_path
                     /= @apartment.tech_info.apartment_type
                   .medium-7.columns
                     h3 Детальна інформація
@@ -267,3 +278,4 @@
               li
                 - similar.each do |a|
                   =render partial: "main/similar", locals: {a: a}
+  =render partial: "partials/forms/feedback_form"
