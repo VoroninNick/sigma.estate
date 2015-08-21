@@ -12,8 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
   #
   # end
   def after_update_path_for(resource)
-    cabinet_profile_path
-
+    # cabinet_profile_path
+    session[:previous_url] || root_path
   end
   #
   # def user_update_params

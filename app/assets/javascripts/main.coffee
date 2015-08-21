@@ -56,6 +56,18 @@ $.fn.observeMouseOut = (options)->
 
 $(document).ready ->
 #
+  options =
+    bg: '#acf'
+    target: document.getElementById('se-progress-bar')
+    id: 'mynano'
+  nanobar = new Nanobar(options)
+  #move bar
+  nanobar.go 30
+  # size bar 30%
+  # Finish progress bar
+  nanobar.go 100
+
+
   $('.animate-input input, .animate-input textarea').focus ->
     $(this).parent().addClass 'is-active is-completed'
     return

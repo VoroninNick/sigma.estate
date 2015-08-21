@@ -1,0 +1,11 @@
+- content_for :cabinet_layout do
+  .cabinet-page-wrap
+    = render partial: "partials/cabinet_header"
+    = yield
+  .row
+    .columns
+      = form_for(current_user, as: :user, url: registration_path(:user), html: {class: 'default-animation-form se-ajax-form'}) do |f|
+        .se-delete-account.right
+          = embedded_svg "ic_delete_black_24px.svg"
+          = button_to "Видалити аккаунт", registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete
+= render template: "layouts/application"

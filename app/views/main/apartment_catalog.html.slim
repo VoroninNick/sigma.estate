@@ -244,5 +244,6 @@
     .medium-9.columns
       - @apartments.each do |a|
         =render partial: "main/apartment_catalog", locals: {a: a}
+      = paginate @apartments
   =render partial: "partials/forms/call_order"
 

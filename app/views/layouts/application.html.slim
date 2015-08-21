@@ -20,9 +20,11 @@ html lang="en"
 
     = csrf_meta_tags
 
-  body
-
+  body#myDivId
+    #se-progress-bar
+    .clearfix
     =render partial: "header"
-    = yield
+
+    = content_for?(:cabinet_layout) ? yield(:cabinet_layout) : yield
 
     =render partial: "footer"

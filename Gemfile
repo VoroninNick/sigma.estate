@@ -65,3 +65,5 @@ gem 'paperclip-compression'
 gem 'bxslider-rails'
 
 gem "enumerize"
+
+gem 'kaminari'

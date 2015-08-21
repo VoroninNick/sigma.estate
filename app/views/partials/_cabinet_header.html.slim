@@ -9,16 +9,16 @@
   .row.collapse
     .small-4.columns.ch-link-wrap class=cp(cabinet_profile_path)
       .ch-link-inner.material-component.ripple
-        a
+        = link_to cabinet_profile_path do
           =embedded_svg "ic_person_48px.svg"
           |Профайл користувача
     .small-4.columns.ch-link-wrap
       .ch-link-inner.material-component.ripple
-        a
+        = link_to cabinet_selected_realty_path do
           =embedded_svg "ic_favorite_48px.svg"
           |Обрана нерухомість
     .small-4.columns.ch-link-wrap
       .ch-link-inner.material-component.ripple
-        a
+        = link_to cabinet_calculators_path do
           =embedded_svg "ic_work_black_24px.svg"
           |Калькулятори
