@@ -18,6 +18,12 @@ class MainController < ApplicationController
     @similar = Apartment.where.not(id: @apartment.id).limit(9)
   end
 
+  def complex
+
+  end
+
+
+
 
   def about
 

@@ -444,6 +444,8 @@ header
               path
                 fill: #E55000
       &.nav-pages
+        @media screen and ( max-width: 960px)
+          display: none
         li
           a
             font:
@@ -1017,8 +1019,11 @@ form
       .aci-header
         padding-top: 8px
         padding-bottom: 16px
-        path
-          fill: #FFFF00
+        .rating-ico-wrap
+          svg
+
+
+
         p, a
           display: inline-block
           margin-bottom: 0
@@ -1244,36 +1249,45 @@ form
       border: none !important
 
     .ui-slider-handle
-      width: 7px
-      height: 12px
-      background: #E55000!important
+      width: 5px
+      height: 15px
+      top: -6px
+      background-color: transparent
       padding: 0
       border: none
       border-radius: 0
       outline: none
       box-shadow: none
-      &:first-of-type:before
-        display: block
-        content: ''
-        position: absolute
-        top: -7px
-        left: 0
-        width: 0
-        height: 0
-        border-style: solid
-        border-width: 0 0 7px 7px
-        border-color: transparent transparent #E55000 transparent
-      &:last-of-type:before
-        display: block
-        content: ''
-        position: absolute
-        top: -7px
-        left: 0
-        width: 0
-        height: 0
-        border-style: solid
-        border-width: 7px 0 0 7px
-        border-color: transparent transparent transparent #E55000
+      &:first-of-type
+        background-image: asset-url("range-slider-arrow-left.svg")
+        background-size: 100%
+        background-repeat: no-repeat
+        //&:before
+          display: block
+          content: ''
+          position: absolute
+          top: -7px
+          left: 0
+          width: 0
+          height: 0
+          border-style: solid
+          border-width: 0 0 7px 7px
+          border-color: transparent transparent #E55000 transparent
+      &:last-of-type
+        background-image: asset-url("range-slider-arrow-right.svg")
+        background-size: 100%
+        background-repeat: no-repeat
+        //&:before
+          display: block
+          content: ''
+          position: absolute
+          top: -7px
+          left: 0
+          width: 0
+          height: 0
+          border-style: solid
+          border-width: 7px 0 0 7px
+          border-color: transparent transparent transparent #E55000
 
 #CallOrderFormModal
   form
@@ -1294,3 +1308,67 @@ form
     a
       color: #E55000
       padding-left: 3px
+
+.rating-ico-wrap
+  svg
+    width: 20px
+    height: 20px
+    path
+      fill: #8FA3AD
+  &.se-ri-economy
+    svg:first-child
+      path
+        fill: #FFFF00
+  &.se-ri-standard
+    svg:nth-of-type(-n+2)
+      path
+        fill: #FFFF00
+  &.se-ri-comfort
+    svg:nth-of-type(-n+3)
+      path
+        fill: #FFFF00
+  &.se-ri-business
+    svg:nth-of-type(-n+4)
+      path
+        fill: #FFFF00
+  &.se-ri-elite
+    svg:nth-of-type(-n+5)
+      path
+        fill: #FFFF00
+  &.se-ri-club
+    svg:nth-of-type(-n+6)
+      path
+        fill: #FFFF00
+  &.se-ri-deluxe
+    svg:nth-of-type(-n+7)
+      path
+        fill: #FFFF00
+  &.se-ri-light
+    &.se-ri-economy
+      svg:first-child
+        path
+          fill: #EE6B00
+    &.se-ri-standard
+      svg:nth-of-type(-n+2)
+        path
+          fill: #EE6B00
+    &.se-ri-comfort
+      svg:nth-of-type(-n+3)
+        path
+          fill: #EE6B00
+    &.se-ri-business
+      svg:nth-of-type(-n+4)
+        path
+          fill: #EE6B00
+    &.se-ri-elite
+      svg:nth-of-type(-n+5)
+        path
+          fill: #EE6B00
+    &.se-ri-club
+      svg:nth-of-type(-n+6)
+        path
+          fill: #EE6B00
+    &.se-ri-deluxe
+      svg:nth-of-type(-n+7)
+        path
+          fill: #EE6B00

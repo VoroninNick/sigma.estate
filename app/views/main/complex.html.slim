@@ -1,0 +1,18 @@
+=render "application/complex_header"
+.complex-page-wrap
+  .main-banner-wrap
+    .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+
+  .best-complex
+    .row
+      .columns
+        h3.a-title
+          =embedded_svg "ic_domain_24px.svg"
+          |Кращі житлові комплекси
+    .row
+      /ul.ba-carousel
+        - @apartments.in_groups_of(6).each do |apartments|
+          li
+            - apartments.each do |a|
+      -10.times
+        =render partial: "main/complex"

@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   get 'apartment/catalog' => 'main#apartment_catalog'
   get 'apartment/catalog/:id' => 'main#apartment_item', as: :apartment_item
 
+  get 'complex' => 'main#complex'
+  get 'complex/catalog' => 'main#complex_catalog'
+  get 'complex/catalog/:id' => 'main#complex_catalog_item'
+
   get 'about' => 'main#about'
   get 'calculators' => 'main#calculators'
   get 'contacts' => 'main#contacts'
