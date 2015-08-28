@@ -149,6 +149,39 @@ body
           height: 16px
           position: relative
           top: 3px
+      p
+        color: #FFF
+        font-size: 0.875rem
+        font-weight: 400
+        line-height: 0.875rem
+        margin: 20px 0
+        svg
+          width: 16px
+          height: 16px
+          position: relative
+          top: 3px
+
+  .mobile-menu-wrap
+    position: absolute
+    top: 62px
+    bottom: 0
+    overflow: hidden
+    .mobile-menu
+
+  &.mm-opened
+    overflow: hidden
+    .mobile-menu-wrap
+      left: 0
+      right: 0
+      background-color: rgba(0,0,0,.7)
+      z-index: 11111111
+      .mobile-menu
+        float: right
+        right: 0
+        background-color: #e3e3e3
+        height: 100%
+        width: 490px
+
 
 .reveal-modal
   padding: 0
@@ -360,6 +393,13 @@ header
               height: 100%
               path
                 fill: #36464E
+          &.mobile-menu-link
+            display: none
+          @media screen and ( max-width: 960px)
+            display: none
+            &.mobile-menu-link
+              display: inline-block
+
     .nav-logo-wrap
       a
         color: #36464E

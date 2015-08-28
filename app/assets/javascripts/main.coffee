@@ -55,6 +55,17 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+  $('.mobile-menu-link').click ->
+    $this = $(@)
+    wrap = $this.closest('body')
+
+    if !$this.hasClass('mm-opened')
+      wrap.addClass('mm-opened')
+      $this.addClass('mm-opened')
+    else
+      wrap.removeClass('mm-opened')
+      $this.removeClass('mm-opened')
+
 #
   options =
     bg: '#acf'
