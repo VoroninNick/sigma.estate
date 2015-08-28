@@ -161,6 +161,8 @@ body
           position: relative
           top: 3px
 
+  svg.mm-link-close
+    display: none
   .mobile-menu-wrap
     position: absolute
     top: 62px
@@ -170,6 +172,10 @@ body
 
   &.mm-opened
     overflow: hidden
+    svg.mm-link-open
+      display: none
+    svg.mm-link-close
+      display: block
     .mobile-menu-wrap
       left: 0
       right: 0
