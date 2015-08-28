@@ -1,13 +1,14 @@
 .mobile-menu-wrap
   .mobile-menu
     .mm-header
-      .row
-        .columns
-          .se-user-avatar
-            .image style="background: url('#{current_user.avatar.url(:medium)}')no-repeat center center;"
-      .row.text-center
-        .columns
-          h3 = current_user.username
+      - if user_signed_in?
+        .row
+          .columns
+            .se-user-avatar
+              .image style="background: url('#{current_user.avatar.url(:medium)}')no-repeat center center;"
+        .row.text-center
+          .columns
+            h3 = current_user.username
 
     .mm-body
       .mm-nav-pages
