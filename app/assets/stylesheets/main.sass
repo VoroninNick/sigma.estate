@@ -24,6 +24,63 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
     outline: none!important
 body
   background-color: #E1E1E1
+  .bx-wrapper
+    height: 100%
+    .bx-viewport
+      height: 100% !important
+      -moz-box-shadow: none
+      -webkit-box-shadow: none
+      box-shadow: none
+      border: none
+      left: 0
+      background: transparent
+      >ul
+        height: 100%
+        margin: 0
+        >li
+          height: 100%
+
+    .bx-controls
+      .bx-controls-direction
+        a
+          background-position: inherit
+          margin-top: -29px
+          &.bx-prev
+            background-image: asset-url("banner-left-arrow.png")
+            left: 30px
+          &.bx-next
+            background-image: asset-url("banner-right-arrow.png")
+            right: 30px
+      //.bx-pager
+        &.bx-default-pager
+          a
+            background: #AFBDC4
+            width: 14px
+            height: 14px
+            margin: 0 17px
+            -moz-border-radius: 50%
+            -webkit-border-radius: 50%
+            border-radius: 50%
+            &.active
+              background-color: #36464E
+      .bx-pager, .bx-controls-auto
+        bottom: 20px
+      .bx-pager
+        &.bx-default-pager
+          a
+            background: #FB8B00
+            width: 14px
+            height: 14px
+            -moz-border-radius: 50%
+            -webkit-border-radius: 50%
+            border-radius: 50%
+            margin: 0 17px
+            -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+            -moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+            box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+            &.active
+              background: #fff
+
   &.stub-body
     background-color: #36464E
     .stub-page
@@ -639,13 +696,16 @@ header
       ul
         li
           .rating-ico-wrap
+            @media screen and ( min-width: 920px)
+              top: 20px
+              position: relative
             @media screen and ( max-width: 920px)
               width: 46px
               height: 46px
               position: relative
               &:before
                 display: inline-block
-                content: '8'
+                content: attr(data-number)
                 +my_center_align()
                   position: absolute
 
@@ -655,7 +715,8 @@ header
                   weight: 500
                   family: 'Roboto', sans-serif
                 line-height: 16px
-                margin-top: 1px
+                margin-top: 2px
+
 
             svg
               @media screen and ( max-width: 920px)
@@ -665,7 +726,12 @@ header
                 &:first-of-type
                   display: block
           a
-            line-height: rem-calc(15)
+            @media screen and ( max-width: 920px)
+              line-height: rem-calc(15)
+            span
+              @media screen and ( min-width: 920px)
+                bottom: 15px
+                position: relative
 
 footer
   background-color: #36464E
@@ -994,10 +1060,10 @@ form
         margin-top: -29px
         &.bx-prev
           background-image: asset-url("banner-left-arrow.png")
-          left: -30px
+          left: -30px !important
         &.bx-next
           background-image: asset-url("banner-right-arrow.png")
-          right: -30px
+          right: -30px !important
     .bx-pager
       &.bx-default-pager
         a

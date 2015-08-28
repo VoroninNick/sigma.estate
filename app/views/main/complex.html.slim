@@ -1,7 +1,11 @@
 =render "application/complex_header"
 .complex-page-wrap
   .main-banner-wrap
-    .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+    ul
+      li
+        .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+      li
+        .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
 
   .best-complex
     .row
@@ -16,3 +20,5 @@
             - apartments.each do |a|
       -10.times
         =render partial: "main/complex"
+
+  =render partial: "partials/forms/feedback_form"

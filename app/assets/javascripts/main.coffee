@@ -191,6 +191,9 @@ $(document).ready ->
 
   $(".similar-apartments ul.similar-apartments-carousel").bxSlider()
 
+#  complex
+  $(".complex-page-wrap .main-banner-wrap ul").bxSlider()
+
 
 
 #
