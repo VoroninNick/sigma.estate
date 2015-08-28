@@ -1,6 +1,9 @@
 .navigation-wrap
   .nav-logo-wrap.nav-side
-    =link_to "Sigma Estate", apartment_path
+    =link_to apartment_path do
+      span Sigma
+      span Estate
+
 
   .nav-wrap
     nav.nav-catalogs
@@ -97,6 +100,7 @@
         li
           a href="#" data-reveal-id="EnterFormModal"
             =embedded_svg "ic_perm_identity_24px.svg"
+
       li.mobile-menu-link
         a
           = embedded_svg "ic_menu_black_24px.svg", class: "mm-link-open"

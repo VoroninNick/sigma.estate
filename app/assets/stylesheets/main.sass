@@ -169,24 +169,75 @@ body
     bottom: 0
     overflow: hidden
     .mobile-menu
+      width: 0
+      overflow: hidden
+      .mm-header
+        height: 200px
+        background-color: #36474f
+        padding-top: 22px
+        .se-user-avatar
+          width: 100px
+          height: 100px
+          margin: 0 auto
+          border-radius: 50%
+          overflow: hidden
+          .image
+            padding-bottom: 100%
+        h3
+          color: #fff
+          font:
+            size: 1.3125rem
+            weight: 500
+          line-height: 2.25rem
+          margin-top: 15px
 
+      .mm-body
+        .mm-nav-pages
+          padding: 20px 0 30px 0
+          border-bottom: 2px solid #b1bec6
+          nav
+            li
+              margin-right: 150px
+              a
+                color: #37474f
+        ul
+          margin: 0
+          list-style: none
+          li
+            a
+              color: #37474f
+              svg 
+                position: relative
+                top: 6px
+        .mm-cabinet-controls
+          border-top: 2px solid #b1bec6
+          .row
+            &:first-child
+              border-bottom: 1px solid #b1bec6
+            a
+              color: #37474f
+              svg
+                position: relative
+                top: 6px
   &.mm-opened
-    overflow: hidden
+    @media screen and ( max-width: 960px)
+      overflow: hidden
     svg.mm-link-open
       display: none
     svg.mm-link-close
       display: block
     .mobile-menu-wrap
-      left: 0
-      right: 0
-      background-color: rgba(0,0,0,.7)
-      z-index: 11111111
-      .mobile-menu
-        float: right
+      @media screen and ( max-width: 960px)
+        left: 0
         right: 0
-        background-color: #e3e3e3
-        height: 100%
-        width: 490px
+        background-color: rgba(0,0,0,.7)
+        z-index: 11111111
+        .mobile-menu
+          float: right
+          right: 0
+          background-color: #e3e3e3
+          height: 100%
+          width: 490px
 
 
 .reveal-modal
@@ -415,6 +466,16 @@ header
         text-transform: uppercase
         line-height: rem-calc(60)
         padding: 0 20px
+        span
+          &:last-of-type
+            padding-left: 3px
+          @media screen and ( max-width: 960px)
+            display: inline-block
+            width: 12px
+            overflow: hidden
+            &:last-of-type
+              padding-left: 0
+
     .nav-side
       width: 20%
       height: 60px
@@ -454,6 +515,9 @@ header
                 .animate-input
                   padding-left: 0
       &.nav-catalogs
+        @media screen and ( max-width: 960px)
+          +my_horizontal_align
+
         li
           .ink
             background: hsl(21.13, 100%, 90.2%)
@@ -570,6 +634,38 @@ header
           height: auto
   .hsf
     float: left
+  &.h-filter-complex-page-wrap
+    .h-filter-list
+      ul
+        li
+          .rating-ico-wrap
+            @media screen and ( max-width: 920px)
+              width: 46px
+              height: 46px
+              position: relative
+              &:before
+                display: inline-block
+                content: '8'
+                +my_center_align()
+                  position: absolute
+
+                color: #36464E
+                font:
+                  size: 16px
+                  weight: 500
+                  family: 'Roboto', sans-serif
+                line-height: 16px
+                margin-top: 1px
+
+            svg
+              @media screen and ( max-width: 920px)
+                width: 100%
+                height: 100%
+                display: none
+                &:first-of-type
+                  display: block
+          a
+            line-height: rem-calc(15)
 
 footer
   background-color: #36464E
