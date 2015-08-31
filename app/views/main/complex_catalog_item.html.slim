@@ -1,0 +1,216 @@
+=render "application/complex_header"
+.complex-item-page-wrap
+  /- if @apartment.prev
+    = link_to apartment_item_path(@apartment.prev.id), class: 'a_other_item a_prev_item se-box-shadow' do
+  = link_to complex_catalog_item_path, class: 'a_other_item a_prev_item se-box-shadow' do
+    .a_other_item_ico
+      = embedded_svg "ic_keyboard_arrow_left_24px.svg"
+    .a_other_item_label
+      /b =@apartment.prev.id
+      p ЖК «Сігма апартментс»
+
+  /- if @apartment.next
+  = link_to complex_catalog_item_path, class: 'a_other_item a_next_item se-box-shadow' do
+    .a_other_item_label
+      /b =@apartment.next.id
+      p ЖК «Сігма апартментс»
+    .a_other_item_ico
+      = embedded_svg "ic_keyboard_arrow_right_24px.svg"
+
+  .row
+    .columns
+      .se-breadcrumbs-wrap
+        = render_breadcrumbs
+  .row
+    .columns
+      .complex-item-page.se-box-shadow
+        .complex-item-head
+          .columns
+            ul.image-carousel
+              li
+                .image style="background: url('#{asset_path("stub-o-3.jpg")}')no-repeat center center;"
+              li
+                .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+              li
+                .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+            .complex-item-head-title
+              .medium-10.columns
+                h3 ЖК «Сігма апартментс»
+                .rating-ico-wrap.se-ri-club
+                  - 7.times
+                    =embedded_svg "ic_star_24px.svg"
+              .medium-2.columns
+                .se-storage-link.material-component.ripple
+                  a
+                    =embedded_svg "ic_link_48px.svg"
+              .clearfix
+          .clearfix
+
+        .complex-item-body
+          .row.complex-item-more-information
+            .medium-4.columns
+              .columns
+                .c-info-nav.se-box-shadow
+                  .columns
+                    ul
+                      li
+                        a href="#complex-general-information"
+                          =embedded_svg "ic_info_black_24px.svg"
+                          |Основна інформація
+                      li
+                        a href="#complex-specifications"
+                          =embedded_svg "ic_assessment_black_24px.svg"
+                          |Технічні характеристики
+                      li
+                        a href="#complex-about"
+                          =embedded_svg "ic_border_color_black_24px.svg"
+                          |Опис житлового комплексу
+                      li
+                        a href="#complex-photo-gallery"
+                          =embedded_svg "ic_photo_camera_black_24px.svg"
+                          |Фотозвіт будівництва
+                      li
+                        a href=""
+                          =embedded_svg "ic_room_48px.svg"
+                          |Розташування на карті
+
+                    =link_to "ПЕРЕГЛЯНУТИ КВАРТИРИ", apartment_catalog_path
+
+                  .clearfix
+              .clearfix
+            .medium-8.columns
+              #complex-general-information.c-info
+                h3
+                  =embedded_svg "ic_info_black_24px.svg"
+                  |Основна інформація
+                ul
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |ЦІНА, ЗА М
+                      .small-8.columns.c-info-value
+                        |від 14 000 грн
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |АДРЕСА
+                      .small-8.columns.c-info-value
+                        |вул. Княгині Ольги, 1/5, Шевченківський район, м. Київ
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |НАЙБЛИЖЧЕ МЕТРО
+                      .small-8.columns.c-info-value
+                        |Позняки  — 10 хв. пішки
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |РЕАЛІЗУЄ
+                      .small-8.columns.c-info-value
+                        |Ріел
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |БУДУЄ
+                      .small-8.columns.c-info-value
+                        |Міськжитлобуд
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |СТАТУС БУДІВНИЦТВА
+                      .small-8.columns.c-info-value
+                        |Здача — 2 кв. 2016, будується (будується 10 поверх)
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |ДЕТАЛЬНІШЕ НА САЙТІ
+                      .small-8.columns.c-info-value
+                        a Sigma-appartments.com.ua
+
+
+              #complex-specifications.c-info
+                h3
+                  =embedded_svg "ic_assessment_black_24px.svg"
+                  |Технічні характеристики
+                ul
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |КЛАС
+                      .small-8.columns.c-info-value
+                        |Еліт
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |БУДИНКІВ
+                      .small-8.columns.c-info-value
+                        |3
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |СЕКЦІЙ
+                      .small-8.columns.c-info-value
+                        |12 000 грн/м
+                        sup
+                          |2
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |ПОВЕРХІВ
+                      .small-8.columns.c-info-value
+                        |10
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |ТЕХНОЛОГІЯ БУД.
+                      .small-8.columns.c-info-value
+                        |Монолітно-каркасна
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |СТІНИ
+                      .small-8.columns.c-info-value
+                        |Монолітний залізобетон
+                  li
+                    .row
+                      .small-4.columns.c-info-key
+                        |УТЕПЛЕННЯ
+                      .small-8.columns.c-info-value
+                        |Мінвата
+              #complex-about.c-info
+                h3
+                  =embedded_svg "ic_border_color_black_24px.svg"
+                  |Опис житлового комплексу
+                ul
+                  li
+                    .row
+                      .columns
+                        h4 Інформація про помешкання
+                    .row
+                      .columns
+                        p
+                          |Жилой комплекс "Сказка" - это уютное место для жизни в одном из самых зеленых районов
+                            столицы. Рядом расположены парки, что позволит Вам прогуливаться вместе с семьей. До
+                            центра можно добраться машиной в течении 15 минут, а в скором времени рядом откроется
+                            новая станция метро, "Теремки", и те, кто предпочитают общественный транспорт смогут без
+                            пробок добираться в любую точку города.
+                  li
+                    .row
+                      .columns
+                        h4 Інфраструктура
+                    .row
+                      .columns
+                        p
+                          |В жилом комплексе "Сонячна брама" реализована концепция "город в городе" с замкнутой
+                            инфраструктурой, которая предусматривает размещение на территории комплекса всего
+                            необходимого для максимально комфортного проживания.
+                        p
+                          |На территории комплекса расположены: супермаркет Novus, отделение государственного
+                            банка "Ощадбанк", детские и спортивные площадки. В скором времени запланировано
+                            открытие небольшого ландшафтного парка, салона красоты и приемных пунктов бытового
+                            обслуживания. В шаговой доступности от комплекса расположен фитнес-центр Sport Llife.
+              #complex-photo-gallery.c-info
+                h3
+                  =embedded_svg "ic_photo_camera_black_24px.svg"
+                  |Фотозвіт будівництва
+      .clearfix

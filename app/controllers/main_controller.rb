@@ -19,10 +19,11 @@ class MainController < ApplicationController
   end
 
   def complex
-
   end
-
-
+  def complex_catalog
+  end
+  def complex_catalog_item
+  end
 
 
   def about

@@ -51,6 +51,7 @@
           weight: 900
   .best-complex
     padding-top: 25px
+    padding-bottom: 100px
     h3.a-title
       margin-bottom: 25px
     .c-one-item
@@ -119,3 +120,98 @@
         .c-oi-date
           color: inherit
           display: inline-block
+
+
+.complex-item-page-wrap
+  .complex-item-page
+    min-height: 650px
+    background-color: #fff
+    .complex-item-head
+      padding-top: 20px
+      .bx-wrapper
+        margin: 0
+        .bx-controls-direction
+          a
+            background-position: inherit
+            margin-top: 0
+            &.bx-prev
+              background-image: asset-url("banner-left-arrow.png")
+            &.bx-next
+              background-image: asset-url("banner-right-arrow.png")
+        .bx-viewport
+          -moz-box-shadow: none
+          -webkit-box-shadow: none
+          box-shadow: none
+          border: none
+          left: 0
+        .bx-pager, .bx-controls-auto
+          bottom: 20px
+        .bx-pager
+          &.bx-default-pager
+            a
+              background: #FB8B00
+              width: 14px
+              height: 14px
+              -moz-border-radius: 50%
+              -webkit-border-radius: 50%
+              border-radius: 50%
+              margin: 0 17px
+              -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+              -moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+              box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
+              &.active
+                background: #fff
+      ul.image-carousel
+        height: 500px
+        margin-left: 0
+        list-style: none
+        li, .image
+          height: 100%
+      .complex-item-head-title
+        height: 80px
+        background-color: #36464E
+        padding-top: 14px
+        h3
+          color: #fff
+          margin: 0
+        h3
+          font:
+            size: rem-calc(24)
+            weight: 500
+          line-height: rem-calc(28.8)
+        .se-storage-link
+          width: 70px
+          height: 70px
+          background-color: #ef6c00
+          border-radius: 50%
+          margin-top: -49px
+          overflow: hidden !important
+          position: relative !important
+          a
+            display: block
+            padding: 16px
+            svg
+              width: 100%
+              height: 100%
+              path
+                fill: #fff
+    .complex-item-body
+      padding-top: 73px
+      .complex-item-more-information
+        ul
+          list-style: none
+          margin: 0
+        .c-info-nav
+          background-color: #eceff1
+          padding: 30px 0
+          ul
+            li
+              a
+                color: #90a4ae
+                font:
+                  size: rem-calc(16)
+                svg
+                  path, circle
+                    fill: #90a4ae
+            &+a
+              color: #e65100

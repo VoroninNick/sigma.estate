@@ -1,67 +1,65 @@
-.apartment-item-page-wrap
-
-  .a_other_item
-    display: block
-    background-color: #fff
-    height: 70px
-    position: fixed
-    top: 400px
-    z-index: 10000
-    .a_other_item_label, .a_other_item_ico
-      height: inherit
-      float: left
+.a_other_item
+  display: block
+  background-color: #fff
+  height: 70px
+  position: fixed
+  top: 400px
+  z-index: 10000
+  .a_other_item_label, .a_other_item_ico
+    height: inherit
+    float: left
+  .a_other_item_label
+    width: 0
+    overflow: hidden
+    padding: 15px 0 15px 18px
+    opacity: 0
+    //+transition(all, .2s, ease)
+    b, p
+      color: #fff
+    b
+      font:
+        size: rem-calc(14)
+        weight: 500
+      line-height: rem-calc(16.8)
+      display: block
+      margin-bottom: 3px
+    p
+      font:
+        size: rem-calc(12)
+        weight: 300
+      line-height: rem-calc(18)
+      margin: 0
+  .a_other_item_ico
+    width: 55px
+  svg
+    width: 28px
+    height: 48px
+    +my_vertical_align()
+      position: absolute
+    path
+      fill: #AFBDC4
+  &:hover
+    background-color: #E55000
     .a_other_item_label
-      width: 0
-      overflow: hidden
-      padding: 15px 0 15px 18px
-      opacity: 0
-      //+transition(all, .2s, ease)
-      b, p
-        color: #fff
-      b
-        font:
-          size: rem-calc(14)
-          weight: 500
-        line-height: rem-calc(16.8)
-        display: block
-        margin-bottom: 3px
-      p
-        font:
-          size: rem-calc(12)
-          weight: 300
-        line-height: rem-calc(18)
-        margin: 0
-    .a_other_item_ico
-      width: 55px
+      width: 222px
+      opacity: 1
     svg
-      width: 28px
-      height: 48px
-      +my_vertical_align()
-        position: absolute
       path
-        fill: #AFBDC4
-    &:hover
-      background-color: #E55000
-      .a_other_item_label
-        width: 222px
-        opacity: 1
-      svg
-        path
-          fill: #fff
-    &.a_prev_item
-      left: 0
-      border-top-right-radius: 3px
-      border-bottom-right-radius: 3px
-      .a_other_item_label
-      svg
-        left: 11px
-    &.a_next_item
-      right: 0
-      border-top-left-radius: 3px
-      border-bottom-left-radius: 3px
-      svg
-        right: 11px
-
+        fill: #fff
+  &.a_prev_item
+    left: 0
+    border-top-right-radius: 3px
+    border-bottom-right-radius: 3px
+    .a_other_item_label
+    svg
+      left: 11px
+  &.a_next_item
+    right: 0
+    border-top-left-radius: 3px
+    border-bottom-left-radius: 3px
+    svg
+      right: 11px
+.apartment-item-page-wrap
   .apartment-item-page
     min-height: 650px
     background-color: #fff

@@ -48,4 +48,26 @@ module ApplicationHelper
     content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}", frameborder: "0", allowfullscreen: "")
   end
 
+  def nav_link(text, link)
+    recognized = Rails.application.routes.recognize_path(link)
+    if recognized[:controller] == params[:controller] && recognized[:action] == params[:action]
+      content_tag(:li, :class => "material-component ripple current") do
+        content_tag :a, href: link do
+          embedded_svg("ic_photo_size_select_small_24px.svg") +
+          content_tag(:div, class: "link-text") do
+            text
+          end
+        end
+      end
+    else
+      content_tag(:li, :class => "material-component ripple") do
+        content_tag :a, href: link do
+          embedded_svg("ic_photo_size_select_small_24px.svg") +
+              content_tag(:div, class: "link-text") do
+                text
+              end
+        end
+      end
+    end
+  end
 end

@@ -7,12 +7,14 @@
 
   .nav-wrap
     nav.nav-catalogs
-      li.material-component.ripple class=cp(apartment_path)
+      = nav_link("Квартири", apartment_path)
+      /li.material-component.ripple class=cp(apartment_path)
         a href=apartment_path
           =embedded_svg "ic_photo_size_select_small_24px.svg"
           .link-text
             |Квартири
-      li.material-component.ripple.disable-link
+      = nav_link("Квартири", '')
+      /li.material-component.ripple.disable-link
         a
           =embedded_svg "ic_home_24px.svg"
           .link-text
@@ -22,7 +24,8 @@
           =embedded_svg "ic_location_city_24px.svg"
           .link-text
             |Ком. нерухомість
-      li.material-component.ripple class=cp(complex_path)
+      = nav_link("Житл. Комплекси", complex_path)
+      /li.material-component.ripple class=cp(complex_path)
         a href=complex_path
           =embedded_svg "ic_domain_24px.svg"
           .link-text
