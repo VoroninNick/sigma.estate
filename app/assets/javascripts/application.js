@@ -14,6 +14,13 @@
 //= require jquery_ujs
 //= require foundation
 //= require bxslider
+//= require jquery.flexslider-min
+
+
+//= require lightgallery/dist/js/lightgallery.min
+//= require lightgallery/dist/js/lg-thumbnail.min
+//= require lightgallery/dist/js/lg-fullscreen.min
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

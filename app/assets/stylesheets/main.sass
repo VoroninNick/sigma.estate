@@ -296,6 +296,31 @@ body
           height: 100%
           width: 490px
 
+.flexslider
+  margin: 0
+  background-color: transparent
+  border: none
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  -o-border-radius: 0
+  border-radius: 0
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  -o-box-shadow: none
+  box-shadow: none
+  ul
+    li
+      .image
+        height: 100%
+  ul.flex-direction-nav
+    li
+      a
+        &.flex-prev:before
+          background-image: asset-url("banner-left-arrow.png")
+          background-repeat: repeat
+        &.flex-next:before
+          background-image: asset-url("banner-right-arrow.png")
+          background-repeat: repeat
 
 .reveal-modal
   padding: 0

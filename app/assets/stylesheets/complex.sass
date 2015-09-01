@@ -206,12 +206,119 @@
           padding: 30px 0
           ul
             li
+              line-height: rem-calc(45)
               a
                 color: #90a4ae
                 font:
                   size: rem-calc(16)
                 svg
+                  width: 24px
+                  height: 24px
+                  position: relative
+                  top: 5px
                   path, circle
                     fill: #90a4ae
             &+a
               color: #e65100
+        .c-info
+          h3, h4, p, .c-info-key, .c-info-val
+            color: #37474F
+          h3
+            font:
+              size: rem-calc(24)
+              weight: 500
+            line-height: rem-calc(28.8)
+            svg
+              position: relative
+              top: 4px
+              path, circle
+                fill: #37474F
+          h4
+            font:
+              size: rem-calc(16)
+              weight: 500
+            line-height: rem-calc(19.2)
+          p
+            font:
+              size: rem-calc(14)
+              weight: 400
+            line-height: rem-calc(24)
+          h3 + ul
+            list-style: none
+            margin: 0
+            li
+              line-height: 60px
+              border-bottom: 1px solid #CFD8DC
+
+          .c-info-key, .c-info-val
+            font:
+              family: 'Roboto', sans-serif
+              size: rem-calc(14)
+
+          .c-info-key
+            font:
+              weight: 500
+            text:
+              transform: uppercase
+          .c-info-val
+            font:
+              weight: 400
+
+.c-gallery-view
+  margin-top: 25px
+  ul.slides
+    height: 420px
+    li
+      height: 100%
+      border: none
+#c-map
+  height: 400px
+#aniimated-thumbnials
+  a
+    display: block
+    width: 40px
+    height: 40px
+    .image
+      height: 100%
+
+.c-gallery-thumbnail
+  margin-bottom: 95px
+  ul.slides
+    height: 79px
+    li
+      height: 100%
+      position: relative
+      cursor: pointer
+      &:before
+        display: block
+        content: ''
+        background-color: black
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        opacity: .4
+      &.flex-active-slide
+        border: 2px solid #CFD8DC
+        &:before
+          display: none
+
+.c-price-checked
+  background-color: #EF6C00
+  display: inline
+  padding: 2px 10px
+  svg
+    height: 100%
+    width: 20px
+    position: relative
+    top: 5px
+    path
+      fill: #fff
+  color: #fff
+  font:
+    size: rem-calc(12)
+    weight: 500
+  line-height: rem-calc(20)
+  span
+    color: #fff

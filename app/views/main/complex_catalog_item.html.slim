@@ -47,9 +47,9 @@
           .clearfix
 
         .complex-item-body
-          .row.complex-item-more-information
+          .complex-item-more-information
             .medium-4.columns
-              .columns
+              .c-info-nav-wrap
                 .c-info-nav.se-box-shadow
                   .columns
                     ul
@@ -77,7 +77,7 @@
                     =link_to "ПЕРЕГЛЯНУТИ КВАРТИРИ", apartment_catalog_path
 
                   .clearfix
-              .clearfix
+
             .medium-8.columns
               #complex-general-information.c-info
                 h3
@@ -90,12 +90,18 @@
                         |ЦІНА, ЗА М
                       .small-8.columns.c-info-value
                         |від 14 000 грн
+                        .c-price-checked
+                          =embedded_svg "ic_check_black_24px.svg"
+                          |Ціна провірена
+                          span
+                            |12.05.2015
                   li
                     .row
                       .small-4.columns.c-info-key
                         |АДРЕСА
                       .small-8.columns.c-info-value
                         |вул. Княгині Ольги, 1/5, Шевченківський район, м. Київ
+                        =embedded_svg "ic_room_48px.svg"
                   li
                     .row
                       .small-4.columns.c-info-key
@@ -181,36 +187,128 @@
                 h3
                   =embedded_svg "ic_border_color_black_24px.svg"
                   |Опис житлового комплексу
-                ul
-                  li
-                    .row
-                      .columns
-                        h4 Інформація про помешкання
-                    .row
-                      .columns
-                        p
-                          |Жилой комплекс "Сказка" - это уютное место для жизни в одном из самых зеленых районов
-                            столицы. Рядом расположены парки, что позволит Вам прогуливаться вместе с семьей. До
-                            центра можно добраться машиной в течении 15 минут, а в скором времени рядом откроется
-                            новая станция метро, "Теремки", и те, кто предпочитают общественный транспорт смогут без
-                            пробок добираться в любую точку города.
-                  li
-                    .row
-                      .columns
-                        h4 Інфраструктура
-                    .row
-                      .columns
-                        p
-                          |В жилом комплексе "Сонячна брама" реализована концепция "город в городе" с замкнутой
-                            инфраструктурой, которая предусматривает размещение на территории комплекса всего
-                            необходимого для максимально комфортного проживания.
-                        p
-                          |На территории комплекса расположены: супермаркет Novus, отделение государственного
-                            банка "Ощадбанк", детские и спортивные площадки. В скором времени запланировано
-                            открытие небольшого ландшафтного парка, салона красоты и приемных пунктов бытового
-                            обслуживания. В шаговой доступности от комплекса расположен фитнес-центр Sport Llife.
+                .row
+                  .columns
+                    h4 Інформація про помешкання
+                .row
+                  .columns
+                    p
+                      |Жилой комплекс "Сказка" - это уютное место для жизни в одном из самых зеленых районов
+                        столицы. Рядом расположены парки, что позволит Вам прогуливаться вместе с семьей. До
+                        центра можно добраться машиной в течении 15 минут, а в скором времени рядом откроется
+                        новая станция метро, "Теремки", и те, кто предпочитают общественный транспорт смогут без
+                        пробок добираться в любую точку города.
+                .row
+                  .columns
+                    h4 Інфраструктура
+                .row
+                  .columns
+                    p
+                      |В жилом комплексе "Сонячна брама" реализована концепция "город в городе" с замкнутой
+                        инфраструктурой, которая предусматривает размещение на территории комплекса всего
+                        необходимого для максимально комфортного проживания.
+                    p
+                      |На территории комплекса расположены: супермаркет Novus, отделение государственного
+                        банка "Ощадбанк", детские и спортивные площадки. В скором времени запланировано
+                        открытие небольшого ландшафтного парка, салона красоты и приемных пунктов бытового
+                        обслуживания. В шаговой доступности от комплекса расположен фитнес-центр Sport Llife.
               #complex-photo-gallery.c-info
                 h3
                   =embedded_svg "ic_photo_camera_black_24px.svg"
                   |Фотозвіт будівництва
+
+                #slider.flexslider.c-gallery-view
+                  ul.slides
+                    li
+                      .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+
+                #carousel.flexslider.c-gallery-thumbnail
+                  ul.slides
+                    li
+                      .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
+                    li
+                      .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+                #aniimated-thumbnials
+                  a href=asset_path("apartment.jpg")
+                    .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+                  a href=asset_path("apartment2.jpg")
+                    .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+                  a href=asset_path("apartment3.jpg")
+                    .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
+                  a href=asset_path("apartment4.jpg")
+                    .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
+                  a href=asset_path("apartment5.jpg")
+                    .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+
+              #complex-location.c-info
+                h3
+                  =embedded_svg "ic_room_48px.svg"
+                  |Розташування на карті
+                #c-map
+                coffee:
+                  locations = [
+                    [
+                      'Bondi Beach'
+                      -33.890542
+                      151.274856
+                      4
+                    ]
+                    [
+                      'Coogee Beach'
+                      -33.923036
+                      151.259052
+                      5
+                    ]
+                    [
+                      'Cronulla Beach'
+                      -34.028249
+                      151.157507
+                      3
+                    ]
+                    [
+                      'Manly Beach'
+                      -33.80010128657071
+                      151.28747820854187
+                      2
+                    ]
+                    [
+                      'Maroubra Beach'
+                      -33.950198
+                      151.259302
+                      1
+                    ]
+                  ]
+                  map = new (google.maps.Map)(document.getElementById('c-map'),
+                    zoom: 13
+                    center: new (google.maps.LatLng)(-33.92, 151.25)
+                    mapTypeId: google.maps.MapTypeId.ROADMAP)
+                  infowindow = new (google.maps.InfoWindow)
+                  marker = undefined
+                  i = undefined
+                  i = 0
+                  while i < locations.length
+                    marker = new (google.maps.Marker)(
+                      position: new (google.maps.LatLng)(locations[i][1], locations[i][2])
+                      map: map)
+                    google.maps.event.addListener marker, 'click', do (marker, i) ->
+                      ->
+                        infowindow.setContent locations[i][0]
+                        infowindow.open map, marker
+                        return
+                    i++
+          .clearfix
       .clearfix

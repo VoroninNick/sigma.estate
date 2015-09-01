@@ -55,6 +55,60 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+
+  $("#aniimated-thumbnials").lightGallery
+    mode: 'lg-fade',
+    thumbnail: true
+
+  $('#carousel').flexslider
+    animation: 'slide'
+    controlNav: false
+    animationLoop: false
+    slideshow: false
+    itemWidth: 79
+    itemMargin: 5
+    asNavFor: '#slider'
+  $('#slider').flexslider
+    animation: 'slide'
+    controlNav: false
+    animationLoop: false
+    slideshow: false
+    sync: '#carousel'
+
+#  anchor link binder
+  $ ->
+    $('a[href*=#]:not([href=#])').click ->
+      if location.pathname.replace(/^\//, '') == @pathname.replace(/^\//, '') and location.hostname == @hostname
+        target = $(@hash)
+        target = if target.length then target else $('[name=' + @hash.slice(1) + ']')
+        if target.length
+          $('html,body').animate { scrollTop: target.offset().top }, 1000
+          return false
+
+#  length = $('.c-info-nav-wrap').height() - $('.c-info-nav').height() + $('.c-info-nav-wrap').offset().top
+#
+#  $(window).scroll ->
+#    scroll = $(this).scrollTop()
+#    height = $('.c-info-nav').height() + 'px'
+#    if scroll < $('.c-info-nav-wrap').offset().top
+#      $('.c-info-nav').css
+#        'position': 'absolute'
+#        'top': '0'
+#    else if scroll > length
+#      $('.c-info-nav').css
+#        'position': 'absolute'
+#        'bottom': '0'
+#        'top': 'auto'
+#    else
+#      $('.c-info-nav').css
+#        'position': 'fixed'
+#        'top': '0'
+#        'height': height
+
+
+
+
+
   $('.mobile-menu-link').click ->
     $this = $(@)
     wrap = $this.closest('body')
@@ -209,6 +263,7 @@ $(document).ready ->
 
   $('.se-ajax-form input[type=file]').change ->
     $(@).closest('form').submit()
+
 
 #module A
 #  class << self
