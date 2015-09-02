@@ -315,13 +315,18 @@ body
   ul.flex-direction-nav
     li
       a
+        &:before
+          font:
+            size: rem-calc(30)
+          color: #fff
         &.flex-prev:before
-          background-image: asset-url("banner-left-arrow.png")
-          background-repeat: repeat
+          //background-image: asset-url("banner-left-arrow.png")
+          //background-repeat: repeat
         &.flex-next:before
-          background-image: asset-url("banner-right-arrow.png")
-          background-repeat: repeat
-
+          //background-image: asset-url("banner-right-arrow.png")
+          //background-repeat: repeat
+.sh_btn
+  z-index: 1038 !important
 .reveal-modal
   padding: 0
 .modal-header, .se-form-header
