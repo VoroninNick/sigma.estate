@@ -200,6 +200,7 @@
       padding-bottom: 105px
       margin-bottom: 55px
       .complex-item-more-information
+        overflow: hidden
         ul
           list-style: none
           margin: 0
@@ -236,7 +237,22 @@
             &+a
               color: #e65100
         .c-info
-          h3, h4, p, .c-info-key, .c-info-val
+          padding-bottom: 60px
+          position: relative
+          &:after
+            display: block
+            content: ''
+            height: 1px
+            background-color: #ECEFF1
+            width: 3000px
+            position: absolute
+            bottom: 0
+            left: -1500px
+          &:last-of-type:after
+            display: none
+
+
+          h3, h4, p, .c-info-key, .c-info-value
             color: #37474F
           h3
             font:
@@ -269,7 +285,7 @@
 
           #c-map
             margin-top: 25px
-          .c-info-key, .c-info-val
+          .c-info-key, .c-info-value
             font:
               family: 'Roboto', sans-serif
               size: rem-calc(14)
@@ -279,9 +295,18 @@
               weight: 500
             text:
               transform: uppercase
-          .c-info-val
+          .c-info-value
             font:
               weight: 400
+            svg
+              width: 18px
+              height: 18px
+              position: relative
+              top: 4px
+              path
+                fill: #90A4AE
+            a
+              color: #E65100
 
 .c-gallery-view
   margin-top: 25px
@@ -303,7 +328,7 @@
       height: 100%
 
 .c-gallery-thumbnail
-  margin-bottom: 95px
+  margin-bottom: 45px
   ul.slides
     height: 79px
     li
@@ -335,7 +360,8 @@
     position: relative
     top: 5px
     path
-      fill: #fff
+      fill: #fff !important
+
   color: #fff
   font:
     size: rem-calc(12)
