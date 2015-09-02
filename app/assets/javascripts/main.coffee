@@ -55,33 +55,33 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
-#  $('.complex-item-more-information').on 'click', '.c-gallery-view .flex-active-slide', ->
-#    $wrap =$(@).closest('.c-info')
-#    $gallery_wrap = $wrap.find('.c-gallery-thumbnail')
-#    slides = $gallery_wrap.find('.image')
-#
-#    $(@).lightGallery
-#      dynamic: true
-#      dynamicEl: [
-#        {
-#          'src': '/assets/apartment.jpg'
-#          'thumb': '/assets/apartment.jpg'
-#          'subHtml': '<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I\'m extremely happy I was passing the right place at the right time....</p>'
-#        }
-#        {
-#          'src': '/assets/apartment2.jpg'
-#          'thumb': '/assets/apartment2.jpg'
-#          'subHtml': '<h4>Coniston Calmness</h4><p>Beautiful morning</p>'
-#        }
-#      ]
+  $('.complex-item-more-information').on 'click', '.c-gallery-view .flex-active-slide', ->
+    $wrap =$(@).closest('.c-info')
+    $gallery_wrap = $wrap.find('.c-gallery-thumbnail')
+    slides = $gallery_wrap.find('.image')
 
-#      dynamicEl = $.map($wrap.find('.c-gallery-thumbnail li .image'), (el) ->
-#        {
-#          src: $(el).attr 'data-gallery-src'
-#          thumb: $(el).attr 'data-gallery-src'
-#          subHtml: 'test'
-#        }
-#      )
+    $(@).lightGallery
+      dynamic: true
+      dynamicEl: [
+        {
+          'src': '/assets/apartment.jpg'
+          'thumb': '/assets/apartment.jpg'
+          'subHtml': '<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I\'m extremely happy I was passing the right place at the right time....</p>'
+        }
+        {
+          'src': '/assets/apartment2.jpg'
+          'thumb': '/assets/apartment2.jpg'
+          'subHtml': '<h4>Coniston Calmness</h4><p>Beautiful morning</p>'
+        }
+      ]
+
+      dynamicEl = $.map($wrap.find('.c-gallery-thumbnail li .image'), (el) ->
+        {
+          src: $(el).attr 'data-gallery-src'
+          thumb: $(el).attr 'data-gallery-src'
+          subHtml: 'test'
+        }
+      )
 #      console.log(dynamicEl)
 
 #      winners_array = []
