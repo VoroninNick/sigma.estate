@@ -49,28 +49,53 @@
         .complex-item-body
           .complex-item-more-information
             .medium-4.columns
-              .c-info-nav-wrap
+              .c-info-nav-wrap data-magellan-expedition="fixed"
                 .c-info-nav.se-box-shadow
                   .columns
                     ul
-                      li
+                      li data-magellan-arrival="complex-general-information"
                         a href="#complex-general-information"
                           =embedded_svg "ic_info_black_24px.svg"
                           |Основна інформація
-                      li
+                      li data-magellan-arrival="complex-specifications"
                         a href="#complex-specifications"
                           =embedded_svg "ic_assessment_black_24px.svg"
                           |Технічні характеристики
-                      li
+                      li data-magellan-arrival="complex-about"
                         a href="#complex-about"
                           =embedded_svg "ic_border_color_black_24px.svg"
                           |Опис житлового комплексу
-                      li
+                      li data-magellan-arrival="complex-photo-gallery"
                         a href="#complex-photo-gallery"
                           =embedded_svg "ic_photo_camera_black_24px.svg"
                           |Фотозвіт будівництва
-                      li
-                        a href=""
+                      li data-magellan-arrival="complex-location"
+                        a href="#complex-location"
+                          =embedded_svg "ic_room_48px.svg"
+                          |Розташування на карті
+                    =link_to "ПЕРЕГЛЯНУТИ КВАРТИРИ", apartment_catalog_path, class: :right
+                  .clearfix
+                /#sidebar.c-info-nav.se-box-shadow
+                  .columns
+                    ul.side-nav
+                      li data-magellan-arrival="complex-general-information"
+                        a href="#complex-general-information"
+                          =embedded_svg "ic_info_black_24px.svg"
+                          |Основна інформація
+                      li data-magellan-arrival="complex-specifications"
+                        a href="#complex-specifications"
+                          =embedded_svg "ic_assessment_black_24px.svg"
+                          |Технічні характеристики
+                      li data-magellan-arrival="complex-about"
+                        a href="#complex-about"
+                          =embedded_svg "ic_border_color_black_24px.svg"
+                          |Опис житлового комплексу
+                      li data-magellan-arrival="complex-photo-gallery"
+                        a href="#complex-photo-gallery"
+                          =embedded_svg "ic_photo_camera_black_24px.svg"
+                          |Фотозвіт будівництва
+                      li data-magellan-arrival="complex-location"
+                        a href="#complex-location"
                           =embedded_svg "ic_room_48px.svg"
                           |Розташування на карті
 
@@ -79,7 +104,7 @@
                   .clearfix
 
             .medium-8.columns
-              #complex-general-information.c-info
+              #complex-general-information.c-info data-magellan-destination="complex-general-information"
                 h3
                   =embedded_svg "ic_info_black_24px.svg"
                   |Основна інформація
@@ -134,7 +159,7 @@
                         a Sigma-appartments.com.ua
 
 
-              #complex-specifications.c-info
+              #complex-specifications.c-info data-magellan-destination="complex-specifications"
                 h3
                   =embedded_svg "ic_assessment_black_24px.svg"
                   |Технічні характеристики
@@ -183,7 +208,7 @@
                         |УТЕПЛЕННЯ
                       .small-8.columns.c-info-value
                         |Мінвата
-              #complex-about.c-info
+              #complex-about.c-info data-magellan-destination="complex-about"
                 h3
                   =embedded_svg "ic_border_color_black_24px.svg"
                   |Опис житлового комплексу
@@ -212,7 +237,7 @@
                         банка "Ощадбанк", детские и спортивные площадки. В скором времени запланировано
                         открытие небольшого ландшафтного парка, салона красоты и приемных пунктов бытового
                         обслуживания. В шаговой доступности от комплекса расположен фитнес-центр Sport Llife.
-              #complex-photo-gallery.c-info
+              #complex-photo-gallery.c-info data-magellan-destination="complex-photo-gallery"
                 h3
                   =embedded_svg "ic_photo_camera_black_24px.svg"
                   |Фотозвіт будівництва
@@ -291,7 +316,7 @@
                           'thumb': '/assets/apartment5.jpg'
                         }
                       ]
-              #complex-location.c-info
+              #complex-location.c-info  data-magellan-destination="complex-location"
                 h3
                   =embedded_svg "ic_room_48px.svg"
                   |Розташування на карті

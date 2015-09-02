@@ -203,10 +203,17 @@
         ul
           list-style: none
           margin: 0
+        .c-info-nav-wrap
+
+          &.fixed
+            min-width: 0
+            max-width: ($row-width - $column-gutter) / 3
+            padding-right: $column-gutter !important
         .c-info-nav
           background-color: #eceff1
           padding: 30px 0
           ul
+            margin-bottom: 55px
             li
               line-height: rem-calc(45)
               a
@@ -220,6 +227,12 @@
                   top: 5px
                   path, circle
                     fill: #90a4ae
+              &.active
+                a
+                  color: #E65100
+                svg
+                  path, circle
+                    fill: #E65100
             &+a
               color: #e65100
         .c-info
@@ -253,6 +266,7 @@
             li
               line-height: 60px
               border-bottom: 1px solid #CFD8DC
+
           #c-map
             margin-top: 25px
           .c-info-key, .c-info-val

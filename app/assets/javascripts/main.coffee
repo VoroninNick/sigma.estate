@@ -55,53 +55,10 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
-  $('.complex-item-more-information').on 'click', '.c-gallery-view .flex-active-slide', ->
-    $wrap =$(@).closest('.c-info')
-    $gallery_wrap = $wrap.find('.c-gallery-thumbnail')
-    slides = $gallery_wrap.find('.image')
 
-    $(@).lightGallery
-      dynamic: true
-      dynamicEl: [
-        {
-          'src': '/assets/apartment.jpg'
-          'thumb': '/assets/apartment.jpg'
-          'subHtml': '<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I\'m extremely happy I was passing the right place at the right time....</p>'
-        }
-        {
-          'src': '/assets/apartment2.jpg'
-          'thumb': '/assets/apartment2.jpg'
-          'subHtml': '<h4>Coniston Calmness</h4><p>Beautiful morning</p>'
-        }
-      ]
-
-      dynamicEl = $.map($wrap.find('.c-gallery-thumbnail li .image'), (el) ->
-        {
-          src: $(el).attr 'data-gallery-src'
-          thumb: $(el).attr 'data-gallery-src'
-          subHtml: 'test'
-        }
-      )
-#      console.log(dynamicEl)
-
-#      winners_array = []
-#      $.each slides, (index, item) ->
-#        winners_array.push
-#          name: 'fullname'
-#          value: $(item).attr 'data-gallery-src'
-#      console.log(winners_array)
-#      dynamicEl: [
-#        {
-#          'src': '../static/img/2.jpg'
-#          'thumb': '../static/img/thumb-2.jpg'
-#          'subHtml': '<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I\'m extremely happy I was passing the right place at the right time....</p>'
-#        }
-#        {
-#          'src': '../static/img/3.jpg'
-#          'thumb': '../static/img/thumb-3.jpg'
-#          'subHtml': '<h4>Coniston Calmness</h4><p>Beautiful morning</p>'
-#        }
-#      ]
+  $('#sidebar').stickySidebar
+    sidebarTopMargin: 20
+    footerThreshold: 100
 
   $("#aniimated-thumbnials").lightGallery
     mode: 'lg-fade'
@@ -124,14 +81,14 @@ $(document).ready ->
     sync: '#carousel'
 
 #  anchor link binder
-  $ ->
-    $('a[href*=#]:not([href=#])').click ->
-      if location.pathname.replace(/^\//, '') == @pathname.replace(/^\//, '') and location.hostname == @hostname
-        target = $(@hash)
-        target = if target.length then target else $('[name=' + @hash.slice(1) + ']')
-        if target.length
-          $('html,body').animate { scrollTop: target.offset().top }, 1000
-          return false
+#  $ ->
+#    $('a[href*=#]:not([href=#])').click ->
+#      if location.pathname.replace(/^\//, '') == @pathname.replace(/^\//, '') and location.hostname == @hostname
+#        target = $(@hash)
+#        target = if target.length then target else $('[name=' + @hash.slice(1) + ']')
+#        if target.length
+#          $('html,body').animate { scrollTop: target.offset().top }, 1000
+#          return false
 
 #  length = $('.c-info-nav-wrap').height() - $('.c-info-nav').height() + $('.c-info-nav-wrap').offset().top
 #
@@ -331,3 +288,14 @@ $(document).ready ->
 #book.read
 
 
+#$(window).scroll (event) ->
+#  st = $(@).scrollTop()
+#  ot = $('.c-info-nav-wrap').offset().top
+#
+#  if st >= ot
+#    $('.c-info-nav-wrap').addClass('c-fixed-sidebar')
+#    console.log('+')
+#  else if st <= ot
+#    console.log('-')
+#    $('.c-info-nav-wrap').removeClass('c-fixed-sidebar')
+#
