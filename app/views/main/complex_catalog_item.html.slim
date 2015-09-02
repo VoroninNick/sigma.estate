@@ -244,24 +244,6 @@
                     li
                       .image data-gallery-src=asset_path("apartment5.jpg") style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
 
-                /#aniimated-thumbnials
-                  a href=asset_path("apartment.jpg")
-                    img data-exthumbimage=asset_path("apartment3.jpg") src=asset_path("apartment.jpg")
-                    /.image data-exthumbimage=asset_path("apartment.jpg") data-src=asset_path("apartment.jpg") style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-                  a href=asset_path("apartment2.jpg")
-                    img src=asset_path("apartment2.jpg")
-                    /.image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-                  a href=asset_path("apartment3.jpg")
-                    img src=asset_path("apartment3.jpg")
-                    /.image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
-                  a href=asset_path("apartment4.jpg")
-                    img src=asset_path("apartment4.jpg")
-                    /.image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
-                  a href=asset_path("apartment5.jpg")
-                    img src=asset_path("apartment5.jpg")
-                    /.image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
-                  a href="https://www.youtube.com/watch?v=SF2s7BKa2Ww"
-                    img src="img/thumb1.jpg"
                 coffee:
                   $('.complex-item-more-information').on 'click', '.c-gallery-view .flex-active-slide', ->
                     $wrap = $(@).closest('.c-info')
@@ -350,4 +332,21 @@
                     i++
             .clearfix
           .clearfix
-      .clearfix
+
+
+
+      .another-apartment-complexes
+        .row
+          .columns
+            ul.tabs data-tab=""
+              li.tab-title.active
+                a href="#aac-similar" Схожі житлові комплекси
+              li.tab-title
+                a href="#aac-top" Популярні житлові комплекси
+        .row
+          .columns
+            .tabs-content
+              #aac-similar.content.active
+                h1 Схожі житлові комплекси
+              #aac-top.content
+                h1 Популярні житлові комплекси
