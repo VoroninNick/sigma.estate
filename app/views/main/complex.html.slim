@@ -22,12 +22,11 @@
           =embedded_svg "ic_domain_24px.svg"
           |Кращі житлові комплекси
     .row
-      /ul.ba-carousel
-        - @apartments.in_groups_of(6).each do |apartments|
+      ul.bc-carousel
+        - @building_complex.in_groups_of(10).each do |apartments|
           li
-            - apartments.each do |a|
-      -10.times
-        =render partial: "main/complex"
+            - apartments.each do |complex|
+              =render partial: "main/complex",  locals: {object: complex}
 
   =render partial: "partials/forms/feedback_form"
   /http://mediametrics.ru/rating/ru/online.html?article=29771361

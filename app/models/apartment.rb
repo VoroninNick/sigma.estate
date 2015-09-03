@@ -1,14 +1,42 @@
 
+# == Schema Information
+#
+# Table name: sigma_apartments
+#
+#  id                      :integer          not null, primary key
+#  published               :boolean
+#  building_complex_id     :integer
+#  apartment_house_id      :integer
+#  apartment_number        :string
+#  price                   :float
+#  building_premise_number :string
+#  world_sides             :string
+#  apartment_type          :string
+#  live_square             :string
+#  turnkey                 :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#
+
 class Apartment < ActiveRecord::Base
+  self.table_name = :sigma_apartments
+  attr_accessible *attribute_names
+  extend CommonAttributeName
+  extend Enumerize
 
-  has_one :apartment_technical_info, as: 'actable_as_apartment'
+  has_one :technical_settings, class_name: "ApartmentTechnicalSettings", as: :building
+  #belongs_to :building_complex, class_name: "BuildingComplex"
+  belongs_to :apartment_house, class_name: "ApartmentHouse"
 
-  def self.acts_as_apartment
-      belongs_to :apartment_house
-      has_one :address, as: :addressable, class_name: "Address"
-  end
+  has_one :building_complex, through: :apartment_house
 
-  acts_as_apartment
+  accepts_nested_attributes_for :technical_settings
+  attr_accessible :technical_settings, :technical_settings_attributes
+
+  attr_accessible :building_complex
+  attr_accessible :apartment_house
+
+  # has_images
 
   def next
     Apartment.where("id > ?", id).first
@@ -18,9 +46,16 @@ class Apartment < ActiveRecord::Base
     Apartment.where("id < ?", id).last
   end
 
-  def tech_info
-    res = self.apartment_technical_info
-    res ||= self.apartment_house.try{|h| apartment_technical_info }
-    res ||= self.apartment_house.building_complex.apartment_technical_info
+
+  def self.available_cities
+    # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
+    BuildingComplex.pluck(:city).uniq
+  end
+
+
+  enumerize :apartment_type, in: [:one_room, :two_rooms, :three_rooms, :four_rooms, :five_rooms_plus, :studio, :mansard, :two_levels]
+
+  def street_address
+    I18n.t("formats.street_address", street: apartment_house.street, street_number: apartment_house.street_number)
   end
 end

@@ -46,6 +46,11 @@
         .ac-one
           .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
           =render partial: "partials/complex_info"
+    .row
+      .columns
+        - @building_complex.each do |bc|
+          h4
+            =bc.name
   .calculators-wrap
     .row.collapse.full-width
       .small-12.medium-6.columns

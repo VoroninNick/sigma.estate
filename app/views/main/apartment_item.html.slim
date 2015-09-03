@@ -5,14 +5,28 @@
       .a_other_item_ico
         = embedded_svg "ic_keyboard_arrow_left_24px.svg"
       .a_other_item_label
-        b =@apartment.prev.id
-        p ЖК «Сігма апартментс»
+        b
+          |вул.&nbsp;
+          =@apartment.prev.apartment_house.street
+          |,&nbsp;
+          =@apartment.prev.apartment_house.street_number
+        p
+          |ЖК «
+          = @apartment.prev.building_complex.name
+          |»
 
   - if @apartment.next
     = link_to apartment_item_path(@apartment.next.id), class: 'a_other_item a_next_item se-box-shadow' do
       .a_other_item_label
-        b =@apartment.next.id
-        p ЖК «Сігма апартментс»
+        b
+          |вул.&nbsp;
+          =@apartment.next.apartment_house.street
+          |,&nbsp;
+          =@apartment.next.apartment_house.street_number
+        p
+          |ЖК «
+          = @apartment.next.building_complex.name
+          |»
       .a_other_item_ico
         = embedded_svg "ic_keyboard_arrow_right_24px.svg"
 
@@ -34,8 +48,16 @@
                 .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
             .apartment-item-head-title
               .medium-7.columns
-                h3 вул. Генерала Чупринки, 119
-                p ЖК «Сігма апартментс»
+                h3
+                  |вул.&nbsp;
+                  =@apartment.apartment_house.street
+                  |,&nbsp;
+                  =@apartment.apartment_house.street_number
+
+                p
+                  |ЖК «
+                  = @apartment.building_complex.name
+                  |»
               .medium-5.columns
                 .apartment-item-head-title-actions
                   .se-link-button.material-component.ripple.se-box-shadow
@@ -67,7 +89,7 @@
                         |Ціна
                         span
                           |(грн/м2)
-                      .a-oi-info-value 12 770
+                      .a-oi-info-value =@apartment.price.round
                     .large-4.medium-4.small-4.columns
                       .a-oi-info-ico
                         =embedded_svg "ic_select_all_24px.svg"
@@ -75,7 +97,7 @@
                         |Площа
                         span
                           |(м2)
-                      .a-oi-info-value 89
+                      .a-oi-info-value =@apartment.live_square
               .medium-3.columns
                 .a-oi-print-version
                   a
@@ -100,7 +122,7 @@
                             |Клас
                         .small-7.columns
                           .aio-char-value
-                            |Економ
+                            = @apartment.building_complex.complex_class
 
                     .apartment-item-one-characteristic
                       .row
@@ -118,7 +140,8 @@
                             |Ціна
                         .small-7.columns
                           .aio-char-value
-                            |12 000 грн/м2
+                            =@apartment.price.round
+                            |&nbsp;грн/м2
 
                     .apartment-item-one-characteristic
                       .row
@@ -127,7 +150,8 @@
                             |Площа
                         .small-7.columns
                           .aio-char-value
-                            |89 м2
+                            =@apartment.live_square
+                            |&nbsp;м2
 
                     .apartment-item-one-characteristic
                       .row
@@ -183,7 +207,10 @@
                             |Вулиця
                         .small-7.columns
                           .aio-char-value
-                            |вул. Генерала Чупринки, 119
+                            |вул.&nbsp;
+                            =@apartment.apartment_house.street
+                            |,&nbsp;
+                            =@apartment.apartment_house.street_number
 
                     .apartment-item-one-characteristic
                       .row
@@ -210,8 +237,8 @@
                             |Забудовник
                         .small-7.columns
                           .aio-char-value
-                            |Sigma Estate Bud
-                            a
+                            a href=@apartment.building_complex.builder_site
+                              |Sigma Estate Bud
                               =embedded_svg "ic_link_48px.svg"
                     .se-link-button.material-component.ripple
                       = link_to "Калькулятор кредиту", calculators_path

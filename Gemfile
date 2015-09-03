@@ -73,3 +73,7 @@ gem 'owlcarousel-rails'
 gem 'flexslider', :git => 'https://github.com/constantm/Flexslider-2-Rails-Gem.git'
 
 gem "bower-rails"
+
+gem 'ffaker'
+
+# gem 'attachable', :github => 'voroninnick/attachable'

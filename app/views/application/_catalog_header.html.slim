@@ -36,12 +36,17 @@
       .columns
         .h-sf-cities
           strong Місто:
+          - cities = Apartment.available_cities
           ul
-            li
-              a Львів
-            li
-              a Київ
-            li
-              a Одеса
-            li
-              a Ялта
+            -cities.each do |c|
+              li
+                a
+                  =c.inspect
+            /li
+            /  a Львів
+            /li
+            /  a Київ
+            /li
+            /  a Одеса
+            /li
+            /  a Ялта

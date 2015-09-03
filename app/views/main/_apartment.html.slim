@@ -8,14 +8,18 @@
         .a-oi-information
           /b = a.address.try(&:street)
           b = a.id
-          p ЖК «Сігма апартментс»
+          p
+            |ЖК «
+            = a.building_complex.name
+            |»
+          /p ЖК «Сігма апартментс»
           hr
           .row.collapse
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_view_quilt_24px.svg"
               .a-oi-info-label К-сть кімнат
-              .a-oi-info-value 3
+              .a-oi-info-value =a.try(:count_rooms)
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_account_balance_wallet_24px.svg"
@@ -23,7 +27,7 @@
                 |Ціна
                 span
                   |(грн/м2)
-              .a-oi-info-value 12 770
+              .a-oi-info-value =a.price.round
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_select_all_24px.svg"
@@ -31,7 +35,7 @@
                 |Площа
                 span
                   |(м2)
-              .a-oi-info-value = a.apartment_technical_info.try(&:live_square)
+              .a-oi-info-value =a.live_square
     .clearfix
     ul.a-oi-actions
       li

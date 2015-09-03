@@ -9,6 +9,8 @@ class MainController < ApplicationController
   def apartment
     add_breadcrumb "Apartment", apartment_path
     @apartments = Apartment.limit(18)
+
+    @building_complex = BuildingComplex.limit(5)
   end
   def apartment_catalog
     @apartments = Apartment.limit(18).page(params[:page]).per(12)
@@ -19,6 +21,7 @@ class MainController < ApplicationController
   end
 
   def complex
+    @building_complex = BuildingComplex.limit(20)
   end
   def complex_catalog
   end

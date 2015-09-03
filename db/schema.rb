@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829154302) do
+ActiveRecord::Schema.define(version: 20150903113907) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressable_type"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20150829154302) do
     t.integer  "group_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "agreement_templates", force: :cascade do |t|
+    t.string   "name"
+    t.text     "html_source"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "apartment_houses", force: :cascade do |t|
@@ -200,6 +207,17 @@ ActiveRecord::Schema.define(version: 20150829154302) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "sigma_agreements", force: :cascade do |t|
+    t.string   "code_number"
+    t.datetime "laid_at"
+    t.integer  "apartment_id"
+    t.integer  "client_id"
+    t.integer  "manager_id"
+    t.integer  "agreement_template_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "sigma_apartment_houses", force: :cascade do |t|
     t.boolean  "published"
     t.integer  "building_complex_id"
@@ -259,6 +277,7 @@ ActiveRecord::Schema.define(version: 20150829154302) do
 
   create_table "sigma_building_complexes", force: :cascade do |t|
     t.string   "name"
+    t.string   "complex_class"
     t.string   "coordinates"
     t.string   "country"
     t.string   "city"
@@ -291,7 +310,6 @@ ActiveRecord::Schema.define(version: 20150829154302) do
   create_table "sigma_house_technical_settings", force: :cascade do |t|
     t.string   "building_type"
     t.integer  "building_id"
-    t.string   "house_class"
     t.text     "operated_roof"
     t.text     "building_process_type"
     t.integer  "sections_count"
@@ -306,9 +324,9 @@ ActiveRecord::Schema.define(version: 20150829154302) do
     t.datetime "updated_at",                       null: false
   end
 
-  create_table "site_users", force: :cascade do |t|
+  create_table "sigma_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -317,18 +335,23 @@ ActiveRecord::Schema.define(version: 20150829154302) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "username"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.boolean  "subscribe"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
   end
 
-  add_index "site_users", ["email"], name: "index_site_users_on_email", unique: true
-  add_index "site_users", ["reset_password_token"], name: "index_site_users_on_reset_password_token", unique: true
+  add_index "sigma_users", ["email"], name: "index_sigma_users_on_email", unique: true
+  add_index "sigma_users", ["invitation_token"], name: "index_sigma_users_on_invitation_token", unique: true
+  add_index "sigma_users", ["invitations_count"], name: "index_sigma_users_on_invitations_count"
+  add_index "sigma_users", ["invited_by_id"], name: "index_sigma_users_on_invited_by_id"
+  add_index "sigma_users", ["reset_password_token"], name: "index_sigma_users_on_reset_password_token", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -355,6 +378,11 @@ ActiveRecord::Schema.define(version: 20150829154302) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.boolean  "subscribe"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

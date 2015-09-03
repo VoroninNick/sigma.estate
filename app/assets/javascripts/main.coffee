@@ -253,7 +253,7 @@ $(document).ready ->
 #  complex
   $(".complex-page-wrap .main-banner-wrap ul").bxSlider()
   $(".complex-item-page ul.image-carousel").bxSlider()
-
+  $(".best-complex ul.bc-carousel").bxSlider()
 
 #
   $('.se-ajax-form input').focus ->
