@@ -18,15 +18,15 @@
 #  updated_at              :datetime         not null
 #
 
-class Apartment < ActiveRecord::Base
+class Sigma::Apartment < ActiveRecord::Base
   self.table_name = :sigma_apartments
   attr_accessible *attribute_names
   extend CommonAttributeName
   extend Enumerize
 
-  has_one :technical_settings, class_name: "ApartmentTechnicalSettings", as: :building
+  has_one :technical_settings, class_name: "Sigma::ApartmentTechnicalSettings", as: :building
   #belongs_to :building_complex, class_name: "BuildingComplex"
-  belongs_to :apartment_house, class_name: "ApartmentHouse"
+  belongs_to :apartment_house, class_name: "Sigma::ApartmentHouse"
 
   has_one :building_complex, through: :apartment_house
 
@@ -36,7 +36,7 @@ class Apartment < ActiveRecord::Base
   attr_accessible :building_complex
   attr_accessible :apartment_house
 
-  # has_images
+  has_images :banner_images, styles: { thumbnail: "273x180#", large: "940x400#" }
 
   def next
     Apartment.where("id > ?", id).first
@@ -49,7 +49,7 @@ class Apartment < ActiveRecord::Base
 
   def self.available_cities
     # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
-    BuildingComplex.pluck(:city).uniq
+    Sigma::BuildingComplex.pluck(:city).uniq
   end
 
 

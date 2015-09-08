@@ -3,16 +3,19 @@
     .columns
       .a-oi-avatar
         =link_to apartment_item_path(a.id) do
-          .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+          -if asset = a.banner_images.first
+            .image style="background: url('#{asset.url(:thumbnail)}')no-repeat center center;"
+          -else
+            .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+        /=a.banner_images.inspect
       .a-oi-information-wrap
         .a-oi-information
-          /b = a.address.try(&:street)
+          b = a.apartment_house.street
           b = a.id
           p
             |ЖК «
             = a.building_complex.name
             |»
-          /p ЖК «Сігма апартментс»
           hr
           .row.collapse
             .large-4.medium-4.small-4.columns
@@ -27,7 +30,7 @@
                 |Ціна
                 span
                   |(грн/м2)
-              .a-oi-info-value =a.price.round
+              .a-oi-info-value =a.price.try &:round
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_select_all_24px.svg"
@@ -35,7 +38,7 @@
                 |Площа
                 span
                   |(м2)
-              .a-oi-info-value =a.live_square
+              .a-oi-info-value =a.try &:live_square
     .clearfix
     ul.a-oi-actions
       li

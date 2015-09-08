@@ -8,20 +8,20 @@ class MainController < ApplicationController
 
   def apartment
     add_breadcrumb "Apartment", apartment_path
-    @apartments = Apartment.limit(18)
+    @apartments = Sigma::Apartment.limit(18)
 
-    @building_complex = BuildingComplex.limit(5)
+    @building_complex = Sigma::BuildingComplex.limit(5)
   end
   def apartment_catalog
-    @apartments = Apartment.limit(18).page(params[:page]).per(12)
+    @apartments = Sigma::Apartment.limit(18).page(params[:page]).per(12)
   end
   def apartment_item
-    @apartment = Apartment.find(params[:id])
-    @similar = Apartment.where.not(id: @apartment.id).limit(9)
+    @apartment = Sigma::Apartment.find(params[:id])
+    @similar = Sigma::Apartment.where.not(id: @apartment.id).limit(9)
   end
 
   def complex
-    @building_complex = BuildingComplex.limit(20)
+    @building_complex = Sigma::BuildingComplex.limit(20)
   end
   def complex_catalog
   end

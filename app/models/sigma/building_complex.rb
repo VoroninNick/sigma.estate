@@ -34,16 +34,16 @@
 #  updated_at                              :datetime         not null
 #
 
-class BuildingComplex < ActiveRecord::Base
+class Sigma::BuildingComplex < ActiveRecord::Base
   self.table_name = :sigma_building_complexes
   attr_accessible *attribute_names
   extend CommonAttributeName
   extend Enumerize
 
-  has_one :apartment_defaults, class_name: "ApartmentTechnicalSettings", as: :building
-  has_one :apartment_house_defaults, class_name: "HouseTechnicalSettings", as: :building
-  has_many :apartment_houses, class_name: "ApartmentHouse"
-  has_many :apartments, class_name: "Apartment"
+  has_one :apartment_defaults, class_name: "Sigma::ApartmentTechnicalSettings", as: :building
+  has_one :apartment_house_defaults, class_name: "Sigma::HouseTechnicalSettings", as: :building
+  has_many :apartment_houses, class_name: "Sigma::ApartmentHouse"
+  has_many :apartments, class_name: "Sigma::Apartment"
 
   accepts_nested_attributes_for :apartment_defaults
   accepts_nested_attributes_for :apartment_house_defaults

@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   get 'complex' => 'main#complex'
   get 'complex/catalog' => 'main#complex_catalog'
-  # get 'complex/catalog/:id' => 'main#complex_catalog_item'
-  get 'complex/catalog/item' => 'main#complex_catalog_item'
+  get 'complex/catalog/:id' => 'main#complex_catalog_item', as: :one_complex
+  # get 'complex/catalog/item' => 'main#complex_catalog_item'
 
   get 'about' => 'main#about'
   get 'calculators' => 'main#calculators'

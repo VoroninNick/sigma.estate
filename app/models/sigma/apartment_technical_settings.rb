@@ -28,7 +28,7 @@
 #  updated_at                      :datetime         not null
 #
 
-class ApartmentTechnicalSettings < ActiveRecord::Base
+class Sigma::ApartmentTechnicalSettings < ActiveRecord::Base
   attr_accessible *attribute_names
   extend CommonAttributeName
 

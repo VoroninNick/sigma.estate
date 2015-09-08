@@ -20,7 +20,7 @@
 #  updated_at                       :datetime         not null
 #
 
-class HouseTechnicalSettings < ActiveRecord::Base
+class Sigma::HouseTechnicalSettings < ActiveRecord::Base
   attr_accessible *attribute_names
   extend CommonAttributeName
 

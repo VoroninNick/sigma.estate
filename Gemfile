@@ -76,4 +76,6 @@ gem "bower-rails"
 
 gem 'ffaker'
 
-# gem 'attachable', :github => 'voroninnick/attachable'
+gem 'rails_admin'
+gem 'attachable', :github => 'voroninnick/attachable'
+

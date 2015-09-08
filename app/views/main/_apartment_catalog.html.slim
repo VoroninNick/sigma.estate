@@ -13,15 +13,15 @@
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_view_quilt_24px.svg"
-              .a-oi-info-value 3
+              .a-oi-info-value  =a.try(:count_rooms)
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_account_balance_wallet_24px.svg"
-              .a-oi-info-value 12 770
+              .a-oi-info-value =a.price.try &:round
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_select_all_24px.svg"
-              .a-oi-info-value 72
+              .a-oi-info-value =a.try &:live_square
     .clearfix
     ul.a-oi-actions
       li

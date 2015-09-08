@@ -25,28 +25,35 @@
         h3.a-title
           =embedded_svg "ic_domain_24px.svg"
           |Житлові комплекси
-    .row.collapse.full-width
-      .large-8.medium-8.small-12.columns
-        .ac-one
-          .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-          =render partial: "partials/complex_info"
-      .large-4.medium-4.small-12.columns
-        .ac-one
-          .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-          =render partial: "partials/complex_info"
-      .large-4.medium-4.small-12.columns
-        .ac-one
-          .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
-          =render partial: "partials/complex_info"
-      .large-4.medium-4.small-12.columns
-        .ac-one
-          .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
-          =render partial: "partials/complex_info"
-      .large-4.medium-4.small-12.columns.end
-        .ac-one
-          .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
-          =render partial: "partials/complex_info"
-    .row
+    - if @building_complex.any?
+      .row.collapse.full-width
+        -@building_complex.each_with_index do |i, index|
+          .small-12.columns class=(i == @building_complex.first ? "medium-8" : "medium-4")
+            .ac-one
+              .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+              =render partial: "partials/complex_info", locales: {i: i}
+
+        /.large-8.medium-8.small-12.columns
+        /  .ac-one
+        /    .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+        /    =render partial: "partials/complex_info"
+        /.large-4.medium-4.small-12.columns
+        /  .ac-one
+        /    .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+        /    =render partial: "partials/complex_info"
+        /.large-4.medium-4.small-12.columns
+        /  .ac-one
+        /    .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
+        /    =render partial: "partials/complex_info"
+        /.large-4.medium-4.small-12.columns
+        /  .ac-one
+        /    .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
+        /    =render partial: "partials/complex_info"
+        /.large-4.medium-4.small-12.columns.end
+        /  .ac-one
+        /    .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+            =render partial: "partials/complex_info"
+    /.row
       .columns
         - @building_complex.each do |bc|
           h4

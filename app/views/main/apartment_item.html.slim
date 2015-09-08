@@ -89,7 +89,7 @@
                         |Ціна
                         span
                           |(грн/м2)
-                      .a-oi-info-value =@apartment.price.round
+                      .a-oi-info-value =@apartment.price.try &:round
                     .large-4.medium-4.small-4.columns
                       .a-oi-info-ico
                         =embedded_svg "ic_select_all_24px.svg"
@@ -140,7 +140,7 @@
                             |Ціна
                         .small-7.columns
                           .aio-char-value
-                            =@apartment.price.round
+                            =@apartment.price.try &:round
                             |&nbsp;грн/м2
 
                     .apartment-item-one-characteristic
