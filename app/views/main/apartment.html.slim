@@ -28,9 +28,9 @@
     - if @building_complex.any?
       .row.collapse.full-width
         -@building_complex.each_with_index do |i, index|
-          .small-12.columns class=(i == @building_complex.first ? "medium-8" : "medium-4")
+          .small-12.columns.end class=(i == @building_complex.first ? "medium-8" : "medium-4")
             .ac-one
-              .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+              .image style="background: url('#{i.banner_images.first.url(:large)}')no-repeat center center;"
               =render partial: "partials/complex_info", locales: {i: i}
 
         /.large-8.medium-8.small-12.columns

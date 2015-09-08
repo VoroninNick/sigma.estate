@@ -43,16 +43,9 @@
               -@apartment.banner_images.each do |image|
                 li
                   .image style="background: url('#{image.url(:large)}')no-repeat center center;"
-              /li
-              /  .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-              /li
-              /  .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-              /li
-              /  .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
             .apartment-item-head-title
               .medium-7.columns
                 h3
-                  |вул.&nbsp;
                   =@apartment.apartment_house.street
                   |,&nbsp;
                   =@apartment.apartment_house.street_number
@@ -100,7 +93,7 @@
                         |Площа
                         span
                           |(м2)
-                      .a-oi-info-value =@apartment.live_square
+                      .a-oi-info-value =@apartment.try &:live_square
               .medium-3.columns
                 .a-oi-print-version
                   a
