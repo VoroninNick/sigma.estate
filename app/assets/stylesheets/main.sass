@@ -1640,3 +1640,48 @@ form
       //  size: rem-calc(14)
       //  weight: 500
       //line-height: rem-calc(16.8)
+
+
+.se-about-page-title
+  h2
+    color: #37474F
+    font:
+      size: rem-calc(48)
+      weight: 600
+    line-height: rem-calc(57.6)
+    text-transform: uppercase
+  h5
+    color: #78909C
+    font:
+      size: rem-calc(21)
+      weight: 400
+    line-height: rem-calc(36)
+.se-about-page
+  background: #fff
+  .image-carousel, .bx-wrapper
+    height: 480px
+  ul.image-carousel
+    li
+      .image
+        height: 100%
+  ul:not(.image-carousel)
+    list-style: none
+    margin-left: 0
+    li
+      &:before
+        content: "--"
+  .about-page-icons
+    svg
+      height: 48px
+      width: 100%
+      path
+        fill: #FB8C00
+    p
+      color: #FB8C00
+      font:
+        size: rem-calc(14)
+        style: italic
+        weight: 300
+      line-height: rem-calc(18)
+      width: 80%
+      margin: 0 auto
