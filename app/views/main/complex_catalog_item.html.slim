@@ -1,21 +1,24 @@
 =render "application/complex_header"
 .complex-item-page-wrap
-  /- if @apartment.prev
-    = link_to apartment_item_path(@apartment.prev.id), class: 'a_other_item a_prev_item se-box-shadow' do
-  = link_to complex_catalog_item_path, class: 'a_other_item a_prev_item se-box-shadow' do
-    .a_other_item_ico
-      = embedded_svg "ic_keyboard_arrow_left_24px.svg"
-    .a_other_item_label
-      /b =@apartment.prev.id
-      p ЖК «Сігма апартментс»
+  - if @building_complex.prev
+    = link_to one_complex_path(@building_complex.prev.id), class: 'a_other_item a_prev_item se-box-shadow' do
+      .a_other_item_ico
+        = embedded_svg "ic_keyboard_arrow_left_24px.svg"
+      .a_other_item_label
+        p
+          |ЖК «
+          =@building_complex.prev.name
+          |»
 
-  /- if @apartment.next
-  = link_to complex_catalog_item_path, class: 'a_other_item a_next_item se-box-shadow' do
-    .a_other_item_label
-      /b =@apartment.next.id
-      p ЖК «Сігма апартментс»
-    .a_other_item_ico
-      = embedded_svg "ic_keyboard_arrow_right_24px.svg"
+  - if @building_complex.next
+    = link_to one_complex_path(@building_complex.next.id), class: 'a_other_item a_next_item se-box-shadow' do
+      .a_other_item_label
+        p
+          |ЖК «
+          =@building_complex.next.name
+          |»
+      .a_other_item_ico
+        = embedded_svg "ic_keyboard_arrow_right_24px.svg"
 
   .row
     .columns
@@ -27,12 +30,10 @@
         .complex-item-head
           .columns
             ul.image-carousel
-              li
-                .image style="background: url('#{asset_path("stub-o-3.jpg")}')no-repeat center center;"
-              li
-                .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-              li
-                .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+              -@building_complex.banner_images.each do |img|
+                li
+                  .image style="background: url('#{img.url(:large)}')no-repeat center center;"
+
             .complex-item-head-title
               .medium-10.columns
                 h3 ЖК «Сігма апартментс»

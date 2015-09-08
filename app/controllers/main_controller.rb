@@ -26,6 +26,7 @@ class MainController < ApplicationController
   def complex_catalog
   end
   def complex_catalog_item
+    @building_complex = Sigma::BuildingComplex.find(params[:id])
   end
 
 

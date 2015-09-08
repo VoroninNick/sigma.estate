@@ -65,6 +65,14 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   has_images :banner_images, styles: {  thumbnail: "273x180#", large: "940x500#" }
   has_images :gallery_images, styles: { gallery_image: "1440x900#", gallery_thumb: "96x60#" }
 
+
+  def next
+    Sigma::BuildingComplex.where("id > ?", id).first
+  end
+
+  def prev
+    Sigma::BuildingComplex.where("id < ?", id).last
+  end
   def apartment_houses_count
     apartment_houses.length
   end

@@ -2,25 +2,29 @@
   .aci-header
     .row
       .small-8.columns
-        h3 ЖК «Гамма апартментс»
+        h3
+          |ЖК «
+          =info.try &:name
+          |»
       .small-4.columns
-        .rating-ico-wrap.se-ri-elite
-          - 7.times
-            =embedded_svg "ic_star_24px.svg"
+        =get_stars(info.complex_class, '')
     .row
       .columns
-        a.se-region Галицький район
-        p вул. Люткевича, 6
+        a.se-region
+          =info.district
+        p
+          /вул. Люткевича, 6
+          =info.try(:street)
+          |,&nbsp;
+          =info.try(:street_number)
   .aci-body
     .row
       .columns
         hr
-        p
-          |У самісенькому центрі міста Лева з'явиться новий житловий квартал, який отримав назву "Гамма апартментс".
-            Це втілення найкращих традицій комфорту!
+        p =truncate(info.try(:short_description), length: 150)
         .row
           .se-read-more.material-component.ripple
-            a Детальніше
+            = link_to "Детальніше", one_complex_path(info.id)
           .se-external-link.material-component.ripple
             a
               =embedded_svg "ic_link_48px.svg"

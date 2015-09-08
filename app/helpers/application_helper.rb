@@ -71,7 +71,7 @@ module ApplicationHelper
     end
   end
 
-  def get_stars(val)
+  def get_stars(val, color)
     current_class = case val.to_sym
       when :delux
         "se-ri-deluxe"
@@ -92,7 +92,7 @@ module ApplicationHelper
     # count = BuildingComplex.complex_class.values.map(&:to_s).index(val.to_s) + 1
 
     total_count = 7
-    content_tag(:div, :class => "rating-ico-wrap se-ri-light #{current_class}") do
+    content_tag(:div, :class => "rating-ico-wrap #{color} #{current_class}") do
       raw(total_count.times.map do |index|
         embedded_svg("ic_star_24px.svg")
       end.join)

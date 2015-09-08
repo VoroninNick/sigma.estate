@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get 'cabinet' => 'cabinet#profile', as: :cabinet_profile
   get 'cabinet/selected-realty' => 'cabinet#selected_realty'
   get 'cabinet/calculators' => 'cabinet#calculators'
+
   # get  'profile/registration' => 'profile#'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
