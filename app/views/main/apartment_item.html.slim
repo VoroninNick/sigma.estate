@@ -40,12 +40,15 @@
         .apartment-item-head
           .columns
             ul.image-carousel
-              li
-                .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-              li
-                .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-              li
-                .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
+              -@apartment.banner_images.each do |image|
+                li
+                  .image style="background: url('#{image.url(:large)}')no-repeat center center;"
+              /li
+              /  .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+              /li
+              /  .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+              /li
+              /  .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
             .apartment-item-head-title
               .medium-7.columns
                 h3

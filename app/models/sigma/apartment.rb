@@ -39,11 +39,11 @@ class Sigma::Apartment < ActiveRecord::Base
   has_images :banner_images, styles: { thumbnail: "273x180#", large: "940x400#" }
 
   def next
-    Apartment.where("id > ?", id).first
+    Sigma::Apartment.where("id > ?", id).first
   end
 
   def prev
-    Apartment.where("id < ?", id).last
+    Sigma::Apartment.where("id < ?", id).last
   end
 
 
