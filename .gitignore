@@ -18,6 +18,8 @@
 /vendor/*
 /public/*
 
+.DS_Store
+
 .idea
 public
 
