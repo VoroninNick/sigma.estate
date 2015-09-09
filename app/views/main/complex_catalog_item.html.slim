@@ -44,8 +44,12 @@
               .medium-2.columns
                 .se-storage-link.material-component.ripple
                   - if @building_complex.builder && @building_complex.builder.site.present?
-                    a href="http://http://#{@building_complex.builder.site}"
-                      =embedded_svg "ic_link_48px.svg"
+                    -if @building_complex.builder.site =~ /\A#{URI::regexp}\z/
+                      a href="#{@building_complex.builder.site}" target="_blank"
+                        =embedded_svg "ic_link_48px.svg"
+                    -else
+                      a href="//#{@building_complex.builder.site}" target="_blank"
+                        =embedded_svg "ic_link_48px.svg"
                   - else
                     a
                       =embedded_svg "ic_link_48px.svg"
@@ -88,39 +92,70 @@
                   =embedded_svg "ic_info_black_24px.svg"
                   |Основна інформація
                 ul
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |ЦІНА, ЗА М
-                      .small-8.columns.c-info-value
-                        |від 14 000 грн
-                        .c-price-checked
-                          =embedded_svg "ic_check_black_24px.svg"
-                          |Ціна провірена
-                          span
-                            |12.05.2015
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |АДРЕСА
-                      .small-8.columns.c-info-value
-                        |вул. Княгині Ольги, 1/5, Шевченківський район, м. Київ
-                        =embedded_svg "ic_room_48px.svg"
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |НАЙБЛИЖЧЕ МЕТРО
-                      .small-8.columns.c-info-value
-                        =embedded_svg "ic_directions_subway_black_24px.svg"
-                        |Позняки  — 10 хв. пішки
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |РЕАЛІЗУЄ
-                      .small-8.columns.c-info-value
-                        a
-                          |Ріел
-                  li
+                  -if @building_complex.price_from.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |ЦІНА, ЗА М
+                        .small-8.columns.c-info-value
+                          |від&nbsp;
+                          =@building_complex.price_from
+                          |&nbsp;грн
+                          .c-price-checked
+                            =embedded_svg "ic_check_black_24px.svg"
+                            |Ціна провірена&nbsp;
+                            span
+                              =@building_complex.try(:price_from_approved_at)
+                  -if @building_complex.street.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |АДРЕСА
+                        .small-8.columns.c-info-value
+                          =@building_complex.street
+                          |,&nbsp;
+                          =@building_complex.try(:street_number)
+                          |,&nbsp;
+                          =@building_complex.try(:district)
+                          |&nbsp; район,&nbsp;м.&nbsp;
+                          ==@building_complex.try(:city)
+                          /|вул. Княгині Ольги, 1/5, Шевченківський район, м. Київ
+                          =embedded_svg "ic_room_48px.svg"
+
+                  -if @building_complex.nearest_metro_station.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |НАЙБЛИЖЧЕ МЕТРО
+                        .small-8.columns.c-info-value
+                          =embedded_svg "ic_directions_subway_black_24px.svg"
+                          =@building_complex.nearest_metro_station
+                          /|Позняки  — 10 хв. пішки
+
+
+                  /- if @building_complex.builder && @building_complex.builder.site.present?
+                  /  -if @building_complex.builder.site =~ /\A#{URI::regexp}\z/
+                  /    a href="#{@building_complex.builder.site}" target="_blank"
+                  /      =embedded_svg "ic_link_48px.svg"
+                  /  -else
+                  /    a href="//#{@building_complex.builder.site}" target="_blank"
+                  /      =embedded_svg "ic_link_48px.svg"
+                  /- else
+                  /  a
+                  /    =embedded_svg "ic_link_48px.svg"
+
+
+                  - if @building_complex.builder && @building_complex.builder.site.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |БУДУЄ
+                        .small-8.columns.c-info-value
+                          -if @building_complex.builder.site =~ /\A#{URI::regexp}\z/
+                            a href="#{@building_complex.builder.site}" target="_blank" =@building_complex.builder.try(:name)
+                          -else
+                            a href="//#{@building_complex.builder.site}" target="_blank" =@building_complex.builder.try(:name)
+                  /li
                     .row
                       .small-4.columns.c-info-key
                         |БУДУЄ
@@ -194,17 +229,14 @@
                 h3
                   =embedded_svg "ic_border_color_black_24px.svg"
                   |Опис житлового комплексу
-                .row
-                  .columns
-                    h4 Інформація про помешкання
-                .row
-                  .columns
-                    p
-                      |Жилой комплекс "Сказка" - это уютное место для жизни в одном из самых зеленых районов
-                        столицы. Рядом расположены парки, что позволит Вам прогуливаться вместе с семьей. До
-                        центра можно добраться машиной в течении 15 минут, а в скором времени рядом откроется
-                        новая станция метро, "Теремки", и те, кто предпочитают общественный транспорт смогут без
-                        пробок добираться в любую точку города.
+
+                -if @building_complex
+                  .row
+                    .columns
+                      h4 Інформація про помешкання
+                  .row
+                    .columns
+                      =raw @building_complex.try(:html_description)
                 .row
                   .columns
                     h4 Інфраструктура
@@ -223,32 +255,19 @@
                 h3
                   =embedded_svg "ic_photo_camera_black_24px.svg"
                   |Фотозвіт будівництва
+                -if @building_complex.gallery_images.any?
+                  #slider.flexslider.c-gallery-view
+                    ul.slides
+                      -@building_complex.gallery_images.each do |img|
+                        li
+                          .image style="background: url('#{img.url(:gallery_image)}')no-repeat center center;"
 
-                #slider.flexslider.c-gallery-view
-                  ul.slides
-                    li
-                      .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-                    li
-                      .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-                    li
-                      .image style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
-                    li
-                      .image style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
-                    li
-                      .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+                  #carousel.flexslider.c-gallery-thumbnail
+                    ul.slides
+                      -@building_complex.gallery_images.each do |img|
+                        li
+                          .image data-gallery-src=img.url(:gallery_image) style="background: url('#{img.url(:gallery_image)}')no-repeat center center;"
 
-                #carousel.flexslider.c-gallery-thumbnail
-                  ul.slides
-                    li
-                      .image data-gallery-src=asset_path("apartment.jpg") style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-                    li
-                      .image data-gallery-src=asset_path("apartment2.jpg") style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-                    li
-                      .image data-gallery-src=asset_path("apartment3.jpg") style="background: url('#{asset_path("apartment3.jpg")}')no-repeat center center;"
-                    li
-                      .image data-gallery-src=asset_path("apartment4.jpg") style="background: url('#{asset_path("apartment4.jpg")}')no-repeat center center;"
-                    li
-                      .image data-gallery-src=asset_path("apartment5.jpg") style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
 
                 coffee:
                   $('.complex-item-more-information').on 'click', '.c-gallery-view .flex-active-slide', ->
