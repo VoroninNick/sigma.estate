@@ -181,18 +181,19 @@
                   =embedded_svg "ic_assessment_black_24px.svg"
                   |Технічні характеристики
                 ul
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |КЛАС
-                      .small-8.columns.c-info-value
-                        |Еліт
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |БУДИНКІВ
-                      .small-8.columns.c-info-value
-                        |3
+                  -if @building_complex.complex_class.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |КЛАС
+                        .small-8.columns.c-info-value =@building_complex.complex_class
+
+                  -if @building_complex.houses_count.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |БУДИНКІВ
+                        .small-8.columns.c-info-value =@building_complex.houses_count
                   li
                     .row
                       .small-4.columns.c-info-key
@@ -237,20 +238,15 @@
                   .row
                     .columns
                       =raw @building_complex.try(:main_description_html)
-                .row
-                  .columns
-                    h4 Інфраструктура
-                .row
-                  .columns
-                    p
-                      |В жилом комплексе "Сонячна брама" реализована концепция "город в городе" с замкнутой
-                        инфраструктурой, которая предусматривает размещение на территории комплекса всего
-                        необходимого для максимально комфортного проживания.
-                    p
-                      |На территории комплекса расположены: супермаркет Novus, отделение государственного
-                        банка "Ощадбанк", детские и спортивные площадки. В скором времени запланировано
-                        открытие небольшого ландшафтного парка, салона красоты и приемных пунктов бытового
-                        обслуживания. В шаговой доступности от комплекса расположен фитнес-центр Sport Llife.
+
+                -if @building_complex.infrastructure_description_html.present?
+                  .row
+                    .columns
+                      h4 Інфраструктура
+                  .row
+                    .columns
+                      =raw @building_complex.try(:infrastructure_description_html)
+
               #complex-photo-gallery.c-info data-magellan-destination="complex-photo-gallery"
                 h3
                   =embedded_svg "ic_photo_camera_black_24px.svg"
