@@ -272,29 +272,28 @@ $(document).ready ->
 
 
   gallery = null
-  $('#complex-photo-gallery ul.slides li').click ->
-    alert "test"
-#    $wrap =$(@).closest('.event-image-gallery')
-#    slides = $wrap.find('.image')
-#
-#    cii = $(@).index()
-#    elmenetsListData = $.map($wrap.find('.image'), (el) ->
-#      {
-#      src: $(el).attr 'data-gallery-src'
-#      thumb: $(el).attr 'data-gallery-thumb'
-#      }
-#    )
-#    console.log("cii", cii)
-#    $gallery = $('#lightgallery')
-#    $gallery.lightGallery
-#      dynamic: true
-#      dynamicEl: elmenetsListData
-#      index: cii
-#
-#    gallery ?= $gallery.data("lightGallery")
-#    gallery.index = cii
-#    console.log("gallery", gallery)
-#    window.gallery = gallery
+  $('#complex-photo-gallery ul#lightgallery li').click ->
+    $wrap =$(@).closest('#complex-photo-gallery')
+    slides = $wrap.find('.for-lightGallery')
+
+    cii = $(@).index()
+    elmenetsListData = $.map($wrap.find('.for-lightGallery'), (el) ->
+      {
+      src: $(el).attr 'data-gallery-src'
+      thumb: $(el).attr 'data-gallery-thumb'
+      }
+    )
+    console.log("cii", cii)
+    $gallery = $('#lightgallery')
+    $gallery.lightGallery
+      dynamic: true
+      dynamicEl: elmenetsListData
+      index: cii
+
+    gallery ?= $gallery.data("lightGallery")
+    gallery.index = cii
+    console.log("gallery", gallery)
+    window.gallery = gallery
 
 #module A
 #  class << self

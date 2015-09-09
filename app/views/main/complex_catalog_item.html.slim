@@ -230,13 +230,13 @@
                   =embedded_svg "ic_border_color_black_24px.svg"
                   |Опис житлового комплексу
 
-                -if @building_complex
+                -if @building_complex.main_description_html.present?
                   .row
                     .columns
                       h4 Інформація про помешкання
                   .row
                     .columns
-                      =raw @building_complex.try(:html_description)
+                      =raw @building_complex.try(:main_description_html)
                 .row
                   .columns
                     h4 Інфраструктура
@@ -257,7 +257,7 @@
                   |Фотозвіт будівництва
                 -if @building_complex.gallery_images.any?
                   #slider.flexslider.c-gallery-view
-                    ul.slides
+                    ul#lightgallery.slides
                       -@building_complex.gallery_images.each do |img|
                         li
                           .image style="background: url('#{img.url(:gallery_image)}')no-repeat center center;"
@@ -266,39 +266,10 @@
                     ul.slides
                       -@building_complex.gallery_images.each do |img|
                         li
-                          .image data-gallery-src=img.url(:gallery_image) style="background: url('#{img.url(:gallery_image)}')no-repeat center center;"
+                          .image.for-lightGallery data-gallery-src=img.url(:gallery_image) data-gallery-thumb=img.url(:gallery_thumb) style="background: url('#{img.url(:gallery_thumb)}')no-repeat center center;"
 
 
-                coffee:
-                  $('.complex-item-more-information').on 'click', '.c-gallery-view .flex-active-slide', ->
-                    $wrap = $(@).closest('.c-info')
-                    $gallery_wrap = $wrap.find('.c-gallery-thumbnail')
-                    slides = $gallery_wrap.find('.image')
 
-                    $(@).lightGallery
-                      dynamic: true
-                      dynamicEl: [
-                        {
-                          'src': '/assets/apartment.jpg'
-                          'thumb': '/assets/apartment.jpg'
-                        }
-                        {
-                          'src': '/assets/apartment2.jpg'
-                          'thumb': '/assets/apartment2.jpg'
-                        }
-                        {
-                          'src': '/assets/apartment3.jpg'
-                          'thumb': '/assets/apartment3.jpg'
-                        }
-                        {
-                          'src': '/assets/apartment4.jpg'
-                          'thumb': '/assets/apartment4.jpg'
-                        }
-                        {
-                          'src': '/assets/apartment5.jpg'
-                          'thumb': '/assets/apartment5.jpg'
-                        }
-                      ]
               #complex-location.c-info  data-magellan-destination="complex-location"
                 h3
                   =embedded_svg "ic_room_48px.svg"
