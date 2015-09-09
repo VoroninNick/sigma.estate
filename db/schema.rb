@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903113907) do
+ActiveRecord::Schema.define(version: 20150907081431) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressable_type"
@@ -95,6 +95,12 @@ ActiveRecord::Schema.define(version: 20150903113907) do
     t.string   "status"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "assets", force: :cascade do |t|
@@ -305,6 +311,7 @@ ActiveRecord::Schema.define(version: 20150903113907) do
     t.float    "commerce_square_of_residential_premises"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.text     "html_description"
   end
 
   create_table "sigma_house_technical_settings", force: :cascade do |t|
