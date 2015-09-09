@@ -3,25 +3,31 @@
     .columns
       .a-oi-avatar
         = link_to apartment_item_path(a.id)  do
-          .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+          -if asset = a.banner_images.first
+            .image style="background: url('#{asset.url(:thumbnail)}')no-repeat center center;"
+          -else
+            .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
       .a-oi-information-wrap
         .a-oi-information
-          b =a.id
-          p ЖК «Сігма апартментс»
+          b = a.apartment_house.try(:street)
+          p
+            |ЖК «
+            = a.building_complex.name
+            |»
           hr
           .row.collapse
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_view_quilt_24px.svg"
-              .a-oi-info-value  =a.try(:count_rooms)
+              .a-oi-info-value  =a.try(:rooms_count)
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_account_balance_wallet_24px.svg"
-              .a-oi-info-value =a.price.try &:round
+              .a-oi-info-value =a.try(:price)
             .large-4.medium-4.small-4.columns
               .a-oi-info-ico
                 =embedded_svg "ic_select_all_24px.svg"
-              .a-oi-info-value =a.try &:live_square
+              .a-oi-info-value =a.try(:live_square)
     .clearfix
     ul.a-oi-actions
       li

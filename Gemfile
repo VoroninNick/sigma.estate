@@ -80,3 +80,4 @@ gem 'rails_admin'
 gem 'attachable', :github => 'voroninnick/attachable'
 
 gem 'truncate_html'
+gem 'filterrific'
