@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
-  devise_for :users, controllers: {registrations: 'registrations'}
+  devise_for :users, class_name: "Sigma::User", controllers: {registrations: 'registrations'}
 
 
   # devise_for :users, controllers: {

@@ -18,7 +18,7 @@
             a
               =image_tag "SE-icons-social-skype.png"
 
-    = form_for(User.new, as: :user, url: session_path(:user), html: {class: 'default-animation-form'}) do |f|
+    = form_for(Sigma::User.new, as: :user, url: session_path(:user), html: {class: 'default-animation-form'}) do |f|
       .columns
         .row
           .columns
