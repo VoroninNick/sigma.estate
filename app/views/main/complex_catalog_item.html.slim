@@ -36,14 +36,19 @@
 
             .complex-item-head-title
               .medium-10.columns
-                h3 ЖК «Сігма апартментс»
-                .rating-ico-wrap.se-ri-club
-                  - 7.times
-                    =embedded_svg "ic_star_24px.svg"
+                h3
+                  |ЖК «
+                  =@building_complex.try &:name
+                  |»
+                =get_stars(@building_complex.complex_class, '')
               .medium-2.columns
                 .se-storage-link.material-component.ripple
-                  a
-                    =embedded_svg "ic_link_48px.svg"
+                  - if @building_complex.builder && @building_complex.builder.site.present?
+                    a href="http://http://#{@building_complex.builder.site}"
+                      =embedded_svg "ic_link_48px.svg"
+                  - else
+                    a
+                      =embedded_svg "ic_link_48px.svg"
               .clearfix
           .clearfix
 

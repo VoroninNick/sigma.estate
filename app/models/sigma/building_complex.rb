@@ -40,6 +40,7 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   extend CommonAttributeName
   extend Enumerize
 
+  belongs_to :builder, :class_name => 'Sigma::Builder'
   has_one :apartment_defaults, class_name: "Sigma::ApartmentTechnicalSettings", as: :building
   has_one :apartment_house_defaults, class_name: "Sigma::HouseTechnicalSettings", as: :building
   has_many :apartment_houses, class_name: "Sigma::ApartmentHouse"

@@ -230,7 +230,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.technical_settings.exterior_walls
 
-                    /- if  @apartment.building_complex && @apartment.building_complex.builder_name.present?
+                    - if  @apartment.building_complex && @apartment.building_complex.builder && @apartment.building_complex.builder.name.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -238,8 +238,8 @@
                               |Забудовник
                           .small-7.columns
                             .aio-char-value
-                              a href=@apartment.building_complex.try(:builder_site)
-                                =@apartment.building_complex.builder_name
+                              a href="http://#{@apartment.building_complex.builder.try(:site)}"
+                                =@apartment.building_complex.builder.name
                                 =embedded_svg "ic_link_48px.svg"
 
                     .se-link-button.material-component.ripple
@@ -249,12 +249,10 @@
                     /= @apartment.tech_info.apartment_type
                   .medium-7.columns
                     h3 Детальна інформація
-                    h4 Інформація про помешкання
-                    p
-                      |Жилой комплекс "Сказка" - это уютное место для жизни в одном из самых зеленых районов столицы.
-                        Рядом расположены парки, что позволит Вам прогуливаться вместе с семьей.
-                        До центра можно добраться машиной в течении 15 минут, а в скором времени рядом откроется новая станция метро,
-                        "Теремки", и те, кто предпочитают общественный транспорт смогут без пробок добираться в любую точку города.
+                    -if @apartment.html_description.present?
+                      h4 Інформація про помешкання
+                      = raw @apartment.html_description
+
                     h4 Інфраструктура
                     p
                       |В жилом комплексе "Сонячна брама" реализована концепция "город в городе" с замкнутой инфраструктурой,
