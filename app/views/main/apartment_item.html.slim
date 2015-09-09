@@ -77,7 +77,7 @@
                       .a-oi-info-ico
                         =embedded_svg "ic_view_quilt_24px.svg"
                       .a-oi-info-label К-сть кімнат
-                      .a-oi-info-value 3
+                      .a-oi-info-value =@apartment.try(:rooms_count)
                     .large-4.medium-4.small-4.columns
                       .a-oi-info-ico
                         =embedded_svg "ic_account_balance_wallet_24px.svg"
@@ -85,7 +85,7 @@
                         |Ціна
                         span
                           |(грн/м2)
-                      .a-oi-info-value =@apartment.price.try &:round
+                      .a-oi-info-value =@apartment.try(:price)
                     .large-4.medium-4.small-4.columns
                       .a-oi-info-ico
                         =embedded_svg "ic_select_all_24px.svg"
@@ -93,7 +93,7 @@
                         |Площа
                         span
                           |(м2)
-                      .a-oi-info-value =@apartment.try &:live_square
+                      .a-oi-info-value =@apartment.try(:live_square)
               .medium-3.columns
                 .a-oi-print-version
                   a
@@ -111,131 +111,137 @@
                   .medium-5.columns
                     h3 Характеристика
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Клас
-                        .small-7.columns
-                          .aio-char-value
-                            = @apartment.building_complex.complex_class
+                    - if @apartment.building_complex && @apartment.building_complex.complex_class.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Клас
+                          .small-7.columns
+                            .aio-char-value
+                              = @apartment.building_complex.complex_class
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Тип
-                        .small-7.columns
-                          .aio-char-value
-                            |Квартира
+                    - if @apartment.apartment_type.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Тип
+                          .small-7.columns
+                            .aio-char-value =@apartment.apartment_type
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Ціна
-                        .small-7.columns
-                          .aio-char-value
-                            =@apartment.price.try &:round
-                            |&nbsp;грн/м2
+                    - if @apartment.price.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Ціна
+                          .small-7.columns
+                            .aio-char-value
+                              =@apartment.price
+                              |&nbsp;грн/м2
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Площа
-                        .small-7.columns
-                          .aio-char-value
-                            =@apartment.live_square
-                            |&nbsp;м2
+                    - if @apartment.live_square.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Площа
+                          .small-7.columns
+                            .aio-char-value
+                              =@apartment.live_square
+                              |&nbsp;м2
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |к-сть Кімнат
-                        .small-7.columns
-                          .aio-char-value
-                            |3
+                    - if @apartment.rooms_count.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |к-сть Кімнат
+                          .small-7.columns
+                            .aio-char-value =@apartment.rooms_count
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Поверх
-                        .small-7.columns
-                          .aio-char-value
-                            |7
+                    - if @apartment.level.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Поверх
+                          .small-7.columns
+                            .aio-char-value =@apartment.level
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Житл. Комплекс
-                        .small-7.columns
-                          .aio-char-value
-                            |Сігма аппартментс
-                            a
-                              =embedded_svg "ic_arrow_forward_black_24px.svg"
+                    - if  @apartment.building_complex && @apartment.building_complex.name.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Житл. Комплекс
+                          .small-7.columns
+                            .aio-char-value
+                              = link_to @apartment.building_complex.name, one_complex_path(@apartment.building_complex.id)
+                              a
+                                =embedded_svg "ic_arrow_forward_black_24px.svg"
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Місто
-                        .small-7.columns
-                          .aio-char-value
-                            |Львів
+                    - if  @apartment.building_complex && @apartment.building_complex.city.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Місто
+                          .small-7.columns
+                            .aio-char-value =@apartment.building_complex.city
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Район
-                        .small-7.columns
-                          .aio-char-value
-                            |Залізничний
+                    - if  @apartment.building_complex && @apartment.building_complex.district.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Район
+                          .small-7.columns
+                            .aio-char-value =@apartment.building_complex.district
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Вулиця
-                        .small-7.columns
-                          .aio-char-value
-                            |вул.&nbsp;
-                            =@apartment.apartment_house.street
-                            |,&nbsp;
-                            =@apartment.apartment_house.street_number
+                    - if  @apartment.building_complex && @apartment.building_complex.street.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Вулиця
+                          .small-7.columns
+                            .aio-char-value
+                              =@apartment.apartment_house.street
+                              |,&nbsp;
+                              =@apartment.apartment_house.try(:street_number)
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Опалення
-                        .small-7.columns
-                          .aio-char-value
-                            |Індувідуальне
+                    - if  @apartment.technical_settings && @apartment.technical_settings.heating.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Опалення
+                          .small-7.columns
+                            .aio-char-value =@apartment.technical_settings.heating
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Стіни
-                        .small-7.columns
-                          .aio-char-value
-                            |Цегла
+                    - if  @apartment.technical_settings && @apartment.technical_settings.exterior_walls.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Стіни
+                          .small-7.columns
+                            .aio-char-value =@apartment.technical_settings.exterior_walls
 
-                    .apartment-item-one-characteristic
-                      .row
-                        .small-5.columns
-                          .aio-char-key
-                            |Забудовник
-                        .small-7.columns
-                          .aio-char-value
-                            a href=@apartment.building_complex.builder_site
-                              |Sigma Estate Bud
-                              =embedded_svg "ic_link_48px.svg"
+                    /- if  @apartment.building_complex && @apartment.building_complex.builder_name.present?
+                      .apartment-item-one-characteristic
+                        .row
+                          .small-5.columns
+                            .aio-char-key
+                              |Забудовник
+                          .small-7.columns
+                            .aio-char-value
+                              a href=@apartment.building_complex.try(:builder_site)
+                                =@apartment.building_complex.builder_name
+                                =embedded_svg "ic_link_48px.svg"
+
                     .se-link-button.material-component.ripple
                       = link_to "Калькулятор кредиту", calculators_path
                     .se-link-button.material-component.ripple
