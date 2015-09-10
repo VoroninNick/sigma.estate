@@ -124,4 +124,5 @@ class Sigma::Apartment < ActiveRecord::Base
   scope :with_floor, lambda { |department|
                            where(department_id: [*department])
                          }
+  
 end
