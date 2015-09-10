@@ -25,10 +25,10 @@ class Sigma::Apartment < ActiveRecord::Base
   extend Enumerize
 
   has_one :technical_settings, class_name: "Sigma::ApartmentTechnicalSettings", as: :building
-  #belongs_to :building_complex, class_name: "BuildingComplex"
+  belongs_to :building_complex, class_name: "BuildingComplex"
   belongs_to :apartment_house, class_name: "Sigma::ApartmentHouse"
 
-  has_one :building_complex, through: :apartment_house
+  #has_one :building_complex, through: :apartment_house
 
   accepts_nested_attributes_for :technical_settings
   attr_accessible :technical_settings, :technical_settings_attributes
@@ -58,4 +58,70 @@ class Sigma::Apartment < ActiveRecord::Base
   def street_address
     I18n.t("formats.street_address", street: apartment_house.street, street_number: apartment_house.street_number)
   end
+
+
+
+#   for filtering
+  filterrific(
+      default_filter_params: { sorted_by: 'created_at_asc' },
+      available_filters: [
+          :sorted_by,
+          :with_building_complex_name,
+          :with_count_rooms
+          # :search_query,
+          # :with_country_id,
+          # :with_created_at_gte
+      ]
+  )
+
+  scope :sorted_by, lambda { |sort_key|
+    direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
+    case sort_key.to_s
+      when /^created_at_/
+        order("sigma_apartments.created_at #{ direction }")
+      # when /^name_/
+      #   order("LOWER(sigma_apartments.street) #{ direction }")
+      when /^building_complex_name_/
+        order("LOWER(building_complex.name) #{ direction }").includes(:sigma_building_complexes)
+      else
+        raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
+    end
+
+  }
+  def self.options_for_sorted_by
+    [
+        ['Name (a-z)', 'name_asc'],
+        ['Дата створення (новіші перше)', 'created_at_desc'],
+        ['Дата створення (старіші перші)', 'created_at_asc'],
+        ['Назва комплексу (a-я)', 'building_complex_name_asc']
+    ]
+  end
+
+  # building complex name
+  scope :with_building_complex_name, lambda { |complex_id|
+                                     joins(:building_complex).where(sigma_building_complexes: { id: complex_id })
+                          }
+  # always include the lower boundary for semi open intervals
+  scope :with_price_form, lambda { |price|
+                         where('sigma_apartments.price <= ?', price)
+                       }
+
+  # always exclude the upper boundary for semi open intervals
+  scope :with_price_end, lambda { |price|
+                        where('sigma_apartments.price < ?', price)
+                      }
+  # count rooms
+  scope :with_count_rooms, lambda { |count_rooms|
+                           where(rooms_count: [*count_rooms])
+                         }
+
+
+
+  scope :with_dwelling_place, lambda { |department|
+                      where(department_id: [*department])
+                    }
+
+  scope :with_floor, lambda { |department|
+                           where(department_id: [*department])
+                         }
 end

@@ -2,13 +2,16 @@
   .c-one-item.se-box-shadow
     .row.collapse
       .small-4.columns
-        a href=one_complex_path(object.id)
-          .image  style="background: url('#{asset_path("apartment_28_Dragana_Apartments_Vw1.jpg")}')no-repeat center center;"
+        a
+          -if asset = object.banner_images.first
+            .image style="background: url('#{asset.url(:thumbnail)}')no-repeat center center;"
+          -else
+            .image  style="background: url('#{asset_path("apartment_28_Dragana_Apartments_Vw1.jpg")}')no-repeat center center;"
       .small-8.columns.c-oi-information
         .columns
-          h3 =object.name
+          h3 =object.try(:name)
 
-          =get_stars(object.complex_class, 'se-ri-light')
+          /=get_stars(object.complex_class, 'se-ri-light')
 
           .c-oi-price-wrap
             |від

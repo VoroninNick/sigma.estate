@@ -21,6 +21,8 @@
 //= require lightgallery/dist/js/lg-thumbnail.min
 //= require lightgallery/dist/js/lg-fullscreen.min
 
+//= require filterrific/filterrific-jquery
+
 //= require_tree .
 
 

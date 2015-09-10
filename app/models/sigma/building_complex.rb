@@ -77,4 +77,10 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   def apartment_houses_count
     apartment_houses.length
   end
+
+
+#   =================================================
+  def self.options_for_select
+    order('LOWER(name)').map { |e| [e.name, e.id] }
+  end
 end

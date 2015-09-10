@@ -1,0 +1,9 @@
+/**
+ * Created by nazar on 9/10/15.
+ */
+
+
+<% js = escape_javascript(
+    render(partial: 'main/apartment_list', locals: { apartments: @apartments })
+) %>
+$("#apartment_list").html("<%= js %>");
