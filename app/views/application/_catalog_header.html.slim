@@ -34,19 +34,23 @@
   .h-sub-filter-list
     .row
       .columns
-        .h-sf-cities
-          strong Місто:
-          - cities = Sigma::Apartment.available_cities
-          ul
-            -cities.each do |c|
-              li
-                a
-                  =c.inspect
-            /li
-            /  a Львів
-            /li
-            /  a Київ
-            /li
-            /  a Одеса
-            /li
-            /  a Ялта
+
+        - cities = Sigma::Apartment.available_cities
+        - if cities.length >1
+          .h-sf-cities
+            strong Місто:
+            ul
+              -cities.each do |c|
+                li
+                  a href=apartment_catalog_path(filterrific: {with_city: c})
+                    =c.inspect
+
+        - districts = Sigma::Apartment.available_districts
+        - if districts.length >1
+          .h-sf-cities
+            strong Район:
+            ul
+              -districts.each do |c|
+                li
+                  a href=''
+                    =c

@@ -202,11 +202,12 @@
 
                 .input
                   label Місто
-                  select
-                    option selected="" disabled="" Виберіть місто
-                    option Львів
-                    option Стрий
-                    option Городок
+                  = f.select(:with_city, @filterrific.select_options[:with_city], {include_blank: '- Виберіть місто -'})
+                  /select
+                  /  option selected="" disabled="" Виберіть місто
+                  /  option Львів
+                  /  option Стрий
+                  /  option Городок
                 .input
                   label Район
                   select

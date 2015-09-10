@@ -51,7 +51,10 @@ class Sigma::Apartment < ActiveRecord::Base
     # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
     Sigma::BuildingComplex.pluck(:city).uniq
   end
-
+  def self.available_districts
+    # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
+    Sigma::BuildingComplex.pluck(:district).uniq
+  end
 
   enumerize :apartment_type, in: [:one_room, :two_rooms, :three_rooms, :four_rooms, :five_rooms_plus, :studio, :mansard, :two_levels]
 
@@ -59,7 +62,7 @@ class Sigma::Apartment < ActiveRecord::Base
     I18n.t("formats.street_address", street: apartment_house.street, street_number: apartment_house.street_number)
   end
 
-
+  # self.per(12)
 
 #   for filtering
   filterrific(
@@ -67,7 +70,8 @@ class Sigma::Apartment < ActiveRecord::Base
       available_filters: [
           :sorted_by,
           :with_building_complex_name,
-          :with_count_rooms
+          :with_count_rooms,
+          :with_city
           # :search_query,
           # :with_country_id,
           # :with_created_at_gte
@@ -90,7 +94,7 @@ class Sigma::Apartment < ActiveRecord::Base
   }
   def self.options_for_sorted_by
     [
-        ['Name (a-z)', 'name_asc'],
+        # ['Name (a-z)', 'name_asc'],
         ['Дата створення (новіші перше)', 'created_at_desc'],
         ['Дата створення (старіші перші)', 'created_at_asc'],
         ['Назва комплексу (a-я)', 'building_complex_name_asc']
@@ -99,8 +103,8 @@ class Sigma::Apartment < ActiveRecord::Base
 
   # building complex name
   scope :with_building_complex_name, lambda { |complex_id|
-                                     joins(:building_complex).where(sigma_building_complexes: { id: complex_id })
-                          }
+                         joins(:building_complex).where(sigma_building_complexes: { id: complex_id })
+                        }
   # always include the lower boundary for semi open intervals
   scope :with_price_form, lambda { |price|
                          where('sigma_apartments.price <= ?', price)
@@ -112,17 +116,12 @@ class Sigma::Apartment < ActiveRecord::Base
                       }
   # count rooms
   scope :with_count_rooms, lambda { |count_rooms|
-                           where(rooms_count: [*count_rooms])
-                         }
+                         where(rooms_count: [*count_rooms])
+                       }
+  # building complex name
+  scope :with_city, lambda { |city|
+                         joins(:building_complex).where(sigma_building_complexes: { city: city })
+                       }
 
 
-
-  scope :with_dwelling_place, lambda { |department|
-                      where(department_id: [*department])
-                    }
-
-  scope :with_floor, lambda { |department|
-                           where(department_id: [*department])
-                         }
-  
 end
