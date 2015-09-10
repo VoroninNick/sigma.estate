@@ -62,7 +62,7 @@ class Sigma::Apartment < ActiveRecord::Base
     I18n.t("formats.street_address", street: apartment_house.street, street_number: apartment_house.street_number)
   end
 
-  # self.per(12)
+  paginates_per 12
 
 #   for filtering
   filterrific(
@@ -71,7 +71,8 @@ class Sigma::Apartment < ActiveRecord::Base
           :sorted_by,
           :with_building_complex_name,
           :with_count_rooms,
-          :with_city
+          :with_city,
+          :with_district
           # :search_query,
           # :with_country_id,
           # :with_created_at_gte
@@ -118,9 +119,13 @@ class Sigma::Apartment < ActiveRecord::Base
   scope :with_count_rooms, lambda { |count_rooms|
                          where(rooms_count: [*count_rooms])
                        }
-  # building complex name
+  # filter by cities
   scope :with_city, lambda { |city|
                          joins(:building_complex).where(sigma_building_complexes: { city: city })
+                       }
+ # building complex name
+  scope :with_district, lambda { |district|
+                         joins(:building_complex).where(sigma_building_complexes: { district: district })
                        }
 
 

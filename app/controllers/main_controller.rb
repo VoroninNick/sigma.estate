@@ -22,7 +22,8 @@ class MainController < ApplicationController
       select_options: {
           sorted_by: Sigma::Apartment.options_for_sorted_by,
           with_building_complex_name: Sigma::BuildingComplex.options_for_select,
-          with_city: Sigma::BuildingComplex.options_for_select_city
+          with_city: Sigma::BuildingComplex.options_for_select_city,
+          with_district: Sigma::BuildingComplex.options_for_select_district
       }
       ) or return
     @apartments = @filterrific.find.page(params[:page])

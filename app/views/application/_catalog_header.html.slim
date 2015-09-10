@@ -52,5 +52,5 @@
             ul
               -districts.each do |c|
                 li
-                  a href=''
+                  a href=apartment_catalog_path(filterrific: {with_district: c})
                     =c

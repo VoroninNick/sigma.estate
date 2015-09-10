@@ -210,11 +210,12 @@
                   /  option Городок
                 .input
                   label Район
-                  select
-                    option selected="" disabled="" Виберіть район
-                    option Залізничний
-                    option Франківський
-                    option Сихівський
+                  = f.select(:with_district, @filterrific.select_options[:with_district], {include_blank: '- Виберіть район -'})
+                  /select
+                  /  option selected="" disabled="" Виберіть район
+                  /  option Залізничний
+                  /  option Франківський
+                  /  option Сихівський
                 .input
                   label Вулиця
                   select

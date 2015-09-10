@@ -83,6 +83,9 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   def self.options_for_select_city
     order('LOWER(city)').map { |e| [e.city] }.uniq
   end
+  def self.options_for_select_district
+    order('LOWER(district)').map { |e| [e.district] }.uniq
+  end
   def self.options_for_select
     order('LOWER(name)').map { |e| [e.name, e.id] }
   end
