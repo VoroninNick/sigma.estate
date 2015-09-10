@@ -18,6 +18,10 @@
             a ЖК «Сігма Апартментс»
 
     .af-body
+      /= form_for_filterrific(@filterrific, url: apartment_catalog_path, html: { id: :manual_filterrific_form } ) do |f|
+        /[form inputs go here ...]
+
+
       .row
         .medium-6.columns
           .columns
@@ -103,5 +107,6 @@
               option value="Галицький" Галицький
           .columns
             .button-wrap.material-component.ripple.right.se-box-shadow
-              button.right type="submit" Знайти
+              /= f.submit "Знайти", class: "right"
+              button.right type="submit"
 
