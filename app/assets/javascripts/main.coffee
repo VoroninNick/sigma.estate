@@ -220,6 +220,9 @@ $(document).ready ->
 # apartment one item
   $(".apartment-item-page ul.image-carousel").bxSlider()
 
+#  apartment main banner
+  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider()
+
 
   $(".best-apartment ul.ba-carousel").bxSlider()
 

@@ -1,7 +1,11 @@
 =render "application/catalog_header"
 .apartment-page-wrap
   .main-banner-wrap
-    .image style="background: url('#{asset_path("SE-banner.jpg")}')no-repeat center center;"
+    -if @banner && @banner.apartment_banners.any?
+      ul
+        -@banner.apartment_banners.where(published: :t).order(position: :asc).each do |slide|
+          li
+            .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
     .mb-apartment-form
       .row
         .large-8.large-centered.medium-8.medium-centered.columns

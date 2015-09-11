@@ -224,14 +224,14 @@
                           |ТИП БУД.
                         .small-8.columns.c-info-value =@building_complex.apartment_house_defaults.building_process_type
 
-                  -if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.exterior_walls.present?
+                  /-if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.exterior_walls.present?
                     li
                       .row
                         .small-4.columns.c-info-key
                           |СТІНИ
                         .small-8.columns.c-info-value =@building_complex.apartment_house_defaults.exterior_walls
 
-                  -if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.heating.present?
+                  /-if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.heating.present?
                     li
                       .row
                         .small-4.columns.c-info-key

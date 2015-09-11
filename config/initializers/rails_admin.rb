@@ -16,6 +16,7 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.included_models = [Banner, ComplexBanner, ApartmentBanner]
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -31,4 +32,6 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # config.excluded_models = [Sigma::Address, Sigma::Apartment, ApartmentBanner]
 end

@@ -8,6 +8,7 @@ class MainController < ApplicationController
 
   def apartment
     add_breadcrumb "Apartment", apartment_path
+    @banner = Banner.first
     @apartments = Sigma::Apartment.limit(18)
 
     @building_complex = Sigma::BuildingComplex.limit(5)
@@ -40,6 +41,7 @@ class MainController < ApplicationController
   end
 
   def complex
+    @banner = Banner.first
     @building_complex = Sigma::BuildingComplex.limit(20)
   end
   def complex_catalog

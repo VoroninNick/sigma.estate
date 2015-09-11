@@ -1,20 +1,21 @@
 =render "application/complex_header"
 .complex-page-wrap
   .main-banner-wrap
-    ul
-      li
-        .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
-      li
-        .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
-    .complex-banner-information
-      .row
-        .columns
-          h2 Сігма Естейт
-      .row
-        .columns
-          .rating-ico-wrap.se-ri-light.se-ri-club
-            - 7.times
-              =embedded_svg "ic_star_24px.svg"
+    -if @banner && @banner.complex_banners.any?
+      ul
+        -@banner.complex_banners.where(published: :t).order(position: :asc).each do |slide|
+          li
+            .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+            .complex-banner-information
+              .row
+                .columns
+                  h2 =slide.try(:title)
+              .row
+                .columns
+                  =get_stars(slide.complex_class, 'se-ri-light')
+              .row
+                .columns
+                  p =slide.description
   .best-complex
     .row
       .columns
