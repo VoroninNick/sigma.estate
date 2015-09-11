@@ -40,7 +40,7 @@
                   |ЖК «
                   =@building_complex.try &:name
                   |»
-                =get_stars(@building_complex.complex_class, '')
+                  =get_stars(@building_complex.complex_class, '')
               .medium-2.columns
                 .se-storage-link.material-component.ripple
                   - if @building_complex.builder && @building_complex.builder.site.present?
@@ -106,12 +106,14 @@
                             |Ціна провірена&nbsp;
                             span
                               =@building_complex.try(:price_from_approved_at)
+
                   -if @building_complex.street.present?
                     li
                       .row
                         .small-4.columns.c-info-key
                           |АДРЕСА
                         .small-8.columns.c-info-value
+                          /|вул. Княгині Ольги, 1/5, Шевченківський район, м. Київ
                           =@building_complex.street
                           |,&nbsp;
                           =@building_complex.try(:street_number)
@@ -119,7 +121,7 @@
                           =@building_complex.try(:district)
                           |&nbsp; район,&nbsp;м.&nbsp;
                           ==@building_complex.try(:city)
-                          /|вул. Княгині Ольги, 1/5, Шевченківський район, м. Київ
+
                           =embedded_svg "ic_room_48px.svg"
 
                   -if @building_complex.nearest_metro_station.present?
@@ -162,18 +164,25 @@
                       .small-8.columns.c-info-value
                         a
                           |Міськжитлобуд
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |СТАТУС БУДІВНИЦТВА
-                      .small-8.columns.c-info-value
-                        |Здача — 2 кв. 2016, будується (будується 10 поверх)
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |ДЕТАЛЬНІШЕ НА САЙТІ
-                      .small-8.columns.c-info-value
-                        a Sigma-appartments.com.ua
+                  - if @building_complex.status.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |СТАТУС БУДІВНИЦТВА
+                        .small-8.columns.c-info-value
+                          |Здача — 2 кв. 2016, будується (будується 10 поверх)
+                          =@building_complex.status
+
+                  - if @building_complex.builder && @building_complex.builder.site.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |ДЕТАЛЬНІШЕ НА САЙТІ
+                        .small-8.columns.c-info-value
+                          -if @building_complex.builder.site =~ /\A#{URI::regexp}\z/
+                            a href="#{@building_complex.builder.site}" target="_blank" =@building_complex.builder.try(:site)
+                          -else
+                            a href="//#{@building_complex.builder.site}" target="_blank" =@building_complex.builder.try(:site)
 
 
               #complex-specifications.c-info data-magellan-destination="complex-specifications"
@@ -194,38 +203,41 @@
                         .small-4.columns.c-info-key
                           |БУДИНКІВ
                         .small-8.columns.c-info-value =@building_complex.houses_count
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |СЕКЦІЙ
-                      .small-8.columns.c-info-value
-                        |12 000 грн/м
-                        sup
-                          |2
-                  li
+
+                  - if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.sections_count.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |СЕКЦІЙ
+                        .small-8.columns.c-info-value =@building_complex.apartment_house_defaults.sections_count
+                  /li
                     .row
                       .small-4.columns.c-info-key
                         |ПОВЕРХІВ
                       .small-8.columns.c-info-value
                         |10
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |ТЕХНОЛОГІЯ БУД.
-                      .small-8.columns.c-info-value
-                        |Монолітно-каркасна
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |СТІНИ
-                      .small-8.columns.c-info-value
-                        |Монолітний залізобетон
-                  li
-                    .row
-                      .small-4.columns.c-info-key
-                        |УТЕПЛЕННЯ
-                      .small-8.columns.c-info-value
-                        |Мінвата
+
+                  -if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.building_process_type.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |ТИП БУД.
+                        .small-8.columns.c-info-value =@building_complex.apartment_house_defaults.building_process_type
+
+                  -if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.exterior_walls.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |СТІНИ
+                        .small-8.columns.c-info-value =@building_complex.apartment_house_defaults.exterior_walls
+
+                  -if @building_complex.apartment_house_defaults && @building_complex.apartment_house_defaults.heating.present?
+                    li
+                      .row
+                        .small-4.columns.c-info-key
+                          |СИСТЕМА ОПАЛЕННЯ
+                        .small-8.columns.c-info-value =@building_complex.apartment_house_defaults.heating
+
               #complex-about.c-info data-magellan-destination="complex-about"
                 h3
                   =embedded_svg "ic_border_color_black_24px.svg"
