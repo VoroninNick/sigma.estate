@@ -52,20 +52,42 @@
                   =embedded_svg "ic_star_24px.svg"
               span
                 |Економ
+
+    .header-search-form-wrap
+      .row
+        .columns
+          form
+            .af-header
+              .row
+                .columns
+                  .af-search-input
+                    label
+                      input type="text" placeholder="Пошук квартир..."
+                    button type="submit"
     .a-nav-search-button
       a
-        =embedded_svg "ic_search_24px.svg"
+        =embedded_svg "ic_search_24px.svg", class: "search-button-open"
+        =embedded_svg "ic_clear_black_24px.svg", class: "search-button-close"
   .h-sub-filter-list
     .row
       .columns
-        .h-sf-cities
-          strong Місто:
-          ul
-            li
-              a Львів
-            li
-              a Київ
-            li
-              a Одеса
-            li
-              a Ялта
+        - cities = Sigma::BuildingComplex.available_cities
+        - if cities.length >1
+          .h-sf-cities
+            strong Місто:
+            ul
+              -cities.each do |c|
+                li
+                  a #href=apartment_catalog_path(filterrific: {with_city: c})
+                    =c.inspect
+
+        - districts = Sigma::BuildingComplex.available_districts
+        - if districts.length >1
+          .h-sf-cities
+            strong Район:
+            ul
+              -districts.each do |c|
+                li
+                  a #href=apartment_catalog_path(filterrific: {with_district: c})
+                    =c
+

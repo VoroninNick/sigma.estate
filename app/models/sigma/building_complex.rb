@@ -78,6 +78,15 @@ class Sigma::BuildingComplex < ActiveRecord::Base
     apartment_houses.length
   end
 
+  def self.available_cities
+    # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
+    Sigma::BuildingComplex.pluck(:city).uniq
+  end
+  def self.available_districts
+    # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
+    Sigma::BuildingComplex.pluck(:district).uniq
+  end
+
 
 #   =================================================
   def self.options_for_select_city
