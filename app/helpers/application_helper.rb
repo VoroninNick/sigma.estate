@@ -80,13 +80,13 @@ module ApplicationHelper
       when :elite
         "se-ri-elite"
       when :business
-        "se-ri-deluxe"
+        "se-ri-business"
       when :comfort
-        "se-ri-club"
+        "se-ri-comfort"
       when :standard
-        "se-ri-elite"
+        "se-ri-standard"
       when :econom
-        "se-ri-elite"
+        "se-ri-economy"
     end
 
     # count = BuildingComplex.complex_class.values.map(&:to_s).index(val.to_s) + 1
