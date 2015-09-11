@@ -16,6 +16,21 @@
               .row
                 .columns
                   p =slide.description
+    -else
+      ul
+        li
+          .image style="background: url('#{asset_path("apartment5.jpg")}')no-repeat center center;"
+        li
+          .image style="background: url('#{asset_path("apartment2.jpg")}')no-repeat center center;"
+      .complex-banner-information
+        .row
+          .columns
+            h2 Сігма Естейт
+        .row
+          .columns
+            .rating-ico-wrap.se-ri-light.se-ri-club
+              - 7.times
+                =embedded_svg "ic_star_24px.svg"
   .best-complex
     .row
       .columns

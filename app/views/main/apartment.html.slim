@@ -6,6 +6,8 @@
         -@banner.apartment_banners.where(published: :t).order(position: :asc).each do |slide|
           li
             .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+    -else
+      .image style="background: url('#{asset_path("SE-banner.jpg")}')no-repeat center center;"
     .mb-apartment-form
       .row
         .large-8.large-centered.medium-8.medium-centered.columns
