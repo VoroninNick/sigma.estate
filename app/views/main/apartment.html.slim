@@ -30,7 +30,8 @@
         -@building_complex.each_with_index do |item, index|
           .small-12.columns.end class=(item == @building_complex.first ? "medium-8" : "medium-4")
             .ac-one
-              .image style="background: url('#{item.banner_images.first.url(:large)}')no-repeat center center;"
+              = link_to one_complex_path(item.id) do
+                .image style="background: url('#{item.banner_images.first.url(:large)}')no-repeat center center;"
 
               =render partial: "partials/complex_info", locals: {info: item}
 

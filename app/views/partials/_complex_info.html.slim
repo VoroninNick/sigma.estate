@@ -3,17 +3,18 @@
     .row
       .small-8.columns
         h3
-          |ЖК «
-          =info.try &:name
-          |»
+        = link_to one_complex_path(info.id) do
+          h3
+            |ЖК «
+            =info.try &:name
+            |»
       .small-4.columns
         =get_stars(info.complex_class, '')
     .row
       .columns
-        a.se-region
+        a.se-region href=apartment_catalog_path(filterrific: {with_district: info.district})
           =info.district
         p
-          /вул. Люткевича, 6
           =info.try(:street)
           |,&nbsp;
           =info.try(:street_number)
@@ -21,11 +22,17 @@
     .row
       .columns
         hr
-        p =truncate(info.try(:short_description), length: 150)
+        p =truncate(info.try(:short_description), length: 250)
         .row
           .se-read-more.material-component.ripple
             = link_to "Детальніше", one_complex_path(info.id)
-          .se-external-link.material-component.ripple
-            a
-              =embedded_svg "ic_link_48px.svg"
-              |Сайт забудовника
+          - if info.builder && info.builder.site.present?
+            .se-external-link.material-component.ripple
+              -if info.builder.site =~ /\A#{URI::regexp}\z/
+                a href="#{info.builder.site}" target="_blank"
+                  =embedded_svg "ic_link_48px.svg"
+                  |Сайт забудовника
+              -else
+                a href="//#{info.builder.site}" target="_blank"
+                  =embedded_svg "ic_link_48px.svg"
+                  |Сайт забудовника

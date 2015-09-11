@@ -80,39 +80,15 @@ $(document).ready ->
     slideshow: false
     sync: '#carousel'
 
-#  anchor link binder
-#  $ ->
-#    $('a[href*=#]:not([href=#])').click ->
-#      if location.pathname.replace(/^\//, '') == @pathname.replace(/^\//, '') and location.hostname == @hostname
-#        target = $(@hash)
-#        target = if target.length then target else $('[name=' + @hash.slice(1) + ']')
-#        if target.length
-#          $('html,body').animate { scrollTop: target.offset().top }, 1000
-#          return false
 
-#  length = $('.c-info-nav-wrap').height() - $('.c-info-nav').height() + $('.c-info-nav-wrap').offset().top
-#
-#  $(window).scroll ->
-#    scroll = $(this).scrollTop()
-#    height = $('.c-info-nav').height() + 'px'
-#    if scroll < $('.c-info-nav-wrap').offset().top
-#      $('.c-info-nav').css
-#        'position': 'absolute'
-#        'top': '0'
-#    else if scroll > length
-#      $('.c-info-nav').css
-#        'position': 'absolute'
-#        'bottom': '0'
-#        'top': 'auto'
-#    else
-#      $('.c-info-nav').css
-#        'position': 'fixed'
-#        'top': '0'
-#        'height': height
+  $('.a-nav-search-button a').click (e)->
+    e.preventDefault()
+    wrap = $(@).closest('.h-filter-list')
 
-
-
-
+    if wrap.hasClass('header-search-form-opened')
+      wrap.removeClass('header-search-form-opened')
+    else
+      wrap.addClass('header-search-form-opened')
 
   $('.mobile-menu-link').click ->
     $this = $(@)

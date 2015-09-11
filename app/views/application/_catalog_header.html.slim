@@ -28,9 +28,22 @@
             |+
           sup
             |Кімнат
+
+    .header-search-form-wrap
+      .row
+        .columns
+          form
+            .af-header
+              .row
+                .columns
+                  .af-search-input
+                    label
+                      input type="text" placeholder="Пошук квартир..."
+                    button type="submit"
     .a-nav-search-button
       a
-        =embedded_svg "ic_search_24px.svg"
+        =embedded_svg "ic_search_24px.svg", class: "search-button-open"
+        =embedded_svg "ic_clear_black_24px.svg", class: "search-button-close"
   .h-sub-filter-list
     .row
       .columns
