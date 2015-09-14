@@ -1,4 +1,5 @@
 class Banner < ActiveRecord::Base
+  attr_accessible *attribute_names
   has_many :apartment_banners
   has_many :complex_banners
 

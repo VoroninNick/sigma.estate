@@ -1,4 +1,5 @@
 class ApartmentBanner < ActiveRecord::Base
+  attr_accessible *attribute_names
   belongs_to :banner
 
   has_attached_file :image,
