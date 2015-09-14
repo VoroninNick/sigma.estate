@@ -286,32 +286,29 @@
                 -if @building_complex.coordinates.present?
                 #c-map data-lat=@building_complex.coordinates.split(', ').first data-lng=@building_complex.coordinates.split(', ').last data-name=@building_complex.try(:name)
                 coffee:
-                  locations = [
-                    [
-                      'ЖК "'+$('#c-map').attr 'data-name'+'"'
-                      $('#c-map').attr 'data-lat'
-                      $('#c-map').attr 'data-lng'
-                      4
-                    ]
-                  ]
-                  map = new (google.maps.Map)(document.getElementById('c-map'),
-                    zoom: 13
-                    center: new (google.maps.LatLng)(-33.92, 151.25)
-                    mapTypeId: google.maps.MapTypeId.ROADMAP)
-                  infowindow = new (google.maps.InfoWindow)
-                  marker = undefined
-                  i = undefined
-                  i = 0
-                  while i < locations.length
+                  map = undefined
+                  mgr = undefined
+                  bc = 'ЖК "'+$('#c-map').attr 'data-name'+'"'
+                  lat = $('#c-map').attr('data-lat')
+                  lng = $('#c-map').attr('data-lng')
+
+                  myOptions =
+                    zoom: 17
+                    center: new (google.maps.LatLng)(lat, lng)
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                  map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
+                  mgr = new MarkerManager(map)
+
+
+                  google.maps.event.addListener mgr, 'loaded', ->
                     marker = new (google.maps.Marker)(
-                      position: new (google.maps.LatLng)(locations[i][1], locations[i][2])
-                      map: map)
-                    google.maps.event.addListener marker, 'click', do (marker, i) ->
-                      ->
-                        infowindow.setContent locations[i][0]
-                        infowindow.open map, marker
-                        return
-                    i++
+                      position: new (google.maps.LatLng)(lat, lng)
+                      title: bc
+                      icon: '/assets/SE-location-marker-red.png')
+                    mgr.addMarker marker, 0
+                    mgr.refresh()
+                    return
+                  return
             .clearfix
           .clearfix
 
