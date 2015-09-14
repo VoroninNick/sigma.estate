@@ -50,6 +50,13 @@
 
           .address-block-wrap
             .ab-ico
+              =embedded_svg "ic_access_time_black_24px.svg"
+            .address-block-inner
+              -if contacts.timetable.present?
+                p =raw contacts.timetable
+
+          .address-block-wrap
+            .ab-ico
               =embedded_svg "ic_mail_24px.svg"
             .address-block-inner
               -if contacts.m_email.present?
