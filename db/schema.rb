@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907081431) do
+ActiveRecord::Schema.define(version: 20150909131613) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressable_type"
@@ -271,14 +271,27 @@ ActiveRecord::Schema.define(version: 20150907081431) do
     t.integer  "building_complex_id"
     t.integer  "apartment_house_id"
     t.string   "apartment_number"
-    t.float    "price"
+    t.integer  "price"
     t.string   "building_premise_number"
     t.string   "world_sides"
     t.string   "apartment_type"
     t.string   "live_square"
     t.text     "turnkey"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "rooms_count"
+    t.text     "html_description"
+    t.datetime "price_approved_at"
+    t.integer  "level"
+    t.text     "infrastructure_description_html"
+    t.text     "main_description_html"
+  end
+
+  create_table "sigma_builders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "site"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sigma_building_complexes", force: :cascade do |t|
@@ -296,7 +309,6 @@ ActiveRecord::Schema.define(version: 20150907081431) do
     t.date     "building_end_date"
     t.integer  "houses_count"
     t.float    "price_from"
-    t.string   "builder_site"
     t.string   "phone"
     t.text     "distance_to_pre_school"
     t.text     "distance_to_school"
@@ -311,8 +323,14 @@ ActiveRecord::Schema.define(version: 20150907081431) do
     t.float    "commerce_square_of_residential_premises"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.text     "html_description"
+    t.text     "main_description_html"
+    t.text     "short_description"
+    t.string   "site"
+    t.integer  "builder_id"
+    t.text     "infrastructure_description_html"
   end
+
+  add_index "sigma_building_complexes", ["builder_id"], name: "index_sigma_building_complexes_on_builder_id"
 
   create_table "sigma_house_technical_settings", force: :cascade do |t|
     t.string   "building_type"
@@ -352,6 +370,12 @@ ActiveRecord::Schema.define(version: 20150907081431) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "username"
+    t.boolean  "subscribe"
   end
 
   add_index "sigma_users", ["email"], name: "index_sigma_users_on_email", unique: true
@@ -389,7 +413,6 @@ ActiveRecord::Schema.define(version: 20150907081431) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "subscribe"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

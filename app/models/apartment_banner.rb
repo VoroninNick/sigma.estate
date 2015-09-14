@@ -11,9 +11,12 @@ class ApartmentBanner < ActiveRecord::Base
   do_not_validate_attachment_file_type :image
 
   # validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
+  # def image_url(style = :original)
+  #   "//" + Attachable.assets_domain + image.url(style)
+  # end
 
   rails_admin do
-    label 'Комплекс баннер'
+    label 'Квартири баннер'
     label_plural 'Банери'
     visible false
 
