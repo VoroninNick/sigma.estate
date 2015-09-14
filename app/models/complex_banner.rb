@@ -1,5 +1,7 @@
 class ComplexBanner < ActiveRecord::Base
   attr_accessible *attribute_names
+  attr_accessible :image
+
   extend Enumerize
   belongs_to :banner
 
