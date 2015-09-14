@@ -257,36 +257,35 @@
                       h4 Інфраструктура
                       =raw @apartment.infrastructure_description_html
                     hr
+
+                    -if @apartment.building_complex && @apartment.building_complex.coordinates.present?
                     h4 Розташування будинку на Google maps
 
+                      #map_canvas data-lng=@apartment.building_complex.coordinates.split(', ').first data-lat=@apartment.building_complex.coordinates.split(', ').last data-name="" data-complex=""
+                      coffee:
 
-                    #map_canvas data-lng="24.020744" data-lat="49.832623" data-name="" data-complex=""
-                    coffee:
+                        map = undefined
+                        mgr = undefined
+                        lat = $('#map_canvas').attr('data-lat')
+                        lng = $('#map_canvas').attr('data-lng')
 
-                      map = undefined
-                      mgr = undefined
-                      lat = $('#map_canvas').attr('data-lat')
-                      lng = $('#map_canvas').attr('data-lng')
-
-                      myOptions =
-                        zoom: 17
-                        center: new (google.maps.LatLng)(lat, lng)
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                      map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
-                      mgr = new MarkerManager(map)
+                        myOptions =
+                          zoom: 17
+                          center: new (google.maps.LatLng)(lat, lng)
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                        map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
+                        mgr = new MarkerManager(map)
 
 
-                      google.maps.event.addListener mgr, 'loaded', ->
-                        i = 0
-                        while i < 1000
+                        google.maps.event.addListener mgr, 'loaded', ->
                           marker = new (google.maps.Marker)(
-                            position: new (google.maps.LatLng)(Math.random() * 180 - 90, Math.random() * 360 - 180)
-                            title: 'Random marker #' + i)
+                            position: new (google.maps.LatLng)(lat, lng)
+                            title: 'Sigma Estate'
+                            icon: '/assets/SE-location-marker-red.png')
                           mgr.addMarker marker, 0
-                          i++
-                        mgr.refresh()
-                        return
-                     return
+                          mgr.refresh()
+                          return
+                       return
 
           .clearfix
 
