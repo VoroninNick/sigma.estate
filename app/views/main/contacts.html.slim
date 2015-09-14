@@ -97,10 +97,11 @@
 
 
   .medium-7.columns
+    -lattitude = contacts.map.split(', ').first
+    -longitude = contacts.map.split(', ').last
     .contact-map-wrap.se-box-shadow
-      #map_canvas data-lng="24.020744" data-lat="49.832623" data-name="" data-complex=""
+      #map_canvas data-lng=longitude data-lat=lattitude data-name="" data-complex=""
     coffee:
-
       map = undefined
       mgr = undefined
       lat = $('#map_canvas').attr('data-lat')
@@ -115,13 +116,12 @@
 
 
       google.maps.event.addListener mgr, 'loaded', ->
-        i = 0
-        while i < 1000
-          marker = new (google.maps.Marker)(
-            position: new (google.maps.LatLng)(Math.random() * 180 - 90, Math.random() * 360 - 180)
-            title: 'Random marker #' + i)
-          mgr.addMarker marker, 0
-          i++
+
+        marker = new (google.maps.Marker)(
+          position: new (google.maps.LatLng)(lat, lng)
+          title: 'Sigma Estate'
+          icon: '/assets/SE-location-marker-red.png')
+        mgr.addMarker marker, 0
         mgr.refresh()
         return
      return
