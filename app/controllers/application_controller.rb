@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # after_filter :store_location , if: proc{params[:controller]== "sessions"}
+  
 
   def setup_mcapi
     @mc = Mailchimp::API.new('aa3920184d9c25995efadfdda3f13803-us11')

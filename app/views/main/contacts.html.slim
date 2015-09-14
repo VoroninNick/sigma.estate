@@ -20,28 +20,45 @@
 
       .row
         .columns
+          -contacts = Contact.first
           .address-block-wrap
             .ab-ico
               =embedded_svg "ic_room_48px.svg"
             .address-block-inner
-              p м. Львів, Україна
+              p
+                =contacts.try(:country)
+                |,&nbsp;
+                =contacts.try(:city)
+
               b Головний офіс
-              p вул. Могильницького, 16
-              b Офіс відділу продажу
-              p вул. Чорновола (навпроти Арсену)
+              p =contacts.try(:address)
+
+
           .address-block-wrap
             .ab-ico
               =embedded_svg "ic_phone_24px.svg"
             .address-block-inner
-              a +38 (032) 253 55 05
-              a +38 (068) 228 88 88
-              a +38 (093) 839 99 99
+              -if contacts.m_phone.present?
+                a href="tel:+#{contacts.m_phone.gsub(/[+( )]/, '')}" rel="nofollow"
+                  =contacts.m_phone
+              -if contacts.s_phone.present?
+                a href="tel:+#{contacts.s_phone.gsub(/[+( )]/, '')}" rel="nofollow"
+                  =contacts.s_phone
+              -if contacts.t_phone.present?
+                a href="tel:+#{contacts.t_phone.gsub(/[+( )]/, '')}" rel="nofollow"
+                  =contacts.t_phone
+
           .address-block-wrap
             .ab-ico
               =embedded_svg "ic_mail_24px.svg"
             .address-block-inner
-              a sales@pr-group.in
-              a office@pr-group.in
+              -if contacts.m_email.present?
+                a href="mailto:#{contacts.m_email}"
+                  =contacts.m_email
+              -if contacts.s_email.present?
+                a href="mailto:#{contacts.s_email}"
+                  =contacts.s_email
+
           .address-block-wrap
             .ab-ico
               =embedded_svg "ic_link_48px.svg"
@@ -49,21 +66,36 @@
               a.orange-link  www.sigma.estate
           .address-block-wrap
             .columns
-              ul.se-socials
-                li
-                  a
-                    =image_tag "SE-icons-social-facebook.png"
-                li
-                  a
-                    =image_tag "SE-icons-social-twitter.png"
-                li
-                  a
-                    =image_tag "SE-icons-social-gpluse.png"
-                li
-                  a
-                    =image_tag "SE-icons-social-skype.png"
+              -if contacts
+                ul.se-socials
+                  -if contacts.facebook.present?
+                    li
+                      a href=(unless contacts.facebook.blank? then; "#{contacts.facebook}" end;) rel="nofollow" target="_blank"
+                        =image_tag "SE-icons-social-facebook.png"
+
+                  -if contacts.google.present?
+                    li
+                      a href=(unless contacts.google.blank? then; "#{contacts.google}" end;) rel="nofollow" target="_blank"
+                        =image_tag "SE-icons-social-gpluse.png"
+
+                  -if contacts.twitter.present?
+                    li
+                      a href=(unless contacts.twitter.blank? then; "#{contacts.twitter}" end;) rel="nofollow" target="_blank"
+                        =image_tag "SE-icons-social-twitter.png"
+
+                  -if contacts.instagram.present?
+                    li
+                      a href=(unless contacts.instagram.blank? then; "#{contacts.instagram}" end;) rel="nofollow" target="_blank"
+                        =image_tag "SE-icons-social-instagram.png"
+
+                  -if contacts.youtube.present?
+                    li
+                      a href=(unless contacts.youtube.blank? then; "#{contacts.youtube}" end;) rel="nofollow" target="_blank"
+                        =image_tag "SE-icons-social-youtube.png"
             .clearfix
       .clearfix
+
+
   .medium-7.columns
     .contact-map-wrap.se-box-shadow
       #map_canvas data-lng="24.020744" data-lat="49.832623" data-name="" data-complex=""
@@ -97,7 +129,7 @@
     .subscribe-wrap.se-box-shadow
       .columns
         h4 Будьте на зв’язку!
-        p Підпишіться на інтернет розсилку і будьте вкурсі самих свіжих пропозицій.
+        p Підпишіться на інтернет розсилку і Ви будете знати всі новинки та пропозиції нашої компанії.
 
         /form.default-animation-form
         /  .row

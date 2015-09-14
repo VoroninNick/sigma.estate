@@ -9,18 +9,28 @@
     .small-12.medium-6.columns
       h2 Виникли питання?
       p Зв’яжіться з нами, або напишіть нам, і ми максимально швидко дамо відповіді на всі ваші питання.
-      address
-        p
-          =embedded_svg "ic_room_48px.svg"
-          |вул. Театральна 11, м. Львів
-        p
-          a
-            =embedded_svg "ic_phone_24px.svg"
-            |+38 (032) 294 10 12
-        p
-          a
-            =embedded_svg "ic_mail_24px.svg"
-            |sigmaestate@gmail.com
+
+      -contacts = Contact.first
+      -if contacts
+        address
+          -if contacts.city.present?
+            p
+              =embedded_svg "ic_room_48px.svg"
+              =contacts.try(:address)
+              |,&nbsp;
+              =contacts.try(:city)
+
+          -if contacts.m_phone.present?
+            p
+              a href="tel:+#{contacts.m_phone.gsub(/[+( )]/, '')}" rel="nofollow"
+                =embedded_svg "ic_phone_24px.svg"
+                =contacts.m_phone
+
+          -if contacts.m_email.present?
+            p
+              a href="mailto:#{contacts.m_email}"
+                =embedded_svg "ic_mail_24px.svg"
+                =contacts.m_email
 
     .small-12.medium-6.columns
       form.default-animation-form.se-box-shadow

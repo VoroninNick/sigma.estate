@@ -22,25 +22,41 @@ footer
           span
             |Житл. Комплекси
   .row
+    -contacts = Contact.first
     .small-12.medium-8.columns
       h4 Про компанію
-      p Sigma Estate — житловий комплекс розташований на периферії міста Львів.
+      p Sigma Estate — перший супермаркет нерухомості на ринку України. Ми не просто продаємо квартири. Ми створюємо ідеальні маєтки.
       p
         |Квартири з сучасним плануванням допоможуть вам створити тиху і затишну атмосферу яка дат можливість розслабитися і відпочити від галасливого міста.
           А сучасні матеріали з яких виконаний будинок дадуть вам забути про вічні ремонтах і неполадки.
-      ul.se-socials
-        li
-          a
-            =image_tag "SE-icons-social-facebook.png"
-        li
-          a
-            =image_tag "SE-icons-social-twitter.png"
-        li
-          a
-            =image_tag "SE-icons-social-gpluse.png"
-        li
-          a
-            =image_tag "SE-icons-social-skype.png"
+
+      -if contacts
+        ul.se-socials
+          -if contacts.facebook.present?
+            li
+              a href=(unless contacts.facebook.blank? then; "#{contacts.facebook}" end;) rel="nofollow" target="_blank"
+                =image_tag "SE-icons-social-facebook.png"
+
+          -if contacts.google.present?
+            li
+              a  href=(unless contacts.google.blank? then; "#{contacts.google}" end;) rel="nofollow" target="_blank"
+                =image_tag "SE-icons-social-gpluse.png"
+
+          -if contacts.twitter.present?
+            li
+              a  href=(unless contacts.twitter.blank? then; "#{contacts.twitter}" end;) rel="nofollow" target="_blank"
+                =image_tag "SE-icons-social-twitter.png"
+
+          -if contacts.instagram.present?
+            li
+              a  href=(unless contacts.instagram.blank? then; "#{contacts.instagram}" end;) rel="nofollow" target="_blank"
+                =image_tag "SE-icons-social-instagram.png"
+
+          -if contacts.youtube.present?
+            li
+              a  href=(unless contacts.youtube.blank? then; "#{contacts.youtube}" end;) rel="nofollow" target="_blank"
+                =image_tag "SE-icons-social-youtube.png"
+
     .small-12.medium-4.columns
       h4 Шось шукали?
       form
@@ -49,18 +65,28 @@ footer
           input name="search" type="text"
           button type="submit"
             =embedded_svg "ic_search_24px.svg"
-      address
-        p
-          =embedded_svg "ic_room_48px.svg"
-          |вул. Могильницького, 16, м. Львів
-        p
-          a
-            =embedded_svg "ic_phone_24px.svg"
-            |+38 (032) 294 10 12
-        p
-          a
-            =embedded_svg "ic_mail_24px.svg"
-            |sigmaestate@gmail.com
+
+      -if contacts
+        address
+          -if contacts.city.present?
+            p
+              =embedded_svg "ic_room_48px.svg"
+              =contacts.try(:address)
+              |,&nbsp;
+              =contacts.try(:city)
+
+          -if contacts.m_phone.present?
+            p
+              a href="tel:+#{contacts.m_phone.gsub(/[+( )]/, '')}" rel="nofollow"
+                =embedded_svg "ic_phone_24px.svg"
+                =contacts.m_phone
+
+          -if contacts.m_email.present?
+            p
+              a href="mailto:#{contacts.m_email}"
+                =embedded_svg "ic_mail_24px.svg"
+                =contacts.m_email
+
   .footer-down
     .row
       .medium-5.columns
