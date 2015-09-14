@@ -259,11 +259,10 @@
                     hr
 
                     -if @apartment.building_complex && @apartment.building_complex.coordinates.present?
-                    h4 Розташування будинку на Google maps
+                      h4 Розташування будинку на Google maps
 
                       #map_canvas data-lng=@apartment.building_complex.coordinates.split(', ').first data-lat=@apartment.building_complex.coordinates.split(', ').last data-name="" data-complex=""
                       coffee:
-
                         map = undefined
                         mgr = undefined
                         lat = $('#map_canvas').attr('data-lat')
