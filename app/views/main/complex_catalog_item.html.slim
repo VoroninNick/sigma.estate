@@ -282,38 +282,16 @@
                 h3
                   =embedded_svg "ic_room_48px.svg"
                   |Розташування на карті
-                #c-map
+
+                -if @building_complex.coordinates.present?
+                #c-map data-lat=@building_complex.coordinates.split(', ').first data-lng=@building_complex.coordinates.split(', ').last data-name=@building_complex.try(:name)
                 coffee:
                   locations = [
                     [
-                      'Bondi Beach'
-                      -33.890542
-                      151.274856
+                      'ЖК "'+$('#c-map').attr 'data-name'+'"'
+                      $('#c-map').attr 'data-lat'
+                      $('#c-map').attr 'data-lng'
                       4
-                    ]
-                    [
-                      'Coogee Beach'
-                      -33.923036
-                      151.259052
-                      5
-                    ]
-                    [
-                      'Cronulla Beach'
-                      -34.028249
-                      151.157507
-                      3
-                    ]
-                    [
-                      'Manly Beach'
-                      -33.80010128657071
-                      151.28747820854187
-                      2
-                    ]
-                    [
-                      'Maroubra Beach'
-                      -33.950198
-                      151.259302
-                      1
                     ]
                   ]
                   map = new (google.maps.Map)(document.getElementById('c-map'),
