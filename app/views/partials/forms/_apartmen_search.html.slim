@@ -1,27 +1,27 @@
 .apartment-form-wrap.se-box-shadow
-  form
-    .af-header
-      .row
+  .af-header
+    .row
+      .columns
         .columns
-          .columns
-            .af-search-input
+          .af-search-input
+            form
               label
                 |Знайти квартиру
                 input type="text" placeholder="Пошук квартир..."
               button type="submit"
-      .row
+    .row
+      .columns
         .columns
-          .columns
-            strong Наприклад:
-            a Квартира у Львові
-            a Квартира у Києві
-            a ЖК «Сігма Апартментс»
+          strong Наприклад:
+          a Квартира у Львові
+          a Квартира у Києві
+          a ЖК «Сігма Апартментс»
 
-    .af-body
-      /= form_for_filterrific(@filterrific, url: apartment_catalog_path, html: { id: :manual_filterrific_form } ) do |f|
-        /[form inputs go here ...]
+  .af-body
+    /= form_for_filterrific(@filterrific, url: apartment_catalog_path, html: { id: :manual_filterrific_form } ) do |f|
+      /[form inputs go here ...]
 
-
+    form action=apartment_catalog_path
       .row
         .medium-6.columns
           .columns
@@ -29,7 +29,7 @@
               - min = 7600
               - max = 25000
               .rs-input
-                input.rs-min type="text" placeholder=min
+                input.rs-min name="filterrific[with_price_from]" type="text" placeholder=min
               .rs-slider
                 .row
                   .column
@@ -41,7 +41,7 @@
                   .columns
                     .range-slide data-min-val=min data-max-val=max
               .rs-input
-                input.rs-max type="text" placeholder=max
+                input.rs-max name="filterrific[with_price_to]" type="text" placeholder=max
 
         .medium-6.columns
           .columns
@@ -49,7 +49,7 @@
               - min = 32
               - max =160
               .rs-input
-                input.rs-min type="text" placeholder=min
+                input.rs-min name="filterrific[with_total_square_from]" type="text" placeholder=min
               .rs-slider
                 .row
                   .column
@@ -61,7 +61,7 @@
                   .columns
                     .range-slide data-min-val=min data-max-val=max
               .rs-input
-                input.rs-max type="text" placeholder=max
+                input.rs-max name="filterrific[with_total_square_to]"  type="text" placeholder=max
 
 
       .row
@@ -71,40 +71,45 @@
             - i = 0
             label
               |К-сть кімнат
-            select
+            select name="filterrific[with_count_rooms]"
+              option disabled="" selected="" -виберіть к-сть кімнат-
               - count.times
                 - i = i+1
                 option value="#{i}" =i
 
-          .columns
-            - count= 14
-            - i = 0
-            label
-              |Поверх
-            select
-              - count.times
-                - i = i+1
-                option value="#{i}" =i
+          -levels = Sigma::Apartment.available_levels
+          -if levels.any?
+            .columns
+              - count= 14
+              - i = 0
+              label
+                |Поверх
+              select name="filterrific[with_level]"
+                option disabled="" selected="" -виберіть поверх-
+                -levels.each do |l|
+                  option value="#{l}" =l
 
 
 
         .large-6.medium-6.columns
-          .columns
-            label
-              |Місто
-            select
-              option value="Львів" Львів
-              option value="Київ" Київ
-              option value="Одеса" Одеса
-              option value="Ялта" Ялта
-          .columns
-            label
-              |Район
-            select
-              option value="Шевченківський" Шевченківський
-              option value="Залізничний" Залізничний
-              option value="Личаківський" Личаківський
-              option value="Галицький" Галицький
+          -if a_available_cities.any?
+            .columns
+              label
+                |Місто
+              select name="filterrific[with_city]"
+                option disabled="" selected="" -виберіть місто-
+                -a_available_cities.each do |c|
+                  option value=c  =c
+
+          -if a_available_districts.any?
+            .columns
+              label
+                |Район
+              select name="filterrific[with_district]"
+                option disabled="" selected="" -виберіть район-
+                -a_available_districts.each do |d|
+                  option value=d =d
+
           .columns
             .button-wrap.material-component.ripple.right.se-box-shadow
               /= f.submit "Знайти", class: "right"

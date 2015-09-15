@@ -164,27 +164,28 @@
                     .small-4.columns
                       .checkbox-input
                         .squared
-                          input id="floor_#{i}" type="checkbox" value=i name="count_floor[#{i}]"
-                          label for="floor_#{i}"
-                        label for="floor_#{i}" =i
-                  .small-6.columns
-                    .checkbox-input
-                      .squared
-                        input id="floor_10" type="checkbox" value="10-14" name="count_floor[10]"
-                        label for="floor_10"
-                      label for="floor_10" 10-14
-                  .small-6.columns
-                    .checkbox-input
-                      .squared
-                        input id="floor_15" type="checkbox" value="15-19" name="count_floor[15]"
-                        label for="floor_15"
-                      label for="floor_15" 15-19
-                  .small-5.columns.end
-                    .checkbox-input
-                      .squared
-                        input id="floor_20" type="checkbox" value="20" name="count_floor[20]"
-                        label for="floor_20"
-                      label for="floor_20" 20+
+                          = f.check_box(:with_level, {multiple: true}, i, nil)
+                          label for="filterrific_with_level_#{i}"
+                        label for="filterrific_with_level_#{i}" =i
+
+                  /.small-6.columns
+                  /  .checkbox-input
+                  /    .squared
+                  /      input id="floor_10" type="checkbox" value="10-14" name="count_floor[10]"
+                  /      label for="floor_10"
+                  /    label for="floor_10" 10-14
+                  /.small-6.columns
+                  /  .checkbox-input
+                  /    .squared
+                  /      input id="floor_15" type="checkbox" value="15-19" name="count_floor[15]"
+                  /      label for="floor_15"
+                  /    label for="floor_15" 15-19
+                  /.small-5.columns.end
+                  /  .checkbox-input
+                  /    .squared
+                  /      input id="floor_20" type="checkbox" value="20" name="count_floor[20]"
+                  /      label for="floor_20"
+                  /    label for="floor_20" 20+
 
             .filter-block.filter-block-expand
               .columns

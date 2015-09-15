@@ -55,6 +55,9 @@ class Sigma::Apartment < ActiveRecord::Base
     # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
     Sigma::BuildingComplex.pluck(:district).uniq
   end
+  def self.available_levels
+    Sigma::Apartment.pluck(:level).uniq.select(&:present?).sort
+  end
 
   enumerize :apartment_type, in: [:one_room, :two_rooms, :three_rooms, :four_rooms, :five_rooms_plus, :studio, :mansard, :two_levels]
 
@@ -72,7 +75,12 @@ class Sigma::Apartment < ActiveRecord::Base
           :with_building_complex_name,
           :with_count_rooms,
           :with_city,
-          :with_district
+          :with_district,
+          :with_level,
+          :with_price_from,
+          :with_price_to,
+          :with_total_square_from,
+          :with_total_square_to
           # :search_query,
           # :with_country_id,
           # :with_created_at_gte
@@ -107,12 +115,12 @@ class Sigma::Apartment < ActiveRecord::Base
                          joins(:building_complex).where(sigma_building_complexes: { id: complex_id })
                         }
   # always include the lower boundary for semi open intervals
-  scope :with_price_form, lambda { |price|
-                         where('sigma_apartments.price <= ?', price)
+  scope :with_price_from, lambda { |price|
+                         where('sigma_apartments.price >= ?', price)
                        }
 
   # always exclude the upper boundary for semi open intervals
-  scope :with_price_end, lambda { |price|
+  scope :with_price_to, lambda { |price|
                         where('sigma_apartments.price < ?', price)
                       }
   # count rooms
@@ -127,6 +135,17 @@ class Sigma::Apartment < ActiveRecord::Base
   scope :with_district, lambda { |district|
                          joins(:building_complex).where(sigma_building_complexes: { district: district })
                        }
+ # apartment level
+  scope :with_level, lambda { |level|
+                         where(level: level)
+                       }
+
+  scope :with_total_square_from, lambda { |total_square|
+                                 where('sigma_apartments.total_square >= ?', total_square)
+                               }
+  scope :with_total_square_to, lambda { |total_square|
+                                 where('sigma_apartments.total_square < ?', total_square)
+                               }
 
 
 end

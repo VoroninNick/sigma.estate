@@ -47,22 +47,21 @@
   .h-sub-filter-list
     .row
       .columns
-        - cities = Sigma::Apartment.available_cities
-        - if cities.length >1
+        - if a_available_cities.length >1
           .h-sf-cities
             strong Місто:
             ul
-              -cities.each do |c|
+              -a_available_cities.each do |c|
                 li
                   a href=apartment_catalog_path(filterrific: {with_city: c})
                     =c.inspect
 
-        - districts = Sigma::Apartment.available_districts
-        - if districts.length >1
+
+        - if a_available_districts.length >1
           .h-sf-cities
             strong Район:
             ul
-              -districts.each do |c|
+              -a_available_districts.each do |c|
                 li
                   a href=apartment_catalog_path(filterrific: {with_district: c})
                     =c

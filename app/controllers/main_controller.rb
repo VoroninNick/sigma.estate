@@ -69,4 +69,18 @@ class MainController < ApplicationController
 
   end
 
+
+  def have_questions_email
+    name = params[:name]
+    phone = params[:phone]
+    email = params[:email]
+    message = params[:message]
+    ContactMailer.have_questions(name, phone, email, message).deliver
+
+  end
+  def call_to_order_email
+  end
+  def book_review_email
+  end
+
 end

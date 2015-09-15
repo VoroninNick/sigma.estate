@@ -56,6 +56,14 @@ $.fn.observeMouseOut = (options)->
 
 $(document).ready ->
 
+
+  # nav
+  if(window.location.href.indexOf("apartment") > -1)
+    $('.nav-catalogs .li-apartment').addClass('current')
+  if(window.location.href.indexOf("complex") > -1)
+    $('.nav-catalogs .li-complex').addClass('current')
+
+
   $('#sidebar').stickySidebar
     sidebarTopMargin: 20
     footerThreshold: 100

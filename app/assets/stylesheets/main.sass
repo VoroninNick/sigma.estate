@@ -651,6 +651,9 @@ header
             font:
               size: rem-calc(12)
               weight: 400
+          &.current
+            a
+              color: #E55000
 
 
 
@@ -1017,87 +1020,87 @@ form
 .apartment-form-wrap
   overflow: hidden
   border-radius: 4px
-  form
-    .af-header
-      background-color: #E55000
-      height: 105px
-      padding-top: 20px
-      strong, a
-        font:
-          size: rem-calc(12)
-        line-height: rem-calc(14.4)
-        display: inline-block
-        float: left
-      strong
-        color: #FB8B00
-        font:
-          weight: 400
-      a
-        color: #FFF
-        font:
-          weight: 300
-        margin-left: 12px
 
-    .af-body
-      background-color: #fff
-      padding-bottom: 25px
-      label
-        color: #E55000
-        display: inline-block
-        width: 90px
-      select
-        width: calc(100% - 90px)
-        border-bottom: 1px solid #BCBCBC !important
-      .button-wrap
-        background-color: #E55000
-      button
-        background-color: transparent
-        background-image: asset-url('ic_search_24px_white.svg')
-        padding: 11px 35px 11px 53px
-        background-repeat: no-repeat
-        background-position-y: 50%
-        background-position-x: 12%
-        margin: 0
-        text-transform: uppercase
-
-form
   .af-header
-    .af-search-input
-      position: relative
-      margin-bottom: 10px
-      label
-        color: #FFF
+    background-color: #E55000
+    height: 105px
+    padding-top: 20px
+    strong, a
+      font:
+        size: rem-calc(12)
+      line-height: rem-calc(14.4)
+      display: inline-block
+      float: left
+    strong
+      color: #FB8B00
+      font:
+        weight: 400
+    a
+      color: #FFF
+      font:
+        weight: 300
+      margin-left: 12px
+
+  .af-body
+    background-color: #fff
+    padding-bottom: 25px
+    label
+      color: #E55000
+      display: inline-block
+      width: 90px
+    select
+      width: calc(100% - 90px)
+      border-bottom: 1px solid #BCBCBC !important
+    .button-wrap
+      background-color: #E55000
+    button
+      background-color: transparent
+      background-image: asset-url('ic_search_24px_white.svg')
+      padding: 11px 35px 11px 53px
+      background-repeat: no-repeat
+      background-position-y: 50%
+      background-position-x: 12%
+      margin: 0
+      text-transform: uppercase
+
+
+.af-header
+  .af-search-input
+    position: relative
+    margin-bottom: 10px
+    label
+      color: #FFF
+      font:
+        size: rem-calc(12)
+        weight: 400
+      line-height: rem-calc(14.4)
+    input
+      background-color: transparent
+      border: 0
+      border-bottom: 2px solid #FB8B00
+      height: 26px
+      box-shadow: none!important
+      outline: none!important
+      margin-top: 5px
+      +placeholder(#FB8B00, 18px, normal)
         font:
-          size: rem-calc(12)
-          weight: 400
-        line-height: rem-calc(14.4)
-      input
-        background-color: transparent
-        border: 0
-        border-bottom: 2px solid #FB8B00
-        height: 26px
-        box-shadow: none!important
-        outline: none!important
-        margin-top: 5px
-        +placeholder(#FB8B00, 18px, normal)
-          font:
-            weight: 500
-        margin: 0
-        padding: 0
-        line-height: rem-calc(26)
-      button
-        width: 26px
-        height: 26px
-        padding: 0
-        position: absolute
-        bottom: 2px
-        right: 0
-        margin: 0
-        background-color: transparent
-        background-image: asset-url("ic_search_24px.svg")
-        background-size: 90%
-        background-repeat: no-repeat
-        cursor: pointer
+          weight: 500
+      margin: 0
+      padding: 0
+      line-height: rem-calc(26)
+    button
+      width: 26px
+      height: 26px
+      padding: 0
+      position: absolute
+      bottom: 2px
+      right: 0
+      margin: 0
+      background-color: transparent
+      background-image: asset-url("ic_search_24px.svg")
+      background-size: 90%
+      background-repeat: no-repeat
+      cursor: pointer
 
 .best-apartment
   background-color: #E3E3E3
@@ -1334,6 +1337,7 @@ form
     padding: 12px 28px
     display: inline-block
     position: relative
+
 .se-external-link
   a
     color: #AFBDC4

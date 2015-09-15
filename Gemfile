@@ -81,3 +81,5 @@ gem 'attachable', :github => 'voroninnick/attachable'
 
 gem 'truncate_html'
 gem 'filterrific'
+
+gem 'config'

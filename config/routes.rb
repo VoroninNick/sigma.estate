@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root :to => redirect('apartment')
 
   get 'apartment' => 'main#apartment'
-  get 'apartment/catalog' => 'main#apartment_catalog'
+  match 'apartment/catalog' => 'main#apartment_catalog', via: [:get, :post]
   get 'apartment/catalog/:id' => 'main#apartment_item', as: :apartment_item
 
   get 'complex' => 'main#complex'
@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   get 'cabinet' => 'cabinet#profile', as: :cabinet_profile
   get 'cabinet/selected-realty' => 'cabinet#selected_realty'
   get 'cabinet/calculators' => 'cabinet#calculators'
+
+  post 'have_questions' => 'main#have_questions_email'
+  post 'call_to_order' => 'main#call_to_order_email'
+  post 'book_review' => 'main#book_review_email'
 
   # get  'profile/registration' => 'profile#'
   # Example of regular route:
