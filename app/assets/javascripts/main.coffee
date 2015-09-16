@@ -55,7 +55,16 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+#
+  $('form.ajax-form').submit (e) ->
+    e.preventDefault()
+    $.post @action, $(@).serializeArray()
 
+    $(@)[0].reset()
+    $(@).closest('form').find('.animate-input').each ->
+      $(@).removeClass('is-completed')
+
+    $('#SuccessModal').foundation 'reveal', 'open'
 
   # nav
   if(window.location.href.indexOf("apartment") > -1)

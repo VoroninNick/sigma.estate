@@ -3,7 +3,7 @@ class SupportEmail < ActiveRecord::Base
 
   rails_admin do
     label 'Технічна електронна скринька'
-    label_plural 'Технічни електронни скриньки'
+    label_plural 'Технічні електронні скриньки'
 
     edit do
       field :have_questions do
