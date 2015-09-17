@@ -57,7 +57,7 @@
               .medium-5.columns
                 .apartment-item-head-title-actions
                   .se-link-button.material-component.ripple.se-box-shadow
-                    a Замовити огляд
+                    a  href="#" data-reveal-id="book-review-modal" Замовити огляд
                   a.aiht-action
                     = embedded_svg "ic_done_all_24px.svg"
                   a.aiht-action
@@ -93,7 +93,7 @@
                         |Площа
                         span
                           |(м2)
-                      .a-oi-info-value =@apartment.try(:live_square)
+                      .a-oi-info-value =@apartment.try(:total_square)
               .medium-3.columns
                 .a-oi-print-version
                   a
@@ -122,13 +122,13 @@
                               = @apartment.building_complex.complex_class
 
                     - if @apartment.apartment_type.present?
-                      .apartment-item-one-characteristic
-                        .row
-                          .small-5.columns
-                            .aio-char-key
-                              |Тип
-                          .small-7.columns
-                            .aio-char-value =@apartment.apartment_type
+                    .apartment-item-one-characteristic
+                      .row
+                        .small-5.columns
+                          .aio-char-key
+                            |Тип
+                        .small-7.columns
+                          .aio-char-value =@apartment.apartment_type
 
                     - if @apartment.price.present?
                       .apartment-item-one-characteristic
@@ -249,9 +249,9 @@
                     /= @apartment.tech_info.apartment_type
                   .medium-7.columns
                     h3 Детальна інформація
-                    -if @apartment.html_description.present?
+                    -if @apartment.main_description_html.present?
                       h4 Інформація про помешкання
-                      = raw @apartment.html_description
+                      = raw @apartment.main_description_html
 
                     -if @apartment.infrastructure_description_html.present?
                       h4 Інфраструктура
@@ -300,4 +300,6 @@
               li
                 - similar.each do |a|
                   =render partial: "main/similar", locals: {a: a}
+
+  =render partial: "partials/forms/book_review"
   =render partial: "partials/forms/feedback_form"
