@@ -43,12 +43,12 @@
                   =get_stars(@building_complex.complex_class, '')
               .medium-2.columns
                 .se-storage-link.material-component.ripple
-                  - if @building_complex.builder && @building_complex.builder.site.present?
-                    -if @building_complex.builder.site =~ /\A#{URI::regexp}\z/
-                      a href="#{@building_complex.builder.site}" target="_blank"
+                  - if @building_complex.complex_url.present?
+                    -if @building_complex.complex_url =~ /\A#{URI::regexp}\z/
+                      a href="#{@building_complex.complex_url}" target="_blank"
                         =embedded_svg "ic_link_48px.svg"
                     -else
-                      a href="//#{@building_complex.builder.site}" target="_blank"
+                      a href="//#{@building_complex.complex_url}" target="_blank"
                         =embedded_svg "ic_link_48px.svg"
                   - else
                     a

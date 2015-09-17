@@ -48,6 +48,34 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
         weight: 500
       line-height: rem-calc(16.8)
       text-transform: uppercase
+
+#book-review-modal
+  .modal-body
+    padding-top: 20px
+    .default-animation-form
+      .input
+        &.animate-input
+          &.is-completed
+            path
+              fill: #36464E
+          &.is-active
+            path
+              fill: #FB8B00
+      .se-times-block
+        padding-left: 58px
+        margin-bottom: 16px
+        position: relative
+        .input-ico
+          width: 32px
+          height: 32px
+          position: absolute
+          bottom: -8px
+          left: 0
+          path
+            fill: #778F9B
+        label
+          color: #AFBDC4
+
 body
   background-color: #E1E1E1
   .bx-wrapper

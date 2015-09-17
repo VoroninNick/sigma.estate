@@ -82,7 +82,9 @@ $(document).ready ->
 
     e.preventDefault()
 
-#  $('#SuccessModal').foundation 'reveal', 'open'
+#  $('#book-review-modal').foundation 'reveal', 'open'
+
+  $( "#datepicker" ).datepicker()
 
 #  $('form.ajax-form').submit (e) ->
 #    e.preventDefault()

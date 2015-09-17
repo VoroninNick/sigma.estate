@@ -1,2 +1,71 @@
-#book-review-modal.reveal-modal data-reveal="" role="dialog"
-  h1 test
+#book-review-modal.reveal-modal.tiny data-reveal="" role="dialog"
+  .modal-header.text-center
+    |Огляд квартири
+  .modal-body
+    form.default-animation-form
+      - if user_signed_in?
+        .columns
+          .row
+            .columns
+              .input.animate-input.is-completed
+                .input-ico
+                  =embedded_svg "ic_person_48px.svg"
+                label Ваше ім’я
+                input name="username" type="text" value=current_user.username
+        .clearfix
+      - else
+        .columns
+          .row
+            .columns
+              .input.animate-input
+                .input-ico
+                  =embedded_svg "ic_person_48px.svg"
+                label Ваше ім’я
+                input name="username" type="text"
+        .clearfix
+
+      .columns
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_phone_24px.svg"
+              label Контактний телефон
+              input name="phone" type="tel"
+      .clearfix
+
+      .columns
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =embedded_svg "ic_event_black_24px.svg"
+              label Виберіть дату
+              input#datepicker name="date" type="text"
+      .clearfix
+
+      .columns
+        .row
+          .columns
+            .se-times-block
+              .input-ico
+                =embedded_svg "ic_access_time_black_24px.svg"
+              label Зручний час олгяду
+      .clearfix
+
+      .columns
+        .row
+          .columns
+            .input.animate-input.animate-textarea
+              .input-ico
+                =embedded_svg "ic_insert_comment_24px.svg"
+              label Текст повідомлення...
+              textarea name="message" rows="6"
+      .clearfix
+
+      .columns
+        .row
+          .columns
+            .button-wrap.material-component.ripple.right.b-turn-off
+              button type="submit" Надіслати
+      .clearfix
