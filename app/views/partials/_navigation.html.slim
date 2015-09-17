@@ -88,6 +88,12 @@
               .nf-header.text-center
                 =current_user.username
               .nf-body
+                -if current_user.username == 'Назарій Андрійович'
+                  .row
+                    .columns
+                      = content_tag(:a, href: rails_admin_path) do
+                        =embedded_svg "1442516244_circle_dashboard_fuel_gauge_meter_icon.svg"
+                        |Адмін панель
                 .row
                   .columns
                     = content_tag(:a, href: cabinet_profile_path) do

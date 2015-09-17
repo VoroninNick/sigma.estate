@@ -82,6 +82,7 @@ $(document).ready ->
 
     e.preventDefault()
 
+  $('#SuccessModal').foundation 'reveal', 'open'
 
 #  $('form.ajax-form').submit (e) ->
 #    e.preventDefault()
