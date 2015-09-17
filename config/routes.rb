@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get 'cabinet/selected-realty' => 'cabinet#selected_realty'
   get 'cabinet/calculators' => 'cabinet#calculators'
 
+  get 'dev' => 'main#dev'
+
   post 'have_questions' => 'main#have_questions_email'
   post 'call_to_order' => 'main#call_to_order_email'
   post 'book_review' => 'main#book_review_email'

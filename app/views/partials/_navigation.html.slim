@@ -45,9 +45,11 @@
         .notification-container
           .notification-form
             .nf-header.text-center
-              a
-                =embedded_svg "ic_phone_24px.svg"
-                |+38 (032) 294 10 12
+              -contacts = Contact.first
+              -if contacts.t_phone.present?
+                a href="tel:+#{contacts.t_phone.gsub(/[+( )]/, '')}" rel="nofollow"
+                  =embedded_svg "ic_phone_24px.svg"
+                  =contacts.t_phone
             .nf-body
               .row
                 .columns

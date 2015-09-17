@@ -17,12 +17,13 @@
   = form_for_filterrific @filterrific do |f|
     .row
       .medium-6.columns
-        p За запитом «квартира у Львові» знайдено 9 квартир
+        /p За запитом «квартира у Львові» знайдено 9 квартир
       .medium-6.columns
-
-        div
-          |Сортувати по:
+        .catalog-filter-sorted-by-wrap
           = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
+        /.div
+          = f.text_field( :search_query, class: 'filterrific-periodically-observed' )
+          = submit_tag()
           /div
           /  |Житловий комплекс
           /  = f.select( :with_building_complex_name, @filterrific.select_options[:with_building_complex_name], { include_blank: '- Any -' } )
@@ -204,19 +205,9 @@
                 .input
                   label Місто
                   = f.select(:with_city, @filterrific.select_options[:with_city], {include_blank: '- Виберіть місто -'})
-                  /select
-                  /  option selected="" disabled="" Виберіть місто
-                  /  option Львів
-                  /  option Стрий
-                  /  option Городок
                 .input
                   label Район
                   = f.select(:with_district, @filterrific.select_options[:with_district], {include_blank: '- Виберіть район -'})
-                  /select
-                  /  option selected="" disabled="" Виберіть район
-                  /  option Залізничний
-                  /  option Франківський
-                  /  option Сихівський
                 .input
                   label Вулиця
                   select
