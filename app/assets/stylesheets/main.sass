@@ -44,6 +44,7 @@ body
         a
           background-position: inherit
           margin-top: -29px
+          z-index: 999 !important
           &.bx-prev
             background-image: asset-url("banner-left-arrow.png")
             left: 30px
@@ -325,7 +326,7 @@ body
           //background-image: asset-url("banner-right-arrow.png")
           //background-repeat: repeat
 .sh_btn
-  z-index: 1038 !important
+  z-index: 108 !important
 .reveal-modal
   padding: 0
 .modal-header, .se-form-header
@@ -604,6 +605,8 @@ header
               &.default-animation-form
                 .animate-input
                   padding-left: 0
+                  input
+                    color: #778F9B
       &.nav-catalogs
         @media screen and ( max-width: 960px)
           +my_horizontal_align
@@ -656,7 +659,8 @@ header
               color: #E55000
 
 
-
+.reveal-modal-bg
+  position: fixed !important
 .h-filter-wrap
   height: 105px
   background-color: #36464E
@@ -741,12 +745,15 @@ header
         list-style: none
         z-index: 111
         margin-top: 8px
-        margin-left: 10px
         height: 20px
         overflow: hidden
+        background-color: #36464E
         li
+          padding-left: 10px
+          background-color: rgba(0, 0, 0, 0.1)
           a
             display: block
+            color: #FB8B00
         &:hover
           height: auto
   .hsf

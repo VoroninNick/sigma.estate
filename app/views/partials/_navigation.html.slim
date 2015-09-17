@@ -54,11 +54,11 @@
               .row
                 .columns
                   h4 Замовити дзвінок
-              form.default-animation-form
+              form.se-ajax-form.default-animation-form action=call_to_order_path method="POST"
                 .row
                   .columns
                     - if user_signed_in?
-                      .input.animate-input.is-completed
+                      .input.animate-input.is-locked-for-clear.is-completed
                         label Ім’я користувача
                         input name="username" type="text"  value=current_user.username
                     - else
@@ -69,10 +69,10 @@
                   .columns
                     .input.animate-input
                       label Контактний телефон
-                      input name="username" type="text"
+                      input name="phone" type="tel"
                 .row
                   .columns
-                    .button-wrap.material-component.ripple.right.b-turn-off
+                    .button-wrap.material-component.ripple.right
                       button type="submit" Замовити дзвінок
       li
         a href=comparison_path

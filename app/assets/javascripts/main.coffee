@@ -55,16 +55,88 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+  #callback handler for form submit
+  $('form.se-ajax-form').submit (e) ->
+    $this = $(@)
+    postData = $this.serializeArray()
+    formURL = $this.attr('action')
+    form = this
+
+    $.ajax
+      url: formURL
+      dataType: 'html'
+      type: "POST"
+      data: postData
+      beforeSend: ->
+        console.log('перед відсиланням')
+      success: ->
+        form.reset()
+        $this.closest('form').find('.animate-input').each ->
+          if !$(@).hasClass('is-locked-for-clear')
+            $(@).removeClass('is-completed')
 #
-  $('form.ajax-form').submit (e) ->
+        $('#SuccessModal').foundation 'reveal', 'open'
+      complete: ->
+
+      error: ->
+
     e.preventDefault()
-    $.post @action, $(@).serializeArray()
 
-    $(@)[0].reset()
-    $(@).closest('form').find('.animate-input').each ->
-      $(@).removeClass('is-completed')
 
-    $('#SuccessModal').foundation 'reveal', 'open'
+#  $('form.ajax-form').submit (e) ->
+#    e.preventDefault()
+#    alert 'test1'
+
+#  $('form.ajax-form').submit (e) ->
+#    alert 'test'
+#    postData = $(this).serializeArray()
+#    formURL = $(this).attr('action')
+#    $.ajax
+#      url: formURL
+#      type: 'POST'
+#      data: postData
+#      beforeSend: ->
+#        console.log("before send")
+#      success: (data, textStatus, jqXHR) ->
+#  #data: return data from server
+#        console.log("success send")
+#      error: (jqXHR, textStatus, errorThrown) ->
+#  #if fails
+#
+#    e.preventDefault()
+    #STOP default action
+#    e.unbind()
+    #unbind. to stop multiple form submit.
+#    return
+#  $('.ajax-form').submit()
+  #Submit  the FORM
+
+
+#  $(document).on "submit", "form#call-order", (e) ->
+#    e.preventDefault()
+#    $.post @action, $(@).serializeArray()
+#
+#    $.ajax
+#      url: '/get_cities_from_category'
+#      type: "GET"
+##      dataType: "json"
+#      data: valuesToSubmit
+#      beforeSend: ->
+#        alert 'start send'
+#      success: (data) ->
+#        alert 'success'
+#      complete: ->
+#        alert 'complete'
+##
+#  $('form.ajax-form').submit (e) ->
+#    e.preventDefault()
+#    $.post @action, $(@).serializeArray()
+#
+#    $(@)[0].reset()
+#    $(@).closest('form').find('.animate-input').each ->
+#      $(@).removeClass('is-completed')
+#
+#    $('#SuccessModal').foundation 'reveal', 'open'
 
   # nav
   if(window.location.href.indexOf("apartment") > -1)

@@ -79,8 +79,18 @@ class MainController < ApplicationController
 
   end
   def call_to_order_email
+    user_name = params[:username]
+    phone_number = params[:phone]
+    ContactMailer.call_to_order(user_name, phone_number).deliver
   end
   def book_review_email
   end
 
+
+  def dev
+    @search = Sunspot.search(Sigma::Apartment) do
+      fulltext params[:search]
+    end
+    @apartments = @search.results
+  end
 end
