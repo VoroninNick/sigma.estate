@@ -83,6 +83,15 @@ $(document).ready ->
     e.preventDefault()
 
 #  $('#book-review-modal').foundation 'reveal', 'open'
+  $(document).on 'click', 'a[data-reveal-id]', ->
+    console.log 'click!'
+    hiden_apartment = $(@).attr 'data-apartment-id'
+    console.log 'data', hiden_apartment
+
+    this_form = $('#book-review-modal').find('form')
+    this_form.find('input.apartment-id').val(hiden_apartment)
+
+#    $(this).after '<br><a href=\'#\' data-reveal-id=\'revealAjaxModal\'>click me too!</a>'
 
   $( "#datepicker" ).datepicker()
 

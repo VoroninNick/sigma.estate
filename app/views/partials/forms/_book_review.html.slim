@@ -3,11 +3,12 @@
     |Огляд квартири
   .modal-body
     form.se-ajax-popup-form.default-animation-form action=book_review_path method="POST"
+      input.apartment-id type="hidden" name="apartment_id" value=""
       - if user_signed_in?
         .columns
           .row
             .columns
-              .input.animate-input.is-completed
+              .input.animate-input.is-locked-for-clear.is-completed
                 .input-ico
                   =embedded_svg "ic_person_48px.svg"
                 label Ваше ім’я

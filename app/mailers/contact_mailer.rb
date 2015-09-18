@@ -17,7 +17,8 @@ class ContactMailer < ApplicationMailer
     mail(:template_path => 'contact_mailer', :template_name => 'call_to_order', :layout => false, :subject => 'Замовити дзвінок...', :to => SupportEmail.first.call_to_order.split(','))
   end
 
-  def book_review(user_name, phone_number, date, time_from, time_to, message)
+  def book_review(apartment_id, user_name, phone_number, date, time_from, time_to, message)
+    @apartment_id = apartment_id
     @user_name = user_name
     @phone_number = phone_number
     @date = date

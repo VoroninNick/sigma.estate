@@ -84,6 +84,7 @@ class MainController < ApplicationController
     ContactMailer.call_to_order(user_name, phone_number).deliver
   end
   def book_review_email
+    apartment_id = params[:apartment_id]
     user_name = params[:username]
     phone_number = params[:phone]
     date = params[:date]
@@ -91,7 +92,7 @@ class MainController < ApplicationController
     time_to = params[:time_to]
     message = params[:message]
 
-    ContactMailer.book_review(user_name, phone_number, date, time_from, time_to, message).deliver
+    ContactMailer.book_review(apartment_id, user_name, phone_number, date, time_from, time_to, message).deliver
   end
 
 
