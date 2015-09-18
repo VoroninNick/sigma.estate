@@ -65,16 +65,37 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
         padding-left: 58px
         margin-bottom: 16px
         position: relative
+        padding-top: 10px
         .input-ico
           width: 32px
           height: 32px
           position: absolute
           bottom: -8px
           left: 0
+          svg
+            position: relative
+            top: 2px
+            left: 5px
           path
             fill: #778F9B
         label
           color: #AFBDC4
+      .se-times-from-to
+        padding-left: 58px
+        margin-bottom: 16px
+        label, select
+          color: #78909C
+          font:
+            size: rem-calc(16)
+            weight: 400
+          line-height: rem-calc(19.2)
+        label
+          display: inline-block
+        select
+          width: 65px
+          display: inline-block
+          border-bottom: 1px solid #78909C !important
+          margin-left: 9px
 
 body
   background-color: #E1E1E1

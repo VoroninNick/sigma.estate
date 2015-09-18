@@ -83,6 +83,7 @@ $(document).ready ->
     e.preventDefault()
 
 #  $('#book-review-modal').foundation 'reveal', 'open'
+
   $(document).on 'click', 'a[data-reveal-id]', ->
     console.log 'click!'
     hiden_apartment = $(@).attr 'data-apartment-id'

@@ -53,8 +53,10 @@
                 =embedded_svg "ic_access_time_black_24px.svg"
               label Зручний час олгяду
         .row
-          .columns
+
+          .se-times-from-to
             .small-6.columns
+              label Від
               select name="time_from"
                 -time_begin = 9
                 -11.times do |i|
@@ -62,13 +64,15 @@
                     =time_begin + i
                     |:00
             .small-6.columns
+              label До
               select name="time_to"
-                -time_begin = 9
-                -11.times do |i|
-                  option value="#{time_begin + i}:00"
-                    =time_begin + i
+                -time_to = 9
+                -10.times do |i|
+                  -time_to = time_to + 1
+                  option value="#{time_to}:00" selected=("selected" if time_to == 19)
+                    =time_to
                     |:00
-            .clearfix
+
       .clearfix
 
       .columns
