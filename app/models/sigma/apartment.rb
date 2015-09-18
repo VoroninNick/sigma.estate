@@ -67,9 +67,18 @@ class Sigma::Apartment < ActiveRecord::Base
 
   paginates_per 12
 
+
+#   sunspot
+#   searchable do
+#     text        :html_description
+#     text        :infrastructure_description_html
+#     text        :main_description_html
+#     integer     :building_complex_id, :references => Sigma::BuildingComplex
+#   end
+
 #   for filtering
   filterrific(
-      default_filter_params: { sorted_by: 'created_at_asc' },
+      # default_filter_params: { sorted_by: 'created_at_desc' },
       available_filters: [
           :sorted_by,
           :with_building_complex_name,
@@ -80,22 +89,39 @@ class Sigma::Apartment < ActiveRecord::Base
           :with_price_from,
           :with_price_to,
           :with_total_square_from,
-          :with_total_square_to
-          # :search_query,
-          # :with_country_id,
-          # :with_created_at_gte
+          :with_total_square_to,
+          :search_query
       ]
   )
+  scope :search_query, lambda { |query|
+                       return nil  if query.blank?
+                       terms = query.downcase.split(/\s+/)
+                       terms = terms.map { |e|
+                         (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+                       }
 
+                       num_or_conditions = 1
+                       where(
+                           terms.map {
+                             or_clauses = [
+                                 "LOWER(sigma_apartments.id) LIKE ?"
+                             ].join(' OR ')
+                             "(#{ or_clauses })"
+                           }.join(' AND '),
+                           *terms.map { |e| [e] * num_or_conditions }.flatten
+                       )
+
+                     }
   scope :sorted_by, lambda { |sort_key|
     direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
     case sort_key.to_s
       when /^created_at_/
         order("sigma_apartments.created_at #{ direction }")
-      # when /^name_/
-      #   order("LOWER(sigma_apartments.street) #{ direction }")
+      when /^building_complex_street_/
+        joins(:building_complex).order("LOWER(sigma_building_complexes.street) #{ direction }")
       when /^building_complex_name_/
-        order("LOWER(building_complex.name) #{ direction }").includes(:sigma_building_complexes)
+        # order("LOWER(sigma_building_complexes.name) #{ direction }").includes(:building_complex)
+        joins(:building_complex).order("LOWER(sigma_building_complexes.name) #{ direction }")
       else
         raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
     end
@@ -103,10 +129,12 @@ class Sigma::Apartment < ActiveRecord::Base
   }
   def self.options_for_sorted_by
     [
-        # ['Name (a-z)', 'name_asc'],
-        ['Дата створення (новіші перше)', 'created_at_desc'],
         ['Дата створення (старіші перші)', 'created_at_asc'],
-        ['Назва комплексу (a-я)', 'building_complex_name_asc']
+        ['Дата створення (новіші перші)', 'created_at_desc'],
+        ['Назва комплексу (a-я)', 'building_complex_name_asc'],
+        ['Назва комплексу (я-а)', 'building_complex_name_desc'],
+        ['Назва вулиці (а-я)', 'building_complex_street_asc'],
+        ['Назва вулиці (я-а)', 'building_complex_street_desc']
     ]
   end
 

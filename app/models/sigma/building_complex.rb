@@ -98,4 +98,13 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   def self.options_for_select
     order('LOWER(name)').map { |e| [e.name, e.id] }
   end
+
+
+#   sunspot
+#   searchable do
+#     text :name, :boost => 5
+#     # text :main_description_html
+#     # text :infrastructure_description_html
+#     # text :main_description_html
+#   end
 end
