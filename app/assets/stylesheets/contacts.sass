@@ -106,6 +106,17 @@
 
   form
     &.default-animation-form
+      .input
+        &.animate-input
+          &.is-active
+            input
+              color: #FB8B00
+          &.is-completed
+            .input-ico
+              path
+                fill: #36464E
+            input, textarea
+              color: #36464E
       .button-wrap
         background-color: #E55000
         button
@@ -113,4 +124,5 @@
           text-transform: uppercase
           margin: 0
           padding: 11px 35px
+
 

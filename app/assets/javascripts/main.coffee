@@ -56,7 +56,7 @@ $.fn.observeMouseOut = (options)->
 
 $(document).ready ->
   #callback handler for form submit
-  $('form.se-ajax-form').submit (e) ->
+  $('form.se-ajax-popup-form').submit (e) ->
     $this = $(@)
     postData = $this.serializeArray()
     formURL = $this.attr('action')

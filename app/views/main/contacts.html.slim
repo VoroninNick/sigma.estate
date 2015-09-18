@@ -177,7 +177,7 @@
       h4 Виникли питання?
       p Зв’яжіться з нами, або напишіть нам, і ми максимально швидко дамо відповіді на всі ваші питання.
   .row
-    form.default-animation-form
+    form.se-ajax-popup-form.default-animation-form  action=have_questions_path method="POST"
       .medium-6.columns
         .row
           .columns
@@ -192,7 +192,7 @@
               .input-ico
                 =embedded_svg "ic_phone_24px.svg"
               label Контактний телефон
-              input name="phone" type="text"
+              input name="phone" type="tel"
         .row
           .columns
             .input.animate-input
@@ -210,5 +210,6 @@
               textarea name="message" rows="6"
         .row
           .columns
-            .button-wrap.material-component.ripple.right.se-box-shadow.b-turn-off
+            .button-wrap.material-component.ripple.right.se-box-shadow
+              /.b-turn-off
               button.right type="submit" Надіслати
