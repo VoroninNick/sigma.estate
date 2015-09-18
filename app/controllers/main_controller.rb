@@ -84,6 +84,14 @@ class MainController < ApplicationController
     ContactMailer.call_to_order(user_name, phone_number).deliver
   end
   def book_review_email
+    user_name = params[:username]
+    phone_number = params[:phone]
+    date = params[:date]
+    time_from = params[:time_from]
+    time_to = params[:time_to]
+    message = params[:message]
+
+    ContactMailer.book_review(user_name, phone_number, date, time_from, time_to, message).deliver
   end
 
 

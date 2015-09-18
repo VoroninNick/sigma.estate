@@ -2,7 +2,7 @@
   .modal-header.text-center
     |Огляд квартири
   .modal-body
-    form.se-ajax-popup-form.default-animation-form
+    form.se-ajax-popup-form.default-animation-form action=book_review_path method="POST"
       - if user_signed_in?
         .columns
           .row
@@ -51,6 +51,23 @@
               .input-ico
                 =embedded_svg "ic_access_time_black_24px.svg"
               label Зручний час олгяду
+        .row
+          .columns
+            .small-6.columns
+              select name="time_from"
+                -time_begin = 9
+                -11.times do |i|
+                  option value="#{time_begin + i}:00"
+                    =time_begin + i
+                    |:00
+            .small-6.columns
+              select name="time_to"
+                -time_begin = 9
+                -11.times do |i|
+                  option value="#{time_begin + i}:00"
+                    =time_begin + i
+                    |:00
+            .clearfix
       .clearfix
 
       .columns
@@ -66,6 +83,7 @@
       .columns
         .row
           .columns
-            .button-wrap.material-component.ripple.right.b-turn-off
+            .button-wrap.material-component.ripple.right
+              /.b-turn-off
               button type="submit" Надіслати
       .clearfix
