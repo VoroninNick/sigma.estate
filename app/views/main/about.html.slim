@@ -125,19 +125,27 @@
       .columns
         h3 Наші партнери
     .row
-      .medium-6.columns
-        .se-our-partners-one
-          =image_tag "SE-1-Avalon-Garden.jpg"
-      .medium-6.columns
-        .se-our-partners-one
-          =image_tag "SE-2-Kredobank.jpg"
-      .medium-6.columns
-        .se-our-partners-one
-          =image_tag "SE-3-Forest.jpg"
-      .medium-6.columns
-        .se-our-partners-one
-          =image_tag "SE-4-Knyazha.jpg"
-      .medium-6.columns.end
-        .se-our-partners-one
-          =image_tag "SE-5-Amida.jpg"
+      -if @page.our_partnerses && @page.our_partnerses.any?
+        -@page.our_partnerses.with_public_position.each do |item|
+          .medium-6.columns.text-center class=('end' if item == @page.our_partnerses.with_public_position.last)
+            .se-our-partners-one
+              =image_tag item.image.url(:large)
+              b =item.name
+              p =item.status
+              - if item.url.present?
+                -if item.url =~ /\A#{URI::regexp}\z/
+                  a href="#{item.url}"
+                    .se-our-par-inner
+                      .se-our-par-icon
+                        =embedded_svg 'ic_link_48px.svg'
+                      .se-our-par-title
+                        =item.name
+                -else
+                  a href="//#{item.url}"
+                    .se-our-par-inner
+                      .se-our-par-icon
+                        =embedded_svg 'ic_link_48px.svg'
+                      .se-our-par-title
+                        =item.name
+
 

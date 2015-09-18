@@ -52,7 +52,7 @@ class MainController < ApplicationController
 
 
   def about
-
+    @page = PageAboutCompany.first
   end
   def calculators
 

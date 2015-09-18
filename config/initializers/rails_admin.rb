@@ -16,7 +16,7 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
-  config.included_models = [Banner, ComplexBanner, ApartmentBanner, Contact, SupportEmail]
+  config.included_models = [Banner, ComplexBanner, ApartmentBanner, Contact, SupportEmail, PageAboutCompany, OurPartners]
 
   config.actions do
     dashboard                     # mandatory

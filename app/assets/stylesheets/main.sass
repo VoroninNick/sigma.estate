@@ -1827,6 +1827,49 @@ form
   .se-our-partners-one
     border: 1px solid #ECEFF1
     margin-bottom: $column-gutter
+    position: relative
+    b
+      color: #37474F
+      font:
+        size: rem-calc(18)
+        weight: 500
+      line-height: rem-calc(36)
+    p
+      color: #78909C
+      font:
+        size: rem-calc(14)
+        weight: 300
+        style: italic
+      line-height: rem-calc(14)
+    a
+      display: none
+      background-color: #FB8C00
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      .se-our-par-inner
+        +my_center_align()
+          position: absolute
+        .se-our-par-icon
+          height: 34px
+          svg
+            path
+              fill: #fff
+        .se-our-par-title
+          padding-top: 14px
+          color: #fff
+          white-space: nowrap
+          display: inline-block
+          font:
+            family: 'Roboto', sans-serif
+            size: rem-calc(14)
+            weight: 500
+          line-height: rem-calc(18)
+    &:hover
+      a
+        display: block
 
 
 .sign-in-to-admin
