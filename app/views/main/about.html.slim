@@ -125,7 +125,7 @@
       .columns
         h3 Наші партнери
     .row
-      -if @page.our_partnerses && @page.our_partnerses.any?
+      -if @page && @page.our_partnerses && @page.our_partnerses.any?
         -@page.our_partnerses.with_public_position.each do |item|
           .medium-6.columns.text-center class=('end' if item == @page.our_partnerses.with_public_position.last)
             .se-our-partners-one
