@@ -804,6 +804,7 @@ header
     background-color: rgba(0, 0, 0, .1)
     .h-sf-cities
       position: relative
+      float: left
       strong, a
         color: #fff
         font:
@@ -812,6 +813,7 @@ header
       strong
         line-height: rem-calc(35)
         display: inline-block
+        float: left
       ul
         display: inline-block
         margin-left: 0
@@ -823,6 +825,7 @@ header
         height: 20px
         overflow: hidden
         background-color: #36464E
+        float: left
         li
           padding-left: 10px
           background-color: rgba(0, 0, 0, 0.1)
@@ -831,6 +834,13 @@ header
             color: #FB8B00
         &:hover
           height: auto
+      &:first-child
+        padding-right: 120px
+      &:not(:first-child):not(:first-child)
+        ul
+          //padding-left: 120px
+
+
   .hsf
     float: left
   &.h-filter-complex-page-wrap
