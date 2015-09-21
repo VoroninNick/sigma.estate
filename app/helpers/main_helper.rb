@@ -1,4 +1,7 @@
 module MainHelper
+  def a_available_countries
+    cities = Sigma::Apartment.available_countries
+  end
   def a_available_cities
     cities = Sigma::Apartment.available_cities
   end

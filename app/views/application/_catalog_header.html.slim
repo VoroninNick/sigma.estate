@@ -47,6 +47,14 @@
   .h-sub-filter-list
     .row
       .columns
+        - if a_available_countries.length >1
+        .h-sf-cities
+          strong Країна:
+          ul
+            -a_available_countries.each do |c|
+              li
+                a
+                  =c
         - if a_available_cities.length >1
           .h-sf-cities
             strong Місто:

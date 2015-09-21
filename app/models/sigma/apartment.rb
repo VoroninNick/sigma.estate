@@ -47,7 +47,10 @@ class Sigma::Apartment < ActiveRecord::Base
     Sigma::Apartment.where("id < ?", id).last
   end
 
-
+  def self.available_countries
+    # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
+    Sigma::BuildingComplex.pluck(:country).uniq
+  end
   def self.available_cities
     # BuildingComplex.pluck(:city, :district).uniq.group_by("city")
     Sigma::BuildingComplex.pluck(:city).uniq
