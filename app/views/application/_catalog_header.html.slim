@@ -54,7 +54,7 @@
               -a_available_cities.each do |c|
                 li
                   a href=apartment_catalog_path(filterrific: {with_city: c})
-                    =c.inspect
+                    =c
 
 
         - if a_available_districts.length >1
