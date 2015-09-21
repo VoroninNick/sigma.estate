@@ -1,6 +1,6 @@
 .navigation-wrap
   .nav-logo-wrap.nav-side
-    =link_to apartment_path do
+    =link_to apartment_path, title: "На головну" do
       span Sigma
       span Estate
 
@@ -8,39 +8,39 @@
   .nav-wrap
     nav.nav-catalogs
       li.material-component.ripple.li-apartment class=cp(apartment_path)
-        a href=apartment_path
+        a href=apartment_path title="Квартири"
           =embedded_svg "ic_photo_size_select_small_24px.svg"
           .link-text
             |Квартири
       li.material-component.ripple.disable-link
-        a
+        a title="Будинки"
           =embedded_svg "ic_home_24px.svg"
           .link-text
             |Будинки
       li.material-component.ripple.disable-link
-        a
+        a title="Ком. нерухомість"
           =embedded_svg "ic_location_city_24px.svg"
           .link-text
             |Ком. нерухомість
       li.material-component.ripple.li-complex class=cp(complex_path)
-        a href=complex_path
+        a href=complex_path title="Житлові комплекси"
           =embedded_svg "ic_domain_24px.svg"
           .link-text
             |Житл. Комплекси
       .clearfix
     nav.nav-pages
       li.material-component.ripple class=cp(about_path)
-        = link_to "Про компанію", about_path
+        = link_to "Про компанію", about_path, title: "Про компанію"
       li.material-component.ripple class=cp(calculators_path)
-        = link_to "Калькулятори", calculators_path
+        = link_to "Калькулятори", calculators_path, title: "Калькулятори"
       li.material-component.ripple class=cp(contacts_path)
-        = link_to "Контакти", contacts_path
+        = link_to "Контакти", contacts_path, title: "Контакти"
       .clearfix
     .clearfix
   .nav-popup-action-wrap.nav-side
     nav
       li.se-call-order.notification-wrap
-        a.notification-link href="#"
+        a.notification-link href="#" title="Замовити дзвінок"
           =embedded_svg "ic_phone_24px.svg"
         .notification-container
           .notification-form
@@ -75,7 +75,7 @@
                     .button-wrap.material-component.ripple.right
                       button type="submit" Замовити дзвінок
       li
-        a href=comparison_path
+        a href=comparison_path title="Порівняння"
           =embedded_svg "ic_done_all_24px.svg"
       - if user_signed_in?
         li.notification-wrap
@@ -106,7 +106,7 @@
                       |Вийти
       - else
         li
-          a href="#" data-reveal-id="EnterFormModal"
+          a href="#" data-reveal-id="EnterFormModal" title="Особистий кабінет"
             =embedded_svg "ic_perm_identity_24px.svg"
 
       li.mobile-menu-link

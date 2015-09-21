@@ -42,7 +42,8 @@
             .small-6.columns
               p Здача
             .small-6.columns
-              p =object.building_end_date.strftime("%d.%m.%Y")
+              -if object.building_end_date.present?
+                p =object.building_end_date.strftime("%d.%m.%Y")
           .row
             .small-6.columns
               p Офіційний сайт

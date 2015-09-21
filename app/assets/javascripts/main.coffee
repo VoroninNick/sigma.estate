@@ -320,10 +320,14 @@ $(document).ready ->
       console.log "top value ", $(@).closest('.filter-block').offset().top
 
 # apartment one item
-  $(".apartment-item-page ul.image-carousel").bxSlider()
+  $(".apartment-item-page ul.image-carousel").bxSlider
+    auto: true,
+    pause: 5000
 
 #  apartment main banner
-  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider()
+  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider
+    auto: true,
+    pause: 5000
 
 
   $(".best-apartment ul.ba-carousel").bxSlider()
@@ -332,8 +336,12 @@ $(document).ready ->
   $(".similar-apartments ul.similar-apartments-carousel").bxSlider()
 
 #  complex
-  $(".complex-page-wrap .main-banner-wrap ul").bxSlider()
-  $(".complex-item-page ul.image-carousel").bxSlider()
+  $(".complex-page-wrap .main-banner-wrap ul").bxSlider
+    auto: true,
+    pause: 5000
+  $(".complex-item-page ul.image-carousel").bxSlider
+    auto: true,
+    pause: 5000
   $(".best-complex ul.bc-carousel").bxSlider()
   $(".se-about-page ul.image-carousel").bxSlider()
 
