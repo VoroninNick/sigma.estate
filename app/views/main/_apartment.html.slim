@@ -1,5 +1,5 @@
 .large-4.medium-4.small-6.columns.end
-  .a-one-item.se-box-shadow
+  .a-one-item.se-box-shadow data-item-id=a.id class=('added-to-favorites' if a.id.in? current_user_favorites)
     .columns
       .a-oi-avatar
         =link_to apartment_item_path(a.id) do
@@ -39,10 +39,11 @@
               .a-oi-info-value =a.try(:total_square)
     .clearfix
     ul.a-oi-actions
-      li
+      li.add-to-favorites
         a
-          =embedded_svg "ic_favorite_48px.svg"
-      li.comparison-ico
+          =embedded_svg "ic_favorite_48px.svg", class: "action-icon-add"
+          =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
+      li.comparison-ico.add-to-comparison
         a
           =embedded_svg "ic_done_all_24px.svg"
       li.call-ico

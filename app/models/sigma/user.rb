@@ -16,4 +16,6 @@ class Sigma::User < ActiveRecord::Base
                              hash_secret: '<get_use_rake_secret>'
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ },
                                 size: { in: 0..1.megabytes }
+
+  has_and_belongs_to_many :favorites, class_name: Sigma::Apartment, join_table: :favorites
 end

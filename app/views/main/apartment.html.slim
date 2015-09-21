@@ -21,7 +21,7 @@
           |Кращі квартири
     .row
       ul.ba-carousel
-        - @apartments.in_groups_of(6).each do |apartments|
+        - @apartments.in_groups_of(6, false).each do |apartments|
           li
             - apartments.each do |a|
               =render partial: "main/apartment", locals: {a: a}

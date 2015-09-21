@@ -97,9 +97,32 @@ class MainController < ApplicationController
 
 
   def dev
-    @search = Sunspot.search(Sigma::Apartment) do
-      fulltext params[:search]
+    # @search = Sunspot.search(Sigma::Apartment) do
+    #   fulltext params[:search]
+    # end
+    # @apartments = @search.results
+  end
+
+  def favorites_apartment
+    apartment = Sigma::Apartment.find(params[:id])
+    if current_user
+      if !current_user.favorites.map(&:id).include? apartment.id
+        current_user.favorites << apartment
+      end
     end
-    @apartments = @search.results
+    data = { success: true }
+    status = 200
+    status = 401 if !current_user
+    render json: data, status: status
+  end
+  def remove_apartment_from_favorites
+    apartment = Sigma::Apartment.find(params[:id])
+    current_user.favorites.delete(apartment)
+
+    data = { success: true }
+    status = 200
+    status = 401 if !current_user
+    render json: data, status: status
+
   end
 end

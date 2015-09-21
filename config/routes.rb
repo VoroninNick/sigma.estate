@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   post 'call_to_order' => 'main#call_to_order_email'
   post 'book_review' => 'main#book_review_email'
 
+  post 'add_apartment_to_favorites' => 'main#favorites_apartment'
+  post 'remove_apartment_from_favorites' => 'main#remove_apartment_from_favorites'
+
   # get  'profile/registration' => 'profile#'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

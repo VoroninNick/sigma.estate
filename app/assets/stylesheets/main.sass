@@ -1335,6 +1335,10 @@ form
           top: -1px
           path
             fill: #fff
+          &.action-icon-add
+            display: inline-block
+          &.action-icon-delete
+            display: none
       &.comparison-ico
         svg
           padding: 4px 0
@@ -1348,6 +1352,18 @@ form
       -webkit-transform: translateY(0) /* Для Safari, Chrome, iOS */
       -o-transform: translateY(0) /* Для Opera */
       transform: translateY(0)
+
+  &.added-to-favorites
+    ul.a-oi-actions
+      li
+        a
+          svg
+            &.action-icon-add
+              display: none
+            &.action-icon-delete
+              display: inline-block
+
+
 
 #map_canvas
   height: 300px

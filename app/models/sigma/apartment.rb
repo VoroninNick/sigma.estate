@@ -28,6 +28,10 @@ class Sigma::Apartment < ActiveRecord::Base
   belongs_to :building_complex, class_name: "BuildingComplex"
   belongs_to :apartment_house, class_name: "Sigma::ApartmentHouse"
 
+  has_and_belongs_to_many :users, class_name: Sigma::User, join_table: :favorites
+
+
+
   #has_one :building_complex, through: :apartment_house
 
   accepts_nested_attributes_for :technical_settings

@@ -3,7 +3,7 @@
     h1 test
 .row
   .columns
-    = form_tag dev_path, :method => :get do
+    /= form_tag dev_path, :method => :get do
       p
         = text_field_tag :search, params[:search]
         = submit_tag "Search", :name => nil
@@ -12,12 +12,12 @@
 
 .row
   .column
-    = @search.inspect
-    - @search.each_hit_with_result do |hit, post|
-      .result
-        h6 =hit
-        h1 =post.building_complex.name
-        p = truncate_html(post.main_description_html, :length => 100)
+    /= @search.inspect
+    /- @search.each_hit_with_result do |hit, post|
+    /  .result
+    /    h6 =hit
+    /    h1 =post.building_complex.name
+    /    p = truncate_html(post.main_description_html, :length => 100)
         /h2 = post.name
         /h6 = hit.apartments.first.inspect
         /p = truncate_html(post.main_description_html, :length => 100)
@@ -27,5 +27,11 @@
       =s.name
 .row
   .columns
-    = paginate(@search.hits)
+    /= paginate(@search.hits)
+
+
+.row
+  .columns
+    - apartment = Sigma::Apartment.first
+    =apartment.inspect
 

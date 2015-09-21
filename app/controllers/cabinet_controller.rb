@@ -6,7 +6,7 @@ class CabinetController < ApplicationController
   end
 
   def selected_realty
-
+    @apartments = current_user.favorites
   end
   def calculators
 

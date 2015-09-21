@@ -309,7 +309,7 @@
               |Схожі квартири
         .row
           ul.similar-apartments-carousel
-            - @similar.in_groups_of(3).each do |similar|
+            - @similar.in_groups_of(3, false).each do |similar|
               li
                 - similar.each do |a|
                   =render partial: "main/similar", locals: {a: a}

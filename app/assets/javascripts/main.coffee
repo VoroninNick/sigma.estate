@@ -55,6 +55,51 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+#
+  $(document).on 'click', '.a-oi-actions li', (event)->
+    event.preventDefault()
+
+    $this = $(@)
+    $item = $(@).closest('.a-one-item')
+    item_id = $item.attr 'data-item-id'
+
+    if $(@).hasClass('add-to-favorites')
+      if $item.hasClass('added-to-favorites')
+        postData = {id: item_id}
+        formURL = '/remove_apartment_from_favorites'
+        form = this
+
+        $.ajax
+          url: formURL
+          dataType: 'html'
+          type: "POST"
+          data: postData
+          beforeSend: ->
+            console.log('перед додаванням')
+          success: ->
+            $item.removeClass('added-to-favorites')
+          complete: ->
+      else
+
+        postData = {id: item_id}
+        formURL = '/add_apartment_to_favorites'
+        form = this
+
+        $.ajax
+          url: formURL
+          dataType: 'html'
+          type: "POST"
+          data: postData
+          beforeSend: ->
+            console.log('перед додаванням')
+          success: ->
+            $item.addClass('added-to-favorites')
+          complete: ->
+#        alert 'favorites: '+item_id
+
+    if $(@).hasClass('add-to-comparison')
+      alert 'comparison'
+
   #callback handler for form submit
   $('form.se-ajax-popup-form').submit (e) ->
     $this = $(@)

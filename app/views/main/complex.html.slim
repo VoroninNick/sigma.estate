@@ -39,10 +39,9 @@
           |Кращі житлові комплекси
     .row
       ul.bc-carousel
-        - @building_complex.in_groups_of(10).each do |apartments|
+        - @building_complex.in_groups_of(10, false).each do |apartments|
           li
             - apartments.each do |complex|
-              - if complex
-                =render partial: "main/complex",  locals: {object: complex}
+              =render partial: "main/complex",  locals: {object: complex}
 
   =render partial: "partials/forms/feedback_form"

@@ -1,0 +1,12 @@
+.best-apartment
+  .row
+    .columns
+      h3.a-title
+        =embedded_svg "ic_photo_size_select_small_24px.svg"
+        |Квартири
+  .row
+    ul.ba-carousel
+      - current_user.favorites.in_groups_of(6, false).each do |apartments|
+        li
+          - apartments.each do |a|
+            =render partial: "main/apartment", locals: {a: a}
