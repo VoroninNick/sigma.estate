@@ -105,18 +105,12 @@
       .columns
         h3 Наша команда
     .row.text-center
-      .medium-4.columns
-        =image_tag "Team 2.jpg"
-        b Роман Процак
-        p Засновник
-      .medium-4.columns
-        =image_tag "Team 1.jpg"
-        b Олег Подолян
-        p Виконавчий директор
-      .medium-4.columns
-        =image_tag "Team 3.jpg"
-        b Наталія Палько
-        p Керівник департаменту регіональної співпраці
+      -if @page && @page.our_teams && @page.our_teams.any?
+        -@page.our_teams.with_public_position.each do |item|
+          .medium-4.columns class=('end' if item == @page.our_teams.with_public_position.last)
+            =image_tag item.image.url(:large)
+            b =item.name
+            p =item.status
 
 
 .row.se-about-page-one-block.se-box-shadow.se-our-partners
