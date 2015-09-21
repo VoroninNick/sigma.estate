@@ -105,8 +105,9 @@
                           =embedded_svg "ic_file_download_black_24px.svg"
                           |Принт-версія квартири
                           span
+                            |&nbsp;
                             =number_to_human_size(@apartment.pdf_file.first.data_file_size)
-                            |1,23 MB (.pdf)
+                            |&nbsp;(.pdf)
                   -else
                     a
                       .a-oi-print-version-icon
