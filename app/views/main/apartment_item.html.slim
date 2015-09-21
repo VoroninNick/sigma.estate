@@ -96,8 +96,8 @@
                       .a-oi-info-value =@apartment.try(:total_square)
               .medium-3.columns
                 .a-oi-print-version
-                  -if @apartment.pdf_file.exists?
-                    a href=@apartment.pdf_file.url()
+                  -if @apartment.pdf_file.any?
+                    a href=@apartment.pdf_file.first.url()
                       .a-oi-print-version-icon
                         =embedded_svg "ic_local_printshop_black_24px.svg"
                       .a-oi-print-version-title
