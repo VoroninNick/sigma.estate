@@ -138,6 +138,10 @@
             svg
               width: 100%
               height: 100%
+              &.action-icon-add
+                display: inline-block
+              &.action-icon-delete
+                display: none
             &:hover
               path
                 fill: #FB8B00
@@ -150,6 +154,13 @@
               background-color: #fff
               a
                 color: #36464E
+          &.added-to-favorites
+            a
+              svg
+                &.action-icon-add
+                  display: none
+                &.action-icon-delete
+                  display: inline-block
 
     .apartment-item-body
       padding-top: 20px

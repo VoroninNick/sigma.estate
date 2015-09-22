@@ -55,8 +55,9 @@ $.fn.observeMouseOut = (options)->
       $containers.trigger('mouseUpOut')
 
 $(document).ready ->
+
 #
-  $(document).on 'click', '.a-oi-actions li', (event)->
+  $(document).on 'click', '.a-oi-actions li, .apartment-item-head-title-actions .aiht-action', (event)->
     event.preventDefault()
 
     $this = $(@)
@@ -64,6 +65,10 @@ $(document).ready ->
     item_id = $item.attr 'data-item-id'
 
     if $(@).hasClass('add-to-favorites')
+      if $this.hasClass('aiht-action')
+        $item = $this.closest('.apartment-item-head-title-actions')
+        item_id = $item.attr 'data-item-id'
+
       if $item.hasClass('added-to-favorites')
         postData = {id: item_id}
         formURL = '/remove_apartment_from_favorites'
@@ -79,8 +84,8 @@ $(document).ready ->
           success: ->
             $item.removeClass('added-to-favorites')
           complete: ->
-      else
 
+      else
         postData = {id: item_id}
         formURL = '/add_apartment_to_favorites'
         form = this
@@ -95,7 +100,7 @@ $(document).ready ->
           success: ->
             $item.addClass('added-to-favorites')
           complete: ->
-#        alert 'favorites: '+item_id
+
 
     if $(@).hasClass('add-to-comparison')
       alert 'comparison'
