@@ -7,6 +7,7 @@ class MainController < ApplicationController
   end
 
   def apartment
+
     add_breadcrumb "Apartment", apartment_path
     @banner = Banner.first
     @apartments = Sigma::Apartment.limit(18)
@@ -62,7 +63,12 @@ class MainController < ApplicationController
   end
 
   def comparison
+    @apartments_cook = cookies[:apartments] || ""
 
+    apartment_ids = @apartments_cook.split(",").map(&:to_i)
+    if apartment_ids.any?
+      @apartments = Sigma::Apartment.find(*apartment_ids)
+    end
   end
 
   def cabinet
@@ -125,4 +131,20 @@ class MainController < ApplicationController
     render json: data, status: status
 
   end
+
+  def add_apartment_to_comparison
+    @apartments = cookies[:apartments]
+    if @apartments.blank?
+      @apartments = cookies[:apartments] = params[:id]
+    else
+      cookies[:apartments] = { :value => @apartments + ',' + params[:id], :expires => 2.days.from_now, :lang => 'en-US'}
+    end
+
+    # @apartments = cookies[:apartments] || ""
+    # apartment_ids = @apartments.split(",")
+    # apartment_ids << params[:id]
+    # cookies[:apartments] = apartment_ids.join(",")
+
+  end
+
 end

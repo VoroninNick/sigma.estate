@@ -106,7 +106,22 @@ $(document).ready ->
 
 
     if $(@).hasClass('add-to-comparison')
-      alert 'comparison'
+      postData = {id: item_id}
+      formURL = '/add_apartment_to_comparison'
+      form = this
+
+      $.ajax
+        url: formURL
+        dataType: 'html'
+        type: "POST"
+        data: postData
+        beforeSend: ->
+#          console.log('перед додаванням')
+          alert 'before writing to cookies'
+        success: ->
+          alert 'writed to cookies'
+#          $item.addClass('added-to-favorites')
+        complete: ->
 
   #callback handler for form submit
   $('form.se-ajax-popup-form').submit (e) ->
