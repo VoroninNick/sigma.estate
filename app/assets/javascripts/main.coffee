@@ -83,6 +83,9 @@ $(document).ready ->
             console.log('перед додаванням')
           success: ->
             $item.removeClass('added-to-favorites')
+            if $this.closest('.best-apartment').hasClass('is-cabinet-list')
+              is_cabinet_list = $this.closest('.best-apartment')
+              $this.closest('.a-one-item').parent().remove()
           complete: ->
 
       else
