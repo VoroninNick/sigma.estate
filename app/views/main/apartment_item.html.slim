@@ -55,12 +55,13 @@
                   = @apartment.building_complex.name
                   |»
               .medium-5.columns
-                .apartment-item-head-title-actions  data-item-id=@apartment.id class=('added-to-favorites' if @apartment.id.in? current_user_favorites)
+                .apartment-item-head-title-actions.se-action-handler-wrap  data-item-id=@apartment.id class="#{'added-to-favorites' if @apartment.id.in? current_user_favorites} #{'added-to-comparison' if @apartment.id.in? current_user_comparison}"
                   .se-link-button.material-component.ripple.se-box-shadow
                     a  href="#" data-apartment-id=@apartment.id  data-reveal-id="book-review-modal" Замовити огляд
-                  a.aiht-action
-                    = embedded_svg "ic_done_all_24px.svg"
-                  a.aiht-action.add-to-favorites
+                  a.aiht-action.se-action-handler.comparison-ico.add-to-comparison
+                    =embedded_svg "ic_done_all_24px.svg", class: "action-icon-add"
+                    =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
+                  a.aiht-action.se-action-handler.favorites-ico.add-to-favorites
                     =embedded_svg "ic_favorite_48px.svg", class: "action-icon-add"
                     =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
 

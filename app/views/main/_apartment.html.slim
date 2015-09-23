@@ -1,5 +1,5 @@
 .large-4.medium-4.small-6.columns.end
-  .a-one-item.se-box-shadow data-item-id=a.id class=('added-to-favorites' if a.id.in? current_user_favorites)
+  .a-one-item.se-action-handler-wrap.se-box-shadow data-item-id=a.id class="#{'added-to-favorites' if a.id.in? current_user_favorites} #{'added-to-comparison' if a.id.in? current_user_comparison}"
     .columns
       .a-oi-avatar
         =link_to apartment_item_path(a.id) do
@@ -39,13 +39,14 @@
               .a-oi-info-value =a.try(:total_square)
     .clearfix
     ul.a-oi-actions
-      li.add-to-favorites
+      li.se-action-handler.favorites-ico.add-to-favorites
         a
           =embedded_svg "ic_favorite_48px.svg", class: "action-icon-add"
           =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
-      li.comparison-ico.add-to-comparison
+      li.se-action-handler.comparison-ico.add-to-comparison
         a
-          =embedded_svg "ic_done_all_24px.svg"
+          =embedded_svg "ic_done_all_24px.svg", class: "action-icon-add"
+          =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
       li.call-ico
         a href="#" data-apartment-id=a.id data-reveal-id="book-review-modal"
           =embedded_svg "ic_phone_24px.svg"

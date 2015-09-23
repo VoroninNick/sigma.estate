@@ -155,12 +155,22 @@
               a
                 color: #36464E
           &.added-to-favorites
-            a
-              svg
-                &.action-icon-add
-                  display: none
-                &.action-icon-delete
-                  display: inline-block
+            .aiht-action
+              &.favorites-ico
+                svg
+                  &.action-icon-add
+                    display: none
+                  &.action-icon-delete
+                    display: inline-block
+          &.added-to-comparison
+            .aiht-action
+              &.comparison-ico
+                svg
+                  &.action-icon-add
+                    display: none
+                  &.action-icon-delete
+                    display: inline-block
+
 
     .apartment-item-body
       padding-top: 20px
@@ -388,4 +398,28 @@
             display: inline-block
           &.action-icon-delete
             display: none
+      &.add-to-comparison
+        svg
+          &.action-icon-add
+            display: inline-block
+          &.action-icon-delete
+            display: none
+  &.added-to-favorites
+    .apartment-item-head-title-actions
+      .aiht-action
+        &.favorites-ico
+          svg
+            &.action-icon-add
+              display: none
+            &.action-icon-delete
+              display: inline-block
 
+  &.added-to-comparison
+    .apartment-item-head-title-actions
+      .aiht-action
+        &.comparison-ico
+          svg
+            &.action-icon-add
+              display: none
+            &.action-icon-delete
+              display: inline-block

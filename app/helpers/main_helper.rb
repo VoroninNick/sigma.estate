@@ -11,4 +11,5 @@ module MainHelper
   def current_user_favorites
     @_current_user_favorites = current_user.try{|u| u.favorites.pluck(:id) } || []
   end
+
 end

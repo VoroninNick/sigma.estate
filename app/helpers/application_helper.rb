@@ -99,4 +99,24 @@ module ApplicationHelper
     end
   end
 
+  def apartment_cook
+    apartments_cook = cookies[:apartments] || ""
+  end
+  def apartment_list_id
+    apartment_ids = apartment_cook.split(",").map(&:to_i)
+  end
+  def apartments_from_comparison
+    if apartment_list_id.any?
+      @apartments_comparison = Sigma::Apartment.find(*apartment_list_id) || []
+      @apartments_comparison = [@apartments_comparison] if @apartments_comparison && !@apartments_comparison.respond_to?(:any?)
+    else
+      @apartments_comparison = []
+    end
+
+    @apartments_comparison
+  end
+  def current_user_comparison
+    # @_current_user_comparison = apartments_from_comparison.try{|x| next x.map(&:id) if x.respond_to?(:map); x.id } || []
+    apartment_list_id
+  end
 end

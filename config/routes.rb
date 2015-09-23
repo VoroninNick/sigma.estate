@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   post 'remove_apartment_from_favorites' => 'main#remove_apartment_from_favorites'
 
   post 'add_apartment_to_comparison' => 'main#add_apartment_to_comparison'
+  get 'get_length_items_from_comparison' => 'main#get_length_items_from_comparison'
+  post 'remove_apartment_from_comparison' => 'main#remove_apartment_from_comparison'
 
   # get  'profile/registration' => 'profile#'
   # Example of regular route:

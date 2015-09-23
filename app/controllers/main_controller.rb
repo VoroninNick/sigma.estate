@@ -63,12 +63,6 @@ class MainController < ApplicationController
   end
 
   def comparison
-    @apartments_cook = cookies[:apartments] || ""
-
-    apartment_ids = @apartments_cook.split(",").map(&:to_i)
-    if apartment_ids.any?
-      @apartments = Sigma::Apartment.find(*apartment_ids)
-    end
   end
 
   def cabinet
@@ -144,7 +138,24 @@ class MainController < ApplicationController
     # apartment_ids = @apartments.split(",")
     # apartment_ids << params[:id]
     # cookies[:apartments] = apartment_ids.join(",")
-
   end
 
+  def get_length_items_from_comparison
+    @apartments_cook = cookies[:apartments] || ""
+
+    apartment_ids = @apartments_cook.split(",").map(&:to_i)
+    if apartment_ids.any?
+      @apartments = Sigma::Apartment.find(*apartment_ids)
+    end
+    render :json => apartment_ids.length
+  end
+  def remove_apartment_from_comparison
+    apartments_cook = cookies[:apartments] || ""
+    apartment_ids = apartments_cook.split(",").map(&:to_i)
+
+    apartment_id = params[:id].to_i
+
+    apartment_ids.delete(apartment_id)
+    cookies[:apartments] = { :value => apartment_ids.map(&:inspect).join(', '), :expires => 2.days.from_now, :lang => 'en-US'}
+  end
 end

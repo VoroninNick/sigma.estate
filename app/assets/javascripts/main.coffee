@@ -57,11 +57,11 @@ $.fn.observeMouseOut = (options)->
 $(document).ready ->
 
 #
-  $(document).on 'click', '.a-oi-actions li, .apartment-item-head-title-actions .aiht-action', (event)->
+  $(document).on 'click', '.se-action-handler, .apartment-item-head-title-actions .aiht-action', (event)->
     event.preventDefault()
 
     $this = $(@)
-    $item = $(@).closest('.a-one-item')
+    $item = $(@).closest('.se-action-handler-wrap')
     item_id = $item.attr 'data-item-id'
 
     if $(@).hasClass('add-to-favorites')
@@ -87,7 +87,6 @@ $(document).ready ->
               is_cabinet_list = $this.closest('.best-apartment')
               $this.closest('.a-one-item').parent().remove()
           complete: ->
-
       else
         postData = {id: item_id}
         formURL = '/add_apartment_to_favorites'
@@ -106,22 +105,51 @@ $(document).ready ->
 
 
     if $(@).hasClass('add-to-comparison')
-      postData = {id: item_id}
-      formURL = '/add_apartment_to_comparison'
-      form = this
+      if $item.hasClass('added-to-comparison')
+#        alert 'has'
+        postData = {id: item_id}
+        formURL = '/remove_apartment_from_comparison'
+        form = this
 
-      $.ajax
-        url: formURL
-        dataType: 'html'
-        type: "POST"
-        data: postData
-        beforeSend: ->
-#          console.log('перед додаванням')
-          alert 'before writing to cookies'
-        success: ->
-          alert 'writed to cookies'
-#          $item.addClass('added-to-favorites')
-        complete: ->
+        $.ajax
+          url: formURL
+          dataType: 'html'
+          type: "POST"
+          data: postData
+          beforeSend: ->
+#            alert 'before remove'
+          success: ->
+#            alert 'success'
+            $item.removeClass('added-to-comparison')
+#            if $this.closest('.best-apartment').hasClass('is-cabinet-list')
+#              is_cabinet_list = $this.closest('.best-apartment')
+#              $this.closest('.a-one-item').parent().remove()
+          complete: ->
+      else
+        $.ajax
+          type: 'GET'
+          url: '/get_length_items_from_comparison'
+          dataType: 'json'
+          success: (data) ->
+            if data < 3
+              postData = {id: item_id}
+              formURL = '/add_apartment_to_comparison'
+              form = this
+
+              $.ajax
+                url: formURL
+                dataType: 'html'
+                type: "POST"
+                data: postData
+                beforeSend: ->
+        #          console.log('перед додаванням')
+        #          alert 'before writing to cookies'
+                success: ->
+        #          alert 'writed to cookies'
+                  $item.addClass('added-to-comparison')
+                complete: ->
+            else
+              alert 'sorry'
 
   #callback handler for form submit
   $('form.se-ajax-popup-form').submit (e) ->

@@ -1356,12 +1356,25 @@ form
   &.added-to-favorites
     ul.a-oi-actions
       li
-        a
-          svg
-            &.action-icon-add
-              display: none
-            &.action-icon-delete
-              display: inline-block
+        &.favorites-ico
+          a
+            svg
+              &.action-icon-add
+                display: none
+              &.action-icon-delete
+                display: inline-block
+
+  &.added-to-comparison
+    ul.a-oi-actions
+      li
+        &.comparison-ico
+          a
+            svg
+              padding: 8px 0px
+              &.action-icon-add
+                display: none
+              &.action-icon-delete
+                display: inline-block
 
 
 
