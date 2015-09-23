@@ -57,7 +57,7 @@ $.fn.observeMouseOut = (options)->
 $(document).ready ->
 
 #
-  $(document).on 'click', '.se-action-handler, .apartment-item-head-title-actions .aiht-action', (event)->
+  $(document).on 'click', '.se-action-handler', (event)->
     event.preventDefault()
 
     $this = $(@)
@@ -65,9 +65,9 @@ $(document).ready ->
     item_id = $item.attr 'data-item-id'
 
     if $(@).hasClass('add-to-favorites')
-      if $this.hasClass('aiht-action')
-        $item = $this.closest('.apartment-item-head-title-actions')
-        item_id = $item.attr 'data-item-id'
+#      if $this.hasClass('aiht-action')
+#        $item = $this.closest('.apartment-item-head-title-actions')
+#        item_id = $item.attr 'data-item-id'
 
       if $item.hasClass('added-to-favorites')
         postData = {id: item_id}
@@ -121,9 +121,8 @@ $(document).ready ->
           success: ->
 #            alert 'success'
             $item.removeClass('added-to-comparison')
-#            if $this.closest('.best-apartment').hasClass('is-cabinet-list')
-#              is_cabinet_list = $this.closest('.best-apartment')
-#              $this.closest('.a-one-item').parent().remove()
+            if $item.hasClass('comparison-one-item')
+              $this.closest('.comparison-one-item').parent().remove()
           complete: ->
       else
         $.ajax
