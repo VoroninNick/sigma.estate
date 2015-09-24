@@ -3,43 +3,96 @@
     h1 test
 .row
   .columns
-    /= form_tag dev_path, :method => :get do
+    = form_tag dev_path, :method => :get do
       p
         = text_field_tag :search, params[:search]
         = submit_tag "Search", :name => nil
 
 
-
-.row
+/.row
   .column
-    /= @search.inspect
-    /- @search.each_hit_with_result do |hit, post|
-    /  .result
-    /    h6 =hit
-    /    h1 =post.building_complex.name
-    /    p = truncate_html(post.main_description_html, :length => 100)
-        /h2 = post.name
-        /h6 = hit.apartments.first.inspect
-        /p = truncate_html(post.main_description_html, :length => 100)
+    = @search.inspect
+    - @search.each_hit_with_result do |hit, post|
+      .result
+        h6 =hit
+        h1 =post.building_complex.name
+        p = truncate_html(post.main_description_html, :length => 100)
+        h2 = post.name
+        h6 = hit.apartments.first.inspect
+        p = truncate_html(post.main_description_html, :length => 100)
 /.row
   .columns
-    -@search.results.each do |s|
-      =s.name
+    ul
+      -@search.results.each do |s|
+        li
+          =s.id
 .row
   .columns
-    /= paginate(@search.hits)
-
-
+    =@search.results.length
 .row
+  .columns
+    #apartment_list
+      - @search.results.each do |a|
+        .small-6.large-4.columns.end
+          .a-one-item.se-action-handler-wrap.se-box-shadow data-item-id=a.id class="#{'added-to-favorites' if a.id.in? current_user_favorites} #{'added-to-comparison' if a.id.in? current_user_comparison}"
+            .columns
+              .a-oi-avatar
+                = link_to apartment_item_path(a.id) do
+                  -if asset = a.banner_images.first
+                    .image style="background: url('#{asset.url(:thumbnail)}')no-repeat center center;"
+                  -else
+                    .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+              .a-oi-information-wrap
+                .a-oi-information
+                  b = a.apartment_house.try(:street)
+                  p
+                    |ЖК «
+                    = a.building_complex.name
+                    |»
+                  hr
+                  .row.collapse
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_view_quilt_24px.svg"
+                      .a-oi-info-value =a.try(:rooms_count)
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_account_balance_wallet_24px.svg"
+                      .a-oi-info-value =a.try(:price)
+                    .large-4.medium-4.small-4.columns
+                      .a-oi-info-ico
+                        =embedded_svg "ic_select_all_24px.svg"
+                      .a-oi-info-value =a.try(:total_square)
+            .clearfix
+            ul.a-oi-actions
+              li.se-action-handler.favorites-ico.add-to-favorites
+                a
+                  =embedded_svg "ic_favorite_48px.svg", class: "action-icon-add"
+                  =embedded_svg "Icon-heart-minus.svg", class: "action-icon-delete"
+              li.se-action-handler.comparison-ico.add-to-comparison
+                a
+                  =embedded_svg "ic_done_all_24px.svg", class: "action-icon-add"
+                  =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
+              li.call-ico
+                a href="#" data-apartment-id=a.id data-reveal-id="book-review-modal"
+                  =embedded_svg "ic_phone_24px.svg"
+
+              .clearfix
+    .row.se-pagination
+      .columns
+        = paginate @apartments
+
+
+/.row
   .columns
     - apartment = Sigma::Apartment.first
     =apartment.inspect
-.row
+/.row
   .small-4.columns
     h4 Cookies
   .small-8.columns
     =
-.row
+/.row
   /-my_filter
   .columns
     /= form_for_filterrific(@filterrific, url: complex_catalog_path, html: { id: :manual_filterrific_form })

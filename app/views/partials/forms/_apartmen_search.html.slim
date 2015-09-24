@@ -4,10 +4,10 @@
       .columns
         .columns
           .af-search-input
-            form
+            form action=apartment_catalog_path accept-charset="UTF-8" method="get"
               label
                 |Знайти квартиру
-                input type="text" placeholder="Пошук квартир..."
+                input type="text" name="search" placeholder="Пошук квартир..."
               button type="submit"
     .row
       .columns

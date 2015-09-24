@@ -77,12 +77,10 @@ class Sigma::Apartment < ActiveRecord::Base
 
 
 #   sunspot
-#   searchable do
-#     text        :html_description
-#     text        :infrastructure_description_html
-#     text        :main_description_html
-#     integer     :building_complex_id, :references => Sigma::BuildingComplex
-#   end
+  searchable do
+    text        :html_description, :infrastructure_description_html, :main_description_html
+    integer     :building_complex_id, :references => Sigma::BuildingComplex
+  end
 
 #   for filtering
   filterrific(

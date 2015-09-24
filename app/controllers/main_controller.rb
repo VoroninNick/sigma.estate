@@ -4,6 +4,16 @@ class MainController < ApplicationController
   add_breadcrumb "Sigma Estate", :root_path
 
   def index
+    @search = Sunspot.search [Sigma::Apartment, Sigma::BuildingComplex] do
+      fulltext params[:search]
+    end
+
+    if @search.results.any?
+      @apartments = @search.results
+    else
+      return redirect_to request_path
+    end
+
   end
 
   def apartment
@@ -97,10 +107,10 @@ class MainController < ApplicationController
 
 
   def dev
-    # @search = Sunspot.search(Sigma::Apartment) do
-    #   fulltext params[:search]
-    # end
-    # @apartments = @search.results
+    @search = Sunspot.search(Sigma::Apartment) do
+      fulltext params[:search]
+    end
+    @apartments = @search.results
   end
 
   def favorites_apartment
