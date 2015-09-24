@@ -86,7 +86,7 @@ class Sigma::Apartment < ActiveRecord::Base
 
 #   for filtering
   filterrific(
-      # default_filter_params: { sorted_by: 'created_at_desc' },
+      default_filter_params: { sorted_by: 'created_at_desc' },
       available_filters: [
           :sorted_by,
           :with_building_complex_name,

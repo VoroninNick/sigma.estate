@@ -14,7 +14,7 @@
           /  a href="#" Gene Splicing
           /li.current
           /  a href="#" Cloning
-  = form_for_filterrific @filterrific do |f|
+  = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
     .row
       .medium-6.columns
         /p За запитом «квартира у Львові» знайдено 9 квартир
@@ -34,18 +34,69 @@
           .columns
             h5 Вибрані фільтри
           .columns
-            .row.one-sel-filter
+
+            .row.one-sel-filter.osf-price data-filter-anchor="filter-anchor-price"
+              .small-9.columns
+                p Ціна
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-live-square data-filter-anchor="filter-anchor-live-square"
+              .small-9.columns
+                p Житлова площа
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-count-rooms data-filter-anchor="filter-anchor-count-rooms"
               .small-9.columns
                 p Кількість кімнат
               .small-3.columns
                 a
                   =embedded_svg "ic_clear_black_24px.svg"
-            .row.one-sel-filter
+            .row.one-sel-filter.osf-level data-filter-anchor="filter-anchor-level"
               .small-9.columns
                 p Поверх
               .small-3.columns
                 a
                   =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-region
+              .small-9.columns
+                p Область
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-city
+              .small-9.columns
+                p Місто
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-district
+              .small-9.columns
+                p Район
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-street
+              .small-9.columns
+                p Вулиця
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter
+              .small-9.columns
+                p Житловий комплекс
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
             .row.clear-filters
               .small-3.columns
                 =embedded_svg "ic_cached_black_24px.svg"
@@ -55,7 +106,7 @@
 
         .filters-wrap.se-box-shadow
           = form_for_filterrific @filterrific do |f|
-            .se-range-input.price-range-slider.filter-block
+            .se-range-input.price-range-slider.filter-block.filter-anchor-price data-filter-class="osf-price"
               .columns
                 - min = 7600
                 - max = 25000
@@ -74,14 +125,14 @@
                 .row
                   .medium-5.columns
                     .rs-input
-                      input.rs-min name="filterrific[with_price_from]" type="text" placeholder=min val="8000"
+                      input.rs-min name="filterrific[with_price_from]" type="text" placeholder=min val=min
                   .medium-5.columns.right
                     .rs-input
-                      input.rs-max name="filterrific[with_price_to]" type="text" placeholder=max val="9000"
+                      input.rs-max name="filterrific[with_price_to]" type="text" placeholder=max val=max
               .clearfix
 
 
-            .se-range-input.square-range-slider.filter-block
+            .se-range-input.square-range-slider.filter-block.filter-anchor-live-square data-filter-class="osf-live-square"
               .columns
                 - min = 32
                 - max =160
@@ -106,8 +157,9 @@
                       input.rs-max name="filterrific[with_total_square_to]" type="text" placeholder=max
               .clearfix
 
-            .filter-block.notification-wrap
-              .notification-container
+            .filter-block.notification-wrap.filter-anchor-count-rooms  data-filter-class="osf-count-rooms"
+              /закоментовано щоб доробити на майбутнє!
+              /.notification-container
                 .notification-form
                   - count = 123
                   .nf-body
@@ -153,7 +205,7 @@
               .clearfix
 
 
-            .filter-block.filter-block-expand
+            .filter-block.filter-block-expand.filter-anchor-level  data-filter-class="osf-level"
               .columns
                 h5
                   |Поверх
@@ -188,7 +240,7 @@
                   /      label for="floor_20"
                   /    label for="floor_20" 20+
 
-            .filter-block.filter-block-expand
+            .filter-block.filter-block-expand data-filter-class="osf-region"
               .columns
                 h5
                   |Адреса

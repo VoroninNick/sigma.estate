@@ -38,5 +38,17 @@
   .small-4.columns
     h4 Cookies
   .small-8.columns
-    =cookies[:apartments]
+    =
+.row
+  /-my_filter
+  .columns
+    /= form_for_filterrific(@filterrific, url: complex_catalog_path, html: { id: :manual_filterrific_form })
+    /  h1 test
+    /  /[form inputs go here ...]
+    /  = f.submit "Show students"
+    form action=apartment_catalog_path
+      /= hidden_field_tag :authenticity_token, form_authenticity_token
+      input type="text" name="filterrific[with_count_rooms]"
+      input type="submit" test
+
 

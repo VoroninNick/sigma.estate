@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'apartment/catalog/:id' => 'main#apartment_item', as: :apartment_item
 
   get 'complex' => 'main#complex'
-  get 'complex/catalog' => 'main#complex_catalog'
+  match 'complex/catalog' => 'main#complex_catalog', via: [:post, :get]
   get 'complex/catalog/:id' => 'main#complex_catalog_item', as: :one_complex
   # get 'complex/catalog/item' => 'main#complex_catalog_item'
 

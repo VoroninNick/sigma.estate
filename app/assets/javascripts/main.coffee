@@ -54,7 +54,73 @@ $.fn.observeMouseOut = (options)->
     if out_of_container
       $containers.trigger('mouseUpOut')
 
+validate_filters = ->
+#  $('.one-sel-filter').hide()
+  success = true
+#  $('.filters-wrap input').each ->
+#    if $(@).val() == ''
+#      filter_block = $(@).closest('.filter-block')
+#      filter_class = filter_block.attr ' data-filter-class'
+#      $("'."+filter_class+"'").show()
+#      jQuery(this).next().show()
+#      success = false
+#  success
 $(document).ready ->
+  $(document).on 'click', '.one-sel-filter a', (event)->
+#    console.log('close')
+#    i = 0
+    filter_link = $(@).closest('.one-sel-filter')
+    filter_anchor = filter_link.attr 'data-filter-anchor'
+    current_selector = $("."+filter_anchor)
+#    console.log('current selector -', current_selector)
+    filter_inputs = current_selector.find('input')
+#    console.log('before each',filter_inputs)
+    filter_inputs.each ->
+      this_input = $(@)
+      if $(@).is(":checked")
+        this_input.trigger('click')
+#        console.log('click '+(i++))
+        filter_link.hide()
+
+
+#  $(document).on 'change', '.filter-block-auto-update input#turn-notification', (event)->
+#    wrap = $(@).closest('.catalog-filters-form')
+#    if $(@).is(':checked')
+#      wrap.attr('id', 'filterrific_filter')
+#      $(document).trigger('ready')
+#    else
+#      wrap.attr('id', 'filterrific-no-ajax-auto-submit')
+#      $(document).trigger('ready')
+#
+  $('.filters-wrap').on 'change', '.filter-block input', (event)->
+    filter_block = $(@).closest('.filter-block')
+    filter_class = filter_block.attr 'data-filter-class'
+#    console.log('selector',$("."+filter_class))
+    $("."+filter_class).show()
+
+#
+  if(window.location.href.indexOf("apartment/catalog") > -1)
+    console.log('apartment/catalog')
+    validate_filters()
+
+    selected_filters = $('.selected-filters-wrap')
+    selected_filter = $('.one-sel-filter')
+
+    filters_wrap = $('.filters-wrap')
+    filter_block = $('.filter-block')
+#    if (window.location.href.indexOf("with_count_rooms") > -1)
+#      console.log("with_count_rooms")
+#    if (window.location.href.indexOf("with_city") > -1)
+#      console.log("with_city")
+#    if (window.location.href.indexOf("with_district") > -1)
+#      console.log("with_district")
+#    if (window.location.href.indexOf("with_price_from") > -1)
+#      console.log("with_price_from")
+#    if (window.location.href.indexOf("with_total_square_from") > -1)
+#      console.log("with_total_square_from")
+#    if (window.location.href.indexOf("with_level") > -1)
+#      console.log("with_level")
+
 
 #
   $(document).on 'click', '.se-action-handler', (event)->
@@ -348,9 +414,16 @@ $(document).ready ->
       $this = $(@)
       $this_min = $this.find('.rs-min')
       $this_max = $this.find('.rs-max')
+
+      console.log('min val',$this_min.attr 'val')
+      console.log('max val',$this_max)
+
       range_price = $this.find(".range-slide")
       min_val = +range_price.attr('data-min-val')
       max_val = +range_price.attr('data-max-val')
+
+      console.log('min 2 val',min_val)
+      console.log('max 2 val',max_val)
 
       range_price.slider
 
@@ -361,6 +434,16 @@ $(document).ready ->
           min_val
           max_val
         ]
+#        change for filter catalog page
+        change: ->
+          if $(@).closest('.se-range-input').hasClass('filter-block')
+            filter_block = $(@).closest('.filter-block')
+            filter_class = filter_block.attr 'data-filter-class'
+            $("."+filter_class).show()
+            if $('.selected-filters-wrap').is(':hidden')
+              $('.selected-filters-wrap').show()
+#              alert 'hidden'
+#            end fliter catalog page code
         slide: (event, ui) ->
           # field min value
           $this_min.val ui.values[0]
