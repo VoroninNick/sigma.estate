@@ -28,7 +28,38 @@
           =s.id
 .row
   .columns
-    =@search.results.length
+    = form_tag dev_path, :method => :get do
+      p
+        = text_field_tag :search, params[:search]
+        = submit_tag "Search", :name => nil
+    #facets
+      h4 Building complex name
+      ul
+        - for row in @search.facet(:complex_name).rows
+          li
+            - if params[:complex_name].blank?
+              = link_to row.value, :complex_name => row.value
+            - else
+              strong= row.value
+
+      h4 City
+      ul
+        - for row in @search.facet(:city).rows
+          li
+            - if params[:city].blank?
+              = link_to row.value, :city => row.value
+            - else
+              strong= row.value
+      /
+      /h4 Seasons
+      /ul
+      /  - for row in @search.facet(:seasonal).rows
+      /    li
+      /      - if params[:season].blank?
+      /        = link_to row.value, :season => row.value
+      /      - else
+      /        strong= row.value
+
 .row
   .columns
     #apartment_list
@@ -104,4 +135,13 @@
       input type="text" name="filterrific[with_count_rooms]"
       input type="submit" test
 
+
+
+/.row
+  .columns
+    = form_for_filterrific @filterrific do |f| %>
+      div
+        |Search
+        /<%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+        = f.text_field( :search_query, class: 'filterrific-periodically-observed' )
 

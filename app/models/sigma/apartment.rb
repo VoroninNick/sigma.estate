@@ -76,11 +76,29 @@ class Sigma::Apartment < ActiveRecord::Base
   paginates_per 12
 
 
-#   sunspot
   searchable do
-    text        :html_description, :infrastructure_description_html, :main_description_html
-    integer     :building_complex_id, :references => Sigma::BuildingComplex
+    text :html_description, :infrastructure_description_html, :main_description_html
+    integer :building_complex_id, :references => Sigma::BuildingComplex.name
+
+    text :building_complex do
+      Sigma::BuildingComplex.all.map { |building_complex|
+        building_complex.name
+        building_complex.street
+        building_complex.city
+      }
+    end
+    # facet
+    string :city, :multiple => true do
+      building_complex.city
+    end
+    string :street, :multiple => true do
+      building_complex.street
+    end
+    string :complex_name, :multiple => true do
+      building_complex.name
+    end
   end
+
 
 #   for filtering
   filterrific(
@@ -90,6 +108,7 @@ class Sigma::Apartment < ActiveRecord::Base
           :with_building_complex_name,
           :with_count_rooms,
           :with_city,
+          :with_street,
           :with_district,
           :with_level,
           :with_price_from,
@@ -110,7 +129,8 @@ class Sigma::Apartment < ActiveRecord::Base
                        where(
                            terms.map {
                              or_clauses = [
-                                 "LOWER(sigma_apartments.id) LIKE ?"
+                                 "LOWER(sigma_apartments.main_description_html) LIKE ?"
+                                 # "LOWER(sigma_apartments.sigma_building_complexes.name) LIKE ?"
                              ].join(' OR ')
                              "(#{ or_clauses })"
                            }.join(' AND '),
@@ -118,6 +138,7 @@ class Sigma::Apartment < ActiveRecord::Base
                        )
 
                      }
+
   scope :sorted_by, lambda { |sort_key|
     direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
     case sort_key.to_s
@@ -161,14 +182,18 @@ class Sigma::Apartment < ActiveRecord::Base
   scope :with_count_rooms, lambda { |count_rooms|
                          where(rooms_count: [*count_rooms])
                        }
-  # filter by cities
-  scope :with_city, lambda { |city|
-                         joins(:building_complex).where(sigma_building_complexes: { city: city })
-                       }
  # building complex name
   scope :with_district, lambda { |district|
                          joins(:building_complex).where(sigma_building_complexes: { district: district })
                        }
+  # filter by cities
+  scope :with_city, lambda { |city|
+                    joins(:building_complex).where(sigma_building_complexes: { city: city })
+                  }
+  # filter by street
+  scope :with_street, lambda { |street|
+                    joins(:building_complex).where(sigma_building_complexes: { street: street })
+                  }
  # apartment level
   scope :with_level, lambda { |level|
                          where(level: level)

@@ -28,22 +28,36 @@ class MainController < ApplicationController
   def apartment_catalog
     # @apartments = Sigma::Apartment.limit(18).page(params[:page]).per(12)
 
+    # ========================================================================================================
+
     @filterrific = initialize_filterrific(
       Sigma::Apartment,
       params[:filterrific],
       select_options: {
           sorted_by: Sigma::Apartment.options_for_sorted_by,
+          search_query: Sigma::Apartment,
           with_building_complex_name: Sigma::BuildingComplex.options_for_select,
           with_city: Sigma::BuildingComplex.options_for_select_city,
+          with_street: Sigma::BuildingComplex.options_for_select_street,
           with_district: Sigma::BuildingComplex.options_for_select_district
       }
       ) or return
     @apartments = @filterrific.find.page(params[:page])
 
+    # @search = Sunspot.search(Sigma::Apartment) do
+    #   fulltext params[:search] do
+    #     fields(:html_description, :infrastructure_description_html, :main_description_html, :building_complex)
+    #   end
+    #   with(:rooms_count, params[:rooms_count]) if params[:rooms_count].present?
+    # end
+    # @apartments = @search.results
+
+
     respond_to do |format|
       format.html
       format.js
     end
+
   end
 
   def apartment_item
@@ -108,8 +122,17 @@ class MainController < ApplicationController
 
   def dev
     @search = Sunspot.search(Sigma::Apartment) do
-      fulltext params[:search]
+      fulltext params[:search] do
+        fields(:html_description, :infrastructure_description_html, :main_description_html, :building_complex)
+      end
+      facet (:complex_name)
+      facet (:city)
+      facet (:street)
+      with(:complex_name, params[:roomscount]) if params[:roomscount].present?
+      with(:city, params[:city]) if params[:city].present?
+      with(:street, params[:street]) if params[:street].present?
     end
+
     @apartments = @search.results
   end
 

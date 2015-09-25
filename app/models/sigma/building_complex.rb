@@ -88,9 +88,15 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   end
 
 
+  searchable do
+    text        :name, :street, :city
+  end
 #   =================================================
   def self.options_for_select_city
     order('LOWER(city)').map { |e| [e.city] }.uniq
+  end
+  def self.options_for_select_street
+    order('LOWER(street)').map { |e| [e.street] }.uniq
   end
   def self.options_for_select_district
     order('LOWER(district)').map { |e| [e.district] }.uniq
