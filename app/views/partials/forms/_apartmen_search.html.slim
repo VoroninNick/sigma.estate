@@ -11,11 +11,10 @@
               button type="submit"
     .row
       .columns
-        .columns
+        .columns.apartment-key-for-search
           strong Наприклад:
-          a Квартира у Львові
-          a Квартира у Києві
-          a ЖК «Сігма Апартментс»
+          a data-search-query="квартири у львові" Квартира у Львові
+          a data-search-query="auroom" ЖК «AUroom»
 
   .af-body
     /= form_for_filterrific(@filterrific, url: apartment_catalog_path, html: { id: :manual_filterrific_form } ) do |f|

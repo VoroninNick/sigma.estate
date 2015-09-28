@@ -66,6 +66,15 @@ validate_filters = ->
 #      success = false
 #  success
 $(document).ready ->
+  $('.apartment-key-for-search a').click (event)->
+    event.preventDefault()
+
+    $this = $(@)
+    searching_query = $this.attr 'data-search-query'
+    $input = $this.closest('.apartment-form-wrap').find('input')
+
+    $input.val(searching_query)
+
   $(document).on 'click', '.one-sel-filter a', (event)->
     filter_link = $(@).closest('.one-sel-filter')
     filter_anchor = filter_link.attr 'data-filter-anchor'
