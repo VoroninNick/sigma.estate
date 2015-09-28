@@ -53,8 +53,9 @@ class MainController < ApplicationController
     @apartments_ar_relation = Sigma::Apartment.where( id: @apartments.map(&:id))
 
     @apartments = @apartments_ar_relation.filterrific_find(@filterrific)
+    @apartments = @apartments.page(params[:page])
 
-    @apartments = @filterrific.find.page(params[:page])
+    #@apartments = @filterrific.find.page(params[:page])
 
     respond_to do |format|
       format.html
