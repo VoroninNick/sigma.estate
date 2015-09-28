@@ -405,15 +405,15 @@ $crumb-bg: transparent;
 
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: rem-calc(11);
-// $crumb-font-color: $primary-color;
+ $crumb-font-color: #EF6C00;
 // $crumb-font-color-current: $oil;
 // $crumb-font-color-unavailable: $aluminum;
-// $crumb-font-transform: uppercase;
+ $crumb-font-transform: normal;
 // $crumb-link-decor: underline;
 
 // We use these to control the slash between breadcrumbs
 // $crumb-slash-color: $base;
-// $crumb-slash: "/";
+ $crumb-slash: " ";
 
 // 05. Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -

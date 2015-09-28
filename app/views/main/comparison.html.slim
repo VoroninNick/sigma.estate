@@ -1,4 +1,4 @@
-.row
+/.row
   .columns
     .container
       - flash.each do |name, msg|
@@ -23,19 +23,13 @@
             =link_to "Sigma Estate", root_path
           li.current
             a href="#" Порівняння
-          /li
-          /  a href="#" Features
-          /li.unavailable
-          /  a href="#" Gene Splicing
-          /li.current
-          /  a href="#" Cloning
   .row.text-center
     - if !apartments_from_comparison
       h2 добавте хочаб одну одиницю до порівняння!
     - else
       /- apartments_from_comparison = [apartments_from_comparison] if apartments_from_comparison.respond_to?(:any?) && apartments_from_comparison.any?
       -apartments_from_comparison.each do |apartment|
-        .medium-4.columns class=("end" if apartment == @apartments_comparison.last)
+        .medium-4.columns.end
           .comparison-one-item.se-action-handler-wrap.se-box-shadow  data-item-id=apartment.id class="#{'added-to-favorites' if apartment.id.in? current_user_favorites} #{'added-to-comparison' if apartment.id.in? current_user_comparison}"
             =image_tag apartment.banner_images.first.url(:thumbnail)
             .columns

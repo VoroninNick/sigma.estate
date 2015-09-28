@@ -33,7 +33,26 @@
   .row
     .columns
       .se-breadcrumbs-wrap
-        = render_breadcrumbs
+        ul.breadcrumbs
+          li
+            =link_to "SIGMA ESTATE", root_path
+          li
+            a href=apartment_path Квартири
+          li
+            a href=apartment_catalog_path(filterrific: {with_city: @apartment.building_complex.city}) =@apartment.building_complex.city
+          li
+            a href=apartment_catalog_path(filterrific: {with_district: @apartment.building_complex.district}) =@apartment.building_complex.district
+          li
+            a href=apartment_catalog_path(filterrific: {with_building_complex_name: @apartment.building_complex.id})
+              |ЖК «
+              = @apartment.building_complex.name
+              |»
+          li.current
+            a href="#"
+              =@apartment.apartment_house.street
+              |,&nbsp;
+              =@apartment.apartment_house.street_number
+
   .row
     .columns
       .apartment-item-page.se-box-shadow

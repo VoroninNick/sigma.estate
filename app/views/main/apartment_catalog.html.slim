@@ -1,13 +1,13 @@
 =render "application/catalog_header"
 .catalog-page
-  /.row
+  .row
     .columns
       .se-breadcrumbs-wrap
         ul.breadcrumbs
           li
             =link_to "Sigma Estate", root_path
-          li.current
-            a href="#" Про компанію
+          li
+            a href=apartment_path Квартири
           /li
           /  a href="#" Features
           /li.unavailable
@@ -16,20 +16,7 @@
           /  a href="#" Cloning
   = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
     .row
-      .medium-6.columns
-        /p За запитом «квартира у Львові» знайдено 9 квартир
-      .medium-6.columns
-        .catalog-filter-sorted-by-wrap
-          = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
-        /.div
-          = f.text_field( :search_query, class: 'filterrific-periodically-observed' )
-          = submit_tag()
-          /div
-          /  |Житловий комплекс
-          /  = f.select( :with_building_complex_name, @filterrific.select_options[:with_building_complex_name], { include_blank: '- Any -' } )
-        /= link_to 'Reset filters', reset_filterrific_url
-    .row
-      .medium-3.columns
+      .medium-3.columns.apartment-catalog-filters-wrap
         .selected-filters-wrap.se-box-shadow
           .columns
             h5 Вибрані фільтри
@@ -303,6 +290,10 @@
               .clearfix
 
       .medium-9.columns
+        .row
+          .columns
+            .catalog-filter-sorted-by-wrap
+              = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
         = render partial: 'main/apartment_list',
           locals: { apartments: @apartments }
         .row.se-pagination
