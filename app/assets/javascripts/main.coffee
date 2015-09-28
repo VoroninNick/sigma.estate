@@ -71,7 +71,7 @@ $(document).ready ->
 
     $this = $(@)
     searching_query = $this.attr 'data-search-query'
-    $input = $this.closest('.apartment-form-wrap').find('input')
+    $input = $this.closest('.apartment-form-wrap').find('input[name=search]')
 
     $input.val(searching_query)
 
