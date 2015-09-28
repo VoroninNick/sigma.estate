@@ -19,6 +19,7 @@ html lang="en"
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
 
     = csrf_meta_tags
+    = analytics_init :local => Rails.env.development?
 
   body#myDivId
     #se-progress-bar

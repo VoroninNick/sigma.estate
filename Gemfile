@@ -89,3 +89,8 @@ gem 'sunspot_solr'
 gem 'sunspot_rails'
 
 gem 'progress_bar'
+
+gem 'better_errors'
+gem 'binding_of_caller'
+
+gem 'google-analytics-rails'

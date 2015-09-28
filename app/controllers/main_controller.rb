@@ -29,6 +29,13 @@ class MainController < ApplicationController
     # @apartments = Sigma::Apartment.limit(18).page(params[:page]).per(12)
 
     # ========================================================================================================
+    @search = Sunspot.search(Sigma::Apartment) do
+      fulltext params[:search] do
+        fields(:html_description, :infrastructure_description_html, :main_description_html, :building_complex)
+      end
+      with(:rooms_count, params[:rooms_count]) if params[:rooms_count].present?
+    end
+    @apartments = @search.results
 
     @filterrific = initialize_filterrific(
       Sigma::Apartment,
@@ -42,16 +49,12 @@ class MainController < ApplicationController
           with_district: Sigma::BuildingComplex.options_for_select_district
       }
       ) or return
+
+    @apartments_ar_relation = Sigma::Apartment.where( id: @apartments.map(&:id))
+
+    @apartments = @apartments_ar_relation.filterrific_find(@filterrific)
+
     @apartments = @filterrific.find.page(params[:page])
-
-    # @search = Sunspot.search(Sigma::Apartment) do
-    #   fulltext params[:search] do
-    #     fields(:html_description, :infrastructure_description_html, :main_description_html, :building_complex)
-    #   end
-    #   with(:rooms_count, params[:rooms_count]) if params[:rooms_count].present?
-    # end
-    # @apartments = @search.results
-
 
     respond_to do |format|
       format.html

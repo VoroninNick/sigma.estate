@@ -51,4 +51,7 @@ Rails.application.configure do
       authentication:       :plain,
       enable_starttls_auto:  true
   }
+  # replace this with your development tracker code
+  GA.tracker = "UA-67912083-1"
+
 end
