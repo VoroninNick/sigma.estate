@@ -26,9 +26,7 @@ class MainController < ApplicationController
   end
 
   def apartment_catalog
-    # @apartments = Sigma::Apartment.limit(18).page(params[:page]).per(12)
 
-    # ========================================================================================================
     @search = Sunspot.search(Sigma::Apartment) do
       fulltext params[:search] do
         fields(:html_description, :infrastructure_description_html, :main_description_html, :building_complex)
@@ -54,8 +52,6 @@ class MainController < ApplicationController
 
     @apartments = @apartments_ar_relation.filterrific_find(@filterrific)
     @apartments = @apartments.page(params[:page])
-
-    #@apartments = @filterrific.find.page(params[:page])
 
     respond_to do |format|
       format.html

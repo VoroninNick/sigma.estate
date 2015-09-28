@@ -23,7 +23,16 @@
   .row
     .columns
       .se-breadcrumbs-wrap
-        = render_breadcrumbs
+        ul.breadcrumbs
+          li
+            =link_to "Sigma Estate", root_path
+          li
+            a href=complex_path Житлові комлекси
+          li.current
+            a href="#"
+              |ЖК «
+              =@building_complex.name
+              |»
   .row
     .columns
       .complex-item-page.se-box-shadow
@@ -83,7 +92,7 @@
                         a href="#complex-location"
                           =embedded_svg "ic_room_48px.svg"
                           |Розташування на карті
-                    =link_to "ПЕРЕГЛЯНУТИ КВАРТИРИ", apartment_catalog_path, class: :right
+                    a.right href=apartment_catalog_path(filterrific: {with_building_complex_name: @building_complex.id}) ПЕРЕГЛЯНУТИ КВАРТИРИ
                   .clearfix
 
             .medium-8.columns

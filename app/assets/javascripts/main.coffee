@@ -120,7 +120,7 @@ $(document).ready ->
     filters_wrap = $('.filters-wrap')
     filter_block = $('.filter-block')
 
-    if (window.location.href.indexOf("with_count_rooms") > -1) || (window.location.href.indexOf("with_city") > -1) || (window.location.href.indexOf("with_district") > -1) || (window.location.href.indexOf("with_price_from") > -1) || (window.location.href.indexOf("with_total_square_from") > -1) || (window.location.href.indexOf("with_level") > -1)
+    if (window.location.href.indexOf("with_count_rooms") > -1) || (window.location.href.indexOf("with_city") > -1) || (window.location.href.indexOf("with_district") > -1) || (window.location.href.indexOf("with_price_from") > -1) || (window.location.href.indexOf("with_total_square_from") > -1) || (window.location.href.indexOf("with_level") > -1) || (window.location.href.indexOf("with_building_complex_name") > -1)
       $('.selected-filters-wrap').show()
 
     if (window.location.href.indexOf("with_count_rooms") > -1)
@@ -135,6 +135,8 @@ $(document).ready ->
       $('.osf-live-square').show()
     if (window.location.href.indexOf("with_level") > -1)
       $('.osf-level').show()
+    if (window.location.href.indexOf("with_building_complex_name") > -1)
+      $('.osf-building-complex').show()
 
 
 #
