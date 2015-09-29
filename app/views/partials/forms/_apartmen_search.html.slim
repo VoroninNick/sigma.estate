@@ -45,8 +45,8 @@
         .medium-6.columns
           .columns
             .se-range-input.square-range-slider
-              - min = 32
-              - max =160
+              - min = Sigma::Apartment.minimum(:total_square) - 10
+              - max = Sigma::Apartment.maximum(:total_square) + 10
               .rs-input
                 input.rs-min name="filterrific[with_total_square_from]" type="text" placeholder=min
               .rs-slider

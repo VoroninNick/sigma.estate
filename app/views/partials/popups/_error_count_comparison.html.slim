@@ -1,0 +1,16 @@
+#ErrorCountComparisonModal.reveal-modal.tiny data-reveal="" role="dialog"
+  .modal-header
+  .modal-body
+    .row
+      .columns
+        b Помилка!
+        p На жаль, система не дозволяє проводити порівняння більше трьох одиниць одночасно.
+        p Будь ласка видаліть хоча б одну з попередніх і тоді ви зможете добавити нові.
+    .row
+      .columns
+        =link_to comparison_path, class: 'class_link_to_comparison' do
+          |На сторінку порівнняння
+          =embedded_svg "ic_arrow_forward_black_24px.svg"
+    .row
+      .columns
+        a.close-reveal-modal.right Зрозуміло

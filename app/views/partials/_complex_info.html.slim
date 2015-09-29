@@ -12,7 +12,7 @@
         =get_stars(info.complex_class, '')
     .row
       .columns
-        a.se-region href=apartment_catalog_path(filterrific: {with_district: info.district})
+        a.se-region href=complex_catalog_path(filterrific: {with_district: info.district})
           =info.district
         p
           =info.try(:street)

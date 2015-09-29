@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
 .input.animate-input
   button
     outline: none!important
-#SuccessModal
+#SuccessModal, #ErrorCountComparisonModal
   .modal-body
     padding: 40px 30px 50px 30px
     b
@@ -49,6 +49,23 @@ h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
       line-height: rem-calc(16.8)
       text-transform: uppercase
 
+#ErrorCountComparisonModal
+  .modal-body
+    b
+      text-align: center
+      display: inline-block
+    p
+      margin-bottom: 10px
+      &:last-child
+        margin-bottom: 15px
+    .class_link_to_comparison
+      display: inline-block
+      margin-bottom: 25px
+      svg
+        position: relative
+        top: 6px
+        path
+          fill: #AFBDC4
 #book-review-modal
   .modal-body
     padding-top: 20px

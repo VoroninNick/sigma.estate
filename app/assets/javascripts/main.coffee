@@ -66,6 +66,8 @@ validate_filters = ->
 #      success = false
 #  success
 $(document).ready ->
+
+
   $('.apartment-key-for-search a').click (event)->
     event.preventDefault()
 
@@ -231,7 +233,8 @@ $(document).ready ->
                   $item.addClass('added-to-comparison')
                 complete: ->
             else
-              alert 'sorry'
+              $('#ErrorCountComparisonModal').foundation 'reveal', 'open'
+#              alert 'sorry'
 
   #callback handler for form submit
   $('form.se-ajax-popup-form').submit (e) ->
