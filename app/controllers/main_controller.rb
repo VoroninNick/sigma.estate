@@ -70,6 +70,25 @@ class MainController < ApplicationController
     @building_complex = Sigma::BuildingComplex.limit(20)
   end
   def complex_catalog
+    @filterrific = initialize_filterrific(
+        Sigma::BuildingComplex,
+        params[:filterrific],
+        select_options: {
+            sorted_by: Sigma::BuildingComplex.options_for_sorted_by,
+            with_city: Sigma::BuildingComplex.options_for_select_city,
+            with_district: Sigma::BuildingComplex.options_for_select_district,
+            with_street: Sigma::BuildingComplex.options_for_select_street,
+            with_complex_class: Sigma::BuildingComplex.options_for_select_complex_class
+        },
+        :persistence_id => false,
+    ) or return
+
+    @building_complexes = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   def complex_catalog_item
     @building_complex = Sigma::BuildingComplex.find(params[:id])

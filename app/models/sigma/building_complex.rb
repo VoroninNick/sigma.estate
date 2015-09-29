@@ -87,11 +87,22 @@ class Sigma::BuildingComplex < ActiveRecord::Base
     Sigma::BuildingComplex.pluck(:district).uniq
   end
 
+  paginates_per 12
+
+#   searchable do
+#     text :name, :boost => 5
+#     # text :main_description_html
+#     # text :infrastructure_description_html
+#     # text :main_description_html
+#   end
 
   searchable do
     text        :name, :street, :city
   end
 #   =================================================
+  def self.options_for_select_complex_class
+    order('LOWER(complex_class)').map { |e| [e.complex_class] }.uniq
+  end
   def self.options_for_select_city
     order('LOWER(city)').map { |e| [e.city] }.uniq
   end
@@ -106,11 +117,68 @@ class Sigma::BuildingComplex < ActiveRecord::Base
   end
 
 
-#   sunspot
-#   searchable do
-#     text :name, :boost => 5
-#     # text :main_description_html
-#     # text :infrastructure_description_html
-#     # text :main_description_html
-#   end
+#   for filtering
+  filterrific(
+      default_filter_params: { sorted_by: 'created_at_desc' },
+      available_filters: [
+          :sorted_by,
+          :with_city,
+          :with_district,
+          :with_street,
+          :with_price_from,
+          :with_price_to,
+          :with_complex_class
+      ]
+  )
+
+  scope :sorted_by, lambda { |sort_key|
+                    direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
+                    case sort_key.to_s
+                      when /^created_at_/
+                        order("sigma_building_complexes.created_at #{ direction }")
+                      # when /^street_/
+                      #   joins(:building_complex).order("LOWER(sigma_building_complexes.street) #{ direction }")
+                      # when /^name_/
+                      #   # order("LOWER(sigma_building_complexes.name) #{ direction }").includes(:building_complex)
+                      #   joins(:building_complex).order("LOWER(sigma_building_complexes.name) #{ direction }")
+                      else
+                        raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
+                    end
+
+                  }
+  def self.options_for_sorted_by
+    [
+        ['Дата створення (старіші перші)', 'created_at_asc'],
+        ['Дата створення (новіші перші)', 'created_at_desc']
+        # ['Назва комплексу (a-я)', 'building_complex_name_asc'],
+        # ['Назва комплексу (я-а)', 'building_complex_name_desc'],
+        # ['Назва вулиці (а-я)', 'building_complex_street_asc'],
+        # ['Назва вулиці (я-а)', 'building_complex_street_desc']
+    ]
+  end
+
+# filter by complex_class
+  scope :with_complex_class, lambda { |complex_class|
+                    where(complex_class: complex_class)
+                  }
+# filter by cities
+  scope :with_city, lambda { |city|
+                    joins(:building_complex).where(sigma_building_complexes: { city: city })
+                  }
+# building complex name
+  scope :with_district, lambda { |district|
+                        joins(:building_complex).where(sigma_building_complexes: { district: district })
+                      }
+# filter by street
+  scope :with_street, lambda { |street|
+                      where(street: street)
+                    }
+# always include the lower boundary for semi open intervals
+  scope :with_price_from, lambda { |price|
+                          where('sigma_building_complexes.price_from >= ?', price)
+                        }
+# always exclude the upper boundary for semi open intervals
+  scope :with_price_to, lambda { |price|
+                        where('sigma_building_complexes.price_from < ?', price)
+                      }
 end

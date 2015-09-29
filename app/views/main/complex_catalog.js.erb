@@ -1,0 +1,5 @@
+
+<% js = escape_javascript(
+    render(partial: 'main/complex_list', locals: { building_complexes: @building_complexes })
+) %>
+$("#complex_list").html("<%= js %>");

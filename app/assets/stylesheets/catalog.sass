@@ -2,168 +2,6 @@
 
   .apartment-catalog-filters-wrap
     padding-top: 53px
-  .catalog-filter-sorted-by-wrap
-    //padding-top: 25px
-    select
-      background: asset-url("select_arrow.png") no-repeat right transparent
-      color: #546E7A
-      font:
-        size: rem-calc(14)
-        weight: 500
-      line-height: rem-calc(16.8)
-      border-bottom: 1px solid #78909C !important
-      width: auto
-      display: inline-block
-      padding-right: 30px
-      float: right
-      outline: none !important
-      &:focus
-        background: asset-url("select_arrow_up.png") no-repeat right transparent
-  .selected-filters-wrap
-    background-color: #36464E
-    padding-top: 20px
-    padding-bottom: 15px
-    margin-bottom: 8px
-    overflow: hidden
-    display: none
-    h5, p
-      font:
-        size: rem-calc(14)
-        weight: 400
-      line-height: rem-calc(16.8)
-    h5
-      color: #FFF
-    path
-      fill: #FB8B00
-    .one-sel-filter
-      display: none
-      p
-        color: #AFBDC4
-      a
-        svg
-    .clear-filters
-      svg
-      a
-        color: #FB8B00
-        font:
-          size: rem-calc(14)
-          weight: 500
-        line-height: rem-calc(24)
-        text-transform: uppercase
-
-  .filters-wrap
-    background-color: #fff
-    margin-bottom: 20px
-    .se-range-input
-      height: auto
-      .rs-slider, .rs-input
-        width: 100%
-    .filter-block
-      padding-top: 15px
-      padding-bottom: 20px
-      border-bottom: 1px solid #CED7DB
-      position: relative
-      &:hover
-        background-color: #EBEEF0
-
-      .notification-container
-        display: block
-        min-height: 80px
-        background-color: #E55000
-        border-color: #E55000
-        right: -212px
-        top: 0
-        &:after
-          top: 13px
-          left: -6px
-          border-width: 6px 6px 6px 0
-          border-color: transparent #E55000 transparent transparent
-        .notification-form
-          .nf-body
-            padding: 15px
-            position: relative
-            .nf-close
-              width: 30px
-              height: 30px
-              position: absolute
-              right: 0
-              top: 9px
-              cursor: pointer
-              padding: 2px
-              svg
-                width: 100%
-                height: 100%
-                path
-                  fill: #FB8B00
-            p
-              color: #fff
-              font:
-                size: rem-calc(14)
-                weight: 400
-              line-height: rem-calc(16.8)
-            button
-              color: #FB8B00
-              background-color: transparent
-              text-transform: uppercase
-              font:
-                size: rem-calc(14)
-                weight: 500
-              line-height: rem-calc(16.8)
-              margin: 0
-              padding: 11px 22px
-
-      &.filter-block-expand
-        overflow: hidden
-        height: 48px
-        .expand-filter-button
-          &:before
-            display: block
-            content: ''
-            position: absolute
-            right: 0
-            top: 6px
-
-            width: 0
-            height: 0
-            border-style: solid
-
-            border-width: 3px 3px 0 3px
-            border-color: #778f9b transparent transparent transparent
-        &.filter-block-expanded
-          height: auto
-          .expand-filter-button
-            &:before
-              border-width: 0 3px 3px 3px
-              border-color: transparent transparent #778f9b transparent
-      h5
-        color: #36464E
-        font:
-          size: rem-calc(14)
-          weight: 400
-        line-height: rem-calc(16.8)
-        position: relative
-        .expand-filter-button
-          position: absolute
-          top: 0
-          right: 0
-          width: 40px
-          bottom: 0
-          cursor: pointer
-
-        span
-          color: #BCBCBC
-          padding-left: 4px
-      .checkbox-input
-        padding-top: 5px
-        padding-bottom: 15px
-
-  .filter-block-auto-update
-    padding: 25px 0 20px 0
-    p
-      color: #606060
-      font:
-        size: rem-calc(12)
-      display: inline-block
   .a-one-item
     .a-oi-information-wrap
       .a-oi-information
@@ -185,4 +23,176 @@
             weight: 500
           line-height: rem-calc(25.2)
 
+.catalog-filter-sorted-by-wrap
+  //padding-top: 25px
+  select
+    background: asset-url("select_arrow.png") no-repeat right transparent
+    color: #546E7A
+    font:
+      size: rem-calc(14)
+      weight: 500
+    line-height: rem-calc(16.8)
+    border-bottom: 1px solid #78909C !important
+    width: auto
+    display: inline-block
+    padding-right: 30px
+    float: right
+    outline: none !important
+    &:focus
+      background: asset-url("select_arrow_up.png") no-repeat right transparent
+.selected-filters-wrap
+  background-color: #36464E
+  padding-top: 20px
+  padding-bottom: 15px
+  margin-bottom: 8px
+  overflow: hidden
+  display: none
+  h5, p
+    font:
+      size: rem-calc(14)
+      weight: 400
+    line-height: rem-calc(16.8)
+  h5
+    color: #FFF
+  path
+    fill: #FB8B00
+  .one-sel-filter
+    display: none
+    p
+      color: #AFBDC4
+    a
+      svg
+  .clear-filters
+    svg
+    a
+      color: #FB8B00
+      font:
+        size: rem-calc(14)
+        weight: 500
+      line-height: rem-calc(24)
+      text-transform: uppercase
+
+.filters-wrap
+  background-color: #fff
+  margin-bottom: 20px
+  .se-range-input
+    height: auto
+    .rs-slider, .rs-input
+      width: 100%
+  .filter-block
+    padding-top: 15px
+    padding-bottom: 20px
+    border-bottom: 1px solid #CED7DB
+    position: relative
+    &:hover
+      background-color: #EBEEF0
+
+    .notification-container
+      display: block
+      min-height: 80px
+      background-color: #E55000
+      border-color: #E55000
+      right: -212px
+      top: 0
+      &:after
+        top: 13px
+        left: -6px
+        border-width: 6px 6px 6px 0
+        border-color: transparent #E55000 transparent transparent
+      .notification-form
+        .nf-body
+          padding: 15px
+          position: relative
+          .nf-close
+            width: 30px
+            height: 30px
+            position: absolute
+            right: 0
+            top: 9px
+            cursor: pointer
+            padding: 2px
+            svg
+              width: 100%
+              height: 100%
+              path
+                fill: #FB8B00
+          p
+            color: #fff
+            font:
+              size: rem-calc(14)
+              weight: 400
+            line-height: rem-calc(16.8)
+          button
+            color: #FB8B00
+            background-color: transparent
+            text-transform: uppercase
+            font:
+              size: rem-calc(14)
+              weight: 500
+            line-height: rem-calc(16.8)
+            margin: 0
+            padding: 11px 22px
+
+    &.filter-block-expand
+      overflow: hidden
+      height: 48px
+      .expand-filter-button
+        &:before
+          display: block
+          content: ''
+          position: absolute
+          right: 0
+          top: 6px
+
+          width: 0
+          height: 0
+          border-style: solid
+
+          border-width: 3px 3px 0 3px
+          border-color: #778f9b transparent transparent transparent
+      &.filter-block-expanded
+        height: auto
+        .expand-filter-button
+          &:before
+            border-width: 0 3px 3px 3px
+            border-color: transparent transparent #778f9b transparent
+    h5
+      color: #36464E
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: rem-calc(16.8)
+      position: relative
+      .expand-filter-button
+        position: absolute
+        top: 0
+        right: 0
+        width: 40px
+        bottom: 0
+        cursor: pointer
+
+      span
+        color: #BCBCBC
+        padding-left: 4px
+    .checkbox-input
+      padding-top: 5px
+      padding-bottom: 15px
+
+.filter-block-auto-update
+  padding: 25px 0 20px 0
+  p
+    color: #606060
+    font:
+      size: rem-calc(12)
+    display: inline-block
+
+.complex-page
+  .selected-filters-wrap
+    display: block
+  .complex-catalog-filters-wrap
+    padding-top: 53px
+  .c-one-item
+    .c-one-item-more-info
+      left: -8px
+      padding: 0 25px
 

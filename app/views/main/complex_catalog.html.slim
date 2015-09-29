@@ -1,0 +1,122 @@
+=render "application/complex_header"
+.complex-page
+  .row
+    .columns
+      .se-breadcrumbs-wrap
+        ul.breadcrumbs
+          li
+            =link_to "Sigma Estate", root_path
+          li
+            a href=complex_path Житл. комплекси
+
+
+  = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
+    .row
+      .medium-3.columns.complex-catalog-filters-wrap
+        .selected-filters-wrap.se-box-shadow
+          .columns
+            h5 Вибрані фільтри
+          .columns
+            .row.one-sel-filter.osf-price data-filter-anchor="filter-anchor-price"
+              .small-9.columns
+                p Ціна
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+            .row.one-sel-filter.osf-city data-filter-anchor="filter-anchor-city"
+              .small-9.columns
+                p Місто
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-district
+              .small-9.columns
+                p Район
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+
+            .row.one-sel-filter.osf-street data-filter-anchor="filter-anchor-street"
+              .small-9.columns
+                p Вулиця
+              .small-3.columns
+                a
+                  =embedded_svg "ic_clear_black_24px.svg"
+            /clear filters
+            .row.clear-filters
+              = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
+                .small-3.columns
+                  =embedded_svg "ic_cached_black_24px.svg"
+                .small-9.columns.no-pad-left
+                  = link_to 'Очистити фільтри', reset_filterrific_url
+          .clearfix
+
+        .filters-wrap.se-box-shadow
+          .se-range-input.price-range-slider.filter-block.filter-anchor-price data-filter-class="osf-price"
+            .columns
+              - min = 7600
+              - max = 25000
+              .row
+                .columns
+                  h5
+                    |Ціна
+                    span
+                      |(грн/м2)
+              .row
+                .columns
+                  .rs-slider
+                    .row
+                      .columns
+                        .range-slide data-min-val=min data-max-val=max
+              .row
+                .medium-5.columns
+                  .rs-input
+                    input.rs-min name="filterrific[with_price_from]" type="text" placeholder=min val=min
+                .medium-5.columns.right
+                  .rs-input
+                    input.rs-max name="filterrific[with_price_to]" type="text" placeholder=max val=max
+            .clearfix
+
+          .filter-block.filter-anchor-building-complex data-filter-class="osf-building-complex"
+            .columns
+              h5
+                |Клас ЖК
+                .expand-filter-button
+              = f.select(:with_complex_class, @filterrific.select_options[:with_complex_class], {include_blank: '- Виберіть клас -'})
+            .clearfix
+
+          .filter-block.filter-anchor-building-complex data-filter-class="osf-building-complex"
+            .columns
+              h5
+                |Місто
+                .expand-filter-button
+              = f.select(:with_city, @filterrific.select_options[:with_city], {include_blank: '- Виберіть місто -'})
+            .clearfix
+
+          .filter-block.filter-anchor-building-complex data-filter-class="osf-building-complex"
+            .columns
+              h5
+                |Район
+                .expand-filter-button
+              = f.select(:with_district, @filterrific.select_options[:with_district], {include_blank: '- Виберіть район -'})
+            .clearfix
+
+          .filter-block.filter-anchor-building-complex data-filter-class="osf-building-complex"
+            .columns
+              h5
+                |Вулиця
+                .expand-filter-button
+              = f.select(:with_street, @filterrific.select_options[:with_street], {include_blank: '- Виберіть вулицю -'})
+            .clearfix
+
+      .medium-9.columns
+        .row
+          .columns
+            .catalog-filter-sorted-by-wrap
+              = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
+        = render partial: 'main/complex_list',
+                 locals: { building_complexes: @building_complexes }
+        /.row.se-pagination
+          .columns
+            = paginate @apartments
