@@ -28,6 +28,12 @@
             =link_to "Sigma Estate", root_path
           li
             a href=complex_path Житлові комлекси
+          li
+            a href=complex_catalog_path(filterrific: {with_city: @building_complex.city}) =@building_complex.city
+          li
+            a href=complex_catalog_path(filterrific: {with_district: @building_complex.district}) =@building_complex.district
+          li
+            a href=complex_catalog_path(filterrific: {with_street: @building_complex.street}) =@building_complex.street
           li.current
             a href="#"
               |ЖК «
