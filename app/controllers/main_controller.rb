@@ -92,6 +92,8 @@ class MainController < ApplicationController
   end
   def complex_catalog_item
     @building_complex = Sigma::BuildingComplex.find(params[:id])
+    @similar_building_complex = Sigma::BuildingComplex.where.not(id: @building_complex.id).where(district: @building_complex.district).limit(4)
+    @other_building_complex = Sigma::BuildingComplex.where.not(id: @building_complex.id).limit(4)
   end
 
 

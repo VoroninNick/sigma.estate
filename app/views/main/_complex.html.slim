@@ -27,27 +27,27 @@
         .c-one-item-more-info
           .row
             .small-6.columns
-              p Місто
-            .small-6.columns
+              p.complex-details-key Місто
+            .small-6.columns.complex-details-value
               p =object.try(:city)
           .row
             .small-6.columns
-              p Вулиця
-            .small-6.columns
+              p.complex-details-key Вулиця
+            .small-6.columns.complex-details-value
               p
                 =object.street
                 |,&nbsp;
                 =object.street_number
           .row
             .small-6.columns
-              p Здача
-            .small-6.columns
+              p.complex-details-key Здача
+            .small-6.columns.complex-details-value
               -if object.building_end_date.present?
                 p =object.building_end_date.strftime("%d.%m.%Y")
           .row
             .small-6.columns
-              p Офіційний сайт
-            .small-6.columns
+              p.complex-details-key Офіційний сайт
+            .small-6.columns.complex-details-value
               -if object.builder && object.builder.name.present?
                 -if object.builder.site =~ /\A#{URI::regexp}\z/
                   a href="#{object.builder.site}" target="_blank"  =object.builder.name
