@@ -25,8 +25,8 @@
         .medium-6.columns
           .columns
             .se-range-input.price-range-slider
-              - min = 7600
-              - max = 25000
+              - min = Sigma::Apartment.minimum(:price) - 100
+              - max = Sigma::Apartment.maximum(:price) + 100
               .rs-input
                 input.rs-min name="filterrific[with_price_from]" type="text" placeholder=min
               .rs-slider

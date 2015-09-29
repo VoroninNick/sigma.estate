@@ -100,8 +100,8 @@
           = form_for_filterrific @filterrific do |f|
             .se-range-input.price-range-slider.filter-block.filter-anchor-price data-filter-class="osf-price"
               .columns
-                - min = 7600
-                - max = 25000
+                - min = Sigma::Apartment.minimum(:price) - 100
+                - max = Sigma::Apartment.maximum(:price) + 100
                 .row
                   .columns
                     h5
@@ -126,8 +126,8 @@
 
             .se-range-input.square-range-slider.filter-block.filter-anchor-live-square data-filter-class="osf-live-square"
               .columns
-                - min = 32
-                - max =160
+                - min = Sigma::Apartment.minimum(:total_square) - 10
+                - max = Sigma::Apartment.maximum(:total_square) + 10
                 .row
                   .columns
                     h5

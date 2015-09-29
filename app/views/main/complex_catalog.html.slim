@@ -55,8 +55,8 @@
         .filters-wrap.se-box-shadow
           .se-range-input.price-range-slider.filter-block.filter-anchor-price data-filter-class="osf-price"
             .columns
-              - min = 7600
-              - max = 25000
+              - min = Sigma::BuildingComplex.minimum(:price_from) - 100
+              - max = Sigma::BuildingComplex.maximum(:price_from) + 100
               .row
                 .columns
                   h5

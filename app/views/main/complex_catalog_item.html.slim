@@ -5,6 +5,11 @@
       .a_other_item_ico
         = embedded_svg "ic_keyboard_arrow_left_24px.svg"
       .a_other_item_label
+        b
+          |вул.&nbsp;
+          =@building_complex.prev.street
+          |,&nbsp;
+          =@building_complex.prev.street_number
         p
           |ЖК «
           =@building_complex.prev.name
@@ -13,6 +18,11 @@
   - if @building_complex.next
     = link_to one_complex_path(@building_complex.next.id), class: 'a_other_item a_next_item se-box-shadow' do
       .a_other_item_label
+        b
+          |вул.&nbsp;
+          =@building_complex.next.street
+          |,&nbsp;
+          =@building_complex.next.street_number
         p
           |ЖК «
           =@building_complex.next.name
