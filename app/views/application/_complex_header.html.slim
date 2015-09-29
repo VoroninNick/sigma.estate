@@ -73,21 +73,21 @@
       .columns
         - cities = Sigma::BuildingComplex.available_cities
         - if cities.length >1
-          .h-sf-cities
-            strong Місто:
-            ul
-              -cities.each do |c|
-                li
-                  a #href=apartment_catalog_path(filterrific: {with_city: c})
-                    =c.inspect
+        .h-sf-cities
+          strong Місто:
+          ul
+            -cities.each do |c|
+              li
+                a href=complex_catalog_path(filterrific: {with_city: c})
+                  =c
 
         - districts = Sigma::BuildingComplex.available_districts
         - if districts.length >1
-          .h-sf-cities
-            strong Район:
-            ul
-              -districts.each do |c|
-                li
-                  a #href=apartment_catalog_path(filterrific: {with_district: c})
-                    =c
+        .h-sf-cities
+          strong Район:
+          ul
+            -districts.each do |c|
+              li
+                a href=complex_catalog_path(filterrific: {with_district: c})
+                  =c
 

@@ -163,11 +163,11 @@ class Sigma::BuildingComplex < ActiveRecord::Base
                   }
 # filter by cities
   scope :with_city, lambda { |city|
-                    joins(:building_complex).where(sigma_building_complexes: { city: city })
+                    where(city: city)
                   }
 # building complex name
   scope :with_district, lambda { |district|
-                        joins(:building_complex).where(sigma_building_complexes: { district: district })
+                        where(district: district )
                       }
 # filter by street
   scope :with_street, lambda { |street|
@@ -175,10 +175,10 @@ class Sigma::BuildingComplex < ActiveRecord::Base
                     }
 # always include the lower boundary for semi open intervals
   scope :with_price_from, lambda { |price|
-                          where('sigma_building_complexes.price_from >= ?', price)
+                          where('price_from >= ?', price)
                         }
 # always exclude the upper boundary for semi open intervals
   scope :with_price_to, lambda { |price|
-                        where('sigma_building_complexes.price_from < ?', price)
+                        where('price_from < ?', price)
                       }
 end
