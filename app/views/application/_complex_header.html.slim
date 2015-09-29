@@ -56,13 +56,13 @@
     .header-search-form-wrap
       .row
         .columns
-          form
+          form action=apartment_catalog_path accept-charset="UTF-8" method="get"
             .af-header
               .row
                 .columns
                   .af-search-input
                     label
-                      input type="text" placeholder="Пошук квартир..."
+                      input type="text" name="search" placeholder="Пошук по житлових комплексах..."
                     button type="submit"
     .a-nav-search-button
       a
