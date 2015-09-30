@@ -26,7 +26,6 @@ class MainController < ApplicationController
   end
 
   def apartment_catalog
-
     @search = Sunspot.search(Sigma::Apartment) do
       fulltext params[:search] do
         fields(:html_description, :infrastructure_description_html, :main_description_html, :building_complex)
@@ -70,6 +69,13 @@ class MainController < ApplicationController
     @building_complex = Sigma::BuildingComplex.limit(20)
   end
   def complex_catalog
+    @search = Sunspot.search(Sigma::BuildingComplex) do
+      fulltext params[:search] do
+        fields(:name, :city, :street, :main_description_html)
+      end
+    end
+    @building_complexes = @search.results
+
     @filterrific = initialize_filterrific(
         Sigma::BuildingComplex,
         params[:filterrific],
@@ -83,7 +89,10 @@ class MainController < ApplicationController
         :persistence_id => false,
     ) or return
 
-    @building_complexes = @filterrific.find.page(params[:page])
+    @building_complex_ar_relation = Sigma::BuildingComplex.where( id: @building_complexes.map(&:id))
+
+    @building_complexes = @building_complex_ar_relation.filterrific_find(@filterrific)
+    @building_complexes = @building_complexes.page(params[:page])
 
     respond_to do |format|
       format.html

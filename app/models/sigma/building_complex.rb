@@ -89,15 +89,8 @@ class Sigma::BuildingComplex < ActiveRecord::Base
 
   paginates_per 12
 
-#   searchable do
-#     text :name, :boost => 5
-#     # text :main_description_html
-#     # text :infrastructure_description_html
-#     # text :main_description_html
-#   end
-
   searchable do
-    text        :name, :street, :city
+    text        :name, :city, :street, :main_description_html
   end
 #   =================================================
   def self.options_for_select_complex_class
