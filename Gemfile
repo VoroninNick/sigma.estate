@@ -52,8 +52,6 @@ gem "breadcrumbs_on_rails"
 
 gem 'mailchimp-api', require: 'mailchimp'
 
-gem 'devise'
-
 gem 'protected_attributes'
 
 gem 'quiet_assets'
@@ -94,3 +92,9 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 gem 'google-analytics-rails'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
