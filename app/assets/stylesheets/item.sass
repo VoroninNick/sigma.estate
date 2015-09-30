@@ -63,6 +63,10 @@
   .apartment-item-page
     min-height: 650px
     background-color: #fff
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.35)
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.35)
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.35)
+    margin-top: 6px
     .apartment-item-head
       padding-top: 20px
       .bx-wrapper
@@ -193,11 +197,13 @@
           p
             color: #E55000
             font:
-              size: rem-calc(20)
+              size: rem-calc(14)
               weight: 500
             line-height: rem-calc(24)
             text-align: center
             svg
+              position: relative
+              top: 10px
               path
                 fill: #8FA3AD
             span
@@ -221,11 +227,17 @@
         .a-oi-info-label, .a-oi-info-value
           color: #fff
           text-align: center
+        .a-oi-info-value
+          font:
+            size: rem-calc(30)
+            weight: 500
         .a-oi-info-label
           font:
             size: rem-calc(14)
             weight: 400
           line-height: rem-calc(16.8)
+          margin-top: 5px
+          margin-bottom: 10px
       .apartment-item-more-information
         border-top: 1px solid #EBEEF0
         margin-top: 60px

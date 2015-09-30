@@ -518,14 +518,14 @@ $(document).ready ->
       console.log "top value ", $(@).closest('.filter-block').offset().top
 
 # apartment one item
-  $(".apartment-item-page ul.image-carousel").bxSlider
-    auto: true,
-    pause: 5000
-
-#  apartment main banner
-  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider()
+  $(".apartment-item-page ul.image-carousel").bxSlider()
 #    auto: true,
 #    pause: 5000
+
+#  apartment main banner
+  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider
+    auto: true,
+    pause: 5000
 
 
   $(".best-apartment ul.ba-carousel").bxSlider()
