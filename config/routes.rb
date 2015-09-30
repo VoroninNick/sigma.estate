@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
 
-  devise_for :users, class_name: "Sigma::User", controllers: {registrations: 'registrations'}
+  devise_for :users, class_name: "Sigma::User", controllers: {registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
 
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   # devise_for :users, controllers: {
   #  sessions: 'sessions',
