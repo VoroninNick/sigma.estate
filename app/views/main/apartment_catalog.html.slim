@@ -12,8 +12,8 @@
           /  a href="#" Features
           /li.unavailable
           /  a href="#" Gene Splicing
-          /li.current
-          /  a href="#" Cloning
+          li.current
+            a href="#" Каталог
   = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
     .row
       .medium-3.columns.apartment-catalog-filters-wrap
@@ -87,10 +87,10 @@
 
             .row.clear-filters
               = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
-                .small-3.columns
-                  =embedded_svg "ic_cached_black_24px.svg"
-                .small-9.columns.no-pad-left
-                  = link_to 'Очистити фільтри', reset_filterrific_url
+                .columns
+                  = link_to reset_filterrific_url do
+                    =embedded_svg "ic_cached_black_24px.svg"
+                    |Очистити фільтри
           .clearfix
 
 
@@ -107,7 +107,10 @@
                     h5
                       |Ціна
                       span
-                        |(грн/м2)
+                        |(грн/м
+                        sup
+                          |2
+                        |)
                 .row
                   .columns
                     .rs-slider
@@ -133,7 +136,10 @@
                     h5
                       |Житлова площа
                       span
-                        |(м2)
+                        |(м
+                        sup
+                          |2
+                        |)
                 .row
                   .columns
                     .rs-slider
@@ -248,15 +254,15 @@
                 .filter-block.filter-anchor-city data-filter-class="osf-city"
                   .input
                     label Місто
-                    = f.select(:with_city, @filterrific.select_options[:with_city], {include_blank: '- Виберіть місто -'})
+                    = f.select(:with_city, @filterrific.select_options[:with_city], {include_blank: 'Виберіть місто'})
                 .filter-block.filter-anchor-district data-filter-class="osf-district"
                   .input
                     label Район
-                    = f.select(:with_district, @filterrific.select_options[:with_district], {include_blank: '- Виберіть район -'})
+                    = f.select(:with_district, @filterrific.select_options[:with_district], {include_blank: 'Виберіть район'})
                 .filter-block.filter-anchor-street data-filter-class="osf-street"
                   .input
                     label Вулиця
-                    = f.select(:with_street, @filterrific.select_options[:with_street], {include_blank: '- Виберіть вулицю -'})
+                    = f.select(:with_street, @filterrific.select_options[:with_street], {include_blank: 'Виберіть вулицю'})
                     /select
                       option selected="" disabled="" Виберіть вулицю
                       option Шевченка
@@ -269,7 +275,7 @@
                 h5
                   |Житловий комплекс
                   .expand-filter-button
-                = f.select(:with_building_complex_name, @filterrific.select_options[:with_building_complex_name], {include_blank: '- Any -'})
+                = f.select(:with_building_complex_name, @filterrific.select_options[:with_building_complex_name], {include_blank: 'Виберіть ЖК'})
             .filter-block.filter-block-expand
               .columns
                 h5

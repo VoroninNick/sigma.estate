@@ -71,7 +71,7 @@
             label
               |К-сть кімнат
             select name="filterrific[with_count_rooms]"
-              option disabled="" selected="" -виберіть к-сть кімнат-
+              option disabled="" selected="" виберіть к-сть кімнат
               - count.times
                 - i = i+1
                 option value="#{i}" =i
@@ -84,7 +84,7 @@
               label
                 |Поверх
               select name="filterrific[with_level]"
-                option disabled="" selected="" -виберіть поверх-
+                option disabled="" selected="" виберіть поверх
                 -levels.each do |l|
                   option value="#{l}" =l
 
@@ -96,7 +96,7 @@
               label
                 |Місто
               select name="filterrific[with_city]"
-                option disabled="" selected="" -виберіть місто-
+                option disabled="" selected="" виберіть місто
                 -a_available_cities.each do |c|
                   option value=c  =c
 
@@ -105,7 +105,7 @@
               label
                 |Район
               select name="filterrific[with_district]"
-                option disabled="" selected="" -виберіть район-
+                option disabled="" selected="" виберіть район
                 -a_available_districts.each do |d|
                   option value=d =d
 

@@ -54,16 +54,22 @@
     line-height: rem-calc(16.8)
   h5
     color: #FFF
+    padding-bottom: 10px
   path
     fill: #FB8B00
   .one-sel-filter
     display: none
+    padding-left: 10px
     p
       color: #AFBDC4
     a
+      float: right
+      display: block
       svg
+        position: relative
+        top: -4px
   .clear-filters
-    svg
+    margin-top: 15px
     a
       color: #FB8B00
       font:
@@ -71,6 +77,10 @@
         weight: 500
       line-height: rem-calc(24)
       text-transform: uppercase
+      svg
+        position: relative
+        top: 6px
+        margin-right: 3px
 
 .filters-wrap
   background-color: #fff
@@ -84,9 +94,21 @@
     padding-bottom: 20px
     border-bottom: 1px solid #CED7DB
     position: relative
-    &:hover
-      background-color: #EBEEF0
-
+    .filter-block
+      padding-top: 0
+      padding-bottom: 0
+      border: none
+      .input
+        label
+          color: #E65100
+          font:
+            size: rem-calc(12)
+            weight: 300
+        select
+          border-bottom: 1px solid #BCBCBC
+          color: #BCBCBC
+          &:hover
+            border-bottom: 1px solid #36464E
     .notification-container
       display: block
       min-height: 80px
@@ -136,6 +158,10 @@
     &.filter-block-expand
       overflow: hidden
       height: 48px
+      &:hover
+        background-color: #EBEEF0
+        select
+          background-color: #EBEEF0
       .expand-filter-button
         &:before
           display: block

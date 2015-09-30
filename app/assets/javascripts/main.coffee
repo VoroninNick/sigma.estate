@@ -523,9 +523,9 @@ $(document).ready ->
     pause: 5000
 
 #  apartment main banner
-  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider
-    auto: true,
-    pause: 5000
+  $(".apartment-page-wrap .main-banner-wrap ul").bxSlider()
+#    auto: true,
+#    pause: 5000
 
 
   $(".best-apartment ul.ba-carousel").bxSlider()

@@ -189,42 +189,44 @@
       border-radius: 2px
       color: transparent
       &:after
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
-        filter: alpha(opacity=0)
+        //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+        //filter: alpha(opacity=0)
         opacity: 0
         content: ''
         position: absolute
-        width: 9px
-        height: 5px
-        background: transparent
-        top: 4px
-        left: 4px
-        border: 3px solid #fcfff4
-        border-top: none
-        border-right: none
+        width: 18px
+        height: 18px
+        background: asset-url("ic_check_black_24px.svg")
+        background-size: 100%
+        top: -1px
+        left: 0
+        //border: 3px solid #fcfff4
+        //border-top: none
+        //border-right: none
 
-        -webkit-transform: rotate(-45deg)
-        -moz-transform: rotate(-45deg)
-        -o-transform: rotate(-45deg)
-        -ms-transform: rotate(-45deg)
-        transform: rotate(-45deg)
+        //-webkit-transform: rotate(-45deg)
+        //-moz-transform: rotate(-45deg)
+        //-o-transform: rotate(-45deg)
+        //-ms-transform: rotate(-45deg)
+        //transform: rotate(-45deg)
 
 
       &:hover::after
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"
-        filter: alpha(opacity=30)
+        //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"
+        //filter: alpha(opacity=30)
         opacity: 0.3
 
     & input[type=checkbox]:checked + label
       border: none
       background-color: #E55000
     & input[type=checkbox]:checked + label:after
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
-      filter: alpha(opacity=100)
+      //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+      //filter: alpha(opacity=100)
       opacity: 1
 
   label
-    color: #EE6B00
+    //color: #EE6B00
+    color: #546E7A
     font:
       size: rem-calc(14)
       weight: 400

@@ -5,6 +5,14 @@
 
 h1, h2, h3, h4, h5, p, b, span, a, label, input, textarea, body, button
   font-family: 'Roboto', sans-serif
+
+body
+  select
+    &:hover
+      background-color: inherit
+      border-color: #36464E
+      border-color: red
+
 .image
   max-width: 100%
   width: 100%
@@ -549,8 +557,7 @@ body
 
 
 .se-breadcrumbs-wrap
-  min-height: 60px
-  padding-top: 20px
+  padding-top: 5px
   color: #536D79
   font:
     size: rem-calc(12)
@@ -563,7 +570,7 @@ body
       position: relative
       padding-left: 20px
       &:before
-        background: asset-url("ic_keyboard_arrow_right_24px.svg")
+        background: asset-url("ic_keyboard_arrow_right_24px_light_gray.svg")
         background-size: 100%
         display: inline-block
         width: 15px
@@ -574,6 +581,8 @@ body
         left: -9px
       &:first-child
         padding-left: 0
+        a
+          text-transform: uppercase
         &:before
           display: none
 
@@ -985,6 +994,7 @@ footer
     line-height: rem-calc(21)
   .footer-down
     border-top: 1px solid rgba(0, 0, 0, .1)
+    margin-top: 40px
     p
       margin-bottom: 0
     .fd-one-wrap
@@ -1147,6 +1157,9 @@ form
     .bx-wrapper
       .bx-viewport
         height: 100%
+      .bx-controls
+        .bx-pager
+          display: none!important
 
 .apartment-form-wrap
   overflow: hidden
@@ -1181,7 +1194,10 @@ form
       width: 90px
     select
       width: calc(100% - 90px)
-      border-bottom: 1px solid #BCBCBC !important
+      border-bottom: 1px solid #BCBCBC
+      color: #BCBCBC
+      &:hover
+        border-bottom: 1px solid #36464E
     .button-wrap
       background-color: #E55000
     button
@@ -1193,6 +1209,10 @@ form
       background-position-x: 12%
       margin: 0
       text-transform: uppercase
+    .se-range-input
+      margin-bottom: 40px
+    .button-wrap
+      margin-top: 10px
 
 
 .af-header
@@ -1259,25 +1279,30 @@ form
       a
         background-position: inherit
         margin-top: -29px
+        @media screen and ( max-width: 1140px)
+          display: none
         &.bx-prev
           background-image: asset-url("banner-left-arrow.png")
-          left: -30px !important
+          left: -60px !important
         &.bx-next
           background-image: asset-url("banner-right-arrow.png")
-          right: -30px !important
+          right: -60px !important
     .bx-pager
       bottom: -20px!important
       &.bx-default-pager
         a
-          background: #AFBDC4
+          background: #AFBDC4!important
           width: 14px
           height: 14px
           margin: 0 17px
           -moz-border-radius: 50%
           -webkit-border-radius: 50%
           border-radius: 50%
+          -webkit-box-shadow: none!important
+          -moz-box-shadow: none!important
+          box-shadow: none!important
           &.active
-            background-color: #36464E
+            background-color: #36464E!important
   ul.ba-carousel
     margin-left: 0
 
@@ -1304,6 +1329,7 @@ form
     -webkit-transform: translateY(40px) /* Для Safari, Chrome, iOS */
     -o-transform: translateY(40px) /* Для Opera */
     transform: translateY(40px)
+    +transition_all(.4s)
 
   .a-oi-information-wrap
     background-color: #fff
@@ -1420,9 +1446,14 @@ form
   height: 300px
 
 .apartment-complexes
-  padding-top: 25px
+  padding-top: 35px
+  background-color: #fff
+  margin-top: 100px
+  -webkit-box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.35)
+  -moz-box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.35)
+  box-shadow: 1px -1px 1px 0px rgba(0, 0, 0, 0.35)
   h3.a-title
-    margin-bottom: 25px
+    margin-bottom: 35px
   .ac-one
     height: 445px
     margin: 1px
@@ -1622,7 +1653,6 @@ form
           font-size: rem-calc(12)
           transform: translateY(0px)
 
-
 .se-range-input
   height: 60px
   padding-top: 15px
@@ -1633,6 +1663,10 @@ form
     input
       margin-bottom: 0
       margin-top: 13px
+      background: transparent
+      &:focus
+        color: #E55000
+        border-bottom: 2px solid #E55000
   .rs-slider
     width: 56%
     padding: 0 5%
