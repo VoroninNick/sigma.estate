@@ -103,17 +103,23 @@
                       .a-oi-info-ico
                         =embedded_svg "ic_account_balance_wallet_24px.svg"
                       .a-oi-info-label
-                        |Ціна
+                        |Ціна&nbsp;
                         span
-                          |(грн/м2)
+                          |(грн/м
+                          sup
+                            |2
+                          |)
                       .a-oi-info-value =@apartment.try(:price)
                     .large-4.medium-4.small-4.columns
                       .a-oi-info-ico
                         =embedded_svg "ic_select_all_24px.svg"
                       .a-oi-info-label
-                        |Площа
+                        |Площа&nbsp;
                         span
-                          |(м2)
+                          |(м
+                          sup
+                            |2
+                          |)
                       .a-oi-info-value =@apartment.try(:total_square)
               .medium-3.columns
                 .a-oi-print-version
@@ -276,9 +282,9 @@
                                 =@apartment.building_complex.builder.name
                                 =embedded_svg "ic_link_48px.svg"
 
-                    .se-link-button.material-component.ripple
+                    .se-link-button.material-component.ripple.hide
                       = link_to "Калькулятор кредиту", calculators_path
-                    .se-link-button.material-component.ripple
+                    .se-link-button.material-component.ripple.hide
                       = link_to "Калькулятор Страхівки", calculators_path
                     /= @apartment.tech_info.apartment_type
                   .medium-7.columns
@@ -290,35 +296,35 @@
                     -if @apartment.infrastructure_description_html.present?
                       h4 Інфраструктура
                       =raw @apartment.infrastructure_description_html
-                    hr
 
-                    -if @apartment.building_complex && @apartment.building_complex.coordinates.present?
-                      h4 Розташування будинку на Google maps
+                    .map-wrap
+                      -if @apartment.building_complex && @apartment.building_complex.coordinates.present?
+                        h4 Розташування будинку на Google maps
 
-                      #map_canvas data-lat=@apartment.building_complex.coordinates.split(', ').first data-lng=@apartment.building_complex.coordinates.split(', ').last data-name="" data-complex=""
-                      coffee:
-                        map = undefined
-                        mgr = undefined
-                        lat = $('#map_canvas').attr('data-lat')
-                        lng = $('#map_canvas').attr('data-lng')
+                        #map_canvas data-lat=@apartment.building_complex.coordinates.split(', ').first data-lng=@apartment.building_complex.coordinates.split(', ').last data-name="" data-complex=""
+                        coffee:
+                          map = undefined
+                          mgr = undefined
+                          lat = $('#map_canvas').attr('data-lat')
+                          lng = $('#map_canvas').attr('data-lng')
 
-                        myOptions =
-                          zoom: 17
-                          center: new (google.maps.LatLng)(lat, lng)
-                          mapTypeId: google.maps.MapTypeId.ROADMAP
-                        map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
-                        mgr = new MarkerManager(map)
+                          myOptions =
+                            zoom: 17
+                            center: new (google.maps.LatLng)(lat, lng)
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                          map = new (google.maps.Map)(document.getElementById('map_canvas'), myOptions)
+                          mgr = new MarkerManager(map)
 
 
-                        google.maps.event.addListener mgr, 'loaded', ->
-                          marker = new (google.maps.Marker)(
-                            position: new (google.maps.LatLng)(lat, lng)
-                            title: 'Sigma Estate'
-                            icon: '/assets/SE-location-marker-red.png')
-                          mgr.addMarker marker, 0
-                          mgr.refresh()
-                          return
-                       return
+                          google.maps.event.addListener mgr, 'loaded', ->
+                            marker = new (google.maps.Marker)(
+                              position: new (google.maps.LatLng)(lat, lng)
+                              title: 'Sigma Estate'
+                              icon: '/assets/SE-location-marker-red.png')
+                            mgr.addMarker marker, 0
+                            mgr.refresh()
+                            return
+                         return
 
           .clearfix
 
