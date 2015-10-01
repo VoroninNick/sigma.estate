@@ -20,6 +20,7 @@ class Sigma::User < ActiveRecord::Base
                                 size: { in: 0..1.megabytes }
 
   has_many :authorizations, foreign_key: :sigma_users_id
+  has_and_belongs_to_many :favorites, class_name: Sigma::Apartment, join_table: :favorites
 
   def self.new_with_session(params,session)
     if session["devise.user_attributes"]

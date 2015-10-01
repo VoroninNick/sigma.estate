@@ -7,7 +7,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.persisted?
       flash[:notice] = "You are in..!!! Go to edit profile to see the status for the accounts"
       # return render inline: "sign in"
-      sign_in_and_redirect(user)
+      #sign_in resource_name, user
+      return redirect_to root_path
+      #sign_in_and_redirect(user)
     else
       session["devise.user_attributes"] = user.attributes
       # return render inline: "sign up"
@@ -18,7 +20,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     #handle you logic here..
     #and delegate to super.
-    super
+    return render nothing: true
+    #super
   end
 
 
