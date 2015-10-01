@@ -93,6 +93,8 @@ gem 'binding_of_caller'
 
 gem 'google-analytics-rails'
 
+gem 'figaro'
+
 gem 'devise'
 gem 'koala'
 gem 'omniauth'
