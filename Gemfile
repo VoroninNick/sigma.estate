@@ -94,6 +94,7 @@ gem 'binding_of_caller'
 gem 'google-analytics-rails'
 
 gem 'devise'
+gem 'koala'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
