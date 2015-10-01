@@ -1,5 +1,5 @@
 class Authorization < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, foreign_key: :sigma_users_id
 
   after_create :fetch_details
 
