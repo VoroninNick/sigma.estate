@@ -119,4 +119,16 @@ module ApplicationHelper
     # @_current_user_comparison = apartments_from_comparison.try{|x| next x.map(&:id) if x.respond_to?(:map); x.id } || []
     apartment_list_id
   end
+
+  def devise_mapping
+    Devise.mappings[:user]
+  end
+
+  def resource_name
+    devise_mapping.name
+  end
+
+  def resource_class
+    devise_mapping.to
+  end
 end

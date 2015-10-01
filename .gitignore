@@ -10,6 +10,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/schema.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -17,12 +18,20 @@
 /tmp
 /vendor/*
 /public/*
+/test
+/solr
 
 .DS_Store
+
 
 .idea
 public
 
 Gemfile.lock
+README.rdoc
 
 
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

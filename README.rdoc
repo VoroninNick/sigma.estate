@@ -37,3 +37,18 @@ buisness -4
 elite -5
 clube -6
 delux - 7 stars
+
+
+apartment banner 1920 x 550px
+published
+position
+image
+
+complex banner 1920 x 550px
+published
+position
+image
+title
+url
+enum - class
+description
