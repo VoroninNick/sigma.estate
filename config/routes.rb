@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, class_name: "Sigma::User", controllers: {registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
 
@@ -29,6 +29,9 @@ Rails.application.routes.draw do
 
   get 'about' => 'main#about'
   get 'calculators' => 'main#calculators'
+  get 'news' => 'main#publications'
+  get 'news/:title' => 'main#one_publication', as: :one_news
+
   get 'contacts' => 'main#contacts'
 
   get 'comparison' => 'main#comparison'

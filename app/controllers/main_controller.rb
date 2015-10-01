@@ -23,6 +23,8 @@ class MainController < ApplicationController
     @apartments = Sigma::Apartment.limit(18)
 
     @building_complex = Sigma::BuildingComplex.limit(5)
+
+    @publications = Publication.with_public.where(feature: true).limit(4)
   end
 
   def apartment_catalog
@@ -110,7 +112,13 @@ class MainController < ApplicationController
     @page = PageAboutCompany.first
   end
   def calculators
-
+  end
+  def publications
+    @last_publication = Publication.with_public.first
+    @publications = Publication.with_public.where.not(id: @last_publication)
+  end
+  def one_publication
+    @publication = Publication.find_by_slug(params[:title])
   end
   def contacts
     add_breadcrumb "Контакти", contacts_path

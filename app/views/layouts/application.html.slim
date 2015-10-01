@@ -18,6 +18,8 @@ html lang="en"
     = stylesheet_link_tag    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css'
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
 
+    script src="https://apis.google.com/js/platform.js" async="" defer=""
+
     = csrf_meta_tags
     = analytics_init :local => Rails.env.development?
 

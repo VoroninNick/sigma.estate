@@ -53,6 +53,7 @@ gem "breadcrumbs_on_rails"
 gem 'mailchimp-api', require: 'mailchimp'
 
 gem 'protected_attributes'
+gem 'rails-i18n'
 
 gem 'quiet_assets'
 
@@ -102,3 +103,5 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
+
+gem 'ckeditor'
