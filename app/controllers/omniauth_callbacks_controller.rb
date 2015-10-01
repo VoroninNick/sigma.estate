@@ -6,11 +6,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = Sigma::User.from_omniauth(env["omniauth.auth"], current_user)
     if user.persisted?
       flash[:notice] = "You are in..!!! Go to edit profile to see the status for the accounts"
-      return render inline: "sign in"
-      #sign_in_and_redirect(user)
+      # return render inline: "sign in"
+      sign_in_and_redirect(user)
     else
       session["devise.user_attributes"] = user.attributes
-      return render inline: "sign up"
+      # return render inline: "sign up"
       redirect_to new_user_registration_url
     end
   end
