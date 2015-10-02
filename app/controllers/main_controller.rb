@@ -25,6 +25,8 @@ class MainController < ApplicationController
     @building_complex = Sigma::BuildingComplex.limit(5)
 
     @publications = Publication.with_public.where(feature: true).limit(4)
+
+    @test = "test"
   end
 
   def apartment_catalog

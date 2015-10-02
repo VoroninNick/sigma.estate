@@ -1,3 +1,4 @@
+=response.headers["Access-Control-Allow-Origin: facebook.com"]
 .row
   .columns
     .se-breadcrumbs-wrap
@@ -32,7 +33,7 @@
         }(document, 'script', 'facebook-jssdk'));
 
 
-      .fb-share-button data-href="https://developers.facebook.com/docs/plugins/" data-layout="link" Facebook
+      .fb-share-button data-href=request.original_url data-layout="link" Facebook
       g:plus action="share" Google +
 
   .medium-9.columns
