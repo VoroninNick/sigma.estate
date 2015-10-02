@@ -21,6 +21,10 @@
         =l(@publication.created_at, format: "%-d %B, %Y")
 
       b Поділитись новиною
+      .row
+        .columns
+          a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}" Facebook
+
       #fb-root
       javascript:
         (function (d, s, id) {
