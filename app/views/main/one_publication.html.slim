@@ -17,31 +17,32 @@
 .row
   .medium-3.columns.right
     .publication-information-about.se-box-shadow
-      b Дата публікації
-      p
-        =embedded_svg "ic_today_black_24px.svg"
-        =l(@publication.created_at, format: "%-d %B, %Y")
+      .publication-date
+        b Дата публікації
+        p
+          =embedded_svg "ic_today_black_24px.svg"
+          =l(@publication.created_at, format: "%-d %B, %Y")
+      .publication-share-social
+        b Поділитись новиною
+        .row
+          .columns
+            a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}" Facebook
 
-      b Поділитись новиною
-      .row
-        .columns
-          a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}" Facebook
-
-      #fb-root
-      javascript:
-        (function (d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "//connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v2.4&appId=1500520113595608";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        #fb-root
+        javascript:
+          (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v2.4&appId=1500520113595608";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
 
 
-      /.fb-share-button data-href=request.original_url data-layout="link" Facebook
-      a href="https://plus.google.com/share?url=#{request.original_url}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" Google +
-      /g:plus action="share" data-href=request.original_url Google +
+        /.fb-share-button data-href=request.original_url data-layout="link" Facebook
+        a href="https://plus.google.com/share?url=#{request.original_url}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" Google +
+        /g:plus action="share" data-href=request.original_url Google +
 
   .medium-9.columns
     .publication-description
@@ -51,10 +52,16 @@
       - if @publication.prev
         .small-6.medium-5.columns.opn-prev
           =link_to one_news_path(@publication.prev.slug)
-            b Попередня новина
-            p =@publication.prev.title
+            .opn-icon
+              =embedded_svg "ic_keyboard_arrow_left_24px.svg"
+            .opn-title
+              b Попередня новина
+              p =@publication.prev.title
       - if @publication.next
         .small-6.medium-5.columns.right.opn-next
           =link_to one_news_path(@publication.next.slug)
-            b наступна новина
-            p =@publication.next.title
+            .opn-icon
+              =embedded_svg "ic_keyboard_arrow_right_24px.svg"
+            .opn-title
+              b наступна новина
+              p =@publication.next.title

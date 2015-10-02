@@ -2088,6 +2088,7 @@ form
     line-height: rem-calc(19.2)
     display: block
     text-align: center
+    margin-bottom: 10px
   p
     color: #90A4AE
     font:
@@ -2099,14 +2100,30 @@ form
     svg
       display: block
       width: 100%
+      margin-bottom: 10px
       path
         fill: #90A4AE
+  .publication-date
+    border-bottom: 1px solid #B0BEC5
+    padding-top: 20px
+  .publication-share-social
+    padding: 20px 0
+    a
+      color: #EF6C00
+      text-transform: uppercase
+      text-align: center
+      font-size: 0.875rem
+      font-weight: 500
+      display: block
+      line-height: 32px
 
 .publication-main-image
   padding-bottom: 25px
+  margin-top: 15px
 .publication-description
   border-bottom: 4px solid #B0BEC5
   margin-bottom: 40px
+  padding-bottom: 40px
   h2, p
     color: #37474F
   h2
@@ -2129,6 +2146,8 @@ form
         weight: 500
       line-height: rem-calc(16.8)
       display: block
+      text-transform: uppercase
+      margin-bottom: 5px
     p
       color: #78909C
       font:
@@ -2141,3 +2160,33 @@ form
       text-align: right
     p
       text-align: right
+  a
+    display: block
+    position: relative
+  .opn-icon
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    svg
+      position: relative
+      top: -3px
+      path
+        fill: #78909C
+  a:hover
+    b, p
+      color: #EF6C00
+    path
+      fill: #EF6C00
+  .opn-title
+    padding-left: 28px
+  .opn-next
+    a
+      .opn-icon
+        position: absolute
+        left: inherit
+        right: 0
+        top: 0
+        bottom: 0
+      .opn-title
+        padding-right: 28px
