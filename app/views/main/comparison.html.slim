@@ -86,58 +86,95 @@
               - if apartment.building_complex.complex_class.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Клас"
                   =t("enumerize.sigma/building_complex.complex_class.#{apartment.building_complex.complex_class}")
+              -else
+                li
+                  .has-tip data-tooltip="" aria-haspopup="true" title="Клас" Відсутня інформація
+
               /тип
               - if apartment.apartment_type.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Тип"
                   =apartment.apartment_type
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Тип" Відсутня інформація
+
               /ціна
               - if apartment.price.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Ціна"
                   =apartment.price
                   |&nbsp;грн/м
                   sup 2
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Ціна"  Відсутня інформація
+
               /загальна площа
               - if apartment.total_square.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Загальна площа"
                   =apartment.total_square
                   |&nbsp;м
                   sup 2
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Загальна площа" Відсутня інформація
+
               /житлова площа
               -if apartment.live_square.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Житлова площа"
                   =apartment.live_square
                   |&nbsp;м
                   sup 2
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Житлова площа" Відсутня інформація
+
               /площа кухні
               -if apartment.kitchen_square.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Площа кухні"
                   =apartment.kitchen_square
                   |&nbsp;м
                   sup 2
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Площа кухні" Відсутня інформація
+
               /житл. комплекс
               -if apartment.building_complex && apartment.building_complex.name.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Житловий комплекс"
                   =apartment.building_complex.name
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Житловий комплекс" Відсутня інформація
+
               /№ приміщення
               -if apartment.apartment_number.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Номер приміщення"
                   =apartment.apartment_number
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Номер приміщення" Відсутня інформація
+
               /сторони світу world_sides
               - if apartment.world_sides.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Сторони світу"
                   =apartment.world_sides
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Сторони світу" Відсутня інформація
+
               /під ключ turnkey
               - if apartment.turnkey.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Під ключ"
                   =apartment.turnkey
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Під ключ" Відсутня інформація
+
               /місто
               -if apartment.building_complex && apartment.building_complex.city.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Місто"
                   =apartment.building_complex.city
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Місто" Відсутня інформація
+
               /район
               - if apartment.building_complex && apartment.building_complex.district.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Район"
                   =apartment.building_complex.district
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Район" Відсутня інформація
+
               /вулиця
               -if apartment.building_complex && apartment.building_complex.street.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Вулиця"
@@ -145,38 +182,66 @@
                   -if apartment.building_complex && apartment.building_complex.street_number.present?
                     |,&nbsp;
                     =apartment.building_complex.street_number
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Вулиця" Відсутня інформація
+
               /забудовник
               -if apartment.building_complex && apartment.building_complex.builder && apartment.building_complex.builder.name.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Забудовник"
                   =apartment.building_complex.builder.name
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Забудовник" Відсутня інформація
+
               /кількість кімнат
               - if apartment.rooms_count.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Кількість кімнат"
                   =apartment.rooms_count
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Кількість кімнат" Відсутня інформація
+
               /поверх
-              li.has-tip data-tooltip="" aria-haspopup="true" title="Поверх"
-                =apartment.try(:level)
+              -if apartment.level.present?
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Поверх"
+                  =apartment.level
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Поверх" Відсутня інформація
+
               /поверховість
               - if apartment.apartment_house && apartment.apartment_house.levels_count.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Поверховість"
                   =apartment.apartment_house.levels_count
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Поверховість" Відсутня інформація
+
               /конструктив
               - if apartment.apartment_house && apartment.apartment_house.technical_settings && apartment.apartment_house.technical_settings.building_process_type.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Конструктив"
                   =apartment.apartment_house.technical_settings.building_process_type
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Конструктив" Відсутня інформація
+
               /утеплення
               -if apartment.building_complex && apartment.building_complex.insulation_type_and_material.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Утеплення"
                   =apartment.building_complex.insulation_type_and_material
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Утеплення" Відсутня інформація
+
               /опалення
               - if apartment.apartment_house && apartment.apartment_house.technical_settings && apartment.apartment_house.technical_settings.heating.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Опалення"
                   =apartment.apartment_house.technical_settings.heating
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Опалення" Відсутня інформація
+
               /зовнішні стіни
               - if apartment.technical_settings && apartment.technical_settings.exterior_walls.present?
                 li.has-tip data-tooltip="" aria-haspopup="true" title="Зовнішні стіни"
                   =apartment.technical_settings.exterior_walls
+              -else
+                li.has-tip data-tooltip="" aria-haspopup="true" title="Зовнішні стіни" Відсутня інформація
 
 
-=render partial: "partials/forms/book_review"
+
+                =render partial: "partials/forms/book_review"
 
