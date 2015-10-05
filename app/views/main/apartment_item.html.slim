@@ -149,9 +149,282 @@
               .columns
                 .row.apartment-item-more-information
                   .medium-5.columns
-                    h3 Характеристика
+                    ul.accordion data-accordion=""
+                      li.accordion-navigation.active
+                        a href="#panel1a" Основні харектеристики
+                        #panel1a.content.active
 
-                    - if @apartment.building_complex && @apartment.building_complex.complex_class.present?
+                          /клас комплексу
+                          - if @apartment.building_complex && @apartment.building_complex.complex_class.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Клас
+                                .small-7.columns
+                                  .aio-char-value
+                                    = @apartment.building_complex.complex_class
+
+                          /тип квартири
+                          - if @apartment.apartment_type.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Тип
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_type
+
+                          /ціна
+                          - if @apartment.price.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Ціна
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.price
+                                    |&nbsp;грн/м2
+
+                          /загальна площа
+                          - if @apartment.total_square.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Заг. площа
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.total_square
+                                    |&nbsp;м2
+
+                          /житлова площа
+                          -if @apartment.live_square.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Житл. площа
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.live_square
+                                    |&nbsp;м2
+
+                          /площа кухні
+                          -if @apartment.kitchen_square.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Площа кухні
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.kitchen_square
+                                    |&nbsp;м2
+
+                          /житл. комплекс
+                          -if @apartment.building_complex && @apartment.building_complex.name.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Житл. Комплекс
+                                .small-7.columns
+                                  .aio-char-value
+                                    = link_to @apartment.building_complex.name, one_complex_path(@apartment.building_complex.id)
+                                    a
+                                      =embedded_svg "ic_arrow_forward_black_24px.svg"
+
+                          /№ приміщення
+                          -if @apartment.apartment_number.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |№ приміщення
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.apartment_number
+
+                          /сторони світу world_sides
+                          - if @apartment.world_sides.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Сторони світу
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.world_sides
+
+                          /під ключ turnkey
+                          - if @apartment.turnkey.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Під ключ
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.turnkey
+
+                          /місто
+                          -if @apartment.building_complex && @apartment.building_complex.city.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Місто
+                                .small-7.columns
+                                  .aio-char-value =@apartment.building_complex.city
+
+                          /Район
+                          - if  @apartment.building_complex && @apartment.building_complex.district.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Район
+                                .small-7.columns
+                                  .aio-char-value =@apartment.building_complex.district
+
+                          /вулиця
+                          -if @apartment.building_complex && @apartment.building_complex.street.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Вулиця
+                                .small-7.columns
+                                  .aio-char-value
+                                    =@apartment.apartment_house.street
+                                    |,&nbsp;
+                                    =@apartment.apartment_house.try(:street_number)
+
+                          /забудовник
+                          -if @apartment.building_complex && @apartment.building_complex.builder && @apartment.building_complex.builder.name.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Забудовник
+                                .small-7.columns
+                                  .aio-char-value
+                                    a href="http://#{@apartment.building_complex.builder.try(:site)}"
+                                      =@apartment.building_complex.builder.name
+                                      =embedded_svg "ic_link_48px.svg"
+
+                          /Кількість кімнат
+                          - if @apartment.rooms_count.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |к-сть Кімнат
+                                .small-7.columns
+                                  .aio-char-value =@apartment.rooms_count
+
+                          /Поверх
+                          - if @apartment.level.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Поверх
+                                .small-7.columns
+                                  .aio-char-value =@apartment.level
+
+                          /поверховість
+                          - if @apartment.apartment_house && @apartment.apartment_house.levels_count.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Поверховість
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_house.levels_count
+
+                          /конструктив
+                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.building_process_type.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Конструктив
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_house.technical_settings.building_process_type
+
+                          /утеплення
+                          -if @apartment.building_complex && @apartment.building_complex.insulation_type_and_material.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Утеплення
+                                .small-7.columns
+                                  .aio-char-value =@apartment.building_complex.insulation_type_and_material
+
+                          /опалення
+                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.heating.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Опалення
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_house.technical_settings.heating
+
+                          /зовнішні стіни
+                          - if @apartment.technical_settings && @apartment.technical_settings.exterior_walls.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Зовнішні стіни
+                                .small-7.columns
+                                  .aio-char-value =@apartment.technical_settings.exterior_walls
+
+
+
+
+
+
+                      li.accordion-navigation
+                        a href="#panel2a" Додаткові характеристики
+                        #panel2a.content
+                          /Міжкімнатні стіни
+                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.apartment_separator_walls.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Міжкімн. стіни
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_house.technical_settings.apartment_separator_walls
+
+                          /Висота приміщення
+                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.premises_height.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Висота прим.
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_house.technical_settings.premises_height
+
+                          /Вентиляція
+                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.premises_height.present?
+                            .apartment-item-one-characteristic
+                              .row
+                                .small-5.columns
+                                  .aio-char-key
+                                    |Вентиляція
+                                .small-7.columns
+                                  .aio-char-value =@apartment.apartment_house.technical_settings.ventilation
+                    /h3 Характеристика
+
+                    /- if @apartment.building_complex && @apartment.building_complex.complex_class.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -161,8 +434,8 @@
                             .aio-char-value
                               = @apartment.building_complex.complex_class
 
-                    - if @apartment.apartment_type.present?
-                    .apartment-item-one-characteristic
+                    /- if @apartment.apartment_type.present?
+                    /.apartment-item-one-characteristic
                       .row
                         .small-5.columns
                           .aio-char-key
@@ -170,7 +443,7 @@
                         .small-7.columns
                           .aio-char-value =@apartment.apartment_type
 
-                    - if @apartment.price.present?
+                    /- if @apartment.price.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -181,7 +454,7 @@
                               =@apartment.price
                               |&nbsp;грн/м2
 
-                    - if @apartment.live_square.present?
+                    /- if @apartment.live_square.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -192,7 +465,7 @@
                               =@apartment.live_square
                               |&nbsp;м2
 
-                    - if @apartment.rooms_count.present?
+                    /- if @apartment.rooms_count.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -201,7 +474,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.rooms_count
 
-                    - if @apartment.level.present?
+                    /- if @apartment.level.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -210,7 +483,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.level
 
-                    - if  @apartment.building_complex && @apartment.building_complex.name.present?
+                    /- if  @apartment.building_complex && @apartment.building_complex.name.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -222,7 +495,7 @@
                               a
                                 =embedded_svg "ic_arrow_forward_black_24px.svg"
 
-                    - if  @apartment.building_complex && @apartment.building_complex.city.present?
+                    /- if  @apartment.building_complex && @apartment.building_complex.city.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -231,7 +504,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.building_complex.city
 
-                    - if  @apartment.building_complex && @apartment.building_complex.district.present?
+                    /- if  @apartment.building_complex && @apartment.building_complex.district.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -240,7 +513,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.building_complex.district
 
-                    - if  @apartment.building_complex && @apartment.building_complex.street.present?
+                    /- if  @apartment.building_complex && @apartment.building_complex.street.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -252,7 +525,7 @@
                               |,&nbsp;
                               =@apartment.apartment_house.try(:street_number)
 
-                    - if  @apartment.technical_settings && @apartment.technical_settings.heating.present?
+                    /- if  @apartment.technical_settings && @apartment.technical_settings.heating.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -261,7 +534,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.technical_settings.heating
 
-                    - if  @apartment.technical_settings && @apartment.technical_settings.exterior_walls.present?
+                    /- if  @apartment.technical_settings && @apartment.technical_settings.exterior_walls.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
@@ -270,7 +543,7 @@
                           .small-7.columns
                             .aio-char-value =@apartment.technical_settings.exterior_walls
 
-                    - if  @apartment.building_complex && @apartment.building_complex.builder && @apartment.building_complex.builder.name.present?
+                    /- if  @apartment.building_complex && @apartment.building_complex.builder && @apartment.building_complex.builder.name.present?
                       .apartment-item-one-characteristic
                         .row
                           .small-5.columns
