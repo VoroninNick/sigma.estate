@@ -54,10 +54,12 @@
             .row.one-news-item
               .small-4.columns
                 =link_to one_news_path(publication.slug)
-                  =image_tag publication.image.url(:thumb)
+                  .image style="background: url('#{publication.image.url(:thumb)}')no-repeat center center;"
+                  /=image_tag publication.image.url(:thumb)
               .small-8.columns
                 =link_to one_news_path(publication.slug)
                   h5 =publication.title
+                p =truncate(publication.short_description, length: 120)
                 .date-publicated.right
                   =embedded_svg "ic_today_black_24px.svg"
                   =l(publication.created_at, format: "%-d %B, %Y")

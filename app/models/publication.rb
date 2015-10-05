@@ -52,6 +52,9 @@ class Publication < ActiveRecord::Base
         label 'зображення:'
         help 'зображення для альбому повинне бути 965. / 400.'
       end
+      field :short_description do
+        label 'короткий опис:'
+      end
       field :description, :ck_editor do
         label 'текст статті:'
       end
