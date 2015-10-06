@@ -394,34 +394,34 @@
                         a href="#panel2a" Додаткові характеристики
                         #panel2a.content
                           /Міжкімнатні стіни
-                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.apartment_separator_walls.present?
+                          - if @apartment.technical_settings && @apartment.technical_settings.apartment_separator_walls.present?
                             .apartment-item-one-characteristic
                               .row
                                 .small-5.columns
                                   .aio-char-key
                                     |Міжкімн. стіни
                                 .small-7.columns
-                                  .aio-char-value =@apartment.apartment_house.technical_settings.apartment_separator_walls
+                                  .aio-char-value =@apartment.technical_settings.apartment_separator_walls
 
-                          /Висота приміщення
-                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.premises_height.present?
+                          /Висота приміщення sigma_apartment[technical_settings_attributes][premises_height]
+                          - if @apartment.technical_settings && @apartment.technical_settings.premises_height.present?
                             .apartment-item-one-characteristic
                               .row
                                 .small-5.columns
                                   .aio-char-key
                                     |Висота прим.
                                 .small-7.columns
-                                  .aio-char-value =@apartment.apartment_house.technical_settings.premises_height
+                                  .aio-char-value =@apartment.technical_settings.premises_height
 
                           /Вентиляція
-                          - if @apartment.apartment_house && @apartment.apartment_house.technical_settings && @apartment.apartment_house.technical_settings.premises_height.present?
+                          - if @apartment.technical_settings && @apartment.technical_settings.ventilation.present?
                             .apartment-item-one-characteristic
                               .row
                                 .small-5.columns
                                   .aio-char-key
                                     |Вентиляція
                                 .small-7.columns
-                                  .aio-char-value =@apartment.apartment_house.technical_settings.ventilation
+                                  .aio-char-value =@apartment.technical_settings.ventilation
                     /h3 Характеристика
 
                     /- if @apartment.building_complex && @apartment.building_complex.complex_class.present?
