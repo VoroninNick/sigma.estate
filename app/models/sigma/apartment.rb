@@ -41,6 +41,7 @@ class Sigma::Apartment < ActiveRecord::Base
   attr_accessible :apartment_house
 
   has_images :banner_images, styles: { thumbnail: "273x180#", large: "940x400#" }
+  has_images :gallery_images, styles: { gallery_image: "1440x900#", gallery_thumb: "96x60#" }
   has_attachment :pdf_file
 
   def next

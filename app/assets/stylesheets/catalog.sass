@@ -22,6 +22,43 @@
             size: rem-calc(21)
             weight: 500
           line-height: rem-calc(25.2)
+#map_canvas
+  margin-top: 25px
+#apartment-photo-gallery
+  padding-top: 60px
+.a-gallery-view
+  margin-top: 25px
+  ul.slides
+    height: 420px
+    li
+      height: 100%
+      border: none
+      &.flex-active-slide
+        cursor: pointer
+.a-gallery-thumbnail
+  margin-bottom: 45px
+  ul.slides
+    height: 79px
+    li
+      height: 100%
+      position: relative
+      cursor: pointer
+      &:before
+        display: block
+        content: ''
+        background-color: black
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        opacity: .4
+      &.flex-active-slide
+        border: 2px solid #CFD8DC
+        &:before
+          display: none
+
+
 
 .catalog-filter-sorted-by-wrap
   //padding-top: 25px

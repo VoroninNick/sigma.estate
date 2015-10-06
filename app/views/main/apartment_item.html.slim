@@ -572,7 +572,9 @@
 
                     .map-wrap
                       -if @apartment.building_complex && @apartment.building_complex.coordinates.present?
-                        h4 Розташування будинку на Google maps
+                        h3
+                          =embedded_svg "ic_room_48px.svg"
+                          |Розташування на карті
 
                         #map_canvas data-lat=@apartment.building_complex.coordinates.split(', ').first data-lng=@apartment.building_complex.coordinates.split(', ').last data-name="" data-complex=""
                         coffee:
@@ -599,8 +601,24 @@
                             return
                          return
 
-          .clearfix
+                    #apartment-photo-gallery.c-info data-magellan-destination="apartment-photo-gallery"
+                      h3
+                        =embedded_svg "ic_photo_camera_black_24px.svg"
+                        |Фотозвіт будівництва
+                      -if @apartment.gallery_images && @apartment.gallery_images.any?
+                        #slider.flexslider.a-gallery-view
+                          ul#lightgallery.slides
+                            -@apartment.gallery_images.each do |img|
+                              li
+                                .image style="background: url('#{img.url(:gallery_image)}')no-repeat center center;"
 
+                        #carousel.flexslider.a-gallery-thumbnail
+                          ul.slides
+                            -@apartment.gallery_images.each do |img|
+                              li
+                                .image.for-lightGallery data-gallery-src=img.url(:gallery_image) data-gallery-thumb=img.url(:gallery_thumb) style="background: url('#{img.url(:gallery_thumb)}')no-repeat center center;"
+                                .clearfix
+                    .clearfix
       .similar-apartments
         .row
           .columns

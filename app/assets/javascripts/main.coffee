@@ -363,6 +363,21 @@ $(document).ready ->
     slideshow: false
     sync: '#carousel'
 
+# apartment gallery carousel
+#    $('#a-carousel').flexslider
+#    animation: 'slide'
+#    controlNav: false
+#    animationLoop: false
+#    slideshow: false
+#    itemWidth: 79
+#    itemMargin: 5
+#    asNavFor: '#slider'
+#  $('#a-slider').flexslider
+#    animation: 'slide'
+#    controlNav: false
+#    animationLoop: false
+#    slideshow: false
+#    sync: '#a-carousel'
 
   $('.a-nav-search-button a').click (e)->
     e.preventDefault()
@@ -582,6 +597,31 @@ $(document).ready ->
     console.log("gallery", gallery)
     window.gallery = gallery
 
+  gallery = null
+
+#  apartment light gallery
+  $('#apartment-photo-gallery ul#lightgallery li').click ->
+    $wrap =$(@).closest('#apartment-photo-gallery')
+    slides = $wrap.find('.for-lightGallery')
+
+    cii = $(@).index()
+    elmenetsListData = $.map($wrap.find('.for-lightGallery'), (el) ->
+      {
+      src: $(el).attr 'data-gallery-src'
+      thumb: $(el).attr 'data-gallery-thumb'
+      }
+    )
+    console.log("cii", cii)
+    $gallery = $('#lightgallery')
+    $gallery.lightGallery
+      dynamic: true
+      dynamicEl: elmenetsListData
+      index: cii
+
+    gallery ?= $gallery.data("lightGallery")
+    gallery.index = cii
+    console.log("gallery", gallery)
+    window.gallery = gallery
 #module A
 #  class << self
 #    attr_accessor :name
