@@ -572,6 +572,18 @@ $(document).ready ->
   $('.se-ajax-form input[type=file]').change ->
     $(@).closest('form').submit()
 
+  $('.my-accordion-navigation a').click (e) ->
+    $parent =  $(@).closest('li')
+    $content = $parent.find('.my-accordion-content')
+    if $parent.hasClass('active')
+      $parent.removeClass('active')
+    else
+      $parent.addClass('active')
+    if $content.hasClass('active')
+      $content.removeClass('active')
+    else
+      $content.addClass('active')
+    e.preventDefault()
 
   gallery = null
   $('#complex-photo-gallery ul#lightgallery li').click ->

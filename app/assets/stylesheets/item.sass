@@ -251,19 +251,28 @@
         margin-top: 60px
         padding-top: 35px
         padding-bottom: 100px
-        ul.accordion
+        ul.my-accordion
           margin-left: 0
-          li.accordion-navigation
+          list-style: none
+          li.my-accordion-navigation
             >a
               //padding-left: 0
+              background: #EFEFEF
               color: #36464E
+              padding: 1rem
+              display: block
+              font-family: Roboto, sans-serif
+              font-size: 1rem
             &.active
               >a
                 background: transparent
                 color: #FB8B00
-          .content
+          .my-accordion-content
             padding: 0
             padding-left: 1rem
+            display: none
+            &.active
+              display: block
         h3, h4, p
           color: #36464E
 

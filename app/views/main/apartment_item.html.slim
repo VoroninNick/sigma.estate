@@ -149,10 +149,10 @@
               .columns
                 .row.apartment-item-more-information
                   .medium-5.columns
-                    ul.accordion data-accordion=""
-                      li.accordion-navigation.active
-                        a href="#panel1a" Основні харектеристики
-                        #panel1a.content.active
+                    ul.my-accordion
+                      li.my-accordion-navigation.active
+                        a href="#" Основні харектеристики
+                        .my-accordion-content.active
 
                           /клас комплексу
                           - if @apartment.building_complex && @apartment.building_complex.complex_class.present?
@@ -390,9 +390,9 @@
 
 
 
-                      li.accordion-navigation
-                        a href="#panel2a" Додаткові характеристики
-                        #panel2a.content
+                      li.my-accordion-navigation
+                        a href="#" Додаткові характеристики
+                        .my-accordion-content
                           /Міжкімнатні стіни
                           - if @apartment.technical_settings && @apartment.technical_settings.apartment_separator_walls.present?
                             .apartment-item-one-characteristic
