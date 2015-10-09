@@ -23,17 +23,18 @@
 .row.publications-wrap
   - @publications.any?
     -@publications.each do |publication|
-      .medium-6.columns class=("end" if @publications.last == publication)
-        .one-news-item
-          .row
-            .small-4.columns
-              =link_to one_news_path(publication.slug)
-                .image style="background: url('#{publication.image.url(:thumb)}')no-repeat center center;"
-                /=image_tag publication.image.url(:thumb)
-            .small-8.columns
-              =link_to one_news_path(publication.slug)
-                h5 =publication.title
-              p =truncate(publication.short_description, length: 100)
+      .large-6.columns class=("end" if @publications.last == publication)
+        .one-news-item.se-box-shadow
+          .one-news-avatar
+            =link_to one_news_path(publication.slug)
+              .image style="background: url('#{publication.image.url(:thumb)}')no-repeat center center;"
+          /=image_tag publication.image.url(:thumb)
+          .one-news-text
+            =link_to one_news_path(publication.slug)
+              h5 =truncate(publication.title, length: 60)
+            p =truncate(publication.short_description, length: 100)
+            .date-publicated-wrap
               .date-publicated.right
                 =embedded_svg "ic_today_black_24px.svg"
                 =l(publication.created_at, format: "%-d %B, %Y")
+          .clearfix

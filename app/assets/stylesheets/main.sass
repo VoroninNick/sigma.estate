@@ -1195,7 +1195,7 @@ form
     select
       width: calc(100% - 90px)
       border-bottom: 1px solid #BCBCBC
-      color: #BCBCBC
+      color: #606060
       &:hover
         border-bottom: 1px solid #36464E
     .button-wrap
@@ -2020,7 +2020,12 @@ form
     margin-bottom: 35px
 
 .one-news-item
-  padding-bottom: 25px
+  background-color: #fff
+  padding-bottom: 0
+  margin-bottom: 25px
+  .one-news-avatar
+    width: 33%
+    float: left
   .image
     max-width: 100%
     width: 100%
@@ -2032,17 +2037,34 @@ form
     -o-background-size: cover !important
     background-size: cover !important
     margin: 0 auto
+  .one-news-text
+    width: 66%
+    float: left
+    position: relative
+    padding-top: 0.9375rem
+    padding-left: 0.9375rem
+    padding-right: 0.9375rem
   h5
     color: #37474F
     font:
       size: rem-calc(16)
       weight: 500
     line-height: rem-calc(18)
+    position: relative
   p
     color: #36464E
     font-size: 0.875rem
     font-weight: 300
     line-height: 1.05rem
+    position: relative
+  .date-publicated-wrap
+    height: 0
+    width: 50%
+    //background-color: yellow
+    padding-bottom: 50%
+    position: absolute
+    top: 0
+    right: 0px
   .date-publicated
     color: #90A4AE
     display: inline-block
@@ -2051,6 +2073,9 @@ form
       weight: 400
     line-height: rem-calc(16.8)
     text-transform: lowercase
+    position: absolute
+    right: 15px
+    bottom: 0px
     svg
       width: 18px
       height: 18px
@@ -2081,6 +2106,7 @@ form
         weight: 400
       line-height: rem-calc(16.8)
       text-transform: lowercase
+
       svg
         width: 18px
         height: 18px
@@ -2089,7 +2115,7 @@ form
         path
           fill: #90A4AE
 
-.publications-wrap
+//.publications-wrap
   .one-news-item
     background-color: #fff
     padding-bottom: 0
