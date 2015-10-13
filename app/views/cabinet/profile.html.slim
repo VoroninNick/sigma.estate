@@ -22,8 +22,38 @@
               .input.animate-input.is-completed
                 .input-ico
                   =embedded_svg "ic_person_48px.svg"
-                = f.label :first_name, 'Ім’я користувача'
+                = f.label :first_name, 'Ім’я'
                 = f.text_field :first_name,  :value => current_user.first_name
+                .se-ajax-submit
+                  button
+                    =embedded_svg "ic_check_black_24px.svg"
+          .row
+            .columns
+              .input.animate-input.is-completed
+                .input-ico
+                  /=embedded_svg "ic_person_48px.svg"
+                = f.label :last_name, 'Прізвище'
+                = f.text_field :last_name,  :value => current_user.last_name
+                .se-ajax-submit
+                  button
+                    =embedded_svg "ic_check_black_24px.svg"
+          .row
+            .columns
+              .input.animate-input.is-completed
+                .input-ico
+                  /=embedded_svg "ic_person_48px.svg"
+                = f.label :middle_name, 'По-батькові'
+                = f.text_field :middle_name,  :value => current_user.middle_name
+                .se-ajax-submit
+                  button
+                    =embedded_svg "ic_check_black_24px.svg"
+          .row
+            .columns
+              .input.animate-input.is-completed
+                .input-ico
+                  =embedded_svg "ic_phone_24px.svg"
+                = f.label :phone_number, 'Номер телефону'
+                = f.text_field :phone_number,  :value => current_user.phone_number
                 .se-ajax-submit
                   button
                     =embedded_svg "ic_check_black_24px.svg"
@@ -37,6 +67,24 @@
                 .se-ajax-submit
                   button
                     =embedded_svg "ic_check_black_24px.svg"
+          .row
+            .columns
+              /= form_for(current_user, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+                /= devise_error_messages!
+                = f.hidden_field :reset_password_token
+
+                div class="field"
+                  = f.label :password, "New password"
+                  br
+                  = f.password_field :password, autofocus: true, autocomplete: "off"
+
+                div class="field"
+                  = f.label :password_confirmation, "Confirm new password"
+                  br
+                  = f.password_field :password_confirmation, autocomplete: "off"
+
+                div class="actions"
+                  = f.submit "Change my password"
           .row
             .columns
               .se-read-more.material-component.ripple.right

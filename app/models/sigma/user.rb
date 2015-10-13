@@ -7,18 +7,23 @@ class Sigma::User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :username, :email, :password, :subscribe, :avatar
+  attr_accessible :first_name, :last_name, :middle_name, :phone_number, :email, :password, :subscribe, :avatar
 
   # has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "80x80#" }, :default_url => "/images/:style/missing.png"
   # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
-                             url: '/system/:class/:attachment/:id_partition/:style/:hash.:extension',
-                             path: ':rails_root/public/system/:class/:attachment/:id_partition/:style/:hash.:extension',
+                             url: '//crm.sigma.estate/system/:class/:attachment/:id_partition/:style/:hash.:extension',
+                             path: ':rails_root/../../development/public/system/:class/:attachment/:id_partition/:style/:hash.:extension',
                              hash_secret: '<get_use_rake_secret>'
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ },
                                 size: { in: 0..1.megabytes }
+
+
+  # def avatar_url(style)
+  #   "//crm.sigma.estate#{avatar.try(&:url)}"
+  # end
 
   has_many :authorizations, foreign_key: :sigma_users_id
   has_and_belongs_to_many :favorites, class_name: Sigma::Apartment, join_table: :favorites

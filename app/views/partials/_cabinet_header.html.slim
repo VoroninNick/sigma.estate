@@ -5,7 +5,15 @@
         .image style="background: url('#{current_user.avatar.url(:medium)}')no-repeat center center;"
   .row.text-center
     .medium-6.medium-centered.columns
-      h3 =current_user.username
+      h3
+        -if current_user.last_name.present?
+          =current_user.last_name
+          |&nbsp;
+        -if current_user.first_name.present?
+          =current_user.first_name
+        -if current_user.middle_name.present?
+          |&nbsp;
+          =current_user.middle_name
   .row.collapse
     .small-4.columns.ch-link-wrap class=cp(cabinet_profile_path)
       .ch-link-inner.material-component.ripple
