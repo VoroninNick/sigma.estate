@@ -15,7 +15,7 @@ class Sigma::User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
                              url: '//crm.sigma.estate/system/:class/:attachment/:id_partition/:style/:basename.:extension',
-                             path: ':rails_root/../../development/public:url',
+                             path: ':rails_root/../../development/public/system/:class/:attachment/:id_partition/:style/:basename.:extension',
                              hash_secret: '<get_use_rake_secret>'
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ },
                                 size: { in: 0..1.megabytes }
