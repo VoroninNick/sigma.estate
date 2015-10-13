@@ -60,7 +60,7 @@
                     - if user_signed_in?
                       .input.animate-input.is-locked-for-clear.is-completed
                         label Ім’я користувача
-                        input name="username" type="text"  value=current_user.username
+                        input name="first_name" type="text"  value=current_user.first_name
                     - else
                       .input.animate-input
                         label Ім’я користувача
@@ -80,9 +80,11 @@
       - if user_signed_in?
         li.notification-wrap
           a.notification-link href="#"
-            .se-user-avatar
-              .image style="background: url('#{current_user.avatar.url(:thumb)}')no-repeat center center;"
-
+            -if current_user.avatar.exists?
+              .se-user-avatar
+                .image style="background: url('#{current_user.avatar.url(:thumb)}')no-repeat center center;"
+            -else
+              =embedded_svg("ic_account_circle_black_24px.svg")
           .notification-container
             .notification-form
               .nf-header.text-center

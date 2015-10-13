@@ -181,11 +181,18 @@
       .medium-6.columns
         .row
           .columns
-            .input.animate-input
-              .input-ico
-                =embedded_svg "ic_person_48px.svg"
-              label Ваше ім’я
-              input name="name" type="text"
+            - if user_signed_in?
+              .input.animate-input.is-locked-for-clear.is-completed
+                .input-ico
+                  =embedded_svg "ic_person_48px.svg"
+                label Ваше ім’я
+                input name="name" type="text" required="" value=current_user.first_name
+            -else
+              .input.animate-input
+                .input-ico
+                  =embedded_svg "ic_person_48px.svg"
+                label Ваше ім’я
+                input name="name" type="text" required=""
         .row
           .columns
             .input.animate-input

@@ -22,8 +22,8 @@
               .input.animate-input.is-completed
                 .input-ico
                   =embedded_svg "ic_person_48px.svg"
-                = f.label :username, 'Ім’я користувача'
-                = f.text_field :username,  :value => current_user.username
+                = f.label :first_name, 'Ім’я користувача'
+                = f.text_field :first_name,  :value => current_user.first_name
                 .se-ajax-submit
                   button
                     =embedded_svg "ic_check_black_24px.svg"
