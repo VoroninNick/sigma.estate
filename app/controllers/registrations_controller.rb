@@ -1,6 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
   # before_filter :update_sanitized_params, only: [:update]
 
+  def sign_up_params
+    h = devise_parameter_sanitizer.sanitize(:sign_up)
+    h[:type] = "Sigma::Client"
+
+    h
+  end
   protected
 
   def update_resource(resource, params)
@@ -15,6 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
     # cabinet_profile_path
     session[:previous_url] || root_path
   end
+
   #
   # def user_update_params
   #   params[:user].permit(:email, :username, :avatar)

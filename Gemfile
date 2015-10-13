@@ -97,6 +97,7 @@ gem 'google-analytics-rails'
 gem 'figaro'
 
 gem 'devise'
+gem 'cancancan'
 gem 'koala'
 gem 'omniauth'
 gem 'omniauth-twitter'
