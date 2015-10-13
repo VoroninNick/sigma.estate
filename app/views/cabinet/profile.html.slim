@@ -68,7 +68,8 @@
                   button
                     =embedded_svg "ic_check_black_24px.svg"
           .row
-            .columns
+            .columns.se-change-password-wrap
+
               /= form_for(current_user, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
                 /= devise_error_messages!
                 = f.hidden_field :reset_password_token
@@ -87,7 +88,7 @@
                   = f.submit "Change my password"
           .row
             .columns
-              .se-read-more.material-component.ripple.right
+              .se-read-more.material-component.ripple.right.se-change-password-button
                 a Змінити пароль
           /.row
             .columns
