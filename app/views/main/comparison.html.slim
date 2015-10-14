@@ -23,9 +23,13 @@
             =link_to "Sigma Estate", root_path
           li.current
             a href="#" Порівняння
+
   .row.text-center
-    - if !apartments_from_comparison
-      h2 добавте хочаб одну одиницю до порівняння!
+    - if !apartments_from_comparison.any?
+      p.se-empty-collection-message
+        |Добавте хоча б одну&nbsp;
+        =link_to "квартиру", apartment_path
+        |&nbsp;до порівняння!
     - else
       /- apartments_from_comparison = [apartments_from_comparison] if apartments_from_comparison.respond_to?(:any?) && apartments_from_comparison.any?
       -apartments_from_comparison.each do |apartment|
