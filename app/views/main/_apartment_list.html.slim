@@ -16,7 +16,13 @@
                   .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
             .a-oi-information-wrap
               .a-oi-information
-                b = a.apartment_house.try(:street)
+                b
+                  |вул.&nbsp;
+                  = a.apartment_house.try(&:street)
+                  |,&nbsp;
+                  = a.apartment_house.try(&:street_number)
+                  |, кв.&nbsp;
+                  =a.try(&:apartment_number)
                 p
                   |ЖК «
                   = a.building_complex.name
