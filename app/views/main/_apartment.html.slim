@@ -9,7 +9,11 @@
             .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
       .a-oi-information-wrap
         .a-oi-information
-          b = a.apartment_house.street
+          b
+            |вул.
+            = a.apartment_house.street
+            |,&nbsp;
+            = a.apartment_house.street_number
           p
             |ЖК «
             = a.building_complex.name

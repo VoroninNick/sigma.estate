@@ -302,10 +302,6 @@
               = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
         = render partial: 'main/apartment_list',
           locals: { apartments: @apartments }
-        .row.se-pagination
-          .columns
-            = paginate @apartments
-
 
   =render partial: "partials/forms/book_review"
   /=render partial: "partials/forms/call_order"

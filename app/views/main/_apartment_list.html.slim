@@ -3,50 +3,55 @@
   /.row
     .columns
       = page_entries_info apartments
-  - apartments.each do |a|
-    .small-6.large-4.columns.end
-      .a-one-item.se-action-handler-wrap.se-box-shadow  data-item-id=a.id class="#{'added-to-favorites' if a.id.in? current_user_favorites} #{'added-to-comparison' if a.id.in? current_user_comparison}"
-        .columns
-          .a-oi-avatar
-            = link_to apartment_item_path(a.id) do
-              -if asset = a.banner_images.first
-                .image style="background: url('#{asset.url(:thumbnail)}')no-repeat center center;"
-              -else
-                .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
-          .a-oi-information-wrap
-            .a-oi-information
-              b = a.apartment_house.try(:street)
-              p
-                |ЖК «
-                = a.building_complex.name
-                |»
-              hr
-              .row.collapse
-                .large-4.medium-4.small-4.columns
-                  .a-oi-info-ico
-                    =embedded_svg "ic_view_quilt_24px.svg"
-                  .a-oi-info-value =a.try(:rooms_count)
-                .large-4.medium-4.small-4.columns
-                  .a-oi-info-ico
-                    =embedded_svg "ic_account_balance_wallet_24px.svg"
-                  .a-oi-info-value =a.try(:price)
-                .large-4.medium-4.small-4.columns
-                  .a-oi-info-ico
-                    =embedded_svg "ic_select_all_24px.svg"
-                  .a-oi-info-value =a.try(:total_square)
-        .clearfix
-        ul.a-oi-actions
-          li.se-action-handler.favorites-ico.add-to-favorites
-            a title="Вибране"
-              =embedded_svg "ic_favorite_48px.svg", class: "action-icon-add"
-              =embedded_svg "Icon-heart-minus.svg", class: "action-icon-delete"
-          li.se-action-handler.comparison-ico.add-to-comparison
-            a title="Порівняння"
-              =embedded_svg "ic_done_all_24px.svg", class: "action-icon-add"
-              =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
-          li.call-ico
-            a href="#" data-apartment-id=a.id data-reveal-id="book-review-modal"  title="Замовити огляд"
-              =embedded_svg "ic_phone_24px.svg"
-
+  -if apartments.any?
+    - apartments.each do |a|
+      .small-6.large-4.columns.end
+        .a-one-item.se-action-handler-wrap.se-box-shadow  data-item-id=a.id class="#{'added-to-favorites' if a.id.in? current_user_favorites} #{'added-to-comparison' if a.id.in? current_user_comparison}"
+          .columns
+            .a-oi-avatar
+              = link_to apartment_item_path(a.id) do
+                -if asset = a.banner_images.first
+                  .image style="background: url('#{asset.url(:thumbnail)}')no-repeat center center;"
+                -else
+                  .image style="background: url('#{asset_path("apartment.jpg")}')no-repeat center center;"
+            .a-oi-information-wrap
+              .a-oi-information
+                b = a.apartment_house.try(:street)
+                p
+                  |ЖК «
+                  = a.building_complex.name
+                  |»
+                hr
+                .row.collapse
+                  .large-4.medium-4.small-4.columns
+                    .a-oi-info-ico
+                      =embedded_svg "ic_view_quilt_24px.svg"
+                    .a-oi-info-value =a.try(:rooms_count)
+                  .large-4.medium-4.small-4.columns
+                    .a-oi-info-ico
+                      =embedded_svg "ic_account_balance_wallet_24px.svg"
+                    .a-oi-info-value =a.try(:price)
+                  .large-4.medium-4.small-4.columns
+                    .a-oi-info-ico
+                      =embedded_svg "ic_select_all_24px.svg"
+                    .a-oi-info-value =a.try(:total_square)
           .clearfix
+          ul.a-oi-actions
+            li.se-action-handler.favorites-ico.add-to-favorites
+              a title="Вибране"
+                =embedded_svg "ic_favorite_48px.svg", class: "action-icon-add"
+                =embedded_svg "Icon-heart-minus.svg", class: "action-icon-delete"
+            li.se-action-handler.comparison-ico.add-to-comparison
+              a title="Порівняння"
+                =embedded_svg "ic_done_all_24px.svg", class: "action-icon-add"
+                =embedded_svg "ic_delete_black_24px.svg", class: "action-icon-delete"
+            li.call-ico
+              a href="#" data-apartment-id=a.id data-reveal-id="book-review-modal"  title="Замовити огляд"
+                =embedded_svg "ic_phone_24px.svg"
+            .clearfix
 
+    .row.se-pagination
+      .columns
+        = paginate apartments
+  -else
+    p.se-empty-collection-message На жаль, по даним параметрам жодної квартири не знайдено
