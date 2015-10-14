@@ -38,9 +38,11 @@
             =image_tag apartment.banner_images.first.url(:thumbnail)
             .columns
               b
-                =apartment.apartment_house.street
+                = apartment.apartment_house.try(&:street)
                 |,&nbsp;
-                =apartment.apartment_house.street_number
+                = apartment.apartment_house.try(&:street_number)
+                |, кв.&nbsp;
+                =apartment.try(&:apartment_number)
               p
                 |ЖК «
                 = apartment.building_complex.name

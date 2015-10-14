@@ -7,9 +7,11 @@
       .a_other_item_label
         b
           |вул.&nbsp;
-          =@apartment.prev.apartment_house.street
+          =@apartment.prev.apartment_house.try(&:street)
           |,&nbsp;
-          =@apartment.prev.apartment_house.street_number
+          =@apartment.prev.apartment_house.try(&:street_number)
+          |, кв.&nbsp;
+          =@apartment.prev.try(&:apartment_number)
         p
           |ЖК «
           = @apartment.prev.building_complex.name
@@ -20,9 +22,11 @@
       .a_other_item_label
         b
           |вул.&nbsp;
-          =@apartment.next.apartment_house.street
+          =@apartment.next.apartment_house.try(&:street)
           |,&nbsp;
-          =@apartment.next.apartment_house.street_number
+          =@apartment.next.apartment_house.try(&:street_number)
+          |, кв.&nbsp;
+          =@apartment.next.try(&:apartment_number)
         p
           |ЖК «
           = @apartment.next.building_complex.name
