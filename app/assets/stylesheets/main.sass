@@ -806,6 +806,8 @@ header
         position: relative
         top: -7px
         margin-left: 10px
+        @media screen and ( max-width: 650px)
+          display: none
       &:hover
         color: #fff
     .header-search-form-wrap
@@ -1139,6 +1141,9 @@ form
   .main-banner-wrap
     height: 550px
     position: relative
+    @media #{$small-only}
+      height: auto
+      position: static
     .image
       max-width: 100%
       width: 100%
@@ -1154,7 +1159,12 @@ form
       top: 80px
       left: 0
       right: 0
+      @media #{$small-only}
+        position: static
+        margin-top: 80px
     .bx-wrapper
+      @media #{$small-only}
+        display: none
       .bx-viewport
         height: 100%
       .bx-controls
@@ -1219,6 +1229,8 @@ form
   .af-search-input
     position: relative
     margin-bottom: 10px
+    @media screen and ( max-width: 1090px)
+      margin-right: 50px
     label
       color: #FFF
       font:
@@ -1275,6 +1287,7 @@ form
       box-shadow: none
       border: none
       left: 0
+      height: auto !important
     .bx-controls-direction
       a
         background-position: inherit
