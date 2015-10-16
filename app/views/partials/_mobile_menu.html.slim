@@ -96,7 +96,7 @@
           .row
             .columns
               .material-component.ripple
-                = link_to(destroy_user_session_path, :method => :delete, class: "") do
+                = link_to(destroy_user_session_path, :method => :get, class: "") do
                   =embedded_svg "ic_exit_to_app_black_24px.svg"
                   |Вийти
         - else
