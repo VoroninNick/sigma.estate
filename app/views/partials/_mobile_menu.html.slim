@@ -1,29 +1,62 @@
 .mobile-menu-wrap
   .mobile-menu
-    .mm-header
-      - if user_signed_in?
+    - if user_signed_in?
+      .mm-header
         .row
           .columns
             .se-user-avatar
               .image style="background: url('#{current_user.avatar.url(:medium)}')no-repeat center center;"
         .row.text-center
           .columns
-            h3 = current_user.username
-
+            h3
+              /= current_user.username
+              -if current_user.last_name.present?
+                =current_user.last_name
+                |&nbsp;
+              -if current_user.first_name.present?
+                =current_user.first_name
+              -if current_user.middle_name.present?
+                |&nbsp;
+                =current_user.middle_name
     .mm-body
       .mm-nav-pages
         .columns
           nav
-            li.material-component.ripple class=cp(about_path)
-              = link_to "Про компанію", about_path
-            li.material-component.ripple class=cp(calculators_path)
-              = link_to "Калькулятори", calculators_path
-            li.material-component.ripple class=cp(contacts_path)
-              = link_to "Контакти", contacts_path
+            li.material-component.ripple.li-apartment class=cp(apartment_path)
+              a href=apartment_path title="Квартири"
+                =embedded_svg "ic_photo_size_select_small_24px.svg"
+                |Квартири
+            li.material-component.ripple.disable-link
+              a title="Будинки"
+                =embedded_svg "ic_home_24px.svg"
+                |Будинки
+            li.material-component.ripple.disable-link
+              a title="Ком. нерухомість"
+                =embedded_svg "ic_location_city_24px.svg"
+                |Ком. нерухомість
+            li.material-component.ripple.li-complex class=cp(complex_path)
+              a href=complex_path title="Житлові комплекси"
+                =embedded_svg "ic_domain_24px.svg"
+                |Житл. Комплекси
+            li.material-component.ripple.li-complex class=cp(comparison_path)
+              a href=comparison_path
+                =embedded_svg "ic_done_all_24px.svg"
+                |Порівняння
         .clearfix
-      .columns
+
+      .mm-nav-pages.mm-nav-pages-last
+        .columns
+          nav
+            li.material-component.ripple class=cp(about_path)
+              = link_to "Про компанію", about_path, title: "Про компанію"
+            li.material-component.ripple class=cp(calculators_path)
+              = link_to "Новини", news_path, title: "Новини"
+            li.material-component.ripple class=cp(contacts_path)
+              = link_to "Контакти", contacts_path, title: "Контакти"
+        .clearfix
+      /.columns
         ul
-          li.mm-call-order
+          /li.mm-call-order
             a
               =embedded_svg "ic_phone_24px.svg"
               |Замовити дзвінок
@@ -53,15 +86,23 @@
               |Порівняння
       .clearfix
       .mm-cabinet-controls
-        .row
-          .columns
-            .material-component.ripple
-              = content_tag(:a, href: cabinet_profile_path) do
-                =embedded_svg "ic_settings_black_24px.svg"
-                |Особистий кабінет
-        .row
-          .columns
-            .material-component.ripple
-              = link_to(destroy_user_session_path, :method => :delete, class: "") do
-                =embedded_svg "ic_exit_to_app_black_24px.svg"
-                |Вийти
+        - if user_signed_in?
+          .row
+            .columns
+              .material-component.ripple
+                = content_tag(:a, href: cabinet_profile_path) do
+                  =embedded_svg "ic_settings_black_24px.svg"
+                  |Особистий кабінет
+          .row
+            .columns
+              .material-component.ripple
+                = link_to(destroy_user_session_path, :method => :delete, class: "") do
+                  =embedded_svg "ic_exit_to_app_black_24px.svg"
+                  |Вийти
+        - else
+          .row
+            .columns
+              .material-component.ripple
+                a.mobile-menu-close href="#" data-reveal-id="EnterFormModal" title="Особистий кабінет"
+                  =embedded_svg "ic_perm_identity_24px.svg"
+                  |Увійти в особистий кабінет

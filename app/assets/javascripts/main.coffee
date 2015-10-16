@@ -398,6 +398,11 @@ $(document).ready ->
     else
       wrap.removeClass('mm-opened')
       $this.removeClass('mm-opened')
+  $('a.mobile-menu-close').click ->
+    $this = $(@)
+    wrap = $this.closest('body')
+    wrap.removeClass('mm-opened')
+    $this.removeClass('mm-opened')
 
 #
   options =
